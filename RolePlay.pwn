@@ -26997,7 +26997,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					MsgAdminUseCommands(9, playerid, cmdtext);
 					new nick[24];
 			        GetPlayerName(playerid,nick,24);
-					if (!strcmp(nick, "Lilevirth_Reges", true) || !strcmp(nick, "Namllohj_Saijem", true) || PlayersData[playerid][Admin] >= 9|| !strcmp(nick, "Cris_Iza", true))
+					if (!strcmp(nick, "Lilevirth_Reges", true) || !strcmp(nick, "Namllohj_Saijem", true) || PlayersData[playerid][Admin] >= 9|| !strcmp(nick, "La_Aguela", true))
 					{
 						new Datos_Picados[4];
 						new DatosOriginales[120];
