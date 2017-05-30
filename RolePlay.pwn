@@ -21546,91 +21546,98 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					{
 					    new playeridpagar = strval(cmdtext[GetPosSpace(cmdtext, 1)]);
 					    new Dineropagar = strval(cmdtext[GetPosSpace(cmdtext, 2)]);
-						if (playeridpagar != playerid)
-						{
-							if (IsPlayerConnected(playeridpagar))
+					    if ( PlayersData[playerid][HoursPlaying] >= 4 )
+					    {
+							if (playeridpagar != playerid)
 							{
-							    if ( Dineropagar <= 20000 && Dineropagar >= 1)
-							    {
-						        	new Float:Xplayerid, Float:Yplayerid, Float:Zplayerid;
-									GetPlayerPos(playeridpagar, Xplayerid, Yplayerid, Zplayerid);
+								if (IsPlayerConnected(playeridpagar))
+								{
+								    if ( Dineropagar <= 20000 && Dineropagar >= 1)
+								    {
+							        	new Float:Xplayerid, Float:Yplayerid, Float:Zplayerid;
+										GetPlayerPos(playeridpagar, Xplayerid, Yplayerid, Zplayerid);
 
-									if(IsPlayerInRangeOfPoint(playerid, 3.0, Xplayerid, Yplayerid, Zplayerid) && GetPlayerVirtualWorld(playeridpagar) == GetPlayerVirtualWorld(playerid))
-									{
-									    if (  PlayersData[playerid][Dinero] >= Dineropagar )
-									    {
-											new Mensaje_Pagar[81];
-											new Mensaje_PagarME[70];
+										if(IsPlayerInRangeOfPoint(playerid, 3.0, Xplayerid, Yplayerid, Zplayerid) && GetPlayerVirtualWorld(playeridpagar) == GetPlayerVirtualWorld(playerid))
+										{
+										    if (  PlayersData[playerid][Dinero] >= Dineropagar )
+										    {
+												new Mensaje_Pagar[81];
+												new Mensaje_PagarME[70];
 
-											// FORMATEO DEL MENSAJE MENSAJES
-											format(Mensaje_Pagar, sizeof(Mensaje_Pagar),
-											"Has recibido $%i de el jugador %s."
-											, Dineropagar, PlayersDataOnline[playerid][NameOnlineFix]);
+												// FORMATEO DEL MENSAJE MENSAJES
+												format(Mensaje_Pagar, sizeof(Mensaje_Pagar),
+												"Has recibido $%i de el jugador %s."
+												, Dineropagar, PlayersDataOnline[playerid][NameOnlineFix]);
 
-											format(Mensaje_PagarME, sizeof(Mensaje_PagarME),
-											"Le has dado $%i a el jugador %s."
-											,Dineropagar, PlayersDataOnline[playeridpagar][NameOnlineFix]);
+												format(Mensaje_PagarME, sizeof(Mensaje_PagarME),
+												"Le has dado $%i a el jugador %s."
+												,Dineropagar, PlayersDataOnline[playeridpagar][NameOnlineFix]);
 
-										    new Texto_ME_PagarPay[70];
-											format(Texto_ME_PagarPay, sizeof(Texto_ME_PagarPay), "le ha dado algo de dinero a %s", PlayersDataOnline[playeridpagar][NameOnlineFix]);
-						                    Acciones(playerid, 8, Texto_ME_PagarPay);
-											ApplyPlayerAnimCustom(playerid,
-											"DEALER",
-											DEALER_ANIMATIONS[6], false);
-											ApplyPlayerAnimCustom(playerid,
-											"DEALER",
-											DEALER_ANIMATIONS[6], false);
+											    new Texto_ME_PagarPay[70];
+												format(Texto_ME_PagarPay, sizeof(Texto_ME_PagarPay), "le ha dado algo de dinero a %s", PlayersDataOnline[playeridpagar][NameOnlineFix]);
+							                    Acciones(playerid, 8, Texto_ME_PagarPay);
+												ApplyPlayerAnimCustom(playerid,
+												"DEALER",
+												DEALER_ANIMATIONS[6], false);
+												ApplyPlayerAnimCustom(playerid,
+												"DEALER",
+												DEALER_ANIMATIONS[6], false);
 
-											// ENVIO DEL MENSAJE
-											SendInfoMessage(playeridpagar, 3, "0", Mensaje_Pagar);
-											SendInfoMessage(playerid, 3, "0", Mensaje_PagarME);
+												// ENVIO DEL MENSAJE
+												SendInfoMessage(playeridpagar, 3, "0", Mensaje_Pagar);
+												SendInfoMessage(playerid, 3, "0", Mensaje_PagarME);
 
-											// PAGO
-						            		GivePlayerMoneyEx(playeridpagar, Dineropagar);
-						            		GivePlayerMoneyEx(playerid, -Dineropagar);
+												// PAGO
+							            		GivePlayerMoneyEx(playeridpagar, Dineropagar);
+							            		GivePlayerMoneyEx(playerid, -Dineropagar);
 
-											new Float:player_pos_x, Float:player_pos_y, Float:player_pos_z;
-											GetPlayerPos(playeridpagar, player_pos_x, player_pos_y, player_pos_z);
-											PlayerPlaySound(playeridpagar, 1002,
-											player_pos_x,
-											player_pos_y,
-											player_pos_z);
+												new Float:player_pos_x, Float:player_pos_y, Float:player_pos_z;
+												GetPlayerPos(playeridpagar, player_pos_x, player_pos_y, player_pos_z);
+												PlayerPlaySound(playeridpagar, 1002,
+												player_pos_x,
+												player_pos_y,
+												player_pos_z);
 
-											GetPlayerPos(playerid, player_pos_x, player_pos_y, player_pos_z);
-											PlayerPlaySound(playerid, 1002,
-											player_pos_x,
-											player_pos_y,
-											player_pos_z);
-						            		return 1;
+												GetPlayerPos(playerid, player_pos_x, player_pos_y, player_pos_z);
+												PlayerPlaySound(playerid, 1002,
+												player_pos_x,
+												player_pos_y,
+												player_pos_z);
+							            		return 1;
+							            	}
+							            	else
+							            	{
+												SendInfoMessage(playerid, 0, "243", "No tiene suficiente dinero para pagar.");
+												return 1;
+							            	}
 						            	}
 						            	else
-						            	{
-											SendInfoMessage(playerid, 0, "243", "No tiene suficiente dinero para pagar.");
+										{
+											SendInfoMessage(playerid, 0, "244", "El jugador que desea pagarle no se encuentra cerca de tí.");
 											return 1;
-						            	}
-					            	}
-					            	else
+							            }
+									}
+									else
 									{
-										SendInfoMessage(playerid, 0, "244", "El jugador que desea pagarle no se encuentra cerca de tí.");
+										SendInfoMessage(playerid, 0, "245", "No puedes pagar más de $20000 de una sola véz ni menos de $1");
 										return 1;
-						            }
+									}
 								}
 								else
 								{
-									SendInfoMessage(playerid, 0, "245", "No puedes pagar más de $20000 de una sola véz ni menos de $1");
-									return 1;
-								}
+									SendInfoMessage(playerid, 0, "247", "El jugador que desea pagarle no se encuentra conectado.");
+							       	return 1;
+							    }
 							}
 							else
 							{
-								SendInfoMessage(playerid, 0, "247", "El jugador que desea pagarle no se encuentra conectado.");
-						       	return 1;
-						    }
+								SendInfoMessage(playerid, 0, "248", "Has introducído tu misma ID a pagar.");
+								return 1;
+							}
 						}
-						else
-						{
-							SendInfoMessage(playerid, 0, "248", "Has introducído tu misma ID a pagar.");
-							return 1;
+					    else
+					    {
+							SendInfoMessage(playerid, 0, "1338", "Debes ser mayor de nivel 1 para utilizar ésta función.");
 						}
 				    }
 				    else
