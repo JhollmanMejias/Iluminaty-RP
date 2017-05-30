@@ -21514,7 +21514,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				}
 				else if (strcmp("/Uniformar", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10)
 			    {
-				    if (IsPlayerInRangeOfPoint(playerid, 10.0, 358.4752,178.6662,1008.3828))
+				    if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
 				    {
 					    if ( PlayersData[playerid][Job] == COSECHADOR ) // Recuerda que el Job de Basurero estádefinido como cosechador.
 				    	{
