@@ -21512,6 +21512,43 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						SendInfoMessage(playerid, 0, "966", "No eres Recolector de basura!");
 					}
 				}
+				else if (strcmp("/Uniformar", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10)
+			    {
+				    if (IsPlayerInRangeOfPoint(playerid, 10.0, 358.4752,178.6662,1008.3828))
+				    {
+					    if ( PlayersData[playerid][Job] == COSECHADOR ) // Recuerda que el Job de Basurero estádefinido como cosechador.
+				    	{
+						    SetPlayerSkin(playerid, 27);
+						    Acciones(playerid, 8, "Te has puesto el uniforme de Recolector de Basura");
+						    return 1;
+				    	}
+					    else
+					    {
+						    SendInfoMessage(playerid, 0, "963", "Tú no eres Recolector de Basura primero consigue el trabajo.");
+						    return 0;
+					    }
+				    }
+				    else if(IsPlayerInRangeOfPoint(playerid, 10.0, 2105.0557,-1819.5490,13.5547)) //pizzero
+					{
+					    if ( PlayersData[playerid][Job] == PIZZERO )
+				    	{
+						    SetPlayerSkin(playerid, 155);
+						    Acciones(playerid, 8, "Te has puesto el uniforme de Pizzero");
+						    return 1;
+				    	}
+					    else
+					    {
+						    SendInfoMessage(playerid, 0, "963", "Tú no eres Pizzero primero consigue el trabajo.");
+						    return 0;
+					    }
+				    }
+					else{
+				    	SendInfoMessage(playerid, 0, "908", "No te encuentras en ningun punto para uniformarte.");
+				    	return 0;
+				    }
+
+			    	
+			    }
 				// COMANDO: /RePARTIR
 				else if (strcmp("/Repartir", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9)
 				{
@@ -62009,6 +62046,22 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 24.0000;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+
+	//////////////////////////////////////////////// /uniformar basurero ,,
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1610.8746;//,,
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1893.8384;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5469;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1275, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Basurero ~n~~r~/Uniformar");
+
+	//////////////////////////////////////////////// /uniformar pizzero ,,
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 2105.0557;//,,
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1819.5490;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5547;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1275, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Pizzero ~n~~r~/Uniformar");
 	
 	// end textdraw info
 
