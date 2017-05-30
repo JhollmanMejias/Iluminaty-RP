@@ -5869,10 +5869,10 @@ public OnGameModeInit()
 	FaccionData[NFS][Spawn_Y][0]		= -1289.2629;
 	FaccionData[NFS][Spawn_Z][0]		= 17.2482;
 	FaccionData[NFS][Spawn_ZZ][0]		= 24.4206;
-	FaccionData[NFS][Spawn_X][1]		= -1954.0232;
-	FaccionData[NFS][Spawn_Y][1]		= 301.1528;
-	FaccionData[NFS][Spawn_Z][1]		= 35.4688;
-	FaccionData[NFS][Spawn_ZZ][1]		= 131.0429;
+	FaccionData[NFS][Spawn_X][1]		= 1788.4828; // 1788.4828,-1770.0133,13.5447,269.8845
+	FaccionData[NFS][Spawn_Y][1]		= -1770.0133;
+	FaccionData[NFS][Spawn_Z][1]		= 13.5447;
+	FaccionData[NFS][Spawn_ZZ][1]		= 269.8845;
 	FaccionData[NFS][PickupOut_X] 		= 535.2281;//535.2281, -1293.8947, 17.2422
 	FaccionData[NFS][PickupOut_Y] 		= -1293.8947;
 	FaccionData[NFS][PickupOut_Z] 		= 17.2422;
@@ -26997,7 +26997,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					MsgAdminUseCommands(9, playerid, cmdtext);
 					new nick[24];
 			        GetPlayerName(playerid,nick,24);
-					if (!strcmp(nick, "Lilevirth_Reges", true) || !strcmp(nick, "Namllohj_Saijem", true) || PlayersData[playerid][Admin] >= 9|| !strcmp(nick, "La_Aguela", true))
+					if (!strcmp(nick, "Lilevirth_Reges", true) || !strcmp(nick, "Namllohj_Saijem", true) || PlayersData[playerid][Admin] >= 9)
 					{
 						new Datos_Picados[4];
 						new DatosOriginales[120];
@@ -34305,7 +34305,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				    case 2:
 				    {
 				        new loPrimero[256];
-				        format(loPrimero,sizeof(loPrimero),"¡Dirígete a la Concesionaria Grotti!\n\nVenta de Coches y Motos. Renovaciones y legalizaciones\n\nBusca un vendedor (NFS) para comprar Coche/Moto!\n\nOJO:¡¡Necesitarás Licencias para poder Manejar!!\n\nSi no hay Vendedor en Grotti Puedes poner anuncio usando\n{6EF83C}/AD (TuAnuncio)");
+				        format(loPrimero,sizeof(loPrimero),"{F81414}¡Dirígete a una Concesionaria ve a Unity ó Grotti!\n\n{6EF83C}¡¡El coche deberá vendertelo un empleado (NFS)!!\n\n{F81414}OJO: Necesitarás Licencia y Pasaporte para comprar\n\n{6EF83C}Si no hay Vendedor Disponible Puedes poner anuncio usa: /AD");
 			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Guía - Concecionario Grotti", loPrimero, "Aceptar", "");
 			         	SetPlayerCheckpoint(playerid, 535.2281, -1293.8947, 17.2422, 1.0);
 						PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
@@ -37145,7 +37145,7 @@ public Comandos_Admin(Comando, playerid, playeridAC, LV, Cantidad_o_Tipo, String
 public LoadPriceAndNameVehicles()
 {
  // Todo + 400
-	new NEXT = 0; coches_Todos_Precios    [0]     = 1000;      coches_Todos_Nombres    [0] 	= "Landstalker"; 	coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:400
+	new NEXT = 0; coches_Todos_Precios    [0]     = 2000;      coches_Todos_Nombres    [0] 	= "Landstalker"; 	coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:400
 	NEXT++; coches_Todos_Precios    [1]     = 2000;      coches_Todos_Nombres    [1] 	= "Bravura"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 98; 		// Nombre: NINGUNO       ID:401
 	NEXT++; coches_Todos_Precios    [2]     = 4000;      coches_Todos_Nombres    [2] 	= "Buffalo";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 124; 	// Nombre: NINGUNO       ID:402
 	NEXT++; coches_Todos_Precios    [3]     = 2000;      coches_Todos_Nombres    [3] 	= "Linerunner"; 		coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 75; 	// Nombre: NINGUNO       ID:403
@@ -40401,6 +40401,46 @@ public LoadCarsFaccion()
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = true;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
+	// Coches Wang
+	// Sweeper - VEHÍCULO 1
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = 1774.0302;//AddStaticVehicle(477,1774.0302,-1813.9128,13.3114,165.4144,1,0); //
+	DataCars[MAX_CAR][PosY]     = -1813.9128;
+	DataCars[MAX_CAR][PosZ]     = 13.3114;
+	DataCars[MAX_CAR][PosZZ]  = 165.4144;
+	DataCars[MAX_CAR][Modelo] = 535;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
+	DataCars[MAX_CAR][Time]     = GOBIERNO;
+
+	// Sweeper - VEHÍCULO 2
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = 1777.4415; // 400,1777.4415,-1815.4346,13.6508,165.4272,3,33); //
+	DataCars[MAX_CAR][PosY]     = -1815.4346;
+	DataCars[MAX_CAR][PosZ]     = 13.6508;
+	DataCars[MAX_CAR][PosZZ]  = 165.4272;
+	DataCars[MAX_CAR][Modelo] = 560;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 0;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
+	DataCars[MAX_CAR][Time]     = GOBIERNO;
+
+	// Sweeper - VEHÍCULO 3
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = 1780.8480;//AddStaticVehicle(480,1780.8480,-1816.0719,13.3364,165.9015,0,1); //
+	DataCars[MAX_CAR][PosY]     = -1816.0719;
+	DataCars[MAX_CAR][PosZ]     = 13.3364;
+	DataCars[MAX_CAR][PosZZ]  = 165.9015;
+	DataCars[MAX_CAR][Modelo] = 536;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
+	DataCars[MAX_CAR][Time]     = GOBIERNO;
+	
 
 	// END VEHICLES
 	MAX_CAR_FACCION = MAX_CAR;
@@ -41233,6 +41273,17 @@ public LoadStaticObjects()
     // Cartel 3 Grotti Derecho
 	TextoTEST = CreateObject(9314, 549.98352, -1294.21509, 27.34730,   0.00000, 0.00000, 89.70000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Renovaciones\nDropeos\n Y más", 0, 50, "Arial", 16, 1, 0xFFFFFF, 1, 1);
+
+	// Cartel 1 Grotti Centro LOGO
+	TextoTEST = CreateObject(9314, 1761.49438, -1804.68115, 20.62770,   0.00000, 0.00000, -90.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}Unity\n{0049FF}Concesionaria", 0, 50, "Arial", 20, 1, 0xFFFFFF, 1, 1);
+    // Cartel 2 Izquierdo
+	TextoTEST = CreateObject(9314, 1755.04749, -1804.68616, 20.62770,   0.00000, 0.00000, -90.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}Renueva tus\nPapeles desde\n{00FF00}${f7faf7}2000", 0, 50, "Arial", 16, 1, 0x000000FF, 1, 1);
+    // Cartel 3 Grotti Derecho
+	TextoTEST = CreateObject(9314, 1767.95093, -1804.68274, 20.62770,   0.00000, 0.00000, -90.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}Renovaciones\nDropeos\n Y más", 0, 50, "Arial", 16, 1, 0xFFFFFF, 1, 1);
+
 	// Cartel En Transporte Publico
 	TextoTEST = CreateObject(7606, 1800.07617, -1877.15051, 20.53940,   0.00000, 0.00000, 90.00000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Transporte Público\n¿Necesitas Taxi?\nLlama al 145", 0, 50, "Arial", 15, 1, 0x000000FF, 1, 1);
@@ -41289,15 +41340,9 @@ public LoadStaticObjects()
     SetObjectMaterialText(TextoTEST, "{f7faf7}PARADA\nBUS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 	// Carteles Oficinas
 
-	// Disponible pared 1
-    TextoTEST = CreateObject(2732, 1418.74927, -1642.72742, 14.93840,   0.00000, 0.00000, 90.00000);
-	SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nDisponible", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-	// Disponible Pared 2
-    TextoTEST = CreateObject(2732, 1418.74927, -1609.91040, 14.93840,   0.00000, 0.00000, 90.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nDisponible", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 	// Cartel Oficina 1 ID 31
     TextoTEST = CreateObject(9314, 1419.01904, -1607.36853, 18.11700,   0.00000, 18.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nEn Venta", 0, 50, "Broadway", 24, 1, 0x000000FF, 1, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}Consultorio\nDr.Moon", 0, 50, "Broadway", 24, 1, 0x000000FF, 1, 1);
 	// Cartel Oficina 2 ID 30
 	TextoTEST = CreateObject(9314, 1419.02771, -1640.15002, 18.13700,   0.00000, 18.00000, 0.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nEn Venta", 0, 50, "Magneto", 24, 1, 0x000000FF, 1, 1);
@@ -41323,6 +41368,22 @@ public LoadStaticObjects()
 	// Cartel Seguridad 6
 	TextoTEST = CreateObject(2661, 1834.13965, -1841.82935, 14.29560,   0.00000, 0.00000, -90.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Seguridad\n.::LSPD::.", 0, 50, "Dungeon", 25, 1, 0x828282FF, 1, 1);
+    
+// IDS coches en Wang
+    TextoTEST = CreateObject(2661, 1756.79834, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}535", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    TextoTEST = CreateObject(2661, 1760.65735, -1787.80029, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}567", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    TextoTEST = CreateObject(2661, 1764.84277, -1787.80200, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}536", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    TextoTEST = CreateObject(2661, 1769.06030, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}560", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    TextoTEST = CreateObject(2661, 1773.07336, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}400", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    TextoTEST = CreateObject(2661, 1777.10803, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}554", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    TextoTEST = CreateObject(2661, 1781.40088, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}422", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
 
 	// Cartel Job Basurero
     TextoTEST = CreateObject(7911, 1609.91040, -1890.64880, 21.70720,   0.00000, 0.00000, 90.00000);
@@ -41359,6 +41420,17 @@ public LoadStaticObjects()
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Max.\n50Kph", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 	TextoTEST = CreateObject(19353, 1431.93518, -1699.49463, 12.29400,   0.00000, 90.00000, 90.00000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Max.\n50Kph", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	// Entrada Y salida Parking
+	TextoTEST = CreateObject(19353, 1417.89514, -1646.63464, 12.29340,   0.00000, 90.00000, 180.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}ENTRADA\nPARKING", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+	TextoTEST = CreateObject(19353, 1417.89722, -1650.62366, 12.29340,   0.00000, 90.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}SALIDA\nPARKING", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+	
+	// Cartel Apartamentos C-1
+	TextoTEST = CreateObject(7606, 1335.39343, -1651.67786, 23.10670,   0.00000, 0.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}Apartamentos C-1\n{6EF83C}Precio: 9500$\n{F81414}<==============>", 0, 50, "Arial", 15, 1, 0xFFFFFF, 1, 1);
+
 
 	// Pantalla Con Movimiento 24/7 unity
 	TextoTEST = CreateObject(7313, 1833.50745, -1842.49109, 15.39490,   0.00000, 0.00000, -90.00000);
@@ -41399,38 +41471,38 @@ public LoadStaticObjects()
 	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1827.8643,-1826.1737,13.5781,15.0, 0);//Entrada
 	//Pickup 8
 	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1816.1445,-2059.6919,13.5469,15.0, 0);//Entrada
-
+	
 	// Pickup Bicis Mochis
 	Create3DTextLabel("{E6E6E6}Para alquilar Bicicleta: /Parqueo\nCosto:{6EF83C}$10",0xFFFB00FF,1768.9747,-1865.8627,13.5721,30.0, 0);//Entrada
     // Pickup Faccion Gobierno
-	Create3DTextLabel("{0049FF}AYUNTAMIENTO\n{F81414}Gobierno de Los Santos\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,358.3489,178.6567,1008.3828,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}AYUNTAMIENTO\n{F81414}Gobierno de Los Santos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,358.3489,178.6567,1008.3828,25.0, 0);//Entrada
 	// Pickup Faccion Gobierno
-	Create3DTextLabel("{0049FF}AYUNTAMIENTO\n{F81414}Gobierno de Los Santos\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1481.0631,-1772.3114,18.7958,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}AYUNTAMIENTO\n{F81414}Gobierno de Los Santos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1481.0631,-1772.3114,18.7958,25.0, 0);//Entrada
 	// Pickup Faccion LSPD
-	Create3DTextLabel("{0049FF}L.S.P.D\n{F81414}Los Santos Policía Departamento\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1555.3182,-1675.6555,16.1953,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}L.S.P.D\n{F81414}Los Santos Policía Departamento\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1555.3182,-1675.6555,16.1953,25.0, 0);//Entrada
 	// Pickup Faccion LSMD
-	Create3DTextLabel("{0049FF}L.S.M.D\n{F81414}Los Santos Medicos Departamento\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1172.0863,-1323.2911,15.4029,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}L.S.M.D\n{F81414}Los Santos Medicos Departamento\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1172.0863,-1323.2911,15.4029,25.0, 0);//Entrada
 	// Pickup Faccion Taxis
-	Create3DTextLabel("{0049FF}T.P.L.S\n{F81414}Transporte Público Los Santos\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1742.9810,-1864.1682,13.5742,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}T.P.L.S\n{F81414}Transporte Público Los Santos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1742.9810,-1864.1682,13.5742,25.0, 0);//Entrada
 	// Pickup Faccion Licencieros
-	Create3DTextLabel("{0049FF}S.M.L\n{F81414}Secretaría Maestros Licencieros\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1779.0222,-1662.9333,14.4380,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}S.M.L\n{F81414}Secretaría Maestros Licencieros\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1779.0222,-1662.9333,14.4380,25.0, 0);//Entrada
 	// Pickup Faccion NFS
-	Create3DTextLabel("{0049FF}Concesionaria\n{F81414}Grotti\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,535.0766,-1293.9303,17.2422,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Concesionaria\n{F81414}Grotti\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,535.0766,-1293.9303,17.2422,25.0, 0);//Entrada
 	// Pickup Faccion Taller LS
-	Create3DTextLabel("{0049FF}Taller\n{F81414}Taller Los Santos\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1500.5483,-1502.3958,13.5546,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Taller\n{F81414}Taller Los Santos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1500.5483,-1502.3958,13.5546,25.0, 0);//Entrada
 	// Pickup Faccion Camioneros
-	Create3DTextLabel("{0049FF}Camioneros\n{F81414}Camioneros\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,-516.1247,-506.1532,25.5234,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Camioneros\n{F81414}Camioneros\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,-516.1247,-506.1532,25.5234,25.0, 0);//Entrada
 	// Pickup Faccion Cnn
-	Create3DTextLabel("{0049FF}CNN\n{F81414}Central Nacional Noticias\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,647.8515,-1359.2714,13.5826,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}CNN\n{F81414}Central Nacional Noticias\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,647.8515,-1359.2714,13.5826,25.0, 0);//Entrada
 	// Pickup Faccion Pandilla Del Grove Street
-	Create3DTextLabel("{0049FF}Grove Street\n{F81414}Casa Pandilla Del Grove Street\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2495.3545,-1691.1387,14.7656,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Grove Street\n{F81414}Casa Pandilla Del Grove Street\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2495.3545,-1691.1387,14.7656,25.0, 0);//Entrada
 	// Pickup Faccion Pandilla Los Ballas
-	Create3DTextLabel("{0049FF}Ballas\n{F81414}Casa Pandilla Los Ballas\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2334.6541,-1234.6598,27.9766,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Ballas\n{F81414}Casa Pandilla Los Ballas\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2334.6541,-1234.6598,27.9766,25.0, 0);//Entrada
 	// Pickup Faccion Pandilla Los Latinos
-	Create3DTextLabel("{0049FF}Latinos\n{F81414}Casa Pandilla Los Latinos\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2766.0029,-1606.3961,10.9219,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Latinos\n{F81414}Casa Pandilla Los Latinos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2766.0029,-1606.3961,10.9219,25.0, 0);//Entrada
 
 	// Pickup Faccion Pandilla Los Latinos
-	Create3DTextLabel("{0049FF}Banco Central\n{F81414}Los Santos\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1310.1892,-1366.7983,13.5066,25.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}Banco Central\n{F81414}Los Santos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1310.1892,-1366.7983,13.5066,25.0, 0);//Entrada
     //Pickup Cajero 1
 	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,1918.7743,-1765.2124,13.5469,15.0, 0);//Entrada
 	//Pickup Cajero 2
@@ -41443,17 +41515,17 @@ public LoadStaticObjects()
 	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,1346.5325,-1758.5590,13.5156,15.0, 0);//Entrada
 
     //Pickup Gasolinera 1
-	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón:{6EF83C} /Llenar Bidon",0xFFFB00FF,1940.6564,-1772.8916,13.3906,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,1940.6564,-1772.8916,13.3906,15.0, 0);//Entrada
 	//Pickup Gasolinera 2
-	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón:{6EF83C} /Llenar Bidon",0xFFFB00FF,1462.7737,-1568.8422,13.1523,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,1462.7737,-1568.8422,13.1523,15.0, 0);//Entrada
 	//Pickup Gasolinera 3
-	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón:{6EF83C} /Llenar Bidon",0xFFFB00FF,1602.3607,-1709.8844,5.4990,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,1602.3607,-1709.8844,5.4990,15.0, 0);//Entrada
 	//Pickup Gasolinera 4
-	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón:{6EF83C} /Llenar Bidon",0xFFFB00FF,-91.0046,-1167.8041,2.0418,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,-91.0046,-1167.8041,2.0418,15.0, 0);//Entrada
 	//Pickup Gasolinera 5
-	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón:{6EF83C} /Llenar Bidon",0xFFFB00FF,1004.0413,-937.6855,42.1797,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,1004.0413,-937.6855,42.1797,15.0, 0);//Entrada
 	//Pickup Gasolinera 5
-	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón:{6EF83C} /Llenar Bidon",0xFFFB00FF,655.8924,-565.1631,16.3359,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,655.8924,-565.1631,16.3359,15.0, 0);//Entrada
 
 	//Pickup Parqueo 1 Cerca de Lil Proble Inn
 	Create3DTextLabel("Para usar Parqueo: /Parqueo\n{E6E6E6}Coste Parqueo:{6EF83C}$10",0xFFFB00FF,1106.9362,-1740.8885,13.3984,20.0, 0);//Entrada
@@ -41469,82 +41541,105 @@ public LoadStaticObjects()
 	Create3DTextLabel("Para usar Peaje: /Peaje\n{E6E6E6}Coste Peaje:{6EF83C}$10",0xFFFB00FF,51.7069,-1539.4414,5.1381,20.0, 0);//Entrada
 
 	//Pickup Negocio ID 1
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1833.7675,-1842.5330,13.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1833.7675,-1842.5330,13.5781,15.0, 0);//Entrada
 	//Pickup Negocio ID 2
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1848.3214,-1871.7002,13.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1848.3214,-1871.7002,13.5781,15.0, 0);//Entrada
 	//Pickup Negocio ID 3
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1679.3724,-1846.1288,13.5317,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1679.3724,-1846.1288,13.5317,15.0, 0);//Entrada
 	//Pickup Negocio ID 4
-	Create3DTextLabel("{0049FF}El {F81414}Abuelo\n{F5FF00}Negocio:{0049FF}24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1352.2777,-1759.2507,13.5078,15.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}El {F81414}Abuelo\n{F5FF00}Negocio:{0049FF}24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1352.2777,-1759.2507,13.5078,15.0, 0);//Entrada
 	//Pickup Negocio ID 5
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1411.5867,-1699.4906,13.5395,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1411.5867,-1699.4906,13.5395,15.0, 0);//Entrada
 	//Pickup Negocio ID 6
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1330.1461,-1558.9940,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1330.1461,-1558.9940,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 7
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1368.7368,-1279.8479,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1368.7368,-1279.8479,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 8
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1133.4271,-1370.1421,13.9844,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1133.4271,-1370.1421,13.9844,15.0, 0);//Entrada
     //Pickup Negocio ID 9
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1097.6742,-1370.1294,13.9844,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1097.6742,-1370.1294,13.9844,15.0, 0);//Entrada
     //Pickup Negocio ID 10
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,928.8099,-1352.9874,13.3438,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,928.8099,-1352.9874,13.3438,15.0, 0);//Entrada
 	//Pickup Negocio ID 11
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Sex Shop\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1000.4876,-919.9670,42.3281,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Sex Shop\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1000.4876,-919.9670,42.3281,15.0, 0);//Entrada
 	//Pickup Negocio ID 12
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1199.2874,-918.2720,43.1220,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1199.2874,-918.2720,43.1220,15.0, 0);//Entrada
 	//Pickup Negocio ID 13
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1315.4917,-897.7941,39.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1315.4917,-897.7941,39.5781,15.0, 0);//Entrada
 	//Pickup Negocio ID 14
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Club\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1836.8966,-1682.4479,13.3288,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Club\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1836.8966,-1682.4479,13.3288,15.0, 0);//Entrada
 	//Pickup Negocio ID 15
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2244.3618,-1665.4406,15.4766,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2244.3618,-1665.4406,15.4766,15.0, 0);//Entrada
 	//Pickup Negocio ID 16
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2309.9858,-1643.6101,14.8270,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2309.9858,-1643.6101,14.8270,15.0, 0);//Entrada
 	//Pickup Negocio ID 17
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2397.8088,-1898.8636,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2397.8088,-1898.8636,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 18
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2400.4600,-1981.8807,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2400.4600,-1981.8807,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 19
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,810.5869,-1616.2278,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,810.5869,-1616.2278,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 20
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,823.9427,-1588.3691,13.5545,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,823.9427,-1588.3691,13.5545,15.0, 0);//Entrada
     //Pickup Negocio ID 21
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,499.5712,-1360.5472,16.3615,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,499.5712,-1360.5472,16.3615,15.0, 0);//Entrada
     //Pickup Negocio ID 22
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Pizza Stack\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,2105.4729,-1806.3375,13.5547,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Pizza Stack\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2105.4729,-1806.3375,13.5547,15.0, 0);//Entrada
     //Pickup Negocio ID 23
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Lil probe inn\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,681.6268,-473.4607,16.5363,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Lil probe inn\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,681.6268,-473.4607,16.5363,15.0, 0);//Entrada
     //Pickup Negocio ID 24
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,613.2142,-495.6638,16.3337,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,613.2142,-495.6638,16.3337,15.0, 0);//Entrada
     //Pickup Negocio ID 25
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,712.1761,-498.9280,16.3359,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,712.1761,-498.9280,16.3359,15.0, 0);//Entrada
    //Pickup Negocio ID 26
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,820.0663,-575.9793,16.5363,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,820.0663,-575.9793,16.5363,15.0, 0);//Entrada
 	//Pickup Negocio ID 27
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1720.2109,-1741.1588,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1720.2109,-1741.1588,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 28
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Pizzería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1419.1687,-1623.7549,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Pizzería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.1687,-1623.7549,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 29
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Jizzy\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1081.2618,-1696.7834,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Jizzy\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1081.2618,-1696.7834,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 30
-	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1419.2784,-1640.2745,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.2784,-1640.2745,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 31
-	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1419.1697,-1607.3702,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.1697,-1607.3702,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 32
-	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1325.9154,-1741.9114,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1325.9154,-1741.9114,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 33
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Casino\n{F5FF00}Estado:{F81414} Cerrado\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1785.9707,-1786.7544,13.7740,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Casino\n{F5FF00}Estado:{F81414} Cerrado\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,477.4289,-1534.5834,19.6706,15.0, 0);//Entrada
 	//Pickup Negocio ID 34
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Hotel\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1418.5303,-1581.4398,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Hotel\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1418.5303,-1581.4398,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 35
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: Enter",0xFFFB00FF,1567.9180,-1897.8309,13.5608,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1567.9180,-1897.8309,13.5608,15.0, 0);//Entrada
 
-    //Pickup Wang 1
+    //Pickup Grotti 1
 	Create3DTextLabel("{F81414}OJO:{E6E6E6}Si tu coche {F81414}Explota\n{E6E6E6}Aparecerá donde hayas puesto\nEl comando: {F5FF00}/APARCAR",0xFFFB00FF,561.6829,-1253.2849,17.2087,15.0, 0);//Entrada
-	//Pickup Wang 2
+	//Pickup Grotti 2
 	Create3DTextLabel("{E6E6E6}Para {6EF83C}Abrir{E6E6E6}/{F81414}Cerrar\n{E6E6E6}Tu Vehículo Usa:\n{F5FF00}/LLAVES COCHE\n{E6E6E6}Evita Robos\nMantenlo {F81414}Cerrado",0xFFFB00FF,553.4682,-1257.9618,16.9734,15.0, 0);//Entrada
-	//Pickup Wang 3
+	//Pickup Grotti 3
 	Create3DTextLabel("{E6E6E6}Para ver los precios de papeles\nPárate frente al coche y usa: /Precio Coche",0xFFFB00FF,558.3200,-1268.6315,17.2422,15.0, 0);//Entrada
+
+	//Pickup ZR-350
+	Create3DTextLabel("{E6E6E6}[Coche de Muestra]\nPrecio Coche:{6EF83C} $3500",0xFFFB00FF,1774.0258,-1813.8829,13.3202,15.0, 0);//Entrada
+	//Pickup Land Satalker
+	Create3DTextLabel("{E6E6E6}[Coche de Muestra]\nPrecio Coche:{6EF83C} $2000",0xFFFB00FF,1777.4270,-1815.4230,13.6465,15.0, 0);//Entrada
+	//Pickup Comet
+	Create3DTextLabel("{E6E6E6}[Coche de Muestra]\nPrecio Coche:{6EF83C} $3500",0xFFFB00FF,1780.8486,-1816.0397,13.3566,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 1
+	Create3DTextLabel("{E6E6E6}Slamvan\nPrecio Coche:{6EF83C} $3000",0xFFFB00FF,1756.6870,-1790.8840,13.2990,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 2
+	Create3DTextLabel("{E6E6E6}Savanna\nPrecio Coche:{6EF83C} $2000",0xFFFB00FF,1760.6654,-1790.5165,13.2897,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 3
+	Create3DTextLabel("{E6E6E6}Blade\nPrecio Coche:{6EF83C} $2500",0xFFFB00FF,1764.9326,-1790.5131,13.2863,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 4
+	Create3DTextLabel("{E6E6E6}Sultan\nPrecio Coche:{6EF83C} $3500",0xFFFB00FF,1769.0233,-1790.5125,13.2877,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 5
+	Create3DTextLabel("{E6E6E6}LandStalker\nPrecio Coche:{6EF83C} $2000",0xFFFB00FF,1773.1833,-1790.5393,13.2907,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 6
+	Create3DTextLabel("{E6E6E6}Yosemite\nPrecio Coche:{6EF83C} $2500",0xFFFB00FF,1777.1295,-1790.5160,13.2891,15.0, 0);//Entrada
+	// Pick Up Estacionamiento wang coche 7
+	Create3DTextLabel("{E6E6E6}Bobcat\nPrecio Coche:{6EF83C} $2500",0xFFFB00FF,1781.4398,-1790.5291,13.2911,15.0, 0);//Entrada
+	//¿Cómo comprar coche?
+	Create3DTextLabel("{E6E6E6}¿Cómo comprar coche?\n-Opción: 3\n{6EF83C}/Guia",0xFFFB00FF,1765.2764,-1804.5541,13.5420,15.0, 0);//Entrada
 
 	//Pickup Bus Stop 1 24/7 Unity
 	Create3DTextLabel("{6EF83C}[Estado]:{F81414} Fuera de Servicio.\n{6EF83C}**Parada: {F5FF00}24/7 Unity Station.\n{6EF83C}**Prox Parada: {F5FF00}Secretaria Maestros Licencieros.\n{E6E6E6}El Bus llegará en: {0049FF}00:00s\n{E6E6E6}Costo Ticket: 20$",0xFFFB00FF,1827.7247,-1828.9220,13.5781,15.0, 0);//Entrada
@@ -41573,6 +41668,58 @@ public LoadStaticObjects()
 	Create3DTextLabel("Para Sacar Caña use\n{6EF83C}/Varios",0xFFFB00FF,913.26361, -2019.10327, 1.56320,15.0, 0);//Entrada
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// New WANG
+	CreateObject(11317, 1782.23584, -1784.93445, 17.7067,   0.00000, 0.00000, 90.00000);
+	CreateObject(982, 1797.13635, -1803.72791, 13.22260,   0.00000, 0.00000, 90.00000);
+	CreateObject(983, 1780.42395, -1803.72791, 13.18260,   0.00000, 0.00000, 90.00000);
+	CreateObject(983, 1774.06860, -1803.72791, 13.18260,   0.00000, 0.00000, 90.00000);
+	CreateObject(982, 1810.92834, -1790.51111, 13.22260,   0.00000, 0.00000, 0.00000);
+	CreateObject(982, 1798.17163, -1778.33142, 13.22260,   0.00000, 0.00000, 90.00000);
+	CreateObject(983, 1769.16101, -1803.72791, 13.18260,   0.00000, 0.00000, 90.00000);
+	CreateObject(19122, 1784.58911, -1804.76721, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1771.44238, -1804.76721, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1766.84070, -1804.76721, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1753.53674, -1804.76721, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1810.80249, -1804.76721, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1797.69373, -1804.76318, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(1444, 1755.10364, -1803.95300, 13.32880,   0.00000, 0.00000, 0.00000);
+	CreateObject(1444, 1765.23950, -1803.97290, 13.32880,   0.00000, 0.00000, 0.00000);
+	CreateObject(3851, 1778.02612, -1804.39343, 14.49460,   0.00000, 0.00000, 90.00000);
+	CreateObject(3851, 1791.12573, -1804.39343, 14.49460,   0.00000, 0.00000, 90.00000);
+	CreateObject(3851, 1804.28027, -1804.39343, 14.49460,   0.00000, 0.00000, 90.00000);
+	CreateObject(3851, 1804.26575, -1777.93042, 14.49460,   0.00000, 0.00000, 90.00000);
+	CreateObject(3851, 1791.12000, -1777.93042, 14.49460,   0.00000, 0.00000, 90.00000);
+	CreateObject(3851, 1811.36584, -1784.91589, 14.49460,   0.00000, 0.00000, 0.00000);
+	CreateObject(982, 1811.63635, -1755.13416, 13.23880,   0.00000, 0.00000, 0.00000);
+	CreateObject(982, 1798.80261, -1742.25269, 13.23880,   0.00000, 0.00000, 90.00000);
+	CreateObject(982, 1773.17798, -1742.25317, 13.23880,   0.00000, 0.00000, 90.00000);
+	CreateObject(982, 1752.81055, -1755.02783, 13.23880,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1811.51245, -1768.27148, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1811.47900, -1777.43237, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1760.08716, -1742.35181, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(19122, 1753.13245, -1742.41113, 13.05790,   0.00000, 0.00000, 0.00000);
+	CreateObject(1569, 1769.72583, -1762.75891, 12.57010,   0.00000, 0.00000, 0.00000);
+	CreateObject(2240, 1771.47253, -1762.47095, 12.92000,   0.00000, 0.00000, 0.00000);
+	CreateObject(2240, 1769.41846, -1762.47095, 12.92000,   0.00000, 0.00000, 0.00000);
+	CreateObject(3578, 1754.80774, -1789.46667, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1758.69495, -1789.48499, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1762.74219, -1789.45959, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1766.94482, -1789.45959, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1771.12427, -1789.45959, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1775.13123, -1789.45837, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1779.28552, -1789.45837, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(3578, 1783.59875, -1789.45837, 11.84000,   0.00000, 0.00000, 90.00000);
+
+	// Parking entre Oficinas Ayunta y Restaurant Casa Jardín
+	CreateObject(982,1407.0000000,-1648.6999512,13.1000004,0.0000000,0.0000000,90.0000000); //object(fenceshit) (1)
+	CreateObject(982,1407.0000000,-1652.5999756,13.1000004,0.0000000,0.0000000,90.0000000); //object(fenceshit) (2)
+	CreateObject(982,1407.0000000,-1644.6999512,13.1000004,0.0000000,0.0000000,90.0000000); //object(fenceshit) (3)
+	CreateObject(1214,1420.0000000,-1648.6999512,12.3999996,0.0000000,0.0000000,0.0000000); //object(bollard) (7)
+	CreateObject(1214,1420.0000000,-1652.5999756,12.3999996,0.0000000,0.0000000,0.0000000); //object(bollard) (8)
+	CreateObject(1214,1420.0000000,-1644.6999512,12.3999996,0.0000000,0.0000000,0.0000000); //object(bollard) (9)
+	CreateObject(646,1416.9000244,-1655.1999512,14.0000000,0.0000000,0.0000000,0.0000000); //object(veg_palmkb14) (1)
+	CreateObject(646,1415.5999756,-1654.0999756,14.0000000,0.0000000,0.0000000,0.0000000); //object(veg_palmkb14) (2)
+
 	// Luces Rojas Job Basurero
 	CreateObject(19124, 1666.59253, -1894.51062, 13.10480,   0.00000, 0.00000, 0.00000);
 	CreateObject(19124, 1666.59253, -1899.31213, 13.10480,   0.00000, 0.00000, 0.00000);
@@ -41582,7 +41729,6 @@ public LoadStaticObjects()
 	CreateObject(19124, 1654.78540, -1889.87256, 13.10480,   0.00000, 0.00000, 0.00000);
 	CreateObject(19124, 1649.99365, -1889.86511, 13.10480,   0.00000, 0.00000, 0.00000);
 	CreateObject(19124, 1645.20508, -1889.87012, 13.10480,   0.00000, 0.00000, 0.00000);
-
 	// Mapeo Job Basurero
 	CreateObject(987,1673.5999756,-1882.5000000,12.5000000,0.0000000,0.0000000,180.0000000); //object(elecfence_bar) (1)
 	CreateObject(987,1661.5999756,-1882.5000000,12.5000000,0.0000000,0.0000000,179.9945068); //object(elecfence_bar) (2)
@@ -42516,28 +42662,6 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(987,1149.599975,-1346.859985,13.000000,0.000000,0.000000,181.630004,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(987,1089.359985,-1325.250000,12.500000,0.000000,0.000000,270.880004,-1,-1,-1,MAX_RADIO_STREAM);
 
-    //Hotel Unity
-	HotelGood = CreateObject(4079, 1773.20557, -1773.72131, 24.93784,   0.00000, 0.00000, 0.00000);
-	CreateDynamicObjectExUH(19446, 1750.05579, -1802.73596, 12.54890,   90.00000, 45.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19446, 1748.11218, -1800.75623, 12.54890,   90.00000, 45.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19446, 1747.22058, -1799.83020, 12.54890,   90.00000, 45.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19446, 1801.74780, -1750.20264, 12.84300,   90.00000, 45.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19446, 1799.49438, -1748.03857, 12.84300,   90.00000, 45.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1810.54858, -1772.20605, 15.14256,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1810.42102, -1761.47827, 15.14256,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1810.23938, -1750.58008, 15.14256,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1810.37610, -1783.29211, 15.14256,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1810.58447, -1807.89856, 15.14256,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1810.51941, -1817.78735, 15.14256,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1806.58240, -1743.27478, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1795.48181, -1743.34900, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1784.25781, -1743.52478, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1773.31628, -1743.57141, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1762.07837, -1743.29102, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1750.92627, -1743.45947, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1597, 1738.83484, -1743.49670, 15.14260,   0.00000, 0.00000, 90.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(14608, 1787.82935, -1790.61694, 13.89447,   0.00000, 0.00000, 180.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	
 	// TALLER LS
 	CreateDynamicObjectExUH(987, 1459.63965, -1490.34375, 12.36150,   0.00000, 0.00000, 255.35899,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(987, 1456.63647, -1501.94861, 12.36150,   0.00000, 0.00000, 254.35899,-1,-1,-1,MAX_RADIO_STREAM);
@@ -45976,6 +46100,32 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(14638,2857.636962,909.900451,9.780356,0.000000,0.000000,0.000000,-1,19,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(14638,2871.340087,913.056823,9.780356,0.000000,0.000000,180.000000,-1,19,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(14638,2857.639892,912.890014,9.780356,0.000000,0.000000,180.000000,-1,19,-1,MAX_RADIO_STREAM);
+
+// COCECIONARIO INTERIOR && PUERTA   WANG CAR
+	CreateDynamicObjectExUH(1569,-1925.088867,292.087127,40.046875,0.000000,0.000000,90.000000,-1,-1,-1,MAX_RADIO_STREAM); // Puerta (Exterior)
+	CreateDynamicObjectExUH(1569,-496.342987,2564.887939,52.865310,0.000000,0.000000,90.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11317,-524.097656,2571.299804,63.669998,0.000000,0.000000,90.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11317,-493.150390,2549.447265,63.599998,0.000000,0.000000,270.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1726,-515.185485,2574.884521,52.865310,0.000000,0.000000,0.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1727,-511.683197,2573.249755,52.865310,0.000000,0.000000,270.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714,-519.438537,2573.014892,52.865310,0.000000,0.000000,92.329101,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1827,-514.230102,2572.831787,52.865310,0.000000,0.000000,0.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2207,-517.799804,2571.949218,52.865310,0.000000,0.000000,90.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1727,-513.773803,2570.667968,52.865310,0.000000,0.000000,179.994506,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2777,-516.862182,2573.633789,53.362800,0.000000,0.000000,285.045776,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2777,-517.036865,2571.767333,53.362800,0.000000,0.000000,216.095581,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2894,-517.757873,2572.894287,53.642684,0.000000,0.000000,281.461242,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2007,-519.557495,2576.245117,52.865310,0.000000,0.000000,0.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2007,-518.028503,2576.245117,52.865310,0.000000,0.000000,0.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2816,-513.892822,2572.626220,53.299999,0.000000,0.000000,0.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2826,-514.565063,2572.781982,53.299999,0.000000,0.000000,186.487854,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2827,-514.042358,2573.300292,53.266242,0.000000,0.000000,155.302978,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2828,-518.119018,2572.097656,53.642684,0.000000,0.000000,18.589813,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2190,-517.817016,2573.543457,53.642684,0.000000,0.000000,283.642028,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2202,-520.386047,2569.869873,52.865310,0.000000,0.000000,90.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(10575,-515.000000,2543.727294,54.776760,0.000000,0.000000,270.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(10575,-502.797851,2543.726562,54.776760,0.000000,0.000000,270.000000,-1,16,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(10575,-496.351074,2572.907714,54.776760,0.000000,0.000000,0.000000,-1,16,-1,MAX_RADIO_STREAM);
 
 // Garage Interior Concecionario Grotti (Interior)
 	CreateDynamicObjectExUH(11317,1627.236938,-2490.712890,23.119285,0.000000,0.000000,88.000000,-1,3,-1,MAX_RADIO_STREAM);
@@ -51412,10 +51562,10 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Dueno]      = YKZ;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = -1924.6778564453;
-	Teles[MAX_TELE][PosY]       = 292.90539550781;
-	Teles[MAX_TELE][PosZ]       = 41.046875;
-	Teles[MAX_TELE][PosZZ]       = 270;
+	Teles[MAX_TELE][PosX]       = 1770.4434; // 1770.4434,-1762.3441,13.5422,177.9492
+	Teles[MAX_TELE][PosY]       = -1762.3441;
+	Teles[MAX_TELE][PosZ]       = 13.5422;
+	Teles[MAX_TELE][PosZZ]       = 177.9492;
 	Teles[MAX_TELE][PickupID]           = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
 	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
 	Teles[MAX_TELE][Interior]            = 0;
@@ -59037,6 +59187,25 @@ public LoadDoors()
 	Doors[MAX_DOORS][typeanim]       = 0;
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
 	Doors[MAX_DOORS][Dueno]       = LSPD;
+// NFS Nuevo Unity
+	MAX_DOORS++;
+	Doors[MAX_DOORS][objectmodel]    = 971; // CreateObject(971, 1760.12256, -1804.00244, 12.29040,   0.00000, 0.00000, 0.00000);
+	Doors[MAX_DOORS][PosXTrue]       = 1760.12256;
+	Doors[MAX_DOORS][PosYTrue]       = -1804.00244;
+	Doors[MAX_DOORS][PosZTrue]       = 12.29040;
+	Doors[MAX_DOORS][PosRotXTrue]    = 0;
+	Doors[MAX_DOORS][PosRotYTrue]    = 0;
+	Doors[MAX_DOORS][PosRotZTrue]    = 0;
+	Doors[MAX_DOORS][PosXFalse]    = 1760.12256; // CreateObject(971, 1760.12256, -1804.00244, 8.93320,   0.00000, 0.00000, 0.00000);
+	Doors[MAX_DOORS][PosYFalse]    = -1804.00244;
+	Doors[MAX_DOORS][PosZFalse]    = 7.93320;
+	Doors[MAX_DOORS][PosRotXFalse]    = 0;
+	Doors[MAX_DOORS][PosRotYFalse]    = 0;
+	Doors[MAX_DOORS][PosRotZFalse]    = 0;
+	Doors[MAX_DOORS][typeanim]       = 0;
+	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
+	Doors[MAX_DOORS][Dueno]       = NFS;
+
 
 	MAX_DOORS++;
 	Doors[MAX_DOORS][objectmodel]    = 968;
@@ -63992,7 +64161,7 @@ public ShowDialogGuia(playerid)
 	new ListDialog[350];
 
 	format(ListDialog, sizeof(ListDialog),
-	"{00F50A}1- {F81414}¿{E6E6E6}Qué hacer{F81414}?\r\n{00F50A}2- {F81414}¿{E6E6E6}Necesitas Licencias{F81414}?\r\n{00F50A}3- {F81414}¿{E6E6E6}Quieres comprar Coche{F81414}?\r\n{00F50A}4- {E6E6E6}Banco Central Los Santos\r\n{F81414}[GPS]{E6E6E6}Trabajos - Jobs\r\n{F81414}[GPS]{E6E6E6}Locales y Negocios\r\n{F81414}[GPS]{E6E6E6}Empresas Públicas & Privadas");
+	"{00F50A}1- {F81414}¿{E6E6E6}Qué hacer{F81414}?\r\n{00F50A}2- {F81414}¿{E6E6E6}Necesitas Licencias{F81414}?\r\n{00F50A}3- {F81414}¿{E6E6E6}Cómo comprar Coche{F81414}?\r\n{00F50A}4- {E6E6E6}Banco Central Los Santos\r\n{F81414}[GPS]{E6E6E6}Trabajos - Jobs\r\n{F81414}[GPS]{E6E6E6}Locales y Negocios\r\n{F81414}[GPS]{E6E6E6}Empresas Públicas & Privadas");
 
 	ShowPlayerDialogEx(playerid,157,DIALOG_STYLE_LIST,"{00A5FF}Guía nuevo Ciudadano", ListDialog, "Seleccionar", "Salir");
 }
@@ -67898,7 +68067,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = LICENCIEROS;
 
-	MAX_GARAGES_EX++;
+	MAX_GARAGES_EX++; // Garage Solo al lado de la puerta
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -514.93041992188;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2548.6140136719;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 53.559684753418;
@@ -67907,14 +68076,14 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2544.1303710938;
 	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 53.795310974121;
 	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 0;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -1935.802734375;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 273.49237060547;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 40.811248779297;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 180;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -1936.1304931641;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 277.72778320313;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 41.046875;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 180;
+	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1788.2546; // AddStaticVehicle(411,1788.2546,-1773.7067,13.2709,271.7600,3,33); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1773.7067;
+	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.2709;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 271.7600;
+	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = 1785.3303; // AddPlayerClass(185,1785.3303,-1773.9067,13.5430,91.4837,0,0,0,0,0,0); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = -1773.9067;
+	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 13.5430;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 91.4837;
 	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 16;
@@ -67922,7 +68091,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
-	MAX_GARAGES_EX++;
+	MAX_GARAGES_EX++; // Garage Derecho
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -502.87152099609;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2548.5646972656;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 53.559684753418;
@@ -67931,14 +68100,14 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2544.1293945313;
 	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 53.800487518311;
 	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 0;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -1928.5319824219;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 273.85021972656;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 40.811248779297;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 180;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -1928.6348876953;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 277.72720336914;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 41.046875;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 180;
+	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1789.0912; // AddStaticVehicle(411,1789.0912,-1766.1523,13.2729,271.1609,3,33); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1766.1523;
+	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.2729;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 271.1609;
+	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = 1785.3284; //AddPlayerClass(185,1785.3284,-1766.3643,13.5449,95.2327,0,0,0,0,0,0); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = -1766.3643;
+	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 13.5449;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 95.2327;
 	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 16;
@@ -67946,7 +68115,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
-	MAX_GARAGES_EX++;
+	MAX_GARAGES_EX++; // Garage Solo al lado de la puerta
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -500.93087768555;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2572.7307128906;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 53.559684753418;
@@ -67955,14 +68124,14 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2572.8754882813;
 	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 53.865310668945;
 	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 90;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -1920.5523681641;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 303.55364990234;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 40.811248779297;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 270;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -1925.1882324219;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 303.41903686523;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 41.046875;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 270;
+	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1759.5142; // En coche AddStaticVehicle(411,1759.5142,-1759.2566,13.2696,1.0259,3,33); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1759.2566;
+	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.2696;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 1.0259;
+	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = 1759.6403; // A pie AddPlayerClass(185,1759.6403,-1762.9158,13.5394,183.1568,0,0,0,0,0,0); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = -1762.9158;
+	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 13.5394;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 183.1568;
 	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 16;
