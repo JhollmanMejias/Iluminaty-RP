@@ -37,6 +37,7 @@
 /// 				INCLUDES
 #include <a_samp>
 #include <a_http>
+#include <anticheat>
 #include <streamer>
 //#include <a_mysql>
 
