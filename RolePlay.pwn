@@ -1,56 +1,15 @@
-/***
-* RolePlay Gamemode v0.8 (0.3d)
-* Copyright © zo0r && Sensei 2010-2011
 
-* This program is free software you can redistribute it andor modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.1318
-
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see http://www.gnu.org/licenses.
-***/
-
-// NÚMERO DE ERROR: 1631
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//						  		 TEAM: 	zo0r && Sensei
-//						 	     DATE:  16-07-2010 4:20 AM
-//                          FILE NAME:  RolePlay.pwn
-//                      GAMEMODE TYPE:  RolePlay
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//   NEXT OBJECT
-
-
-//#pragma codepage "C:\8859-1.TXT"
-/// 				INCLUDES
 #include <a_samp>
 #include <a_http>
-#include <anticheat>
 #include <streamer>
-//#include <a_mysql>
+#include <anticheat>
 
-/// 				DEFINE
-#define LOGO_UNIONLP 						"{FFFFFF}Bienvenido a {0049FF}Union Latina {F81414}RolePlay! {FFFFFF}Otra Realidad"// {00F50A}RolePlay!
+#define LOGO_UNIONLP 						"{FFFFFF}Bienvenido a {0049FF}BioGames {F81414}RolePlay! {FFFFFF}Otra Realidad"// {00F50A}RolePlay!
 #define URL_WEB								"~B~"
 #define URL_WEB_SHADOW						"~R~"
 #define	GAMEMODE_VERSION					"RolePlay en español"
 #define PASSWORD_EMAIL                      "q1w2e3"
 
-//MySQL
-
-//MySQL
 #define SQL_HOST                			"66.85.141.72"
 #define SQL_USER                			"10128_SAMP"
 #define SQL_DB                  			"10128_SAMP"
@@ -158,9 +117,9 @@
 #define MAX_DOORS_COUNT                     60
 #define MAX_OBJECTS_VALLAS_CONOS_PINCHOS    100
 #define MAX_PEAJES_COUNT                    30
-#define MAX_JOB                             6
+#define MAX_JOB                             7
 #define MAX_TEXT_DRAW_INFO_COUNT            70
-#define MAX_TAXIS_COUNT                     10
+#define MAX_MOONBEANS_COUNT                     10
 #define MAX_OBJECT_MAPPING_COUNT            300
 #define MAX_TRAINS                          5
 #define MAX_NOTES_COUNT                     10
@@ -187,7 +146,7 @@
 #define STATE_RACE_EXIT_SALIDA              5
 #define SOUND_START_RACE					1056
 #define SOUND_VUELTA_VRACE					1057
-#define SECONDS_TAXI                        3
+#define SECONDS_MOONBEAN                    3
 #define SOUND_END_RACE						1133
 #define MAX_SOUNDS_FOR_PLAYERS              5
 #define MAX_CALL_POLICE_COUNT               30
@@ -239,7 +198,7 @@
 #define GOBIERNO  		1
 #define LSPD            2
 #define LSMD            3
-#define TAXI            4
+#define MOONBEAN        4
 #define LICENCIEROS     5
 #define NFS             6
 #define TALLER_LS       7
@@ -272,7 +231,8 @@
 #define VENDEDOR_MOVIL  2
 #define MENSAJERO  		3
 #define COSECHADOR    	4
-#define PIZZERO         5
+#define TRANSPORTERO    5
+#define PIZZERO         6
 
 //Define Licencias --- Noueva
 
@@ -314,9 +274,26 @@
 #define CosechaPoint14 		1568.2634,-1875.1272,13.1099
 #define CosechaPoint15 		1609.6738,-1874.8131,13.1099
 
+// JOB Transportero
+#define TransportePoint1 		-94.3566,-1021.4756,23.8485
+#define TransportePoint2 		43.6100,-531.0103,9.8456
+#define TransportePoint3 		-300.2761,-166.4410,0.8129
+#define TransportePoint4 		335.3928,-190.5299,0.5065
+#define TransportePoint5 		788.5576,-168.7784,18.2427
+#define TransportePoint6 		1216.0920,-146.3842,39.5242
+#define TransportePoint7 		1241.5145,55.8993,23.0392
+#define TransportePoint8 		1435.5542,181.1384,22.1505
+#define TransportePoint9 		1489.6554,85.0836,29.8007
+#define TransportePoint10 		1191.2234,-155.7121,40.2167
+#define TransportePoint11 		1257.5387,-401.7759,2.2594
+#define TransportePoint12 		610.6779,-648.4374,19.4562
+#define TransportePoint13 		50.1264,-653.6151,3.2345
+#define TransportePoint14 		-121.8394,-975.7328,25.3408
+#define TransportePoint15 		-87.6035,-1124.5643,0.8098
+
 // JOB Pizzero
-#define PizzaPoint1 		1970.0214,-1810.3623,12.9636
-#define PizzaPoint2 		1830.1119,-1748.9213,12.9833
+#define PizzaPoint1 		1407.8903,-1874.6257,12.9771
+#define PizzaPoint2 		2083.8726,-1817.6744,12.9830
 #define PizzaPoint3 		1689.9614,-1730.1807,12.9808
 #define PizzaPoint4 		1540.7791,-1730.3127,12.9614
 #define PizzaPoint5 		1531.4258,-1604.5663,12.9810
@@ -329,7 +306,7 @@
 #define PizzaPoint12 		1295.0490,-1712.5646,12.9807
 #define PizzaPoint13 		1370.0125,-1734.5934,12.9785
 #define PizzaPoint14 		1525.9508,-1734.1329,12.9774
-#define PizzaPoint15 		2088.4465,-1816.4606,12.9874
+#define PizzaPoint15 		1427.0687,-1631.0065,12.9826
 
 /////////////////// END DEFINES ///////////////////
 
@@ -519,10 +496,10 @@ forward UpdateWeapon(playerid);
 forward GivePlayerWeaponEx(playerid, weaponid, ammo);
 forward GivePlayerWeaponReturn(playerid);
 forward ResetPlayerWeaponsEx(playerid);
-forward SetVehicleTaxi(vehicleid);
-forward SetTaxiReadyTextDraw(taxiid, textdrawid);
-forward UpdateTaximetroSeat(playerid);
-forward IsVehicleTaxi(vehicleid);
+forward SetVehicleMoonbean(vehicleid);
+forward SetMoonbeanReadyTextDraw(moonbeanid, textdrawid);
+forward UpdateMoonbeanmetroSeat(playerid);
+forward IsVehicleMoonbean(vehicleid);
 forward IsReadyCallPublic(playerid);
 forward ShowPlayerMenuSelectWalk(playerid);
 forward ShowPlayerMenuSelectSprint(playerid);
@@ -936,11 +913,11 @@ forward SendMessageRadioGeneral(playerid, text[]);
 forward SendMessageRadioGeneralSAMD(playerid, text[]);
 forward IsGarageToHouse(playerid, pickupid);
 forward IsDoorInsideBizz(pickupid);
-forward IsValidSeatTaxi(seatid);
-forward SetPlayerTaxi(playerid, taxiid, seat);
-forward CheckValidPlayerToTaxi(playerid, taxiid);
-forward PayTaxi(playerid, option);
-forward CalcularTaxiMoney(playerid);
+forward IsValidSeatMoonbean(seatid);
+forward SetPlayerMoonbean(playerid, moonbeanid, seat);
+forward CheckValidPlayerToMoonbean(playerid, moonbeanid);
+forward PayMoonbean(playerid, option);
+forward CalcularMoonbeanMoney(playerid);
 forward SetVehicleHealthEx(vehicleid, Float:health);
 forward ChangeMusicOnHouse(houseid);
 forward StopMusicOnHouse(houseid);
@@ -1250,11 +1227,11 @@ enum CamerasEnum
 	Float:PosYAt,
 	Float:PosZAt
 }
-enum TaxisTaximetroEnum
+enum MoonbeansMoonbeanmetroEnum
 {
-	TaxiOn,
-	TaxiTime[3],
-	TaxiVehicleid,
+	MoonbeanOn,
+	MoonbeanTime[3],
+	MoonbeanVehicleid,
 	Text:Seats[3]
 }
 enum TextDrawInfoEnum
@@ -1825,8 +1802,8 @@ enum DataUsersOnline
 	RowSkin,
 	IsPlayerInHotel,
 	AfterMenuRow,
-	IsTaxi,
-	SeatTaxi,
+	IsMoonbean,
+	SeatMoonbean,
 	SubAfterMenuRow,
 	MyAmmoSelect,
 	Float:VidaOn,
@@ -1928,6 +1905,7 @@ enum DataUsersOnline
 	Saludo[2],
 	isEstereo,
 	inCosechaPoint,
+	inTransportePoint,
 	inPizzaPoint,
 	inLlamadaPublic,
 	TimerPonerCancion,
@@ -2040,7 +2018,7 @@ new PistasPos[MAX_COUNT_PISTAS][MAX_COUNT_PISTAS_POS][PistasPosEnum];
 new Notes[MAX_PLAYERS][MAX_NOTES_COUNT][NotesEnum];
 new AgendaData[MAX_PLAYERS][MAX_PLAYER_CONTACT][Agenda];
 new SMS[MAX_PLAYERS][MAX_SMS_COUNT][SMSEnum];
-new TaxisTaximetro[MAX_TAXIS_COUNT][TaxisTaximetroEnum];
+new MoonbeansMoonbeanmetro[MAX_MOONBEANS_COUNT][MoonbeansMoonbeanmetroEnum];
 new JailsType[3][JailType];
 new Text:TexdrawsTutorial[20];
 new Text:Url_Web;
@@ -2052,7 +2030,7 @@ new SuperMercadosPickupid[2];
 new BANCO_PICKUPID_out;
 new HOTEL_PICKUPID_out;
 new MUSEO_PICKUPID_out[7];
-new MAX_TAXIS;
+new MAX_MOONBEANS;
 new MAX_OBJECT_FIJOS;
 new MAX_TEXT_DRAW_INFO;
 new MAX_TELE;
@@ -2175,6 +2153,7 @@ new Text:VelocimetroNumber3[10];
 new Text:TemperaturaTextDraws[42];
 new TimeTimbre[MAX_PLAYERS];
 new TextoTEST;
+new ObjPegado;
 //
 new Menu:Principal_Sultan;
 new Menu:XFlowYAlien_Sultan[2];
@@ -5610,7 +5589,7 @@ public OnGameModeInit()
 	FaccionData[GOBIERNO][PrecioFaccion] 	= 0;
 	FaccionData[GOBIERNO][Lock] 			= 0;
 	FaccionData[GOBIERNO][World] 			= WORLD_DEFAULT_INTERIOR;
-	FaccionData[GOBIERNO][Family] 			= false;
+	FaccionData[GOBIERNO][Family] 			= true;
 	FaccionData[GOBIERNO][Radio] 			= true;
 
 	FaccionesRangos[GOBIERNO][0]  = "Presidente"; 		RangosSkins[GOBIERNO][0][0] 	= 147; 	RangosSkins[GOBIERNO][0][1] 	= 216;  RangosSkins[GOBIERNO][0][2] 	= 148; 	FaccionData[GOBIERNO][Paga][0] = 1000;
@@ -5759,29 +5738,27 @@ public OnGameModeInit()
 	FaccionesRangos[LCN][6]  = "Asociado"; 				RangosSkins[LCN][6][0] 	= 127; 	RangosSkins[LCN][6][1] 	= 141;									FaccionData[LCN][Paga][6] = 370;
 
 // YAKUZA ID - 5
-	format(FaccionData[YKZ][NameFaccion], MAX_FACCION_NAME, "Yakuza");
+	format(FaccionData[YKZ][NameFaccion], MAX_FACCION_NAME, "Yakuzas");
 	FaccionData[YKZ][Extorsion] 		= 0;
-	FaccionData[YKZ][AlmacenX][0] 		= -2178.54296875;
-	FaccionData[YKZ][AlmacenY][0] 		= 715.53643798828;
-	FaccionData[YKZ][AlmacenZ][0] 		= 53.890625;
-	FaccionData[YKZ][AlmacenX][1] 		= 0;
-	FaccionData[YKZ][AlmacenY][1] 		= 0;
-	FaccionData[YKZ][AlmacenZ][1] 		= 0;
-	FaccionData[YKZ][Spawn_X][0] 		= -2279.9204;
-	FaccionData[YKZ][Spawn_Y][0] 		= 2300.8733;
-	FaccionData[YKZ][Spawn_Z][0] 		= 4.9637;
-	FaccionData[YKZ][Spawn_ZZ][0] 		= 272.4753;
-	FaccionData[YKZ][PickupOut_X] 		= -2281.6987;
-	FaccionData[YKZ][PickupOut_Y] 		= 2288.2117;
-	FaccionData[YKZ][PickupOut_Z] 		= 4.9706;
-	FaccionData[YKZ][PickupOut_ZZ] 		= 265.5353;
-	FaccionData[YKZ][PickupIn_X] 		= 2317.8542;
-	FaccionData[YKZ][PickupIn_Y] 		= -1026.7068;
-	FaccionData[YKZ][PickupIn_Z] 		= 1050.2178;
-	FaccionData[YKZ][PickupIn_ZZ] 		= 0.7340;
-	FaccionData[YKZ][InteriorFaccion] 	= 9;
-	FaccionData[YKZ][PickupidOutF]		= CreatePickup	(1254, 	1, 	FaccionData[YKZ][PickupOut_X], FaccionData[YKZ][PickupOut_Y], FaccionData[YKZ][PickupOut_Z],	 	WORLD_NORMAL);
-	FaccionData[YKZ][PickupidInF] 		= CreatePickup	(1254, 	1, 	FaccionData[YKZ][PickupIn_X], FaccionData[YKZ][PickupIn_Y], FaccionData[YKZ][PickupIn_Z],	 	WORLD_DEFAULT_INTERIOR);
+	FaccionData[YKZ][AlmacenX][0] 		= 1893.3990;
+	FaccionData[YKZ][AlmacenY][0] 		= 1018.0084;
+	FaccionData[YKZ][AlmacenZ][0] 		= 31.8828;
+	FaccionData[YKZ][AlmacenWorld][0]	= WORLD_DEFAULT_INTERIOR;
+	FaccionData[YKZ][Spawn_X][0] 		= 724.5375;
+	FaccionData[YKZ][Spawn_Y][0] 		= -1475.2960;
+	FaccionData[YKZ][Spawn_Z][0] 		= 17.6891;
+	FaccionData[YKZ][Spawn_ZZ][0]		= 181.4021;
+	FaccionData[YKZ][PickupOut_X] 		= 725.6380;
+	FaccionData[YKZ][PickupOut_Y] 		= -1439.9681;
+	FaccionData[YKZ][PickupOut_Z] 		= 13.5318;
+	FaccionData[YKZ][PickupOut_ZZ] 	= 355.9068;
+	FaccionData[YKZ][PickupIn_X] 		= -2171.1570;
+	FaccionData[YKZ][PickupIn_Y] 		= 645.3072;
+	FaccionData[YKZ][PickupIn_Z] 		= 1057.5938;
+	FaccionData[YKZ][PickupIn_ZZ] 		= 269.4647;
+	FaccionData[YKZ][InteriorFaccion]	= 1;
+	FaccionData[YKZ][PickupidOutF]		= CreatePickup	(1313, 	1, 	FaccionData[YKZ][PickupOut_X], FaccionData[YKZ][PickupOut_Y], FaccionData[YKZ][PickupOut_Z],	 	WORLD_NORMAL);
+	FaccionData[YKZ][PickupidInF] 		= CreatePickup	(1313, 	1, 	FaccionData[YKZ][PickupIn_X], FaccionData[YKZ][PickupIn_Y], FaccionData[YKZ][PickupIn_Z],	 	WORLD_DEFAULT_INTERIOR);
 	FaccionData[YKZ][PrecioFaccion] 	= 0;
 	FaccionData[YKZ][Lock] 				= 0;
 	FaccionData[YKZ][World] 			= WORLD_DEFAULT_INTERIOR;
@@ -5796,40 +5773,40 @@ public OnGameModeInit()
 	FaccionesRangos[YKZ][5]  = "Shatei"; 			RangosSkins[YKZ][5][0] 	= 121; 	RangosSkins[YKZ][5][1] 	= 169;										FaccionData[YKZ][Paga][5] = 370;
 
 // TAXIS ID - 6
-	format(FaccionData[TAXI][NameFaccion], MAX_FACCION_NAME, "Transporte Publico");
-	FaccionData[TAXI][Extorsion] 		= 0;
-	FaccionData[TAXI][Spawn_X][0]		= 1754.0756;
-	FaccionData[TAXI][Spawn_Y][0]		= -1912.3319;
-	FaccionData[TAXI][Spawn_Z][0]		= 13.5679;
-	FaccionData[TAXI][Spawn_ZZ][0] 		= 269.3793;
-	FaccionData[TAXI][Spawn_X][1]		= -1669.8088;//-1669.8088,1334.8571,7.1875,135.0451
-	FaccionData[TAXI][Spawn_Y][1]		= 1334.8571;
-	FaccionData[TAXI][Spawn_Z][1]		= 7.1875;
-	FaccionData[TAXI][Spawn_ZZ][1] 		= 135.0451;
-	FaccionData[TAXI][PickupOut_X] 		= 1743.0270;
-	FaccionData[TAXI][PickupOut_Y] 		= -1864.1876;
-	FaccionData[TAXI][PickupOut_Z] 		= 13.5742;
-	FaccionData[TAXI][PickupOut_ZZ] 	= 1.1633;
-	FaccionData[TAXI][PickupIn_X] 		= 2215.1392;
-	FaccionData[TAXI][PickupIn_Y] 		= -1150.6198;
-	FaccionData[TAXI][PickupIn_Z] 		= 1025.7969;
-	FaccionData[TAXI][PickupIn_ZZ] 		= 268.8355;
-	FaccionData[TAXI][InteriorFaccion] 	= 15;
-	FaccionData[TAXI][PickupidOutF]		= CreatePickup	(19605, 	1, 	FaccionData[TAXI][PickupOut_X], FaccionData[TAXI][PickupOut_Y], FaccionData[TAXI][PickupOut_Z],	 	WORLD_NORMAL);
-	FaccionData[TAXI][PickupidInF] 		= CreatePickup	(19605, 	1, 	FaccionData[TAXI][PickupIn_X], FaccionData[TAXI][PickupIn_Y], FaccionData[TAXI][PickupIn_Z],	 	WORLD_DEFAULT_INTERIOR);
-	FaccionData[TAXI][PrecioFaccion] 	= 0;
-	FaccionData[TAXI][Lock] 			= 0;
-	FaccionData[TAXI][World] 			= WORLD_DEFAULT_INTERIOR;
-	FaccionData[TAXI][Family] 			= false;
-	FaccionData[TAXI][Radio] 			= true;
+	format(FaccionData[MOONBEAN][NameFaccion], MAX_FACCION_NAME, "Transporte Publico");
+	FaccionData[MOONBEAN][Extorsion] 		= 0;
+	FaccionData[MOONBEAN][Spawn_X][0]		= 1754.0756;
+	FaccionData[MOONBEAN][Spawn_Y][0]		= -1912.3319;
+	FaccionData[MOONBEAN][Spawn_Z][0]		= 13.5679;
+	FaccionData[MOONBEAN][Spawn_ZZ][0] 		= 269.3793;
+	FaccionData[MOONBEAN][Spawn_X][1]		= -1669.8088;//-1669.8088,1334.8571,7.1875,135.0451
+	FaccionData[MOONBEAN][Spawn_Y][1]		= 1334.8571;
+	FaccionData[MOONBEAN][Spawn_Z][1]		= 7.1875;
+	FaccionData[MOONBEAN][Spawn_ZZ][1] 		= 135.0451;
+	FaccionData[MOONBEAN][PickupOut_X] 		= 1743.0270;
+	FaccionData[MOONBEAN][PickupOut_Y] 		= -1864.1876;
+	FaccionData[MOONBEAN][PickupOut_Z] 		= 13.5742;
+	FaccionData[MOONBEAN][PickupOut_ZZ] 	= 1.1633;
+	FaccionData[MOONBEAN][PickupIn_X] 		= 2215.1392;
+	FaccionData[MOONBEAN][PickupIn_Y] 		= -1150.6198;
+	FaccionData[MOONBEAN][PickupIn_Z] 		= 1025.7969;
+	FaccionData[MOONBEAN][PickupIn_ZZ] 		= 268.8355;
+	FaccionData[MOONBEAN][InteriorFaccion] 	= 15;
+	FaccionData[MOONBEAN][PickupidOutF]		= CreatePickup	(19605, 	1, 	FaccionData[MOONBEAN][PickupOut_X], FaccionData[MOONBEAN][PickupOut_Y], FaccionData[MOONBEAN][PickupOut_Z],	 	WORLD_NORMAL);
+	FaccionData[MOONBEAN][PickupidInF] 		= CreatePickup	(19605, 	1, 	FaccionData[MOONBEAN][PickupIn_X], FaccionData[MOONBEAN][PickupIn_Y], FaccionData[MOONBEAN][PickupIn_Z],	 	WORLD_DEFAULT_INTERIOR);
+	FaccionData[MOONBEAN][PrecioFaccion] 	= 0;
+	FaccionData[MOONBEAN][Lock] 			= 0;
+	FaccionData[MOONBEAN][World] 			= WORLD_DEFAULT_INTERIOR;
+	FaccionData[MOONBEAN][Family] 			= true;
+	FaccionData[MOONBEAN][Radio] 			= true;
 
-	FaccionesRangos[TAXI][0]  = "Director General";		RangosSkins[TAXI][0][0] 	= 61;	RangosSkins[TAXI][0][1] 	= 69;  	FaccionData[TAXI][Paga][0] = 700;
-	FaccionesRangos[TAXI][1]  = "Director SF"; 			RangosSkins[TAXI][1][0] 	= 240;	RangosSkins[TAXI][1][1] 	= 69;  	FaccionData[TAXI][Paga][1] = 650;
-	FaccionesRangos[TAXI][2]  = "Instructor";	 		RangosSkins[TAXI][2][0] 	= 240;	RangosSkins[TAXI][2][1] 	= 69;  	FaccionData[TAXI][Paga][2] = 600;
-	FaccionesRangos[TAXI][3]  = "Conductor de Taxí";	RangosSkins[TAXI][3][0] 	= 255; 	RangosSkins[TAXI][3][1] 	= 69;  	FaccionData[TAXI][Paga][3] = 550;
-	FaccionesRangos[TAXI][4]  = "Conductor de Autobús"; RangosSkins[TAXI][4][0] 	= 255; 	RangosSkins[TAXI][4][1] 	= 69;  	FaccionData[TAXI][Paga][4] = 500;
-	FaccionesRangos[TAXI][5]  = "Conductor de Tren"; 	RangosSkins[TAXI][5][0] 	= 253; 	RangosSkins[TAXI][5][1] 	= 69;  	FaccionData[TAXI][Paga][5] = 450;
-	FaccionesRangos[TAXI][6]  = "Principiante";		 	RangosSkins[TAXI][6][0] 	= 36; 	RangosSkins[TAXI][6][1] 	= 69;  	FaccionData[TAXI][Paga][6] = 350;
+	FaccionesRangos[MOONBEAN][0]  = "Director General";		RangosSkins[MOONBEAN][0][0] 	= 61;	RangosSkins[MOONBEAN][0][1] 	= 69;  	FaccionData[MOONBEAN][Paga][0] = 700;
+	FaccionesRangos[MOONBEAN][1]  = "Director SF"; 			RangosSkins[MOONBEAN][1][0] 	= 240;	RangosSkins[MOONBEAN][1][1] 	= 69;  	FaccionData[MOONBEAN][Paga][1] = 650;
+	FaccionesRangos[MOONBEAN][2]  = "Instructor";	 		RangosSkins[MOONBEAN][2][0] 	= 240;	RangosSkins[MOONBEAN][2][1] 	= 69;  	FaccionData[MOONBEAN][Paga][2] = 600;
+	FaccionesRangos[MOONBEAN][3]  = "Conductor de Taxí";	RangosSkins[MOONBEAN][3][0] 	= 255; 	RangosSkins[MOONBEAN][3][1] 	= 69;  	FaccionData[MOONBEAN][Paga][3] = 550;
+	FaccionesRangos[MOONBEAN][4]  = "Conductor de Autobús"; RangosSkins[MOONBEAN][4][0] 	= 255; 	RangosSkins[MOONBEAN][4][1] 	= 69;  	FaccionData[MOONBEAN][Paga][4] = 500;
+	FaccionesRangos[MOONBEAN][5]  = "Conductor de Tren"; 	RangosSkins[MOONBEAN][5][0] 	= 253; 	RangosSkins[MOONBEAN][5][1] 	= 69;  	FaccionData[MOONBEAN][Paga][5] = 450;
+	FaccionesRangos[MOONBEAN][6]  = "Principiante";		 	RangosSkins[MOONBEAN][6][0] 	= 36; 	RangosSkins[MOONBEAN][6][1] 	= 69;  	FaccionData[MOONBEAN][Paga][6] = 350;
 
 // SFPD ID - 7
 	format(FaccionData[SFPD][NameFaccion], MAX_FACCION_NAME, "SFPD");
@@ -5903,7 +5880,7 @@ public OnGameModeInit()
 	FaccionData[CNN][Spawn_Y][0] 		= -1343.8962;
 	FaccionData[CNN][Spawn_Z][0] 		= 13.5198;
 	FaccionData[CNN][Spawn_ZZ][0] 		= 268.8462;
-	FaccionData[CNN][Spawn_X][1] 		= -2515.9822;//-2515.9822,-623.4451,132.7712,357.9266
+	FaccionData[CNN][Spawn_X][1] 		= -2515.9822;//-2515.9822,-623.4451,132.7712,357.9266725.6430,-1440.4512,13.5318
 	FaccionData[CNN][Spawn_Y][1] 		= -623.4451;
 	FaccionData[CNN][Spawn_Z][1] 		= 132.7712;
 	FaccionData[CNN][Spawn_ZZ][1] 		= 357.9266;
@@ -5921,7 +5898,7 @@ public OnGameModeInit()
 	FaccionData[CNN][PrecioFaccion] 	= 0;
 	FaccionData[CNN][Lock] 				= 0;
 	FaccionData[CNN][World] 			= WORLD_DEFAULT_INTERIOR;
-	FaccionData[CNN][Family] 			= false;
+	FaccionData[CNN][Family] 			= true;
 	FaccionData[CNN][Radio] 			= true;
 
 	FaccionesRangos[CNN][0]  = "Director"; 			RangosSkins[CNN][0][0] 	= 290; 	RangosSkins[CNN][0][1] 	= 40; 	RangosSkins[CNN][0][2] 	= 219; 	FaccionData[CNN][Paga][0] = 500;
@@ -6057,34 +6034,34 @@ public OnGameModeInit()
 	FaccionData[LSPD][Family] 			= true;
 	FaccionData[LSPD][Radio] 			= true;
 
-	FaccionesRangos[LSPD][0]  = "General";		RangosSkins[LSPD][0][0] 	= 283;	RangosSkins[LSPD][0][1]	= 150; 	RangosSkins[LSPD][0][2] 	= 101; 	RangosSkins[LSPD][0][3] 	= 250; 	RangosSkins[LSPD][0][4] 	= 60; 	RangosSkins[LSPD][0][5] 	= 170; 	RangosSkins[LSPD][0][6] 	= 184;  RangosSkins[LSPD][0][7] 	= 285; 	RangosSkins[LSPD][0][8] 	= 287;  	RangosSkins[LSPD][0][9] 	= 148;   	RangosSkins[LSPD][0][10] 	= 191; FaccionData[LSPD][Paga][0] = 600;
-	FaccionesRangos[LSPD][1]  = "Coronel"; 		RangosSkins[LSPD][1][0] 	= 288;  RangosSkins[LSPD][1][1]	= 150; 	RangosSkins[LSPD][1][2] 	= 101; 	RangosSkins[LSPD][1][3] 	= 250; 	RangosSkins[LSPD][1][4] 	= 60; 	RangosSkins[LSPD][1][5] 	= 170; 	RangosSkins[LSPD][1][6] 	= 184;  RangosSkins[LSPD][1][7] 	= 285; 	RangosSkins[LSPD][1][8] 	= 287;  	RangosSkins[LSPD][1][9] 	= 148;   	RangosSkins[LSPD][1][10] 	= 191; FaccionData[LSPD][Paga][1] = 550;
-	FaccionesRangos[LSPD][2]  = "Capitán";		RangosSkins[LSPD][2][0] 	= 282; 	RangosSkins[LSPD][2][1]	= 150; 	RangosSkins[LSPD][2][2] 	= 101; 	RangosSkins[LSPD][2][3] 	= 250; 	RangosSkins[LSPD][2][4] 	= 60; 	RangosSkins[LSPD][2][5] 	= 170; 	RangosSkins[LSPD][2][6] 	= 184;  RangosSkins[LSPD][2][7] 	= 285; 	RangosSkins[LSPD][2][8] 	= 287;  	RangosSkins[LSPD][2][9] 	= 148;   	RangosSkins[LSPD][2][10] 	= 191; FaccionData[LSPD][Paga][2] = 500;
-	FaccionesRangos[LSPD][3]  = "Inspector";	RangosSkins[LSPD][3][0] 	= 281; 	RangosSkins[LSPD][3][1] = 150;	RangosSkins[LSPD][3][2] 	= 101; 	RangosSkins[LSPD][3][3] 	= 250; 	RangosSkins[LSPD][3][4] 	= 60; 	RangosSkins[LSPD][3][5] 	= 170; 	RangosSkins[LSPD][3][6] 	= 184;  RangosSkins[LSPD][3][7] 	= 285; 	RangosSkins[LSPD][3][8] 	= 287;  	RangosSkins[LSPD][3][9] 	= 148;   	RangosSkins[LSPD][3][10] 	= 191; FaccionData[LSPD][Paga][3] = 500;
-	FaccionesRangos[LSPD][4]  = "Sargento";		RangosSkins[LSPD][4][0] 	= 281; 	RangosSkins[LSPD][4][1] = 150;	RangosSkins[LSPD][4][2] 	= 101; 	RangosSkins[LSPD][4][3] 	= 250; 	RangosSkins[LSPD][4][4] 	= 60; 	RangosSkins[LSPD][4][5] 	= 170; 	RangosSkins[LSPD][4][6] 	= 184;  RangosSkins[LSPD][4][7] 	= 285; 	RangosSkins[LSPD][4][8] 	= 287;  	RangosSkins[LSPD][4][9] 	= 148;   	RangosSkins[LSPD][4][10] 	= 191; FaccionData[LSPD][Paga][4] = 500;
-	FaccionesRangos[LSPD][5]  = "Oficial";		RangosSkins[LSPD][5][0] 	= 280; 	RangosSkins[LSPD][5][1] = 150;	RangosSkins[LSPD][5][2] 	= 101; 	RangosSkins[LSPD][5][3] 	= 250; 	RangosSkins[LSPD][5][4] 	= 60; 	RangosSkins[LSPD][5][5] 	= 170; 	RangosSkins[LSPD][5][6] 	= 184;  RangosSkins[LSPD][5][7] 	= 285; 	RangosSkins[LSPD][5][8] 	= 287;  	RangosSkins[LSPD][5][9] 	= 148;   	RangosSkins[LSPD][5][10] 	= 191; FaccionData[LSPD][Paga][5] = 450;
-	FaccionesRangos[LSPD][6]  = "Cabo";			RangosSkins[LSPD][6][0] 	= 280; 	RangosSkins[LSPD][6][1] = 150;	RangosSkins[LSPD][6][2] 	= 101; 	RangosSkins[LSPD][6][3] 	= 250; 	RangosSkins[LSPD][6][4] 	= 60; 	RangosSkins[LSPD][6][5] 	= 170; 	RangosSkins[LSPD][6][6] 	= 184; 	RangosSkins[LSPD][6][7] 	= 285; 	RangosSkins[LSPD][6][8] 	= 287;  	RangosSkins[LSPD][6][9] 	= 148;   	RangosSkins[LSPD][6][10] 	= 191; FaccionData[LSPD][Paga][6] = 400;
-	FaccionesRangos[LSPD][7]  = "Raso";			RangosSkins[LSPD][7][0] 	= 71; 	RangosSkins[LSPD][7][1] = 150;	RangosSkins[LSPD][7][2] 	= 101; 	RangosSkins[LSPD][7][3] 	= 250; 	RangosSkins[LSPD][7][4] 	= 60; 	RangosSkins[LSPD][7][5] 	= 170; 	RangosSkins[LSPD][7][6] 	= 184;  RangosSkins[LSPD][7][7] 	= 285; 	RangosSkins[LSPD][7][8] 	= 287;  	RangosSkins[LSPD][7][9] 	= 148;   	RangosSkins[LSPD][7][10] 	= 191; FaccionData[LSPD][Paga][7] = 350;
+	FaccionesRangos[LSPD][0]  = "Director SAPD";			RangosSkins[LSPD][0][0] 	= 283;	RangosSkins[LSPD][0][1]	= 150; 	RangosSkins[LSPD][0][2] 	= 101; 	RangosSkins[LSPD][0][3] 	= 250; 	RangosSkins[LSPD][0][4] 	= 60; 	RangosSkins[LSPD][0][5] 	= 170; 	RangosSkins[LSPD][0][6] 	= 184;  RangosSkins[LSPD][0][7] 	= 285; 	RangosSkins[LSPD][0][8] 	= 287;  	RangosSkins[LSPD][0][9] 	= 148;   	RangosSkins[LSPD][0][10] 	= 191; FaccionData[LSPD][Paga][0] = 600;
+	FaccionesRangos[LSPD][1]  = "Sub-Director SAPD"; 		RangosSkins[LSPD][1][0] 	= 288;  RangosSkins[LSPD][1][1]	= 150; 	RangosSkins[LSPD][1][2] 	= 101; 	RangosSkins[LSPD][1][3] 	= 250; 	RangosSkins[LSPD][1][4] 	= 60; 	RangosSkins[LSPD][1][5] 	= 170; 	RangosSkins[LSPD][1][6] 	= 184;  RangosSkins[LSPD][1][7] 	= 285; 	RangosSkins[LSPD][1][8] 	= 287;  	RangosSkins[LSPD][1][9] 	= 148;   	RangosSkins[LSPD][1][10] 	= 191; FaccionData[LSPD][Paga][1] = 550;
+	FaccionesRangos[LSPD][2]  = "FBI Inspector";			RangosSkins[LSPD][2][0] 	= 286; 	RangosSkins[LSPD][2][1]	= 150; 	RangosSkins[LSPD][2][2] 	= 101; 	RangosSkins[LSPD][2][3] 	= 250;  FaccionData[LSPD][Paga][2] = 500;
+	FaccionesRangos[LSPD][3]  = "Inteligencia Militar";		RangosSkins[LSPD][3][0] 	= 287; 	RangosSkins[LSPD][3][1] = 150;	RangosSkins[LSPD][3][2] 	= 101; 	RangosSkins[LSPD][3][3] 	= 250; 	FaccionData[LSPD][Paga][3] = 500;
+	FaccionesRangos[LSPD][4]  = "Equipo Swat";				RangosSkins[LSPD][4][0] 	= 285; 	RangosSkins[LSPD][4][1] = 150;	RangosSkins[LSPD][4][2] 	= 101; 	RangosSkins[LSPD][4][3] 	= 250; 	FaccionData[LSPD][Paga][4] = 500;
+	FaccionesRangos[LSPD][5]  = "Oficial";					RangosSkins[LSPD][5][0] 	= 281; 	RangosSkins[LSPD][5][1] = 150;	RangosSkins[LSPD][5][2] 	= 101; 	RangosSkins[LSPD][5][3] 	= 250; 	FaccionData[LSPD][Paga][5] = 450;
+	FaccionesRangos[LSPD][6]  = "Cabo";						RangosSkins[LSPD][6][0] 	= 280; 	RangosSkins[LSPD][6][1] = 150;	RangosSkins[LSPD][6][2] 	= 101; 	RangosSkins[LSPD][6][3] 	= 250; 	FaccionData[LSPD][Paga][6] = 400;
+	FaccionesRangos[LSPD][7]  = "Cadete";					RangosSkins[LSPD][7][0] 	= 71; 	RangosSkins[LSPD][7][1] = 150;	RangosSkins[LSPD][7][2] 	= 101; 	RangosSkins[LSPD][7][3] 	= 250; 	FaccionData[LSPD][Paga][7] = 350;
 
 // CONTRABANDISTAS ID - 15
 	format(FaccionData[CONTRABANDISTAS][NameFaccion], MAX_FACCION_NAME, "Contrabandistas");
 	FaccionData[CONTRABANDISTAS][Extorsion] 		= 0;
-	FaccionData[CONTRABANDISTAS][AlmacenX][0] 		= 1893.3990;
-	FaccionData[CONTRABANDISTAS][AlmacenY][0] 		= 1018.0084;
-	FaccionData[CONTRABANDISTAS][AlmacenZ][0] 		= 31.8828;
+	FaccionData[CONTRABANDISTAS][AlmacenX][0] 		= 0;
+	FaccionData[CONTRABANDISTAS][AlmacenY][0] 		= 0;
+	FaccionData[CONTRABANDISTAS][AlmacenZ][0] 		= 0;
 	FaccionData[CONTRABANDISTAS][AlmacenWorld][0]	= WORLD_DEFAULT_INTERIOR;
-	FaccionData[CONTRABANDISTAS][Spawn_X][0] 		= 724.5375;
-	FaccionData[CONTRABANDISTAS][Spawn_Y][0] 		= -1475.2960;
-	FaccionData[CONTRABANDISTAS][Spawn_Z][0] 		= 17.6891;
-	FaccionData[CONTRABANDISTAS][Spawn_ZZ][0]		= 181.4021;
-	FaccionData[CONTRABANDISTAS][PickupOut_X] 		= 725.6380;
-	FaccionData[CONTRABANDISTAS][PickupOut_Y] 		= -1439.9681;
-	FaccionData[CONTRABANDISTAS][PickupOut_Z] 		= 13.5318;
-	FaccionData[CONTRABANDISTAS][PickupOut_ZZ] 	= 355.9068;
-	FaccionData[CONTRABANDISTAS][PickupIn_X] 		= -2171.1570;
-	FaccionData[CONTRABANDISTAS][PickupIn_Y] 		= 645.3072;
-	FaccionData[CONTRABANDISTAS][PickupIn_Z] 		= 1057.5938;
-	FaccionData[CONTRABANDISTAS][PickupIn_ZZ] 		= 269.4647;
+	FaccionData[CONTRABANDISTAS][Spawn_X][0] 		= 0;
+	FaccionData[CONTRABANDISTAS][Spawn_Y][0] 		= 0;
+	FaccionData[CONTRABANDISTAS][Spawn_Z][0] 		= 0;
+	FaccionData[CONTRABANDISTAS][Spawn_ZZ][0]		= 0;
+	FaccionData[CONTRABANDISTAS][PickupOut_X] 		= 0;
+	FaccionData[CONTRABANDISTAS][PickupOut_Y] 		= 01;
+	FaccionData[CONTRABANDISTAS][PickupOut_Z] 		= 0;
+	FaccionData[CONTRABANDISTAS][PickupOut_ZZ] 	= 0;
+	FaccionData[CONTRABANDISTAS][PickupIn_X] 		= 0;
+	FaccionData[CONTRABANDISTAS][PickupIn_Y] 		= 0;
+	FaccionData[CONTRABANDISTAS][PickupIn_Z] 		= 0;
+	FaccionData[CONTRABANDISTAS][PickupIn_ZZ] 		= 0;
 	FaccionData[CONTRABANDISTAS][InteriorFaccion]	= 1;
 	FaccionData[CONTRABANDISTAS][PickupidOutF]		= CreatePickup	(1212, 	1, 	FaccionData[CONTRABANDISTAS][PickupOut_X], FaccionData[CONTRABANDISTAS][PickupOut_Y], FaccionData[CONTRABANDISTAS][PickupOut_Z],	 	WORLD_NORMAL);
 	FaccionData[CONTRABANDISTAS][PickupidInF] 		= CreatePickup	(1212, 	1, 	FaccionData[CONTRABANDISTAS][PickupIn_X], FaccionData[CONTRABANDISTAS][PickupIn_Y], FaccionData[CONTRABANDISTAS][PickupIn_Z],	 	WORLD_DEFAULT_INTERIOR);
@@ -6157,7 +6134,7 @@ public OnGameModeInit()
 	FaccionData[TALLER_LS][PrecioFaccion] 	= 0;
 	FaccionData[TALLER_LS][Lock] 			= 0;
 	FaccionData[TALLER_LS][World] 			= WORLD_DEFAULT_INTERIOR;
-	FaccionData[TALLER_LS][Family] 		= false;
+	FaccionData[TALLER_LS][Family] 		= true;
 	FaccionData[TALLER_LS][Radio] 			= true;
 
 	FaccionesRangos[TALLER_LS][0]  = "Empresario"; 			RangosSkins[TALLER_LS][0][0] 	= 42;	RangosSkins[TALLER_LS][0][1]	= 55; 																					FaccionData[TALLER_LS][Paga][0] = 460;
@@ -6194,11 +6171,11 @@ public OnGameModeInit()
 	FaccionData[VATOS][Family] 			= true;
 	FaccionData[VATOS][Radio] 			= false;
 
-	FaccionesRangos[VATOS][0]  = "El Pran";	    RangosSkins[VATOS][0][0] 	= 103;	RangosSkins[VATOS][0][1]	= 103; 	RangosSkins[VATOS][0][2]	= 103;	RangosSkins[VATOS][0][3] 	= 103;	FaccionData[VATOS][Paga][0] = 800;
-	FaccionesRangos[VATOS][1]  = "Lacra Mayor";	RangosSkins[VATOS][1][0] 	= 104;	RangosSkins[VATOS][1][1]	= 104; 	RangosSkins[VATOS][1][2]	= 104;										FaccionData[VATOS][Paga][1] = 750;
-	FaccionesRangos[VATOS][2]  = "Lacra Menos"; RangosSkins[VATOS][2][0] 	= 102; 	RangosSkins[VATOS][2][1]	= 102; 	RangosSkins[VATOS][2][2]	= 102;										FaccionData[VATOS][Paga][2] = 700;
-	FaccionesRangos[VATOS][3]  = "Activo"; 	    RangosSkins[VATOS][3][0] 	= 102; 	RangosSkins[VATOS][3][1] 	= 102; 																			FaccionData[VATOS][Paga][3] = 600;
-	FaccionesRangos[VATOS][4]  = "La Rata"; 	RangosSkins[VATOS][4][0] 	= 102; 	RangosSkins[VATOS][4][1] 	= 102; 																			FaccionData[VATOS][Paga][4] = 500;
+	FaccionesRangos[VATOS][0]  = "El Pran";	    RangosSkins[VATOS][0][0] 	= 103;	RangosSkins[VATOS][0][1]	= 103; 	RangosSkins[VATOS][0][2]	= 103;	RangosSkins[VATOS][0][3] 	= 103;	FaccionData[VATOS][Paga][0] = 2000;
+	FaccionesRangos[VATOS][1]  = "Lacra Mayor";	RangosSkins[VATOS][1][0] 	= 104;	RangosSkins[VATOS][1][1]	= 104; 	RangosSkins[VATOS][1][2]	= 104;										FaccionData[VATOS][Paga][1] = 1800;
+	FaccionesRangos[VATOS][2]  = "Lacra Menos"; RangosSkins[VATOS][2][0] 	= 102; 	RangosSkins[VATOS][2][1]	= 102; 	RangosSkins[VATOS][2][2]	= 102;										FaccionData[VATOS][Paga][2] = 1700;
+	FaccionesRangos[VATOS][3]  = "Activo"; 	    RangosSkins[VATOS][3][0] 	= 102; 	RangosSkins[VATOS][3][1] 	= 102; 																			FaccionData[VATOS][Paga][3] = 1600;
+	FaccionesRangos[VATOS][4]  = "La Rata"; 	RangosSkins[VATOS][4][0] 	= 102; 	RangosSkins[VATOS][4][1] 	= 102; 																			FaccionData[VATOS][Paga][4] = 1500;
 
 	// AK ID - 19
 	format(FaccionData[AK][NameFaccion], MAX_FACCION_NAME, "Pandilla Del Grove Street");
@@ -6228,28 +6205,28 @@ public OnGameModeInit()
 	FaccionData[AK][Family] 		= true;
 	FaccionData[AK][Radio] 			= false;
 
-	FaccionesRangos[AK][0]  = "El Pran"; 	    RangosSkins[AK][0][0] 	= 149;	RangosSkins[AK][0][1]	= 86; 	RangosSkins[AK][0][2]	= 5;	RangosSkins[AK][0][3] 	= 4;	RangosSkins[AK][0][4]	= 5;	RangosSkins[AK][0][4]	= 4; 	FaccionData[AK][Paga][0] = 800;
-	FaccionesRangos[AK][1]  = "Lacra Mayor";	RangosSkins[AK][1][0] 	= 105;	RangosSkins[AK][1][1]	= 105; 	RangosSkins[AK][1][2]	= 105;	RangosSkins[AK][1][3]	= 105;																	FaccionData[AK][Paga][1] = 750;
-	FaccionesRangos[AK][2]  = "Lacra Menor"; 	RangosSkins[AK][2][0] 	= 106; 	RangosSkins[AK][2][1]	= 106; 	RangosSkins[AK][2][2]	= 106;  RangosSkins[AK][2][3]	= 106;																	FaccionData[AK][Paga][2] = 700;
-	FaccionesRangos[AK][3]  = "Activo"; 	    RangosSkins[AK][3][0] 	= 107; 	RangosSkins[AK][3][1] 	= 107; 	RangosSkins[AK][3][2]	= 107;																									FaccionData[AK][Paga][3] = 600;
-	FaccionesRangos[AK][4]  = "La Rata"; 		RangosSkins[AK][4][0] 	= 6; 	RangosSkins[AK][4][1] 	= 6; 	RangosSkins[AK][4][2]	= 6;																									FaccionData[AK][Paga][4] = 500;
+	FaccionesRangos[AK][0]  = "El Pran"; 	    RangosSkins[AK][0][0] 	= 149;	RangosSkins[AK][0][1]	= 86; 	RangosSkins[AK][0][2]	= 5;	RangosSkins[AK][0][3] 	= 4;	RangosSkins[AK][0][4]	= 5;	RangosSkins[AK][0][4]	= 4; 	FaccionData[AK][Paga][0] = 2000;
+	FaccionesRangos[AK][1]  = "Lacra Mayor";	RangosSkins[AK][1][0] 	= 105;	RangosSkins[AK][1][1]	= 105; 	RangosSkins[AK][1][2]	= 105;	RangosSkins[AK][1][3]	= 105;																	FaccionData[AK][Paga][1] = 1800;
+	FaccionesRangos[AK][2]  = "Lacra Menor"; 	RangosSkins[AK][2][0] 	= 106; 	RangosSkins[AK][2][1]	= 106; 	RangosSkins[AK][2][2]	= 106;  RangosSkins[AK][2][3]	= 106;																	FaccionData[AK][Paga][2] = 1700;
+	FaccionesRangos[AK][3]  = "Activo"; 	    RangosSkins[AK][3][0] 	= 107; 	RangosSkins[AK][3][1] 	= 107; 	RangosSkins[AK][3][2]	= 107;																									FaccionData[AK][Paga][3] = 1600;
+	FaccionesRangos[AK][4]  = "La Rata"; 		RangosSkins[AK][4][0] 	= 6; 	RangosSkins[AK][4][1] 	= 6; 	RangosSkins[AK][4][2]	= 6;																									FaccionData[AK][Paga][4] = 1500;
 	
 	// VELTRAN ID - 20
 	/////////////////////////////////////////////////////////////////////
-	format(FaccionData[VELTRAN][NameFaccion], MAX_FACCION_NAME, "Veltran");
+	format(FaccionData[VELTRAN][NameFaccion], MAX_FACCION_NAME, "Banda Los Tupamaros");
 	FaccionData[VELTRAN][Extorsion] 		= 0;
 	FaccionData[VELTRAN][AlmacenX][0] 	= 34.3752;
 	FaccionData[VELTRAN][AlmacenY][0] 	= 2495.5813;
 	FaccionData[VELTRAN][AlmacenZ][0] 	= 16.4937;
 	FaccionData[VELTRAN][AlmacenWorld][0]	= WORLD_DEFAULT_INTERIOR;
-	FaccionData[VELTRAN][Spawn_X][0] 	= -2088.4094;
-	FaccionData[VELTRAN][Spawn_Y][0] 	= 903.1467;
-	FaccionData[VELTRAN][Spawn_Z][0] 	= 65.5231;
-	FaccionData[VELTRAN][Spawn_ZZ][0]	= 353.4789;
-	FaccionData[VELTRAN][PickupOut_X] 	= -2099.6032714844;
-	FaccionData[VELTRAN][PickupOut_Y] 	= 897.35711669922;
-	FaccionData[VELTRAN][PickupOut_Z] 	= 76.7109375;
-	FaccionData[VELTRAN][PickupOut_ZZ] 	= 0;
+	FaccionData[VELTRAN][Spawn_X][0] 	= 1321.9995; // 1321.9995,-1645.3440,13.5469,84.9469
+	FaccionData[VELTRAN][Spawn_Y][0] 	= -1645.3440;
+	FaccionData[VELTRAN][Spawn_Z][0] 	= 13.5469;
+	FaccionData[VELTRAN][Spawn_ZZ][0]	= 84.9469;
+	FaccionData[VELTRAN][PickupOut_X] 	= 1347.5061; // 1347.5061,-1691.4796,13.5996,263.9182
+	FaccionData[VELTRAN][PickupOut_Y] 	= -1691.4796;
+	FaccionData[VELTRAN][PickupOut_Z] 	= 13.5996;
+	FaccionData[VELTRAN][PickupOut_ZZ] 	= 263.9182;
 	FaccionData[VELTRAN][PickupIn_X] 	= 30.553499221802;
 	FaccionData[VELTRAN][PickupIn_Y] 	= 2495.8635253906;
 	FaccionData[VELTRAN][PickupIn_Z] 	= 16.494745254517;
@@ -6263,11 +6240,11 @@ public OnGameModeInit()
 	FaccionData[VELTRAN][Family] 		= true;
 	FaccionData[VELTRAN][Radio] 			= false;
 
-	FaccionesRangos[VELTRAN][0]  = "Veltran"; 	RangosSkins[VELTRAN][0][0] 	= 175;	RangosSkins[VELTRAN][0][1]	= 201; 	RangosSkins[VELTRAN][0][2]	= 173;		RangosSkins[VELTRAN][0][3] 	= 174;		FaccionData[VELTRAN][Paga][0] = 460;
-	FaccionesRangos[VELTRAN][1]  = "El Menor";	RangosSkins[VELTRAN][1][0] 	= 174;	RangosSkins[VELTRAN][1][1]	= 201; 	RangosSkins[VELTRAN][1][2]	= 173;											    FaccionData[VELTRAN][Paga][1] = 430;
-	FaccionesRangos[VELTRAN][2]  = "El Activo"; RangosSkins[VELTRAN][2][0] 	= 173; 	RangosSkins[VELTRAN][2][1]	= 201; 	RangosSkins[VELTRAN][2][2]	= 174;											    FaccionData[VELTRAN][Paga][2] = 400;
-	FaccionesRangos[VELTRAN][3]  = "Chismoso"; 	RangosSkins[VELTRAN][3][0] 	= 173; 	RangosSkins[VELTRAN][3][1] 	= 201; 																				    FaccionData[VELTRAN][Paga][3] = 370;
-	FaccionesRangos[VELTRAN][4]  = "Pibe"; 		RangosSkins[VELTRAN][4][0] 	= 173; 	RangosSkins[VELTRAN][4][1] 	= 201; 																				    FaccionData[VELTRAN][Paga][4] = 350;
+	FaccionesRangos[VELTRAN][0]  = "El Jefe"; 	    RangosSkins[VELTRAN][0][0] 	= 247;	RangosSkins[VELTRAN][0][1]	= 247; 	RangosSkins[VELTRAN][0][2]	= 247;		RangosSkins[VELTRAN][0][3] 	= 247;		FaccionData[VELTRAN][Paga][0] = 2000;
+	FaccionesRangos[VELTRAN][1]  = "El Encargado";	RangosSkins[VELTRAN][1][0] 	= 248;	RangosSkins[VELTRAN][1][1]	= 248; 	RangosSkins[VELTRAN][1][2]	= 248;											    FaccionData[VELTRAN][Paga][1] = 1800;
+	FaccionesRangos[VELTRAN][2]  = "El Diablo";     RangosSkins[VELTRAN][2][0] 	= 254; 	RangosSkins[VELTRAN][2][1]	= 254; 	RangosSkins[VELTRAN][2][2]	= 254;											    FaccionData[VELTRAN][Paga][2] = 1700;
+	FaccionesRangos[VELTRAN][3]  = "El Pantera"; 	RangosSkins[VELTRAN][3][0] 	= 100; 	RangosSkins[VELTRAN][3][1] 	= 100; 																				    FaccionData[VELTRAN][Paga][3] = 1600;
+	FaccionesRangos[VELTRAN][4]  = "La Rata"; 		RangosSkins[VELTRAN][4][0] 	= 181; 	RangosSkins[VELTRAN][4][1] 	= 181; 																				    FaccionData[VELTRAN][Paga][4] = 1500;
 	
 	// HEORS ID - 21
 	format(FaccionData[HEORS][NameFaccion], MAX_FACCION_NAME, "Pandilla Los Latinos");
@@ -6305,11 +6282,11 @@ public OnGameModeInit()
 	FaccionData[HEORS][Family] 		= true;
 	FaccionData[HEORS][Radio] 			= false;
 
-	FaccionesRangos[HEORS][0]  = "El Pran"; 	    RangosSkins[HEORS][0][0] 	= 292;  RangosSkins[HEORS][0][1] 	= 110;	RangosSkins[HEORS][0][2]	= 207; 	RangosSkins[HEORS][0][3]	= 108;		RangosSkins[HEORS][0][3] 	= 109;		FaccionData[HEORS][Paga][0] = 800;
-	FaccionesRangos[HEORS][1]  = "Lacra Mayor";	    RangosSkins[HEORS][1][0] 	= 109;	RangosSkins[HEORS][1][1]	= 207; 	RangosSkins[HEORS][1][2]	= 108;																					FaccionData[HEORS][Paga][1] = 750;
-	FaccionesRangos[HEORS][2]  = "Lacra Menor";    	RangosSkins[HEORS][2][0] 	= 108; 	RangosSkins[HEORS][2][1]	= 207; 	RangosSkins[HEORS][2][2]	= 108;																					FaccionData[HEORS][Paga][2] = 700;
-	FaccionesRangos[HEORS][3]  = "Activo";     	    RangosSkins[HEORS][3][0] 	= 108; 	RangosSkins[HEORS][3][1] 	= 207; 																														FaccionData[HEORS][Paga][3] = 600;
-	FaccionesRangos[HEORS][4]  = "La Rata"; 	    RangosSkins[HEORS][4][0] 	= 108; 	RangosSkins[HEORS][4][1] 	= 207; 																														FaccionData[HEORS][Paga][4] = 500;
+	FaccionesRangos[HEORS][0]  = "El Pran"; 	    RangosSkins[HEORS][0][0] 	= 292;  RangosSkins[HEORS][0][1] 	= 110;	RangosSkins[HEORS][0][2]	= 207; 	RangosSkins[HEORS][0][3]	= 108;		RangosSkins[HEORS][0][3] 	= 109;		FaccionData[HEORS][Paga][0] = 2000;
+	FaccionesRangos[HEORS][1]  = "Lacra Mayor";	    RangosSkins[HEORS][1][0] 	= 109;	RangosSkins[HEORS][1][1]	= 207; 	RangosSkins[HEORS][1][2]	= 108;																					FaccionData[HEORS][Paga][1] = 1800;
+	FaccionesRangos[HEORS][2]  = "Lacra Menor";    	RangosSkins[HEORS][2][0] 	= 108; 	RangosSkins[HEORS][2][1]	= 207; 	RangosSkins[HEORS][2][2]	= 108;																					FaccionData[HEORS][Paga][2] = 1700;
+	FaccionesRangos[HEORS][3]  = "Activo";     	    RangosSkins[HEORS][3][0] 	= 108; 	RangosSkins[HEORS][3][1] 	= 207; 																														FaccionData[HEORS][Paga][3] = 1600;
+	FaccionesRangos[HEORS][4]  = "La Rata"; 	    RangosSkins[HEORS][4][0] 	= 108; 	RangosSkins[HEORS][4][1] 	= 207; 																														FaccionData[HEORS][Paga][4] = 1500;
 
 // SFMD ID - 22
 	format(FaccionData[LSMD][NameFaccion], MAX_FACCION_NAME, "LSMD");
@@ -6336,7 +6313,7 @@ public OnGameModeInit()
 	FaccionData[LSMD][PrecioFaccion] 	= 0;
 	FaccionData[LSMD][Lock] 			= 0;
 	FaccionData[LSMD][World] 			= WORLD_DEFAULT_INTERIOR;
-	FaccionData[LSMD][Family] 			= false;
+	FaccionData[LSMD][Family] 			= true;
 	FaccionData[LSMD][Radio] 			= true;
 
 	FaccionesRangos[LSMD][0]  = "Director"; 		RangosSkins[LSMD][0][0] 	= 70; 	RangosSkins[LSMD][0][1] = 150; 	RangosSkins[LSMD][0][2] = 277; 	RangosSkins[LSMD][0][3] = 278; 	RangosSkins[LSMD][0][4]	= 279;		FaccionData[LSMD][Paga][0] = 700;
@@ -6615,8 +6592,8 @@ public OnPlayerConnect(playerid)
     SaveIpUser(playerid, true);
 //    LoadMaterialText();
 	LoadObjectMaterial();
-	
-	PlayAudioStreamForPlayer(playerid, "http://dl.dropbox.com/u/105709431/connected.wav");
+ 	SendInfoMessage(playerid, 1, "{F81414}¡Gracias por formar parte de nuestra comunidad!", "{F81414}Equipo BioSamp: ");
+//	PlayAudioStreamForPlayer(playerid, "http://dl.dropbox.com/u/105709431/connected.wav");
 	if (IsValidName(PlayersDataOnline[playerid][NameOnline]))
 	{
 		if ( RemoveRallaName(playerid) )
@@ -6634,7 +6611,7 @@ public OnPlayerConnect(playerid)
 				SendClientMessage(playerid, 0x002DFFFF, "Para el servidor de Role Play es requerido que utilice el formato de nick name Nombre_Apellido.");
 				SendClientMessage(playerid, 0x002DFFFF, "{F5FF00}Ejemplo: {00F50A}Juan_Perez, Jorge_Pelaez");
 				SendClientMessage(playerid, 0x002DFFFF, " ");
-				SendClientMessage(playerid, 0x002DFFFF, "Cualquier duda al respecto sobre el regístro puede consultarlo en www.unionlatinarp.foroactivo.net");
+				SendClientMessage(playerid, 0x002DFFFF, "Cualquier duda al respecto sobre el regístro puede consultarlo en foro.biogames.net (Sección BioSamp)");
 				KickEx(playerid, 99);
 		}
 	}
@@ -6916,8 +6893,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 	      				SendInfoMessage(playerid, 1, "/Créditos - /Reglas - /Duda - /Stats - /Cuenta - /Update - /Hora - /Hablar - /Móvil - /Saludar - /Caminar - /Reportar [ID] [Razón]", "Principales: ");
 					    SendInfoMessage(playerid, 1, "/Ayuda {Básicos, Canales, Facción, Rangos, Banco, Crear, Coche, Móvil, Casa, Negocio, Estados, Dar, Coger, Dejar, Usar, Otros, Bolsa}", "Info Extra: ");
-					    SendInfoMessage(playerid, 1, "/Ayuda {Coche, Trabajo, Movil, Reglas, Tirar, Canales, Aceptar, Llaves, Carreras, Animaciones 1 - 3}, Bolsa", "Info Extra: ");
-						SendInfoMessage(playerid, 1, "Para más información visite nuestros foros en www.unionlatinarp.foroactivo.net Use /Duda o puede whispear a un admin con /W [ID] [Duda] (Ver /Admins)", "... ");
+					    SendInfoMessage(playerid, 1, "/Ayuda {Basicos, Faccion, Trabajo, Coche, Reglas, Casa, Dar, Cofer, Dejar, Animaciones 1 - 3}, Bolsa", "Info Extra: ");
+						SendInfoMessage(playerid, 1, "Para más información visite nuestros foros en foro.biogames.net (Sección BioSamp) Use /Duda o puede whispear a un admin con /W [ID] [Duda] (Ver /Admins)", "... ");
 			    	}
 			    	// COMANDO: /Ayuda Canales
 				  	else if (strcmp("/Ayuda Básicos", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14 ||
@@ -6928,7 +6905,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					    SendInfoMessage(playerid, 1, "/Ad [Anuncio]- /Nacer - /Online - /Trabajar - /Bar - /Parqueo - /Contrato [ID] [Cantidad] - /Peaje", "Básicos: ");
 					    SendInfoMessage(playerid, 1, "/Llamar 911 (LSPD) /Llamar 912 (SFPD) - /Llamar 106 (LSMD) - /Llamar 145 (Taxí) - ", "Básicos: ");
 					    SendInfoMessage(playerid, 1, "/Llamar 555 (Taller SF) - /Llamar 888 (CNN) - /Llamar 777 (Taller LS) - /Id [Parte del Nombre] - /Objetos", "Básicos: ");
-					    SendInfoMessage(playerid, 1, "/pLlamar [Número] - /pColgar", "Básicos: ");
+						SendInfoMessage(playerid, 1, "/Ayuntamiento - /Talleres - /Cajeros - /Bancos - /Concesionarias - /SuperMercados - /Hoteles - /LSPD - /LSMD - /Camioneros - /CNN", "Ubicaciones: ");
 			    	}
 			    	// COMANDO: /Ayuda Canales
 				  	else if (strcmp("/Ayuda Canales", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
@@ -6953,13 +6930,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Carreras - /Salir Carrera", "Carreras: ");
-				    }
-			    	// COMANDO: /Ayuda Bolsa
-				  	else if (strcmp("/Ayuda Bolsa", cmdtext, true, 22) == 0 && strlen(cmdtext) == 22)
-			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Bolsa [ID] - /Usa Bolsa [ID_Bolsa] - /Dar Articulo [ID] [ID_Bolsa]", "Bolsa: ");
-  			            SendInfoMessage(playerid, 1, "Para Ponerse el objeto BOLSA use /Varios - Para quitarselo /qVarios", "Varios: ");
 				    }
 			    	// COMANDO: /Ayuda Animaciones 1
 				  	else if (strcmp("/Ayuda Animaciones 1", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
@@ -7079,6 +7049,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	        {
 						    	SendInfoMessage(playerid, 1, "{6EF83C}/Recolectar", "Recolector De Basura: {F81414}Sube a un camión y usa: ");
 							}
+			    	        else if ( PlayersData[playerid][Job] == TRANSPORTERO )
+			    	        {
+						    	SendInfoMessage(playerid, 1, "/Transportar", "Transportista:{F81414} Sube a un camión y usa: ");
+							}
 			    	        else if ( PlayersData[playerid][Job] == PIZZERO )
 			    	        {
 						    	SendInfoMessage(playerid, 1, "{6EF83C}/Repartir", "Repartidor De Pizza: {F81414}Sube a una Moto y usa: ");
@@ -7142,8 +7116,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							    SendInfoMessage(playerid, 1, "/Crear Arma - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]", "Facción: ");
 							    SendInfoMessage(playerid, 1, "/Retirar Almacén [Cantidad] - /Atar [ID] - /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
 							}
-							// TAXI
-							else if ( PlayersData[playerid][Faccion] == TAXI )
+							// MOONBEAN
+							else if ( PlayersData[playerid][Faccion] == MOONBEAN )
 							{
 							    SendInfoMessage(playerid, 1, "/Llamadas - /Estado Trabajo - /Estado Taxí - /Tren [Anuncio] - /Informar [Informe]", "Facción: ");
 							}
@@ -7505,7 +7479,128 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		    	{
 				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 				    SendInfoMessage(playerid, 1, "Repetir consecutivamente el mismo texto u similar en 3 o más líneas", "Flood: ");
-		    	}
+			  	}
+				// COMANDOº: /Ayuntamiento 1481.0282,-1772.2765,18.7958 /Ayuntamiento - /Mecanicos - /Cajeros - /Bancos - /Concesionarias - /LSPD - /LSMD - /Camioneros - /CNN
+			  	else if ( strcmp("/Ayuntamiento", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Pasaportes, bodas, divorcios, cambio de nacionalidad", "Ayuntamiento: ");
+     			    SetPlayerCheckpoint(playerid, 1481.0282,-1772.2765,18.7958, 1.0);
+					PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+     			    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Licencieros 1779.0271,-1662.9169,14.4380
+			  	else if ( strcmp("/Licencieros", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Licencias, Habilidades, Idiomas", "S.M.L: ");
+				    SetPlayerCheckpoint(playerid, 1779.0271,-1662.9169,14.4380, 1.0);
+					PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Cajeros AddPlayerClass(208,1477.3723,-1771.6193,18.7958,179.3605,0,0,0,0,0,0); //
+			  	else if ( strcmp("/Cajeros", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "/Retirar Cajero [Cantidad] - /Depositar Cajero [Cantidad] - /Consultar Cajero", "Cajero: ");
+				    SetPlayerCheckpoint(playerid, 1477.3723,-1771.6193,18.7958, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Bancos AddPlayerClass(26,1310.1853,-1366.8065,13.5069,4.8770,0,0,0,0,0,0); //
+			  	else if ( strcmp("/Bancos", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Banco Central Los Santos, Retiros, Depositos, Transferencias, Cobro de Cheques", "Banco: ");
+				    SetPlayerCheckpoint(playerid, 1310.1853,-1366.8065,13.5069, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Mecanicos 1483.2263,-1584.8630,13.5469
+			  	else if ( strcmp("/Talleres", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Reparaciones, Tuning, Acéite, Servicio Grúa", "Taller Los Santos: ");
+				    SetPlayerCheckpoint(playerid, 1483.2263,-1584.8630,13.5469, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Mecanicos 1483.2263,-1584.8630,13.5469
+			  	else if ( strcmp("/Supermercados", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Artículos para llenar tu bolsa", "Super Mercado Los Santos: ");
+				    SetPlayerCheckpoint(playerid, 1422.5170,-967.6074,37.4489, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+				// COMANDOº: /LSPD 1555.4973,-1675.6937,16.1953
+			  	else if ( strcmp("/Lspd", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Seguridad, Localizaciones de autos, Denuncias", "Departament de Policías: ");
+				    SetPlayerCheckpoint(playerid, 1555.4973,-1675.6937,16.1953, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /LSMD 1172.0964,-1323.3151,15.4029
+			  	else if ( strcmp("/Lsmd", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Atención Médica, Cura de enfermedades, Bomberos", "Departamento de Médicos: ");
+				    SetPlayerCheckpoint(playerid, 1172.0964,-1323.3151,15.4029, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Camioneros -491.2331,-564.1962,25.0280
+			  	else if ( strcmp("/Camioneros", cmdtext, true, 11) == 0 && strlen(cmdtext) == 11 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Abastecimiento de tiendas y Gasolineras, Compra y venta de Materiales", "Camioneros: ");
+				    SetPlayerCheckpoint(playerid, -491.2331,-564.1962,25.0280, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Cnn 777.6288,-1386.3982,13.6827
+			  	else if ( strcmp("/Cnn", cmdtext, true, 4) == 0 && strlen(cmdtext) == 4 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Publicidad, Carteles, Anuncios", "Central De Noticias: ");
+				    SetPlayerCheckpoint(playerid, 777.6288,-1386.3982,13.6827, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Cnn AddPlayerClass(26,557.4913,-1255.4297,17.0908,209.9956,0,0,0,0,0,0); //
+			  	else if ( strcmp("/Concesionarias", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Compra, venta, renovaciones, y dropeo de Vehículos y motos", "Concesionaria Grotti: ");
+				    SetPlayerCheckpoint(playerid, 557.4913,-1255.4297,17.0908, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Cnn AddPlayerClass(26,557.4913,-1255.4297,17.0908,209.9956,0,0,0,0,0,0); //
+			  	else if ( strcmp("/Hoteles", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "Duerme y carga tus energías. Usa /Dormir.", "Concesionaria Grotti: ");
+				    SetPlayerCheckpoint(playerid, 1797.4293,-1578.8639,14.0846, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+			  	}
+			  	// COMANDOº: /Cnn 777.6288,-1386.3982,13.6827
+			  	else if ( strcmp("/Ubicaciones", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 )
+			  	{
+				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+				    SendInfoMessage(playerid, 1, "/Ayuntamiento - /Talleres - /Bancos - /SuperMercados - /Concesionarias - /Hoteles - /LSPD - /LSMD - /Camioneros - /CNN", "Ubicaciones: ");
+			  	}
+			    	// COMANDO: /Ayuda Bolsa
+			  	else if (strcmp("/Bolsa", cmdtext, true, 6) == 0 && strlen(cmdtext) == 6)
+   				{
+			    	SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+       				SendInfoMessage(playerid, 1, "Para Ponerse el objeto use /Varios - Para quitarselo /qVarios", "Bolsa: ");
+			    	SendInfoMessage(playerid, 1, "/Bolsa [ID] - /Usar Bolsa [ID_Bolsa] - /Dar Articulo [ID] [ID_Bolsa]", "Bolsa: ");
+			    }
 				// COMANDO: /Escoger Spawn [ID] [Spawnid]
 				else if (strfind(cmdtext, "/Escoger Spawn ", true) == 0 )
 				{
@@ -8903,7 +8998,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					//////////--- /Crear Cheque Efectivo [ID] [Cantidad]              - CREAR UN CHEQUE EFECTIVO
 					else if (strfind(cmdtext, "/Crear Cheque Efectivo ", true) == 0)
 					{
-					    if ( PlayersData[playerid][HoursPlaying] >= 0 )
+					    if ( PlayersData[playerid][HoursPlaying] >= 16 )
 					    {
 					        new PlayerIDCheque = strval(cmdtext[GetPosSpace(cmdtext, 3)]);
 					        new ChequeCantidad = strval(cmdtext[GetPosSpace(cmdtext, 4)]);
@@ -8970,7 +9065,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					    }
 					    else
 					    {
-							SendInfoMessage(playerid, 0, "1338", "Debes ser mayor de nivel 3 para crear cheques");
+							SendInfoMessage(playerid, 0, "1338", "Debes ser mayor de nivel 4 para crear cheques");
 						}
 					}
 					//////////--- /Crear Cheque Personal [ID] [Cantidad]              - CREAR UN CHEQUE PERSONAL
@@ -9377,7 +9472,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				// COMANDO: /Factura [ID] [Precio] [Razón]
 				else if (strfind(cmdtext, "/Factura ", true) == 0)
 				{
-					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF )
+					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF || PlayersData[playerid][Faccion] == LICENCIEROS )
 				    {
 				        new playerid_factura = strval(cmdtext[GetPosSpace(cmdtext, 1)]);
 				        new dinero_factura = strval(cmdtext[GetPosSpace(cmdtext, 2)]);
@@ -9409,9 +9504,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					}
 					else
 					{
-						SendInfoMessage(playerid, 0, "689", "Usted no es mecánico");
+						SendInfoMessage(playerid, 0, "689", "Usted no es mecánico ni Licenciero");
 					}
 				}
+
 				// COMANDO: /Servicio [ID] [Precio] [Razón]
 				else if (strfind(cmdtext, "/Servicio ", true) == 0)
 				{
@@ -10954,7 +11050,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 								{
 									new MsgLlamar[MAX_TEXT_CHAT];
 									format(MsgLlamar, sizeof(MsgLlamar), "Un cliente ha llamado un taxí, Use (/Llamadas). Número: %i (%s).", PlayersData[playerid][Phone], Ciudades[GetMyNearCity(playerid)]);
-									SendAlertCallRequest(TAXI, MsgLlamar);
+									SendAlertCallRequest(MOONBEAN, MsgLlamar);
 
 									PlayersDataOnline[playerid][NumberCallPublic] = 0;
 									AddCallPublics(playerid, PlayersData[playerid][Phone], 0);
@@ -11019,6 +11115,46 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					{
 						SendInfoMessage(playerid, 0, "768", "Tú no tienes móvil");
 						SendInfoMessage(playerid, 2, "0", "Consigue un móvil en una tienda 24/7");
+					}
+				}
+			    // /Llamar 145 - Taxí      		ID - 0
+			  	else if (strcmp("/Posicion", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9)
+	  			{
+				    if ( PlayersData[playerid][Phone] != 0)
+				    {
+		                if ( PlayersDataOnline[playerid][PhoneOnline] )
+		                {
+							if ( IsFoundCall(PlayersData[playerid][Phone], 0) == -1 )
+							{
+								if ( !IsPlayerInCall(playerid) && IsReadyCallPublic(playerid))
+								{
+									new MsgLlamar[MAX_TEXT_CHAT];
+									format(MsgLlamar, sizeof(MsgLlamar), "Un Miembro LSPD ha pedido refuerzos, Use (/Llamadas). Número: %i (%s).", PlayersData[playerid][Phone], Ciudades[GetMyNearCity(playerid)]);
+									SendAlertCallRequest(LSPD, MsgLlamar);
+
+									PlayersDataOnline[playerid][NumberCallPublic] = 0;
+									AddCallPublics(playerid, PlayersData[playerid][Phone], 0);
+
+									Acciones(playerid, 8, "Saca su GPS y envia las coordenadas");
+									SendInfoMessage(playerid, 2, "0", "Envió las coordenadas del Sitio a LSPD");
+									SetPlayerDescolgar(playerid);
+									SetTimerEx("SetPlayerColgar", 5000, false, "d", playerid);
+						        }
+							}
+							else
+							{
+								SendInfoMessage(playerid, 0, "1108", "Ya usted tiene posición registrada en LSPD, espere que le contesten");
+							}
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1510", "Tiene el móvil apagado, enciendelo si deseas enviar una posición!");
+						}
+					}
+					else
+					{
+						SendInfoMessage(playerid, 0, "769", "Tú no tienes móvil");
+						SendInfoMessage(playerid, 2, "0", "Consigue un móvil");
 					}
 				}
 			    // /Llamar 777 - Mecánicos LS       ID - 1
@@ -11136,11 +11272,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						}
 						ShowCallPolice(playerid);
 				    }
-					else if ( PlayersData[playerid][Faccion] == TAXI ||
+					else if ( PlayersData[playerid][Faccion] == MOONBEAN ||
 						 	  PlayersData[playerid][Faccion] == TALLER_SF ||
 						 	  PlayersData[playerid][Faccion] == TALLER_LS )
 				    {
-						if ( PlayersData[playerid][Faccion] == TAXI )
+						if ( PlayersData[playerid][Faccion] == MOONBEAN )
 						{
 							PlayersDataOnline[playerid][NumberCallPublic] = 0;
 						}
@@ -11378,8 +11514,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				// COMANDO: /Tren [Anuncio]
 				else if (strfind(cmdtext, "/Tren ", true) == 0 )
 		    	{
-		    	    if ( PlayersData[playerid][Faccion] == TAXI && PlayersData[playerid][Rango] == 5 ||
-						 PlayersData[playerid][Faccion] == TAXI && PlayersData[playerid][Rango] <= 2 )
+		    	    if ( PlayersData[playerid][Faccion] == MOONBEAN && PlayersData[playerid][Rango] == 5 ||
+						 PlayersData[playerid][Faccion] == MOONBEAN && PlayersData[playerid][Rango] <= 2 )
 		    	    {
 						if ( IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 538 )
 						{
@@ -11433,8 +11569,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				// COMANDO: /Informar [Informe]
 				else if (strfind(cmdtext, "/Informar ", true) == 0 )
 		    	{
-		    	    if ( PlayersData[playerid][Faccion] == TAXI && PlayersData[playerid][Rango] == 5 ||
-						 PlayersData[playerid][Faccion] == TAXI && PlayersData[playerid][Rango] <= 2 )
+		    	    if ( PlayersData[playerid][Faccion] == MOONBEAN && PlayersData[playerid][Rango] == 5 ||
+						 PlayersData[playerid][Faccion] == MOONBEAN && PlayersData[playerid][Rango] <= 2 )
 		    	    {
 						if ( IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 538 )
 						{
@@ -11485,7 +11621,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					strcat(MsgDialogCopyright, "{00A5FF}Edición: {F0F0F0}@JhollmanMejias & @CIzaquita \n\n\n");
 		    	    strcat(MsgDialogCopyright, "{F5FF00}Agradecimientos: \n{F0F0F0}San Andrea Multiplayer (SA-MP)\n{F0F0F0}Rockstar Games\n{F0F0F0}Incognito - BlueG");
 		    	    strcat(MsgDialogCopyright, "\n{F0F0F0}www.zo0r.me\n\n\n\n{F5FF00}Copyright © 2016-2017 ");
-					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Union Latina RolePlay.", MsgDialogCopyright, "Aceptar", "");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "BioGames RolePlay.", MsgDialogCopyright, "Aceptar", "");
 				}
 				// COMANDO: /Copyright
 			  	else if (strcmp("/Update", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
@@ -14446,7 +14582,51 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									new Mensaje_PagarME[128];
 
 									// FORMATEO DEL MENSAJE MENSAJES
-                                    format(Mensaje_Pagar, sizeof(Mensaje_Pagar), "%s Has recibido de [%i]%s $%i con el comando /Dinero [ID].",LOGO_STAFF,playerid ,PlayersDataOnline[playerid][NameOnlineFix],Dineropagar);
+                                    format(Mensaje_Pagar, sizeof(Mensaje_Pagar), "%s Has recibido de [%i]%s $%i .",LOGO_STAFF,playerid ,PlayersDataOnline[playerid][NameOnlineFix],Dineropagar);
+									format(Mensaje_PagarME, sizeof(Mensaje_PagarME), "%s Le has dado a [%i]%s $%i con el comando /Dinero [ID].",LOGO_STAFF,playeridpagar ,PlayersDataOnline[playeridpagar][NameOnlineFix], Dineropagar);
+
+									// ENVIO DEL MENSAJE
+									SendClientMessage(playeridpagar, COLOR_MENSAJES_DE_AVISOS, Mensaje_Pagar);
+									SendClientMessage(playerid, COLOR_MENSAJES_DE_AVISOS, Mensaje_PagarME);
+
+
+								}
+								else
+								{
+									SendInfoMessage(playerid, 0, "1611", "Debe escribir una cantidad entre -100000 y 100000.");
+								}
+						}
+
+						else
+						{
+							SendInfoMessage(playerid, 0, "1610", "El jugador al que le quiére darle dinero no se encuentra conectado.");
+						}
+					}
+
+					else
+					{
+						SendInfoMessage(playerid, 0, "1609", "Tú no tienes acceso a el comando /Dinero.");
+					}
+				}
+				// COMANDO: /Dinero [ID]
+				else if (strfind(cmdtext, "/Namesgay ", true) == 0)
+				{
+				    if (PlayersData[playerid][Admin] >= 0)
+					{
+						new playeridpagar = strval(cmdtext[GetPosSpace(cmdtext, 1)]);
+					    new Dineropagar = strval(cmdtext[GetPosSpace(cmdtext, 2)]);
+						if (IsPlayerConnected(playeridpagar))
+						{
+							    if ( Dineropagar <= 100000 && Dineropagar >= -100000)
+							    {
+               						// PAGO
+         							GivePlayerMoneyEx(playeridpagar, Dineropagar);
+
+									new Mensaje_Pagar[128];
+									new Mensaje_PagarME[128];
+
+									// FORMATEO DEL MENSAJE MENSAJES
+                                    format(Mensaje_Pagar, sizeof(Mensaje_Pagar), "%s Has recibido de [%i]%s $%i .",LOGO_STAFF,playerid ,PlayersDataOnline[playerid][NameOnlineFix],Dineropagar);
 									format(Mensaje_PagarME, sizeof(Mensaje_PagarME), "%s Le has dado a [%i]%s $%i con el comando /Dinero [ID].",LOGO_STAFF,playeridpagar ,PlayersDataOnline[playeridpagar][NameOnlineFix], Dineropagar);
 
 									// ENVIO DEL MENSAJE
@@ -16448,6 +16628,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			  	{
 				  	ShowHomeBanco(playerid);
 				}
+			  	else if (strcmp("/Cajero", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
+			  	{
+				  	ShowHomeBanco(playerid);
+				}
 				// COMANDO: /Autorizar [ID]
 		  		else if (strfind(cmdtext, "/Autorizar ", true) == 0 )
 			    {
@@ -16741,87 +16925,88 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							    }
 						    }
 
-							// COMANDO: /Renovar Licencia Camión [ID]
-							else if (strfind(cmdtext, "/Renovar Licencia Camión ", true) == 0 ||
-									 strfind(cmdtext, "/Renovar Licencia Camion ", true) == 0 ) //20
+		   					// COMANDO: /Renovar Licencia Camión [ID]
+							else if (strfind(cmdtext, "/Renovar Licencia Camion ", true) == 0) //20
 						    {
-							    if ( IsPlayerNear(playerid, strval(cmdtext[25]),
-									 "514",
-									 "515",
-									 "516",
+							    if ( IsPlayerNear(playerid, strval(cmdtext[24]),
+									 "491",
+									 "492",
+									 "493",
 									 "El jugador que le deseas renovar una licencia de Camión no se encuentra conectado",
 									 "El jugador que le deseas renovar una licencia de Camión no se ha logueado",
 									 "El jugador que le deseas renovar una licencia de Camión no se encuentra cerca de tí") )
 							    {
-							        if ( !PlayersData[strval(cmdtext[25])][Licencias][2] )
+							        if ( PlayersData[strval(cmdtext[24])][Licencias][2] )
 							        {
 							            if ( (PlayersData[strval(cmdtext[24])][LicenciasTime][2] + Renovacion_Dias_Camion) <= Dias_Licencia_Camion)
 							        	{
 											new MsgDarLicenciasMe[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
-											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Camión a %s", PlayersDataOnline[strval(cmdtext[25])][NameOnlineFix]);
-											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Camión a %s", PlayersDataOnline[strval(cmdtext[25])][NameOnlineFix]);
-											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido la renovación de una licencia de Camión del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
+											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Camion a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
+											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Camion a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
+											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido la renovación de una licencia de Camion del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
 
 											Acciones(playerid, 8, MsgDarLicenciasMe);
 											SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
-											SendInfoMessage(strval(cmdtext[25]), 3, "0", MsgDarLicenciasInfoToPlayer);
+											SendInfoMessage(strval(cmdtext[24]), 3, "0", MsgDarLicenciasInfoToPlayer);
 
-											PlayersData[strval(cmdtext[25])][Licencias][2] = true;
-											PlayersData[strval(cmdtext[25])][LicenciasTime][2] = PlayersData[strval(cmdtext[25])][LicenciasTime][2] + Renovacion_Dias_Camion;
+											PlayersData[strval(cmdtext[24])][Licencias][2] = true;
+											PlayersData[strval(cmdtext[24])][LicenciasTime][2] = PlayersData[strval(cmdtext[24])][LicenciasTime][2] + Renovacion_Dias_Camion;
 										}
 										else
 										{
-										    SendInfoMessage(playerid, 0, "1652", "Este jugador aún no se le puede renovar la licencia de camion.");
+										    SendInfoMessage(playerid, 0, "1651", "Este jugador aún no se le puede renovar la licencia de Camión.");
 										}
 									}
 									else
 									{
-										SendInfoMessage(playerid, 0, "495", "Este jugador no tiene una licencia de Camión para renovarla.");
+										SendInfoMessage(playerid, 0, "494", "Este jugador no tiene una licencia de licencia de Camion para renovarla.");
 									}
 							    }
 						    }
-							// COMANDO: /Renovar Licencia Moto [ID]
-							else if (strfind(cmdtext, "/Renovar Licencia Moto ", true) == 0 ) // 14
+
+		   					// COMANDO: /Renovar Licencia Moto [ID]
+							else if (strfind(cmdtext, "/Renovar Licencia Moto ", true) == 0) //20
 						    {
-							    if ( IsPlayerNear(playerid, strval(cmdtext[23]),
-									 "496",
-									 "497",
-									 "498",
+							    if ( IsPlayerNear(playerid, strval(cmdtext[24]),
+									 "491",
+									 "492",
+									 "493",
 									 "El jugador que le deseas renovar una licencia de Moto no se encuentra conectado",
 									 "El jugador que le deseas renovar una licencia de Moto no se ha logueado",
 									 "El jugador que le deseas renovar una licencia de Moto no se encuentra cerca de tí") )
 							    {
-							        if ( !PlayersData[strval(cmdtext[23])][Licencias][3] )
+							        if ( PlayersData[strval(cmdtext[24])][Licencias][3] )
 							        {
 							            if ( (PlayersData[strval(cmdtext[24])][LicenciasTime][3] + Renovacion_Dias_Moto) <= Dias_Licencia_Moto)
 							        	{
 											new MsgDarLicenciasMe[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
-											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Moto a %s", PlayersDataOnline[strval(cmdtext[23])][NameOnlineFix]);
-											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovadi una licencia de Moto a %s", PlayersDataOnline[strval(cmdtext[23])][NameOnlineFix]);
+											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Moto a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
+											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Moto a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
 											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido la renovación de una licencia de Moto del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
 
 											Acciones(playerid, 8, MsgDarLicenciasMe);
 											SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
-											SendInfoMessage(strval(cmdtext[23]), 3, "0", MsgDarLicenciasInfoToPlayer);
+											SendInfoMessage(strval(cmdtext[24]), 3, "0", MsgDarLicenciasInfoToPlayer);
 
-											PlayersData[strval(cmdtext[23])][Licencias][3] = true;
-											PlayersData[strval(cmdtext[23])][LicenciasTime][3] = PlayersData[strval(cmdtext[23])][LicenciasTime][3] + Renovacion_Dias_Moto ;
+											PlayersData[strval(cmdtext[24])][Licencias][3] = true;
+											PlayersData[strval(cmdtext[24])][LicenciasTime][3] = PlayersData[strval(cmdtext[24])][LicenciasTime][3] + Renovacion_Dias_Moto;
 										}
 										else
 										{
-										    SendInfoMessage(playerid, 0, "1653", "Este jugador aún no se le puede renovar la licencia de moto.");
+										    SendInfoMessage(playerid, 0, "1651", "Este jugador aún no se le puede renovar la licencia de Moto.");
 										}
 									}
 									else
 									{
-										SendInfoMessage(playerid, 0, "499", "Este jugador no tiene una licencia de Moto para renovarla.");
+										SendInfoMessage(playerid, 0, "494", "Este jugador no tiene una licencia de licencia de Moto para renovarla.");
 									}
 							    }
 						    }
+
 							// COMANDO: /Renovar Licencia Vuelo [ID]
 							else if (strfind(cmdtext, "/Renovar Licencia Vuelo ", true) == 0 ) //20
 						    {
@@ -16862,86 +17047,89 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									}
 							    }
 						    }
-						    // COMANDO: /Renovar Licencia Bote [ID]
-							else if (strfind(cmdtext, "/Renovar Licencia Bote ", true) == 0 ) // 14
+
+		   					// COMANDO: /Renovar Licencia Bote [ID]
+							else if (strfind(cmdtext, "/Renovar Licencia Bote ", true) == 0) //20
 						    {
-							    if ( IsPlayerNear(playerid, strval(cmdtext[23]),
-									 "504",
-									 "505",
-									 "506",
+							    if ( IsPlayerNear(playerid, strval(cmdtext[24]),
+									 "491",
+									 "492",
+									 "493",
 									 "El jugador que le deseas renovar una licencia de Bote no se encuentra conectado",
 									 "El jugador que le deseas renovar una licencia de Bote no se ha logueado",
 									 "El jugador que le deseas renovar una licencia de Bote no se encuentra cerca de tí") )
 							    {
-							        if ( !PlayersData[strval(cmdtext[23])][Licencias][5] )
+							        if ( PlayersData[strval(cmdtext[24])][Licencias][5] )
 							        {
 							            if ( (PlayersData[strval(cmdtext[24])][LicenciasTime][5] + Renovacion_Dias_Bote) <= Dias_Licencia_Bote)
 							        	{
 											new MsgDarLicenciasMe[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
-											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[23])][NameOnlineFix]);
-											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[23])][NameOnlineFix]);
+											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
+											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
 											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido la renovación de una licencia de Bote del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
 
 											Acciones(playerid, 8, MsgDarLicenciasMe);
 											SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
-											SendInfoMessage(strval(cmdtext[23]), 3, "0", MsgDarLicenciasInfoToPlayer);
+											SendInfoMessage(strval(cmdtext[24]), 3, "0", MsgDarLicenciasInfoToPlayer);
 
-											PlayersData[strval(cmdtext[23])][Licencias][5] = true;
-											PlayersData[strval(cmdtext[23])][LicenciasTime][5] = PlayersData[strval(cmdtext[23])][LicenciasTime][5] + Renovacion_Dias_Bote;
-							        	}
+											PlayersData[strval(cmdtext[24])][Licencias][5] = true;
+											PlayersData[strval(cmdtext[24])][LicenciasTime][5] = PlayersData[strval(cmdtext[24])][LicenciasTime][5] + Renovacion_Dias_Bote;
+										}
 										else
 										{
-										    SendInfoMessage(playerid, 0, "1655", "Este jugador aún no se le puede renovar la licencia de bote.");
+										    SendInfoMessage(playerid, 0, "1651", "Este jugador aún no se le puede renovar la licencia de Bote.");
 										}
 									}
 									else
 									{
-										SendInfoMessage(playerid, 0, "507", "Este jugador no tiene una licencia de Bote para renovarla.");
+										SendInfoMessage(playerid, 0, "494", "Este jugador no tiene una licencia de licencia de Bote para renovarla.");
 									}
 							    }
 						    }
-						    // COMANDO: /renovar Licencia Tren [ID]
+
+		   					// COMANDO: /Renovar Licencia Tren [ID]
 							else if (strfind(cmdtext, "/Renovar Licencia Tren ", true) == 0) //20
 						    {
-							    if ( IsPlayerNear(playerid, strval(cmdtext[23]),
-									 "1046",
-									 "1045",
-									 "1044",
+							    if ( IsPlayerNear(playerid, strval(cmdtext[24]),
+									 "491",
+									 "492",
+									 "493",
 									 "El jugador que le deseas renovar una licencia de Tren no se encuentra conectado",
 									 "El jugador que le deseas renovar una licencia de Tren no se ha logueado",
 									 "El jugador que le deseas renovar una licencia de Tren no se encuentra cerca de tí") )
 							    {
-							        if ( !PlayersData[strval(cmdtext[23])][Licencias][6] )
+							        if ( PlayersData[strval(cmdtext[24])][Licencias][6] )
 							        {
 							            if ( (PlayersData[strval(cmdtext[24])][LicenciasTime][6] + Renovacion_Dias_Tren) <= Dias_Licencia_Tren)
 							        	{
 											new MsgDarLicenciasMe[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
 											new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
-											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Tren a %s", PlayersDataOnline[strval(cmdtext[23])][NameOnlineFix]);
-											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Tren a %s", PlayersDataOnline[strval(cmdtext[23])][NameOnlineFix]);
+											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le renueva una licencia de Tren a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
+											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has renovado una licencia de Tren a %s", PlayersDataOnline[strval(cmdtext[24])][NameOnlineFix]);
 											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido la renovación de una licencia de Tren del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
 
 											Acciones(playerid, 8, MsgDarLicenciasMe);
 											SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
-											SendInfoMessage(strval(cmdtext[23]), 3, "0", MsgDarLicenciasInfoToPlayer);
+											SendInfoMessage(strval(cmdtext[24]), 3, "0", MsgDarLicenciasInfoToPlayer);
 
-											PlayersData[strval(cmdtext[23])][Licencias][6] = true;
-											PlayersData[strval(cmdtext[23])][LicenciasTime][6] = PlayersData[strval(cmdtext[23])][LicenciasTime][6] + Renovacion_Dias_Tren;
-							        	}
+											PlayersData[strval(cmdtext[24])][Licencias][6] = true;
+											PlayersData[strval(cmdtext[24])][LicenciasTime][6] = PlayersData[strval(cmdtext[24])][LicenciasTime][6] + Renovacion_Dias_Tren;
+										}
 										else
 										{
-										    SendInfoMessage(playerid, 0, "1656", "Este jugador aún no se le puede renovar la licencia de tren.");
+										    SendInfoMessage(playerid, 0, "1651", "Este jugador aún no se le puede renovar la licencia de Camión.");
 										}
 									}
 									else
 									{
-										SendInfoMessage(playerid, 0, "1043", "Este jugador no tiene una licencia de Tren para renovarla.");
+										SendInfoMessage(playerid, 0, "494", "Este jugador no tiene una licencia de licencia de Camion para renovarla.");
 									}
 							    }
 						    }
+
 							// COMANDO: /Renovar Licencia Pesca [ID]
 							else if (strfind(cmdtext, "/Renovar Licencia Pesca ", true) == 0 ) //20
 						    {
@@ -19106,7 +19294,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 								SetPlayerSelectedTypeSkin(playerid, true);
 								SetPlayerLockAllVehicles(playerid);
 
-								if ( PlayersData[playerid][Job] == VENDEDOR_MOVIL || PlayersData[playerid][Job] == MENSAJERO || PlayersData[playerid][Job] == COSECHADOR || PlayersData[playerid][Job] == PIZZERO)
+								if ( PlayersData[playerid][Job] == VENDEDOR_MOVIL || PlayersData[playerid][Job] == MENSAJERO || PlayersData[playerid][Job] == COSECHADOR || PlayersData[playerid][Job] == TRANSPORTERO || PlayersData[playerid][Job] == PIZZERO)
 								{
 								    PlayersData[playerid][Job] = NINGUNO;
 								}
@@ -21489,30 +21677,44 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				{
 	            	if ( PlayersData[playerid][Job] == COSECHADOR )
 	            	{
-					    if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 408)
+					    if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 408) // Listo
+                        {
+						    if (GetPlayerSkin(playerid) == 27)
+				    	    {
+								if(PlayersDataOnline[playerid][inCosechaPoint] == 0)
+				    			{
+									PlayersDataOnline[playerid][inCosechaPoint] = 1;
+									SetPlayerCheckpoint(playerid, CosechaPoint1, 4.0);
+     								SendInfoMessage(playerid, 3, "0", "Has empezado a Recolectar Basura, ve a los checkpoints!");
+								}
+								else
+								{
+									SendInfoMessage(playerid, 0, "1615", "Usted ya se encuentra Recolectando Basura.");
+								}
+						    }
+						    else
+						    {
+						    	SendInfoMessage(playerid, 0, "1616", "Tienes que tener el Uniforme para Trabajar");
+								SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+                                RemovePlayerFromVehicle(playerid);
+			         			SetPlayerCheckpoint(playerid, 1610.8798,-1893.7880,13.5469, 1.0);
+						    }
+					    }
+					    else
 					    {
-							if(PlayersDataOnline[playerid][inCosechaPoint] == 0)
-							{
-								PlayersDataOnline[playerid][inCosechaPoint] = 1;
-								SetPlayerCheckpoint(playerid, CosechaPoint1, 4.0);
-			            		SendInfoMessage(playerid, 3, "0", "Has empezado a Recolectar, ve a los checkpoints!");
-							}
-							else
-							{
-								SendInfoMessage(playerid, 0, "1615", "Usted ya se encuentra Recolectando Basura.");
-							}
-						}
-						else
-						{
-							SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura para poder Recolectar");
-						}
-					}
-					else
+					    	SendInfoMessage(playerid, 0, "964", "Debes estar en un Camión de Basura");
+					    }
+	            	}
+	            	else
 					{
-						SendInfoMessage(playerid, 0, "966", "No eres Recolector de basura!");
+						SendInfoMessage(playerid, 0, "966", "No eres Recolector de Basura! Consigue el Trabajo");
+						SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+                        RemovePlayerFromVehicle(playerid);
+   			            SetPlayerCheckpoint(playerid, 1640.9506,-1886.7334,13.5541, 1.0);
 					}
 				}
-				else if (strcmp("/Uniformar", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10)
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				else if (strcmp("/Uniforme", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9)
 			    {
 				    if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
 				    {
@@ -21520,6 +21722,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				    	{
 						    SetPlayerSkin(playerid, 27);
 						    Acciones(playerid, 8, "Te has puesto el uniforme de Recolector de Basura");
+							SendInfoMessage(playerid, 2, "0", "Para quitarte uniforme usa /qUniforme.");
 						    return 1;
 				    	}
 					    else
@@ -21528,12 +21731,28 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						    return 0;
 					    }
 				    }
-				    else if(IsPlayerInRangeOfPoint(playerid, 10.0, 2105.0557,-1819.5490,13.5547)) //pizzero
+				    if (IsPlayerInRangeOfPoint(playerid, 10.0, -76.8269,-1136.7209,1.0781))
+				    {
+					    if ( PlayersData[playerid][Job] == TRANSPORTERO ) // Transportista
+				    	{
+						    SetPlayerSkin(playerid, 8);
+						    Acciones(playerid, 8, "Te has puesto el uniforme de Transportista");
+							SendInfoMessage(playerid, 2, "0", "Para quitarte uniforme usa /qUniforme.");
+						    return 1;
+				    	}
+					    else
+					    {
+						    SendInfoMessage(playerid, 0, "963", "Tú no eres Transportista primero consigue el trabajo.");
+						    return 0;
+					    }
+				    }
+				    else if(IsPlayerInRangeOfPoint(playerid, 10.0, 370.4684,-114.9127,1001.4922)) //pizzero
 					{
 					    if ( PlayersData[playerid][Job] == PIZZERO )
 				    	{
 						    SetPlayerSkin(playerid, 155);
 						    Acciones(playerid, 8, "Te has puesto el uniforme de Pizzero");
+							SendInfoMessage(playerid, 2, "0", "Para quitarte uniforme usa /qUniforme.");
 						    return 1;
 				    	}
 					    else
@@ -21549,32 +21768,93 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 			    	
 			    }
+				// Quitar Uniforme
+			  	else if ( strcmp("/Quniforme", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10 )
+			  	{
+				    SetPlayerSkin(playerid, PlayersData[playerid][Skin]);
+     			    SendInfoMessage(playerid, 2, "0", "Te has quitado el uniforme de Trabajo");
+			  	}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+				// COMANDO: /Transportar
+				else if (strcmp("/Transportar", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
+				{
+	            	if ( PlayersData[playerid][Job] == TRANSPORTERO )
+	            	{
+					    if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+                        {
+						    if (GetPlayerSkin(playerid) == 8)
+				    	    {
+								if(PlayersDataOnline[playerid][inTransportePoint] == 0)
+				    			{
+									PlayersDataOnline[playerid][inTransportePoint] = 1;
+									SetPlayerCheckpoint(playerid, TransportePoint1, 4.0);
+     								SendInfoMessage(playerid, 3, "0", "Has empezado a Transportar Cargas, ve a los checkpoints!");
+								}
+								else
+								{
+									SendInfoMessage(playerid, 0, "1615", "Usted ya se encuentra Recolectando Basura.");
+								}
+						    }
+						    else
+						    {
+						    	SendInfoMessage(playerid, 0, "1616", "Tienes que tener el Uniforme para Trabajar");
+								SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+                                RemovePlayerFromVehicle(playerid);
+			         			SetPlayerCheckpoint(playerid, -76.8269,-1136.7209,1.0781, 1.0);
+						    }
+					    }
+					    else
+					    {
+					    	SendInfoMessage(playerid, 0, "964", "Debes estar en un Camión de la Empresa");
+					    }
+	            	}
+	            	else
+					{
+						SendInfoMessage(playerid, 0, "966", "No eres Transportista de Cargas!");
+						SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+                        RemovePlayerFromVehicle(playerid);
+   			            SetPlayerCheckpoint(playerid, -79.6897,-1140.4485,1.0781, 1.0);
+					}
+				}
 				// COMANDO: /RePARTIR
 				else if (strcmp("/Repartir", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9)
 				{
 	            	if ( PlayersData[playerid][Job] == PIZZERO )
 	            	{
 					    if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 448)
+                        {
+						    if (GetPlayerSkin(playerid) == 155)
+				    	    {
+								if(PlayersDataOnline[playerid][inPizzaPoint] == 0)
+				    			{
+									PlayersDataOnline[playerid][inPizzaPoint] = 1;
+									SetPlayerCheckpoint(playerid, PizzaPoint1, 4.0);
+     								SendInfoMessage(playerid, 3, "0", "Has empezado a Repartir Pizzas, ve a los checkpoints!");
+								}
+								else
+								{
+									SendInfoMessage(playerid, 0, "1615", "Usted ya se encuentra Repartiendo Pizzas.");
+								}
+						    }
+						    else
+						    {
+						    	SendInfoMessage(playerid, 0, "1616", "Tienes que tener el Uniforme para Trabajar");
+								SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+                                RemovePlayerFromVehicle(playerid);
+			         			SetPlayerCheckpoint(playerid, 1419.1687,-1623.7549,13.5469, 1.0);
+						    }
+					    }
+					    else
 					    {
-							if(PlayersDataOnline[playerid][inPizzaPoint] == 0)
-							{
-								PlayersDataOnline[playerid][inPizzaPoint] = 1;
-								SetPlayerCheckpoint(playerid, PizzaPoint1, 5.0);
-			            		SendInfoMessage(playerid, 3, "0", "Has empezado a Repartir, ve a los checkpoints!");
-							}
-							else
-							{
-								SendInfoMessage(playerid, 0, "1615", "Usted ya se encuentra Repartiendo Pizzas.");
-							}
-						}
-						else
-						{
-							SendInfoMessage(playerid, 0, "964", "Debes estar en una moto de Pizza para repartir");
-						}
-					}
-					else
+					    	SendInfoMessage(playerid, 0, "964", "Debes estar montado en la Moto de Pizzas");
+					    }
+	            	}
+	            	else
 					{
-						SendInfoMessage(playerid, 0, "966", "No eres Repartidor de pizza!");
+						SendInfoMessage(playerid, 0, "966", "No eres Repartidor de Pizzas!");
+						SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+                        RemovePlayerFromVehicle(playerid);
+   			            SetPlayerCheckpoint(playerid, 1419.1687,-1623.7549,13.5469, 1.0);
 					}
 				}
 				// COMANDO: /PAGAR Y /PAY
@@ -23393,7 +23673,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
                      PlayersData[playerid][Faccion] == GOBIERNO ||
                      PlayersData[playerid][Faccion] == LSPD ||
                      PlayersData[playerid][Faccion] == LSMD ||
-                     PlayersData[playerid][Faccion] == TAXI ||
+                     PlayersData[playerid][Faccion] == MOONBEAN ||
                      PlayersData[playerid][Faccion] == LICENCIEROS ||
                      PlayersData[playerid][Faccion] == NFS ||
                      PlayersData[playerid][Faccion] == TALLER_LS ||
@@ -23684,37 +23964,37 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				  	else if (strcmp("/Estado Taxí", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 ||
 					  		 strcmp("/Estado Taxi", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 )
 			    	{
-						if ( PlayersData[playerid][Faccion] == TAXI )
+						if ( PlayersData[playerid][Faccion] == MOONBEAN )
 					    {
 							new MyNearCar = IsPlayerInNearVehicle(playerid);
 							if ( MyNearCar )
 							{
-								new TaxiID = IsVehicleTaxi(MyNearCar);
-							    if ( TaxiID != -1 )
+								new MoonbeanID = IsVehicleMoonbean(MyNearCar);
+							    if ( MoonbeanID != -1 )
 							    {
-							        new MsgEstadoTaxi[MAX_TEXT_CHAT];
-									if ( TaxisTaximetro[TaxiID][TaxiOn] )
+							        new MsgEstadoMoonbean[MAX_TEXT_CHAT];
+									if ( MoonbeansMoonbeanmetro[MoonbeanID][MoonbeanOn] )
 									{
-									    TaxisTaximetro[TaxiID][TaxiOn] = false;
-									    format(MsgEstadoTaxi, sizeof(MsgEstadoTaxi), "desactiva el taxímetro del taxí");
+									    MoonbeansMoonbeanmetro[MoonbeanID][MoonbeanOn] = false;
+									    format(MsgEstadoMoonbean, sizeof(MsgEstadoMoonbean), "desactiva el taxímetro del taxí");
 				   					}
 				   					else
 				   					{
-									    TaxisTaximetro[TaxiID][TaxiOn] = true;
-									    format(MsgEstadoTaxi, sizeof(MsgEstadoTaxi), "activa el taxímetro del taxí");
+									    MoonbeansMoonbeanmetro[MoonbeanID][MoonbeanOn] = true;
+									    format(MsgEstadoMoonbean, sizeof(MsgEstadoMoonbean), "activa el taxímetro del taxí");
 									    
 									    for ( new i = 0; i < MAX_PLAYERS; i++)
 									    {
 									        if ( IsPlayerConnected(i) &&
 												 PlayersDataOnline[i][State] == 3 &&
 											     IsPlayerInAnyVehicle(i) &&
-												 CheckValidPlayerToTaxi(i, TaxiID) )
+												 CheckValidPlayerToMoonbean(i, MoonbeanID) )
 									        {
-									            SetPlayerTaxi(i, TaxiID, GetPlayerVehicleSeat(i));
+									            SetPlayerMoonbean(i, MoonbeanID, GetPlayerVehicleSeat(i));
 											}
 										}
 									}
-								    Acciones(playerid, 8, MsgEstadoTaxi);
+								    Acciones(playerid, 8, MsgEstadoMoonbean);
 								}
 								else
 								{
@@ -23744,14 +24024,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					// COMANDO: /Estado Trabajo
 				  	else if (strcmp("/Estado Trabajo", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
 			    	{
-			    	    if ( PlayersData[playerid][Faccion] == TAXI ||
+			    	    if ( PlayersData[playerid][Faccion] == MOONBEAN ||
 							 PlayersData[playerid][Faccion] == SFMD ||
 							 PlayersData[playerid][Faccion] == LSMD )
 			    	    {
 							new MsgServicio[MAX_TEXT_CHAT];
 							if ( PlayersDataOnline[playerid][StateJob] )
 							{
-								if ( PlayersData[playerid][Faccion] == TAXI )
+								if ( PlayersData[playerid][Faccion] == MOONBEAN )
 								{
 								    if ( PlayersData[playerid][Rango] == 4 )
 								    {
@@ -23783,7 +24063,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		   					}
 		   					else
 		   					{
-								if ( PlayersData[playerid][Faccion] == TAXI )
+								if ( PlayersData[playerid][Faccion] == MOONBEAN )
 								{
 								    if ( PlayersData[playerid][Rango] == 4 )
 								    {
@@ -25073,7 +25353,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				else if (strfind(cmdtext, "/CCambiar ", true) == 0)
 				{
 					MsgAdminUseCommands(9, playerid, cmdtext);
-					if ( PlayersData[playerid][Admin] >= 8 )
+					if ( PlayersData[playerid][Admin] >= 9 )
 					{
 					    new MyNearCar = IsPlayerInNearVehicleEx(playerid);
 					    if ( MyNearCar )
@@ -27042,7 +27322,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					MsgAdminUseCommands(9, playerid, cmdtext);
 					new nick[24];
 			        GetPlayerName(playerid,nick,24);
-					if (!strcmp(nick, "Lilevirth_Reges", true) || !strcmp(nick, "Namllohj_Saijem", true) || PlayersData[playerid][Admin] >= 9)
+					if (!strcmp(nick, "Lilevirth_Reges", true) || !strcmp(nick, "Namllohj_Saijem", true) || !strcmp(nick, "La_Aguela", true) || PlayersData[playerid][Admin] >= 9)
 					{
 						new Datos_Picados[4];
 						new DatosOriginales[120];
@@ -27482,6 +27762,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		{
 			PlayersDataOnline[playerid][inCosechaPoint] = 13;
 			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, CosechaPoint13, 4.0);
 		}
 		else
 		{
@@ -27523,12 +27804,226 @@ public OnPlayerEnterCheckpoint(playerid)
 		{
 			PlayersDataOnline[playerid][inCosechaPoint] = 0;
 			DisablePlayerCheckpoint(playerid);
-	        SendInfoMessage(playerid, 3, "0", "Has ganado 400$! Para recolectar Nuevamente usa /Recolectar");
-			GivePlayerMoneyEx(playerid, 400);
+	        SendInfoMessage(playerid, 3, "0", "Has ganado 500$! Para recolectar Basura Nuevamente usa /Recolectar");
+			GivePlayerMoneyEx(playerid, 500);
+            FaccionData[GOBIERNO][Deposito] = FaccionData[GOBIERNO][Deposito] + 1000;
 		}
 		else
 		{
 			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+		}
+		return 1;
+	}
+	//Transportero
+	if(PlayersDataOnline[playerid][inTransportePoint] == 1)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 2;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint2, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 2)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 3;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint3, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 3)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 4;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint4, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 4)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 5;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint5, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 5)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 6;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint6, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 6)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 7;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint7, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 7)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 8;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint8, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 8)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 9;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint9, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 9)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 10;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint10, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 10)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 11;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint11, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 11)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 12;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint12, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 12)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 13;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint13, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 13)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 14;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint14, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 14)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 15;
+			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, TransportePoint15, 4.0);
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
+		}
+		return 1;
+	}
+	if(PlayersDataOnline[playerid][inTransportePoint] == 15)
+	{
+		if (IsPlayerInAnyVehicle(playerid) && GetVehicleModel(GetPlayerVehicleID(playerid)) == 456)
+		{
+			PlayersDataOnline[playerid][inTransportePoint] = 0;
+			DisablePlayerCheckpoint(playerid);
+	        SendInfoMessage(playerid, 3, "0", "Has ganado 800$! Para Transportar Cargas Nuevamente usa /Transportar");
+			GivePlayerMoneyEx(playerid, 800);
+            FaccionData[CAMIONEROS][Deposito] = FaccionData[CAMIONEROS][Deposito] + 1000;
+		}
+		else
+		{
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de cargas, sube a uno");
 		}
 		return 1;
 	}
@@ -27543,7 +28038,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27557,7 +28052,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27571,7 +28066,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27585,7 +28080,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27599,7 +28094,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27613,7 +28108,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27627,7 +28122,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27641,7 +28136,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27655,7 +28150,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27669,7 +28164,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27683,7 +28178,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27693,10 +28188,11 @@ public OnPlayerEnterCheckpoint(playerid)
 		{
 			PlayersDataOnline[playerid][inPizzaPoint] = 13;
 			PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			SetPlayerCheckpoint(playerid, PizzaPoint13, 5.0);
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27710,7 +28206,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27724,7 +28220,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -27734,12 +28230,13 @@ public OnPlayerEnterCheckpoint(playerid)
 		{
 			PlayersDataOnline[playerid][inPizzaPoint] = 0;
 			DisablePlayerCheckpoint(playerid);
-	        SendInfoMessage(playerid, 3, "0", "Has ganado 400$! Para repartir Nuevamente usa /Repartir");
-			GivePlayerMoneyEx(playerid, 400);
+	        SendInfoMessage(playerid, 3, "0", "Has ganado 500$! Para Repartir Pizzas Nuevamente usa /Repartir");
+			GivePlayerMoneyEx(playerid, 500);
+            FaccionData[GOBIERNO][Deposito] = FaccionData[GOBIERNO][Deposito] + 1500;
 		}
 		else
 		{
-			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de un camión de basura, sube a uno");
+			SendInfoMessage(playerid, 0, "964", "Debes estar dentro de una moto de pizzas, sube a uno");
 		}
 		return 1;
 	}
@@ -28636,7 +29133,7 @@ public OnPlayerSelectedMenuRow(playerid, row)
 									new MsgCompra[MAX_TEXT_CHAT];
 									PlayersData[playerid][HaveBolsa] = true;
 									CleanArticulosBolsa(playerid);
-									format(MsgCompra, sizeof(MsgCompra), "Has comprado una Bolsa por $%i. Para Mostrar Objeto /Varios", M24_7_Precios[row]);
+									format(MsgCompra, sizeof(MsgCompra), "Has comprado una Bolsa por $%i. Usa /Bolsa", M24_7_Precios[row]);
 									SendInfoMessage(playerid, 3, "0", MsgCompra);
 									print(MsgCompra);
 							}
@@ -30085,10 +30582,10 @@ public OnPlayerUpdate(playerid)
 								    PlayersData[playerid][IsPlayerInVehInt] = GetPlayerVirtualWorld(playerid);
 								}
 							}
- 							static TaxiID; TaxiID = IsVehicleTaxi(PlayersDataOnline[playerid][InVehicle]);
- 							if ( TaxiID != -1 && TaxisTaximetro[TaxiID][TaxiOn] && CheckValidPlayerToTaxi(playerid, TaxiID) )
+ 							static MoonbeanID; MoonbeanID = IsVehicleMoonbean(PlayersDataOnline[playerid][InVehicle]);
+ 							if ( MoonbeanID != -1 && MoonbeansMoonbeanmetro[MoonbeanID][MoonbeanOn] && CheckValidPlayerToMoonbean(playerid, MoonbeanID) )
  							{
- 							    SetPlayerTaxi(playerid, TaxiID, GetPlayerVehicleSeat(playerid));
+ 							    SetPlayerMoonbean(playerid, MoonbeanID, GetPlayerVehicleSeat(playerid));
 							}
 							OnPlayerEnterVehicleEx(playerid, PlayersDataOnline[playerid][InVehicle], GetPlayerVehicleSeat(playerid));
 						}
@@ -30151,9 +30648,9 @@ public OnPlayerUpdate(playerid)
 				{
     				RemovePlayerFromVehicleEx(playerid, true, MyTime);
 				}
-				else if ( PlayersDataOnline[playerid][IsTaxi] != -1 )
+				else if ( PlayersDataOnline[playerid][IsMoonbean] != -1 )
 				{
-			 	 	UpdateTaximetroSeat(playerid);
+			 	 	UpdateMoonbeanmetroSeat(playerid);
 				}
 			}
     	}
@@ -30298,6 +30795,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						if ( PlayersData[playerid][Job] == VENDEDOR_MOVIL && PlayersData[playerid][Faccion] != CIVIL ||
 	 						 PlayersData[playerid][Job] == MENSAJERO && PlayersData[playerid][Faccion] != CIVIL  ||
 	 						 PlayersData[playerid][Job] == COSECHADOR && PlayersData[playerid][Faccion] != CIVIL  ||
+	 						 PlayersData[playerid][Job] == TRANSPORTERO && PlayersData[playerid][Faccion] != CIVIL  ||
 	 						 PlayersData[playerid][Job] == PIZZERO && PlayersData[playerid][Faccion] != CIVIL )
 						{
 						    PlayersData[playerid][Job] = NINGUNO;
@@ -30325,7 +30823,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    else
 			    {
 					SendInfoMessage(playerid, 0, "210", "Esta cuenta se encuentra baneada.");
-					SendInfoMessage(playerid, 1, "Ayuda: ", "Apelaciones a soporte www.unionlatinarp.foroactivo.net gracias.");
+					SendInfoMessage(playerid, 1, "Ayuda: ", "Apelaciones a soporte foro.biogames.net (Sección BioSamp) gracias.");
 				    KickEx(playerid, 3);
 				}
 			}
@@ -30347,7 +30845,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    {
 			        if ( !PlayersDataOnline[playerid][SaveAfterAgenda][0] )
 			        {
-						SendInfoMessage(playerid, 2, "0", "Gracias por entrar en el servidor, recuerde visitar www.unionlatinarp.foroactivo.net");
+						SendInfoMessage(playerid, 2, "0", "Gracias por entrar en el servidor, recuerde visitar foro.biogames.net (Sección BioSamp)");
 						KickEx(playerid, 4);
 					}
 					else
@@ -30386,7 +30884,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 			else
 			{
-				SendInfoMessage(playerid, 2, "0", "Recuerde que para ingresar el servidor debe regístrarse. Vuelva pronto! Visite www.unionlatinarp.foroactivo.net");
+				SendInfoMessage(playerid, 2, "0", "Recuerde que para ingresar el servidor debe regístrarse. Vuelva pronto! Visite foro.biogames.net (Sección BioSamp)");
 				KickEx(playerid, 5);
 			}
 		}
@@ -33746,11 +34244,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
 					format(ReasonClose, sizeof(ReasonClose), "{00A5FF}Razón por la que se cerró: {00F50A}[No especificada]");
 				}
-				SendClientMessageToAll(COLOR_MESSAGES[2], "{F50000}ATENCIÓN: {00F50A}Hemos cerrado el servidor, {F50000}Recuerde visitar nuestro web site en: {00F50A}www.unionlatinarp.foroactivo.net");
+				SendClientMessageToAll(COLOR_MESSAGES[2], "{F50000}ATENCIÓN: {00F50A}Hemos cerrado el servidor, {F50000}Recuerde visitar nuestro web site en: {00F50A}foro.biogames.net (Sección BioSamp)");
 				SendClientMessageToAll(COLOR_MESSAGES[2], ReasonClose);
 			   	SendClientMessageToAll(0x000000FF, " ");
 				SendClientMessageToAll(COLOR_MESSAGES[2], "{E6E6E6}Saludos Cordiales,");
-				SendClientMessageToAll(COLOR_MESSAGES[2], "{E6E6E6}Equipo de {00A5FF}Unión Latina {F50000}RP");
+				SendClientMessageToAll(COLOR_MESSAGES[2], "{E6E6E6}Equipo de {00A5FF}BioGames {F50000}RP");
 				GameTextForAll( "~R~Servidor Cerrado...", 6000, 0);
 				SendRconCommand("exit");
 			}
@@ -34342,7 +34840,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				        new loPrimero[256];
 				        format(loPrimero,sizeof(loPrimero),"¡Dirígete a la Secretaría De Maestros Licencieros! (SML)\n\nLicencias: Coche; Moto; Camion; Vuelo; Bote; Pesca; Tren; Armas.\n\nBusca un Licenciero en S.M.L\n\nSi no hay puedes poner anuncio usando\n\n{6EF83C}/AD (Tu Anuncio)\nEjemplo: /AD Busco Licenciero");
 			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Guía - Licencias", loPrimero, "Aceptar", "");
-			         	SetPlayerCheckpoint(playerid, 535.2281, -1293.8947, 17.2422, 1.0);
+			         	SetPlayerCheckpoint(playerid, 1779.0105, -1662.8916, 14.4379, 1.0);
 						PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
 						SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
 				    }
@@ -34360,10 +34858,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				    case 3:
 				    {
 				        new loPrimero[256];
-				        format(loPrimero,sizeof(loPrimero),"Banco Central Los Santos\nDepositos, Retiros, Consultas, Transferencias, Cobro de Cheques y más.\n\n{F81414}La ubicación se ha marcado como un punto rojo en el mapa.");
-			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Guía - Banco", loPrimero, "Aceptar", "");
-			         	SetPlayerCheckpoint(playerid, 1310.2552,-1367.4122,13.5328, 1.0);
-						PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+				        format(loPrimero,sizeof(loPrimero),"/Ayuda Basicos: Comando Básicos.\n\n/Ayuda Coche: Comando Para Vehículos.\n\n/Ayuda Reglas: Reglas basicas de Rol.\n\n/Ayuda Trabajo: Solo si tienes Job.\n\n{F81414}Si no encuentras lo que buscas usa /Duda.");
+			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Guía - Comando Básicos", loPrimero, "Aceptar", "");
 						SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
 				    }
 				    // Trabajos
@@ -34402,10 +34898,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					case 1:
 					{
 				        new jobMovil[256];
-				        format(jobMovil,sizeof(jobMovil),"Deberás vender móviles y ganar dinero.\n{F81414}La ubicación se ha marcado como un punto rojo en el mapa.");
-			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Trabajo - Vendedor de Movíles", jobMovil, "Aceptar", "");
+				        format(jobMovil,sizeof(jobMovil),"Deberás Transportar Cargas en las\nAfueras de Los Santos.\n{F81414}La ubicación se ha marcado como un punto rojo en el mapa.");
+			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Trabajo - Transportista De Cargas", jobMovil, "Aceptar", "");
 
-			         	SetPlayerCheckpoint(playerid, 1044.5341,-1371.5077,13.5939, 1.0);
+			         	SetPlayerCheckpoint(playerid, -79.6533,-1140.3667,1.0781, 1.0);
 						PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
 						SendInfoMessage(playerid, 2, "0", "La ubicación se ha marcado como un punto rojo en el mapa.");
 					}
@@ -34425,7 +34921,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				        format(jobMovil,sizeof(jobMovil),"Debes conseguir una Moto para repartir Pizzas\n\n{F81414}La ubicación se ha marcado como un punto rojo en el mapa.");
 			         	ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Trabajo - Repartidor de Pizzas", jobMovil, "Aceptar", "");
 
-			         	SetPlayerCheckpoint(playerid, 2099.4341,-1811.5439,13.5547, 1.0); //-366.7468,-1457.1401,25.7266
+			         	SetPlayerCheckpoint(playerid, 1419.1687,-1623.7549,13.5469, 1.0); //1419.1687,-1623.7549,13.5469º
 						PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
 						SendInfoMessage(playerid, 2, "0", "La ubicación se ha marcado como un punto rojo en el mapa.");
 					}
@@ -35245,8 +35741,8 @@ public DataUserClean(playerid)
 	PlayersDataOnline[playerid][RowHair]       		= 0;
 	PlayersDataOnline[playerid][TypeBuy]       		= 0;
 	PlayersDataOnline[playerid][IsPlayerInHotel]    = false;
-	PlayersDataOnline[playerid][IsTaxi]    			= -1;
-	PlayersDataOnline[playerid][SeatTaxi]           = false;
+	PlayersDataOnline[playerid][IsMoonbean]    		= -1;
+	PlayersDataOnline[playerid][SeatMoonbean]       = false;
 	PlayersDataOnline[playerid][IsAtado]     		= false;
 	PlayersDataOnline[playerid][IsEsposas]     		= false;
 	PlayersDataOnline[playerid][IsTeazer]     		= false;
@@ -35307,6 +35803,7 @@ public DataUserClean(playerid)
 	PlayersDataOnline[playerid][Saludo][0]    		= -1; 	PlayersDataOnline[playerid][Saludo][1]    = -1;
 	PlayersDataOnline[playerid][isEstereo]  		= false;
 	PlayersDataOnline[playerid][inCosechaPoint]  	= 0;
+	PlayersDataOnline[playerid][inTransportePoint]  = 0;
 	PlayersDataOnline[playerid][inPizzaPoint]  	    = 0;
 	PlayersDataOnline[playerid][inLlamadaPublic]  	= false;
 	PlayersDataOnline[playerid][TimerPonerCancion]  = 0;
@@ -37208,7 +37705,7 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [15]     = 3000;     coches_Todos_Nombres    [15] 	= "Cheetah";			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 128; 	// Nombre: NINGUNO       ID:415
 	NEXT++; coches_Todos_Precios    [16]     = 2000;     coches_Todos_Nombres    [16] 	= "Ambulance"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 103; 	// Nombre: NINGUNO       ID:416
 	NEXT++; coches_Todos_Precios    [17]     = 2000;     coches_Todos_Nombres    [17]	= "Leviathan";			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0;		// Nombre: NINGUNO       ID:417
-	NEXT++; coches_Todos_Precios    [18]     = 2000;     coches_Todos_Nombres    [18] 	= "Moonbeam"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 77; 	// Nombre: NINGUNO       ID:418
+	NEXT++; coches_Todos_Precios    [18]     = 2000;     coches_Todos_Nombres    [18] 	= "Moonbean"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 77; 	// Nombre: NINGUNO       ID:418
 	NEXT++; coches_Todos_Precios    [19]     = 2000;     coches_Todos_Nombres    [19] 	= "Esperanto"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:419
 	NEXT++; coches_Todos_Precios    [20]     = 2000;     coches_Todos_Nombres    [20] 	= "Taxi"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 97; 	// Nombre: NINGUNO       ID:420
 	NEXT++; coches_Todos_Precios    [21]     = 2500;     coches_Todos_Nombres    [21] 	= "Washington"; 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 102; 	// Nombre: NINGUNO       ID:421
@@ -37246,7 +37743,7 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [53]     = 2000;     coches_Todos_Nombres    [53] 	= "Reefer"; 			coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:453
 	NEXT++; coches_Todos_Precios    [54]     = 2000;     coches_Todos_Nombres    [54] 	= "Tropic"; 			coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:454
 	NEXT++; coches_Todos_Precios    [55]     = 2000;     coches_Todos_Nombres    [55] 	= "Flatbed"; 			coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:455
-	NEXT++; coches_Todos_Precios    [56]     = 2000;     coches_Todos_Nombres    [56] 	= "Yankee"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:456
+	NEXT++; coches_Todos_Precios    [56]     = 2000;     coches_Todos_Nombres    [56] 	= "Yankee"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:456
 	NEXT++; coches_Todos_Precios    [57]     = 2000;     coches_Todos_Nombres    [57] 	= "Caddy"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:457
 	NEXT++; coches_Todos_Precios    [58]     = 3000;     coches_Todos_Nombres    [58] 	= "Solair";				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:458
 	NEXT++; coches_Todos_Precios    [59]     = 2000;     coches_Todos_Nombres    [59] 	= "Berkley's RC Van";	coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0;	 	// Nombre: NINGUNO       ID:459
@@ -38133,11 +38630,11 @@ public IsFixBikeEnter(playerid, vehicleid)
 public LoadCarsFaccion()
 {
 	// GOBIERNO
-	MAX_CAR++; // Heli 1
-	DataCars[MAX_CAR][PosX]   = 1445.1000;
-	DataCars[MAX_CAR][PosY]   = -1803.6017;
-	DataCars[MAX_CAR][PosZ]   = 36.1282;
-	DataCars[MAX_CAR][PosZZ]  = 90.2874;
+	MAX_CAR++; // Heli 1 AddStaticVehicle(487,1427.4490,-1790.0972,36.1057,90.3432,0,0); //
+	DataCars[MAX_CAR][PosX]   = 1427.4490;
+	DataCars[MAX_CAR][PosY]   = -1790.0972;
+	DataCars[MAX_CAR][PosZ]   = 36.1057;
+	DataCars[MAX_CAR][PosZZ]  = 90.3432;
 	DataCars[MAX_CAR][Modelo] = 487;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38145,51 +38642,73 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]   = GOBIERNO;
 
-	MAX_CAR++; // Limousine 1
-	DataCars[MAX_CAR][PosX]   = 1403.7095;
-	DataCars[MAX_CAR][PosY]     = -1775.6791;
-	DataCars[MAX_CAR][PosZ]     = 13.2020;
-	DataCars[MAX_CAR][PosZZ]  = 89.6743;
+	MAX_CAR++; // Limousine 1 AddStaticVehicle(409,2504.1272,2379.1467,70.8638,88.9396,1,1); //
+	DataCars[MAX_CAR][PosX]   = 2504.1272;
+	DataCars[MAX_CAR][PosY]     = 2379.1467;
+	DataCars[MAX_CAR][PosZ]     = 70.8638;
+	DataCars[MAX_CAR][PosZZ]  = 88.9396;
 	DataCars[MAX_CAR][Modelo] = 409;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Interior]  = 4;
+	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
 
-	MAX_CAR++; // Limousine 2
-	DataCars[MAX_CAR][PosX]   = 1403.6346;
-	DataCars[MAX_CAR][PosY]     = -1788.9039;
-	DataCars[MAX_CAR][PosZ]     = 13.2026;
-	DataCars[MAX_CAR][PosZZ]  = 89.6743;
+	MAX_CAR++; // Limousine 2 AddStaticVehicle(409,2504.2263,2360.6853,70.8638,89.0210,1,1); //
+	DataCars[MAX_CAR][PosX]   = 2504.2263;
+	DataCars[MAX_CAR][PosY]     = 2360.6853;
+	DataCars[MAX_CAR][PosZ]     = 70.8638;
+	DataCars[MAX_CAR][PosZZ]  = 89.0210;
 	DataCars[MAX_CAR][Modelo] = 409;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Interior]  = 4;
+	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
 
-	MAX_CAR++; // sultan
-	DataCars[MAX_CAR][PosX]   = 1403.6726;
-	DataCars[MAX_CAR][PosY]     = -1782.1398;
-	DataCars[MAX_CAR][PosZ]     = 13.2269;
-	DataCars[MAX_CAR][PosZZ]  = 89.6743;
+	MAX_CAR++; // sultan AddStaticVehicle(560,2504.0332,2369.8650,70.7688,89.6001,0,0); //
+	DataCars[MAX_CAR][PosX]   = 2504.0332;
+	DataCars[MAX_CAR][PosY]     = 2369.8650;
+	DataCars[MAX_CAR][PosZ]     = 70.7688;
+	DataCars[MAX_CAR][PosZZ]  = 89.6001;
 	DataCars[MAX_CAR][Modelo] = 560;
-	DataCars[MAX_CAR][Color1] = 0;
-	DataCars[MAX_CAR][Color2] = 0;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Interior]  = 4;
+	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
 	
-	MAX_CAR++; // Jet
-	DataCars[MAX_CAR][PosX]   = -1436.9209;//-1436.9209 -527.5603 14.1719
-	DataCars[MAX_CAR][PosY]     = -527.5603;
-	DataCars[MAX_CAR][PosZ]     = 14.1719;
-	DataCars[MAX_CAR][PosZZ]  = 201.6985;
-	DataCars[MAX_CAR][Modelo] = 519;
-	DataCars[MAX_CAR][Color1] = 0;
-	DataCars[MAX_CAR][Color2] = 0;
+	MAX_CAR++; // Jet AddStaticVehicle(490,2504.0972,2365.3086,71.1926,91.1102,4,3); //
+	DataCars[MAX_CAR][PosX]   = 2504.0972;//-1436.9209 -527.5603 14.1719
+	DataCars[MAX_CAR][PosY]     = 2365.3086;
+	DataCars[MAX_CAR][PosZ]     = 71.1926;
+	DataCars[MAX_CAR][PosZZ]  = 91.1102;
+	DataCars[MAX_CAR][Modelo] = 490;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Interior]  = 4;
+	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
+	DataCars[MAX_CAR][Lock]   = false;
+	DataCars[MAX_CAR][Time]     = GOBIERNO;
+
+	MAX_CAR++; //(490,2503.9397,2374.4182,71.1923,89.5225,1,1); //
+	DataCars[MAX_CAR][PosX]   = 2503.9397;//-1436.9209 -527.5603 14.1719
+	DataCars[MAX_CAR][PosY]     = 2374.4182;
+	DataCars[MAX_CAR][PosZ]     = 71.1923;
+	DataCars[MAX_CAR][PosZZ]  = 89.5225;
+	DataCars[MAX_CAR][Modelo] = 490;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Interior]  = 4;
+	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
 
@@ -38412,11 +38931,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = LCN;
 
 /////////////////////////////////////	/// Yakuza
-	MAX_CAR++; // NRG 1
-	DataCars[MAX_CAR][PosX]   = -2272.4731;
-	DataCars[MAX_CAR][PosY]     = 2303.1187;
-	DataCars[MAX_CAR][PosZ]     = 4.4006;
-	DataCars[MAX_CAR][PosZZ]  = 268.6271;
+	MAX_CAR++; // NRG 1 AddStaticVehicle(522,770.3478,-1430.9338,13.0998,97.2458,0,0); //
+	DataCars[MAX_CAR][PosX]   = 770.3478;
+	DataCars[MAX_CAR][PosY]     = -1430.9338;
+	DataCars[MAX_CAR][PosZ]     = 13.0998;
+	DataCars[MAX_CAR][PosZZ]  = 97.2458;
 	DataCars[MAX_CAR][Modelo] = 522;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38424,11 +38943,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // NRG 2
-	DataCars[MAX_CAR][PosX]   = -2272.3984;
-	DataCars[MAX_CAR][PosY]     = 2306.2275;
-	DataCars[MAX_CAR][PosZ]     = 4.4008;
-	DataCars[MAX_CAR][PosZZ]  = 268.6271;
+	MAX_CAR++; // NRG 2 AddStaticVehicle(522,770.4692,-1433.5488,13.1147,94.5529,0,0); //
+	DataCars[MAX_CAR][PosX]   = 770.4692;
+	DataCars[MAX_CAR][PosY]     = -1433.5488;
+	DataCars[MAX_CAR][PosZ]     = 13.1147;
+	DataCars[MAX_CAR][PosZZ]  = 94.5529;
 	DataCars[MAX_CAR][Modelo] = 522;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38436,11 +38955,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // NRG 3
-	DataCars[MAX_CAR][PosX]   = -2272.3269;
-	DataCars[MAX_CAR][PosY]     = 2309.2114;
-	DataCars[MAX_CAR][PosZ]     = 4.4011;
-	DataCars[MAX_CAR][PosZZ]  = 268.6271;
+	MAX_CAR++; // NRG 3 AddStaticVehicle(522,770.6247,-1436.3214,13.1161,93.5045,0,0); //
+	DataCars[MAX_CAR][PosX]   = 770.6247;
+	DataCars[MAX_CAR][PosY]     = -1436.3214;
+	DataCars[MAX_CAR][PosZ]     = 13.1161;
+	DataCars[MAX_CAR][PosZZ]  = 93.5045;
 	DataCars[MAX_CAR][Modelo] = 522;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38448,11 +38967,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // NRG 4
-	DataCars[MAX_CAR][PosX]   = -2272.2563;
-	DataCars[MAX_CAR][PosY]     = 2312.1572;
-	DataCars[MAX_CAR][PosZ]     = 4.4013;
-	DataCars[MAX_CAR][PosZZ]  = 268.6271;
+	MAX_CAR++; // NRG 4 AddStaticVehicle(522,770.2789,-1438.8223,13.1124,89.2047,0,0); //
+	DataCars[MAX_CAR][PosX]   = 770.2789;
+	DataCars[MAX_CAR][PosY]     = -1438.8223;
+	DataCars[MAX_CAR][PosZ]     = 13.1124;
+	DataCars[MAX_CAR][PosZZ]  = 89.2047;
 	DataCars[MAX_CAR][Modelo] = 522;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38460,11 +38979,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // Sultan 1
-	DataCars[MAX_CAR][PosX]   = -2251.5767;
-	DataCars[MAX_CAR][PosY]     = 2317.9282;
-	DataCars[MAX_CAR][PosZ]     = 4.5278;
-	DataCars[MAX_CAR][PosZZ]  = 89.7769;
+	MAX_CAR++; // Sultan 1 AddStaticVehicle(560,738.1728,-1433.4043,13.2380,88.4945,0,0); //
+	DataCars[MAX_CAR][PosX]   = 738.1728;
+	DataCars[MAX_CAR][PosY]     = -1433.4043;
+	DataCars[MAX_CAR][PosZ]     = 13.2380;
+	DataCars[MAX_CAR][PosZZ]  = 88.4945;
 	DataCars[MAX_CAR][Modelo] = 560;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38472,11 +38991,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // Sultan 2
-	DataCars[MAX_CAR][PosX]   = -2251.5996;
-	DataCars[MAX_CAR][PosY]     = 2312.1257;
-	DataCars[MAX_CAR][PosZ]     = 4.5278;
-	DataCars[MAX_CAR][PosZZ]  = 89.7769;
+	MAX_CAR++; // Sultan 2 AddStaticVehicle(560,731.7472,-1433.2858,13.2363,90.3545,0,0); //
+	DataCars[MAX_CAR][PosX]   = 731.7472;
+	DataCars[MAX_CAR][PosY]     = -1433.2858;
+	DataCars[MAX_CAR][PosZ]     = 13.2363;
+	DataCars[MAX_CAR][PosZZ]  = 90.3545;
 	DataCars[MAX_CAR][Modelo] = 560;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38484,11 +39003,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // Sultan 3
-	DataCars[MAX_CAR][PosX]   = -2251.6233;
-	DataCars[MAX_CAR][PosY]     = 2305.9558;
-	DataCars[MAX_CAR][PosZ]     = 4.5277;
-	DataCars[MAX_CAR][PosZZ]  = 89.7769;
+	MAX_CAR++; // Sultan 3 AddStaticVehicle(560,725.8917,-1433.3243,13.2130,91.3092,0,0); //
+	DataCars[MAX_CAR][PosX]   = 725.8917;
+	DataCars[MAX_CAR][PosY]     = -1433.3243;
+	DataCars[MAX_CAR][PosZ]     = 13.2130;
+	DataCars[MAX_CAR][PosZZ]  = 91.3092;
 	DataCars[MAX_CAR][Modelo] = 560;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38496,11 +39015,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // Sultan 4
-	DataCars[MAX_CAR][PosX]   = -2251.6470;
-	DataCars[MAX_CAR][PosY]     = 2299.9570;
-	DataCars[MAX_CAR][PosZ]     = 4.5276;
-	DataCars[MAX_CAR][PosZZ]  = 89.7769;
+	MAX_CAR++; // Sultan 4 AddStaticVehicle(560,719.6908,-1433.1621,13.2379,88.3762,0,0); //
+	DataCars[MAX_CAR][PosX]   = 719.6908;
+	DataCars[MAX_CAR][PosY]     = -1433.1621;
+	DataCars[MAX_CAR][PosZ]     = 13.2379;
+	DataCars[MAX_CAR][PosZZ]  = 88.3762;
 	DataCars[MAX_CAR][Modelo] = 560;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38508,11 +39027,11 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Time]     = YKZ;
 
-	MAX_CAR++; // Heli
-	DataCars[MAX_CAR][PosX]   = -2227.2917;
-	DataCars[MAX_CAR][PosY]     = 2326.7493;
-	DataCars[MAX_CAR][PosZ]     = 7.2656;
-	DataCars[MAX_CAR][PosZZ]  = 88.9387;
+	MAX_CAR++; // Heli AddStaticVehicle(487,724.5944,-1462.3013,22.3487,271.5231,0,0); //
+	DataCars[MAX_CAR][PosX]   = 724.5944;
+	DataCars[MAX_CAR][PosY]     = -1462.3013;
+	DataCars[MAX_CAR][PosZ]     = 22.3487;
+	DataCars[MAX_CAR][PosZZ]  = 271.5231;
 	DataCars[MAX_CAR][Modelo] = 487;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -38545,135 +39064,135 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = YKZ;
 
 /////////////////////////////////////	//// Taxistas
-	MAX_CAR++; // Taxi 1
+	MAX_CAR++; // Moonbean 1
 	DataCars[MAX_CAR][PosX]   = 1778.1522;
 	DataCars[MAX_CAR][PosY]     = -1909.0978;
 	DataCars[MAX_CAR][PosZ]     = 13.0649;
 	DataCars[MAX_CAR][PosZZ]  = 269.3847;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 2
+	MAX_CAR++; // Moonbean 2
 	DataCars[MAX_CAR][PosX]   = 1778.1006;
 	DataCars[MAX_CAR][PosY]     = -1913.8856;
 	DataCars[MAX_CAR][PosZ]     = 13.0677;
 	DataCars[MAX_CAR][PosZZ]  = 269.3847;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 3
+	MAX_CAR++; // Moonbean 3 1778.0482 -1918.7432 13.0704 269.3847
 	DataCars[MAX_CAR][PosX]   = 1778.0482;
 	DataCars[MAX_CAR][PosY]     = -1918.7432;
 	DataCars[MAX_CAR][PosZ]     = 13.0704;
 	DataCars[MAX_CAR][PosZZ]  = 269.3847;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 4
+	MAX_CAR++; // Moonbean 4
 	DataCars[MAX_CAR][PosX]   = 1777.9969;
 	DataCars[MAX_CAR][PosY]     = -1923.5170;
 	DataCars[MAX_CAR][PosZ]     = 13.0731;
 	DataCars[MAX_CAR][PosZZ]  = 269.3847;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 5
+	MAX_CAR++; // Moonbean 5
 	DataCars[MAX_CAR][PosX]   = 1777.9457;
 	DataCars[MAX_CAR][PosY]     = -1928.2849;
 	DataCars[MAX_CAR][PosZ]     = 13.0759;
 	DataCars[MAX_CAR][PosZZ]  = 269.3847;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 6
+	MAX_CAR++; // Moonbean 6
 	DataCars[MAX_CAR][PosX]   = -1655.4204;// -1655.4204,1315.0580,6.7832,133.6190
 	DataCars[MAX_CAR][PosY]     = 1315.0580;
 	DataCars[MAX_CAR][PosZ]     = 6.7832;
 	DataCars[MAX_CAR][PosZZ]  = 133.6190;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 7
+	MAX_CAR++; // Moonbean 7
 	DataCars[MAX_CAR][PosX]   = -1651.8396;// -1652.4518,1311.0212,6.7772,135.7074
 	DataCars[MAX_CAR][PosY]     = 1311.0212;//-1651.8396,1311.6525,6.7771,135.8797
 	DataCars[MAX_CAR][PosZ]     = 6.7771;
 	DataCars[MAX_CAR][PosZZ]  = 135.8797;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 8
+	MAX_CAR++; // Moonbean 8
 	DataCars[MAX_CAR][PosX]   = -1648.3314;//-1648.3314,1308.0150,6.7743,134.0359
 	DataCars[MAX_CAR][PosY]     = 1308.0150;
 	DataCars[MAX_CAR][PosZ]     = 6.7743;
 	DataCars[MAX_CAR][PosZZ]  = 134.0359;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 9
+	MAX_CAR++; // Moonbean 9
 	DataCars[MAX_CAR][PosX]   = -1644.7778;//-1644.7778,1304.3210,6.7715,134.4735
 	DataCars[MAX_CAR][PosY]     = 1304.3210;
 	DataCars[MAX_CAR][PosZ]     = 6.7715;
 	DataCars[MAX_CAR][PosZZ]  = 134.4735;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
-	MAX_CAR++; // Taxi 10
+	MAX_CAR++; // Moonbean 10
 	DataCars[MAX_CAR][PosX]   = -1641.2611;//-1641.2611,1300.7969,6.7725,132.5749
 	DataCars[MAX_CAR][PosY]     = 1300.7969;
 	DataCars[MAX_CAR][PosZ]     = 6.7725;
 	DataCars[MAX_CAR][PosZZ]  = 132.5749;
-	DataCars[MAX_CAR][Modelo] = 420;
+	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 6;
 	DataCars[MAX_CAR][Color2] = 6;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	SetVehicleTaxi(MAX_CAR);
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
+	SetVehicleMoonbean(MAX_CAR);
 
 	MAX_CAR++; // Bus 1
 	DataCars[MAX_CAR][PosX]   = 1762.8081;// 1762.8081 -1888.1882 13.6937
@@ -38685,7 +39204,7 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Color2] = 0;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
 
 	MAX_CAR++; // Bus 2
 	DataCars[MAX_CAR][PosX]   = -1631.8285;//-1631.8285,1288.9961,7.1141,135.0582
@@ -38697,116 +39216,7 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Color2] = 0;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 1
-	DataCars[MAX_CAR][PosX]   = 1752.1603;
-	DataCars[MAX_CAR][PosY]     = -1953.9154;
-	DataCars[MAX_CAR][PosZ]     = 13.5469;
-	DataCars[MAX_CAR][PosZZ]  = 89.8376;
-	DataCars[MAX_CAR][Modelo] = 538;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 1 INVALID TRAILER
-	DataCars[MAX_CAR][PosX]   = 1733.6321;
-	DataCars[MAX_CAR][PosY]     = -1953.7561;
-	DataCars[MAX_CAR][PosZ]     = 14.9954;
-	DataCars[MAX_CAR][PosZZ]  = 269.9219;
-	DataCars[MAX_CAR][Modelo] = 570;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 1 INVALID TRAILER
-	DataCars[MAX_CAR][PosX]   = 1712.7133;
-	DataCars[MAX_CAR][PosY]     = -1953.6953;
-	DataCars[MAX_CAR][PosZ]     = 14.9954;
-	DataCars[MAX_CAR][PosZZ]  = 269.7455;
-	DataCars[MAX_CAR][Modelo] = 570;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 1 INVALID TRAILER
-	DataCars[MAX_CAR][PosX]   = 1691.7847;
-	DataCars[MAX_CAR][PosY]     = -1953.6418;
-	DataCars[MAX_CAR][PosZ]     = 14.9954;
-	DataCars[MAX_CAR][PosZZ]  = 269.9615;
-	DataCars[MAX_CAR][Modelo] = 570;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 2
-	DataCars[MAX_CAR][PosX]   = -1943.3994;
-	DataCars[MAX_CAR][PosY]     = 156.0088;
-	DataCars[MAX_CAR][PosZ]     = 27.0006;
-	DataCars[MAX_CAR][PosZZ]  = 357.5287;
-	DataCars[MAX_CAR][Modelo] = 538;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 2 INVALID TRAILER
-	DataCars[MAX_CAR][PosX]   = -1943.3994;
-	DataCars[MAX_CAR][PosY]     = 156.0088;
-	DataCars[MAX_CAR][PosZ]     = 27.0006;
-	DataCars[MAX_CAR][PosZZ]  = 357.5287;
-	DataCars[MAX_CAR][Modelo] = 570;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 2 INVALID TRAILER
-	DataCars[MAX_CAR][PosX]   = -1943.3994;
-	DataCars[MAX_CAR][PosY]     = 156.0088;
-	DataCars[MAX_CAR][PosZ]     = 27.0006;
-	DataCars[MAX_CAR][PosZZ]  = 357.5287;
-	DataCars[MAX_CAR][Modelo] = 570;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tren 2 INVALID TRAILER
-	DataCars[MAX_CAR][PosX]   = -1943.3994;
-	DataCars[MAX_CAR][PosY]     = 156.0088;
-	DataCars[MAX_CAR][PosZ]     = 27.0006;
-	DataCars[MAX_CAR][PosZZ]  = 357.5287;
-	DataCars[MAX_CAR][Modelo] = 570;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-
-	MAX_CAR++; // Tran Vía San Fierro
-	DataCars[MAX_CAR][PosX]   = -2006.4021;// -2006.4021 142.8303 27.5391
-	DataCars[MAX_CAR][PosY]     = 142.8303;
-	DataCars[MAX_CAR][PosZ]     = 27.5391;
-	DataCars[MAX_CAR][PosZZ]  = 179.2768;
-	DataCars[MAX_CAR][Modelo] = 449;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 0;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = TAXI;
-	TramSFID = MAX_CAR;
+	DataCars[MAX_CAR][Time]     = MOONBEAN;
 
 /////////////////////////////////////	////// NFS
 	MAX_CAR++; // Grua Grotti 1
@@ -39526,10 +39936,10 @@ public LoadCarsFaccion()
 
 /////////////////////////////////////	/// CONTRABANDSITAS
 	MAX_CAR++; // Furgo 1
-	DataCars[MAX_CAR][PosX]   = 740.6208;
-	DataCars[MAX_CAR][PosY]     = -1433.4133;
-	DataCars[MAX_CAR][PosZ]     = 13.3777;
-	DataCars[MAX_CAR][PosZZ]  = 91.4680;
+	DataCars[MAX_CAR][PosX]   = 0;
+	DataCars[MAX_CAR][PosY]     = 0;
+	DataCars[MAX_CAR][PosZ]     = 0;
+	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -39538,10 +39948,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = CONTRABANDISTAS;
 
 	MAX_CAR++; // Furgo 2
-	DataCars[MAX_CAR][PosX]   = 731.9662;
-	DataCars[MAX_CAR][PosY]     = -1433.4888;
-	DataCars[MAX_CAR][PosZ]     = 13.3790;
-	DataCars[MAX_CAR][PosZZ]  = 91.4680;
+	DataCars[MAX_CAR][PosX]   = 0;
+	DataCars[MAX_CAR][PosY]     = 0;
+	DataCars[MAX_CAR][PosZ]     = 0;
+	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -39550,10 +39960,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = CONTRABANDISTAS;
 
 	MAX_CAR++; // Furgo 3
-	DataCars[MAX_CAR][PosX]   = 725.0215;
-	DataCars[MAX_CAR][PosY]     = -1433.5420;
-	DataCars[MAX_CAR][PosZ]     = 13.3869;
-	DataCars[MAX_CAR][PosZZ]  = 91.4680;
+	DataCars[MAX_CAR][PosX]   = 0;
+	DataCars[MAX_CAR][PosY]     = 0;
+	DataCars[MAX_CAR][PosZ]     = 0;
+	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 418;
 	DataCars[MAX_CAR][Color1] = 0;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -39571,7 +39981,7 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CONTRABANDISTAS;
+	DataCars[MAX_CAR][Time]     = YKZ;
 
 	MAX_CAR++; // Barco 2
 	DataCars[MAX_CAR][PosX]   = 730.7525;
@@ -39583,7 +39993,7 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CONTRABANDISTAS;
+	DataCars[MAX_CAR][Time]     = YKZ;
 
 	MAX_CAR++; // Barco 3
 	DataCars[MAX_CAR][PosX]   = 717.8978;
@@ -39595,7 +40005,7 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Color2] = 1;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CONTRABANDISTAS;
+	DataCars[MAX_CAR][Time]     = YKZ;
 
 	MAX_CAR++;// Moto 5
 	DataCars[MAX_CAR][PosX]   = 1541.1495;
@@ -40083,43 +40493,16 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Interior]  = 5;
 	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
 	DataCars[MAX_CAR][Time]     = HEORS;
-   
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = -38.914875030518;
-	DataCars[MAX_CAR][PosY]     = 2496.9296875;
-	DataCars[MAX_CAR][PosZ]     = 16.38437461853;
-	DataCars[MAX_CAR][PosZZ]  = 0;
-	DataCars[MAX_CAR][Modelo] = 474;
-	DataCars[MAX_CAR][Color1] = 53;
-	DataCars[MAX_CAR][Color2] = 1;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Interior]  = 5;
-	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
-	DataCars[MAX_CAR][Time]     = VELTRAN;
 
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = -33.706218719482;
-	DataCars[MAX_CAR][PosY]     = 2496.9296875;
-	DataCars[MAX_CAR][PosZ]     = 16.38437461853;
-	DataCars[MAX_CAR][PosZZ]  = 0;
-	DataCars[MAX_CAR][Modelo] = 474;
-	DataCars[MAX_CAR][Color1] = 53;
-	DataCars[MAX_CAR][Color2] = 1;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Interior]  = 5;
-	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
-	DataCars[MAX_CAR][Time]     = VELTRAN;
-
+// Veltran Coches (Tupamaros)
 	MAX_CAR++;
 	DataCars[MAX_CAR][PosX]   = -28.7470703125;
 	DataCars[MAX_CAR][PosY]     = 2496.9296875;
 	DataCars[MAX_CAR][PosZ]     = 16.343023300171;
 	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 467;
-	DataCars[MAX_CAR][Color1] = 53;
-	DataCars[MAX_CAR][Color2] = 1;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Interior]  = 5;
@@ -40132,14 +40515,13 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][PosZ]     = 16.343023300171;
 	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 467;
-	DataCars[MAX_CAR][Color1] = 53;
-	DataCars[MAX_CAR][Color2] = 1;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Interior]  = 5;
 	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
 	DataCars[MAX_CAR][Time]     = VELTRAN;
-
 
 	MAX_CAR++;
 	DataCars[MAX_CAR][PosX]   = -48.85844039917;
@@ -40147,8 +40529,8 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][PosZ]     = 16.343023300171;
 	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 414;
-	DataCars[MAX_CAR][Color1] = 53;
-	DataCars[MAX_CAR][Color2] = 1;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Interior]  = 5;
@@ -40161,12 +40543,64 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][PosZ]     = 16.343023300171;
 	DataCars[MAX_CAR][PosZZ]  = 0;
 	DataCars[MAX_CAR][Modelo] = 414;
-	DataCars[MAX_CAR][Color1] = 53;
-	DataCars[MAX_CAR][Color2] = 1;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = false;
 	DataCars[MAX_CAR][Interior]  = 5;
 	DataCars[MAX_CAR][World]   = WORLD_DEFAULT_INTERIOR;
+	DataCars[MAX_CAR][Time]     = VELTRAN;
+
+/// Moto 1 Veltran
+	MAX_CAR++; // Sentinel 4 LICENCIEROS LS
+	DataCars[MAX_CAR][PosX]   = 1321.1809; // 1321.1809,-1668.8866,13.0870,91.3959
+	DataCars[MAX_CAR][PosY]     = -1668.8866;
+	DataCars[MAX_CAR][PosZ]     = 13.0870;
+	DataCars[MAX_CAR][PosZZ]  = 91.3959;
+	DataCars[MAX_CAR][Modelo] = 463;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
+	DataCars[MAX_CAR][Time]     = VELTRAN;
+
+/// Moto 2 Veltran
+	MAX_CAR++; // Sentinel 4 LICENCIEROS LS
+	DataCars[MAX_CAR][PosX]   = 1321.2090; // 1321.2090,-1667.3452,13.0869,90.2407
+	DataCars[MAX_CAR][PosY]     = -1667.3452;
+	DataCars[MAX_CAR][PosZ]     = 13.0869;
+	DataCars[MAX_CAR][PosZZ]  = 90.2407;
+	DataCars[MAX_CAR][Modelo] = 463;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
+	DataCars[MAX_CAR][Time]     = VELTRAN;
+
+/// Moto 3 Veltran
+	MAX_CAR++; // Sentinel 4 LICENCIEROS LS
+	DataCars[MAX_CAR][PosX]   = 1321.1219; // 1321.1219,-1665.8993,13.0864,89.3254
+	DataCars[MAX_CAR][PosY]     = -1665.8993;
+	DataCars[MAX_CAR][PosZ]     = 13.0864;
+	DataCars[MAX_CAR][PosZZ]  = 89.3254;
+	DataCars[MAX_CAR][Modelo] = 463;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
+	DataCars[MAX_CAR][Time]     = VELTRAN;
+
+/// Moto 4 Veltran
+	MAX_CAR++; // Sentinel 4 LICENCIEROS LS
+	DataCars[MAX_CAR][PosX]   = 1321.1337; // 1321.1337,-1664.4681,13.0871,91.4395
+	DataCars[MAX_CAR][PosY]     = -1664.4681;
+	DataCars[MAX_CAR][PosZ]     = 13.0871;
+	DataCars[MAX_CAR][PosZZ]  = 91.4395;
+	DataCars[MAX_CAR][Modelo] = 463;
+	DataCars[MAX_CAR][Color1] = 0;
+	DataCars[MAX_CAR][Color2] = 0;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = true;
 	DataCars[MAX_CAR][Time]     = VELTRAN;
 
 //////////////////// LSMD
@@ -40446,13 +40880,14 @@ public LoadCarsFaccion()
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = true;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
+
 	// Coches Wang
-	// Sweeper - VEHÍCULO 1
+	// Slamvan - VEHÍCULO 1
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 1774.0302;//AddStaticVehicle(477,1774.0302,-1813.9128,13.3114,165.4144,1,0); //
-	DataCars[MAX_CAR][PosY]     = -1813.9128;
-	DataCars[MAX_CAR][PosZ]     = 13.3114;
-	DataCars[MAX_CAR][PosZZ]  = 165.4144;
+	DataCars[MAX_CAR][PosX]   = 1774.0057; //1774.0057,-1814.0367,13.3196,163.2845
+	DataCars[MAX_CAR][PosY]     = -1814.0367;
+	DataCars[MAX_CAR][PosZ]     = 13.3196;
+	DataCars[MAX_CAR][PosZZ]  = 163.2845;
 	DataCars[MAX_CAR][Modelo] = 535;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 1;
@@ -40460,12 +40895,12 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = true;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
 
-	// Sweeper - VEHÍCULO 2
+	// Sultan - VEHÍCULO 2
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 1777.4415; // 400,1777.4415,-1815.4346,13.6508,165.4272,3,33); //
-	DataCars[MAX_CAR][PosY]     = -1815.4346;
-	DataCars[MAX_CAR][PosZ]     = 13.6508;
-	DataCars[MAX_CAR][PosZZ]  = 165.4272;
+	DataCars[MAX_CAR][PosX]   = 1777.5714; // 1777.5714,-1814.8712,13.2627,164.3125
+	DataCars[MAX_CAR][PosY]     = -1814.8712;
+	DataCars[MAX_CAR][PosZ]     = 13.2627;
+	DataCars[MAX_CAR][PosZZ]  = 164.3125;
 	DataCars[MAX_CAR][Modelo] = 560;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -40473,15 +40908,15 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Lock]   = true;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
 
-	// Sweeper - VEHÍCULO 3
+	// Blade - VEHÍCULO 3
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 1780.8480;//AddStaticVehicle(480,1780.8480,-1816.0719,13.3364,165.9015,0,1); //
-	DataCars[MAX_CAR][PosY]     = -1816.0719;
-	DataCars[MAX_CAR][PosZ]     = 13.3364;
-	DataCars[MAX_CAR][PosZZ]  = 165.9015;
+	DataCars[MAX_CAR][PosX]   = 1780.8721;//1780.8721,-1815.9364,13.2990,165.8428
+	DataCars[MAX_CAR][PosY]     = -1815.9364;
+	DataCars[MAX_CAR][PosZ]     = 13.2990;
+	DataCars[MAX_CAR][PosZZ]  = 165.8428;
 	DataCars[MAX_CAR][Modelo] = 536;
-	DataCars[MAX_CAR][Color1] = 1;
-	DataCars[MAX_CAR][Color2] = 1;
+	DataCars[MAX_CAR][Color1] = 31;
+	DataCars[MAX_CAR][Color2] = 3;
 	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
 	DataCars[MAX_CAR][Lock]   = true;
 	DataCars[MAX_CAR][Time]     = GOBIERNO;
@@ -40875,79 +41310,6 @@ public LoadCarsPublic()
 	DataCars[MAX_CAR][Time]     = CIVIL;
 
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2515.1484;   // Bici 1 Grove Grove Street
-	DataCars[MAX_CAR][PosY]     = -1688.7200;
-	DataCars[MAX_CAR][PosZ]     = 13.0823;
-	DataCars[MAX_CAR][PosZZ]  = 314.9660;
-	DataCars[MAX_CAR][Modelo] = 509;
-	DataCars[MAX_CAR][Color1] = 16;
-	DataCars[MAX_CAR][Color2] = 16;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2523.6978; // Bici 2 Grove Grove Street
-	DataCars[MAX_CAR][PosY]     = -1656.1139;
-	DataCars[MAX_CAR][PosZ]     = 15.0055;
-	DataCars[MAX_CAR][PosZZ]  = 89.4307;
-	DataCars[MAX_CAR][Modelo] = 509;
-	DataCars[MAX_CAR][Color1] = 16;
-	DataCars[MAX_CAR][Color2] = 16;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2494.9565; // Bici 3 Grove Grove Street
-	DataCars[MAX_CAR][PosY]     = -1643.5841;
-	DataCars[MAX_CAR][PosZ]     = 13.2946;
-	DataCars[MAX_CAR][PosZZ]  = 180.8433;
-	DataCars[MAX_CAR][Modelo] = 509;
-	DataCars[MAX_CAR][Color1] = 16;
-	DataCars[MAX_CAR][Color2] = 16;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2490.2866; // Bici 4 Grove Street
-	DataCars[MAX_CAR][PosY]     = -1646.2858;
-	DataCars[MAX_CAR][PosZ]     = 13.5869;
-	DataCars[MAX_CAR][PosZZ]  = 180.9132;
-	DataCars[MAX_CAR][Modelo] = 509;
-	DataCars[MAX_CAR][Color1] = 16;
-	DataCars[MAX_CAR][Color2] = 16;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2509.6821; // bICI 5 Grove Street
-	DataCars[MAX_CAR][PosY]     = -1652.8556;
-	DataCars[MAX_CAR][PosZ]     = 13.2290;
-	DataCars[MAX_CAR][PosZZ]  = 135.3195;
-	DataCars[MAX_CAR][Modelo] = 509;
-	DataCars[MAX_CAR][Color1] = 16;
-	DataCars[MAX_CAR][Color2] = 16;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2522.7305; // Bici 6 Grove Street
-	DataCars[MAX_CAR][PosY]     = -1683.2257;
-	DataCars[MAX_CAR][PosZ]     = 15.0080;
-	DataCars[MAX_CAR][PosZZ]  = 90.1670;
-	DataCars[MAX_CAR][Modelo] = 509;
-	DataCars[MAX_CAR][Color1] = 16;
-	DataCars[MAX_CAR][Color2] = 16;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-	MAX_CAR_PUBLIC = MAX_CAR;
-	
-	MAX_CAR++;
 	DataCars[MAX_CAR][PosX]   = 2329.6074; // Bici 1 Ballas
 	DataCars[MAX_CAR][PosY]     = -1227.1111;
 	DataCars[MAX_CAR][PosZ]     = 27.4887;
@@ -41069,12 +41431,82 @@ public LoadCarsPublic()
 	DataCars[MAX_CAR][Time]     = CIVIL;
 	MAX_CAR_PUBLIC = MAX_CAR;
 
+	// Camion Transportista 1
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = -65.0660; // -65.0660,-1143.6803,1.2525
+	DataCars[MAX_CAR][PosY]     = -1143.6803;
+	DataCars[MAX_CAR][PosZ]     = 1.2525;
+	DataCars[MAX_CAR][PosZZ]  = 335.4572;
+	DataCars[MAX_CAR][Modelo] = 456;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = false;
+	DataCars[MAX_CAR][Time]     = CIVIL;
+	MAX_CAR_PUBLIC = MAX_CAR;
+
+	// Camion Transportista 2
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = -60.1284;//-60.1284,-1146.0631,1.2510,334.4525
+	DataCars[MAX_CAR][PosY]     = -1146.0631;
+	DataCars[MAX_CAR][PosZ]     = 1.2510;
+	DataCars[MAX_CAR][PosZZ]  = 334.4525;
+	DataCars[MAX_CAR][Modelo] = 456;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = false;
+	DataCars[MAX_CAR][Time]     = CIVIL;
+	MAX_CAR_PUBLIC = MAX_CAR;
+
+	// Camion Transportista 3
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = -54.8880;//-54.8880,-1148.4198,1.2522,335.0377
+	DataCars[MAX_CAR][PosY]     = -1148.4198;
+	DataCars[MAX_CAR][PosZ]     = 1.2522;
+	DataCars[MAX_CAR][PosZZ]  = 335.0377;
+	DataCars[MAX_CAR][Modelo] = 456;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = false;
+	DataCars[MAX_CAR][Time]     = CIVIL;
+	MAX_CAR_PUBLIC = MAX_CAR;
+
+	// Camion Transportista 4
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = -49.3219;//-49.3219,-1150.8970,1.2503,336.3879
+	DataCars[MAX_CAR][PosY]     = -1150.8970;
+	DataCars[MAX_CAR][PosZ]     = 1.2503;
+	DataCars[MAX_CAR][PosZZ]  = 336.3879;
+	DataCars[MAX_CAR][Modelo] = 456;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = false;
+	DataCars[MAX_CAR][Time]     = CIVIL;
+	MAX_CAR_PUBLIC = MAX_CAR;
+
+	// Camion Transportista 5
+	MAX_CAR++;
+	DataCars[MAX_CAR][PosX]   = -43.4694;//-43.4694,-1153.6935,1.2507,334.3333
+	DataCars[MAX_CAR][PosY]     = -1153.6935;
+	DataCars[MAX_CAR][PosZ]     = 1.2507;
+	DataCars[MAX_CAR][PosZZ]  = 334.3333;
+	DataCars[MAX_CAR][Modelo] = 456;
+	DataCars[MAX_CAR][Color1] = 1;
+	DataCars[MAX_CAR][Color2] = 1;
+	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
+	DataCars[MAX_CAR][Lock]   = false;
+	DataCars[MAX_CAR][Time]     = CIVIL;
+	MAX_CAR_PUBLIC = MAX_CAR;
+	
 	// Moto Pizza 1
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2098.3279; // 2098.3279,-1813.5769,12.9819,89.9615,112,1); //
-	DataCars[MAX_CAR][PosY]     = -1813.5769;
-	DataCars[MAX_CAR][PosZ]     = 12.9819;
-	DataCars[MAX_CAR][PosZZ]  = 89.9615;
+	DataCars[MAX_CAR][PosX]   = 1423.3191; // º1423.3191,-1628.4734,13.1383,272.2245
+	DataCars[MAX_CAR][PosY]     = -1628.4734;
+	DataCars[MAX_CAR][PosZ]     = 13.1383;
+	DataCars[MAX_CAR][PosZZ]  = 272.2245;
 	DataCars[MAX_CAR][Modelo] = 448;
 	DataCars[MAX_CAR][Color1] = 3;
 	DataCars[MAX_CAR][Color2] = 3;
@@ -41085,10 +41517,10 @@ public LoadCarsPublic()
 
 	// Moto Pizza 2
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2098.2217;//2098.2217,-1815.2026,12.9759,90.8045
-	DataCars[MAX_CAR][PosY]     = -1815.2026;
-	DataCars[MAX_CAR][PosZ]     = 12.9759;
-	DataCars[MAX_CAR][PosZZ]  = 90.8045;
+	DataCars[MAX_CAR][PosX]   = 1423.3024;//1423.3024,-1630.2319,13.1338,270.7653,3,3); //
+	DataCars[MAX_CAR][PosY]     = -1630.2319;
+	DataCars[MAX_CAR][PosZ]     = 13.1338;
+	DataCars[MAX_CAR][PosZZ]  = 270.7653;
 	DataCars[MAX_CAR][Modelo] = 448;
 	DataCars[MAX_CAR][Color1] = 3;
 	DataCars[MAX_CAR][Color2] = 3;
@@ -41099,10 +41531,10 @@ public LoadCarsPublic()
 
 	// Moto Pizza 3
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2098.3118;//2098.3118,-1816.7494,13.0008,91.8979
-	DataCars[MAX_CAR][PosY]     = -1816.7494;
-	DataCars[MAX_CAR][PosZ]     = 13.0008;
-	DataCars[MAX_CAR][PosZZ]  = 91.8979;
+	DataCars[MAX_CAR][PosX]   = 1423.3170;//1423.3170,-1632.0156,13.1497,268.9122,3,3); //
+	DataCars[MAX_CAR][PosY]     = -1632.0156;
+	DataCars[MAX_CAR][PosZ]     = 13.1497;
+	DataCars[MAX_CAR][PosZZ]  = 268.9122;
 	DataCars[MAX_CAR][Modelo] = 448;
 	DataCars[MAX_CAR][Color1] = 3;
 	DataCars[MAX_CAR][Color2] = 3;
@@ -41113,24 +41545,10 @@ public LoadCarsPublic()
 
 	// Moto Pizza 4
 	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2098.2798;//2098.2798,-1818.1700,12.9766,91.0724
-	DataCars[MAX_CAR][PosY]     = -1818.1700;
-	DataCars[MAX_CAR][PosZ]     = 12.9766;
-	DataCars[MAX_CAR][PosZZ]  = 91.0724;
-	DataCars[MAX_CAR][Modelo] = 448;
-	DataCars[MAX_CAR][Color1] = 3;
-	DataCars[MAX_CAR][Color2] = 3;
-	format(DataCars[MAX_CAR][Dueno], MAX_PLAYER_NAME, "0");
-	DataCars[MAX_CAR][Lock]   = false;
-	DataCars[MAX_CAR][Time]     = CIVIL;
-	MAX_CAR_PUBLIC = MAX_CAR;
-
-	// Moto Pizza 5
-	MAX_CAR++;
-	DataCars[MAX_CAR][PosX]   = 2098.2827;//2098.2827,-1819.5730,12.9727,87.9174
-	DataCars[MAX_CAR][PosY]     = -1819.5730;
-	DataCars[MAX_CAR][PosZ]     = 12.9727;
-	DataCars[MAX_CAR][PosZZ]  = 87.9174;
+	DataCars[MAX_CAR][PosX]   = 1423.2343;//1423.2343,-1633.6471,13.1118,268.4027º
+	DataCars[MAX_CAR][PosY]     = -1633.6471;
+	DataCars[MAX_CAR][PosZ]     = 13.1118;
+	DataCars[MAX_CAR][PosZZ]  = 268.4027;
 	DataCars[MAX_CAR][Modelo] = 448;
 	DataCars[MAX_CAR][Color1] = 3;
 	DataCars[MAX_CAR][Color2] = 3;
@@ -41187,23 +41605,108 @@ public LoadStaticObjects()
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////// Algunos Mapeos//////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Casas salvatore
+	CreateObject(1299,2174.8999023,-1789.1999512,13.0000000,0.0000000,0.0000000,0.0000000); //object(smashboxpile) (1)
+	CreateObject(1227,2166.8000488,-1786.8000488,13.3999996,0.0000000,0.0000000,0.0000000); //object(dump1) (1)
+	CreateObject(1227,2162.6999512,-1786.8000488,13.3999996,0.0000000,0.0000000,0.0000000); //object(dump1) (2)
+	CreateObject(1227,2170.6999512,-1786.8000488,13.3999996,0.0000000,0.0000000,0.0000000); //object(dump1) (3)
+	CreateObject(1227,2159.1999512,-1786.9000244,13.3999996,0.0000000,0.0000000,0.0000000); //object(dump1) (4)
+	CreateObject(1357,2164.8000488,-1789.5000000,12.8000002,0.0000000,0.0000000,0.0000000); //object(cj_fruitcrate3) (1)
+	CreateObject(1440,2181.1999512,-1814.1999512,13.1000004,0.0000000,0.0000000,0.0000000); //object(dyn_box_pile_3) (1)
+	CreateObject(1342,2156.3999023,-1793.3000488,13.3999996,0.0000000,0.0000000,0.0000000); //object(noodlecart_prop) (1)
+	CreateObject(1342,2156.3999023,-1801.3000488,13.3999996,0.0000000,0.0000000,0.0000000); //object(noodlecart_prop) (2)
+	CreateObject(10183,2175.6000977,-1806.8000488,12.3999996,0.0000000,0.0000000,226.0000000); //object(ferspaces) (1)
+	CreateObject(2943,2177.3000488,-1786.5000000,13.1999998,0.0000000,0.0000000,0.0000000); //object(kmb_atm2) (1)
+	CreateObject(630,2151.1000977,-1805.4000244,13.6000004,0.0000000,0.0000000,0.0000000); //object(veg_palmkb8) (1)
+	CreateObject(630,2151.1000977,-1808.9000244,13.6000004,0.0000000,0.0000000,0.0000000); //object(veg_palmkb8) (2)
+	CreateObject(630,2151.0000000,-1801.9000244,13.6000004,0.0000000,0.0000000,0.0000000); //object(veg_palmkb8) (3)
+	CreateObject(630,2151.0000000,-1792.9000244,13.5000000,0.0000000,0.0000000,0.0000000); //object(veg_palmkb8) (4)
+	CreateObject(3802,2150.6999512,-1789.3000488,16.2000008,0.0000000,0.0000000,0.0000000); //object(sfx_plant03) (1)
+	CreateObject(3802,2150.6999512,-1792.9000244,16.2000008,0.0000000,0.0000000,0.0000000); //object(sfx_plant03) (2)
+	CreateObject(3802,2146.1999512,-1805.5999756,16.5000000,0.0000000,0.0000000,0.0000000); //object(sfx_plant03) (3)
+	CreateObject(3802,2146.1000977,-1812.1999512,16.5000000,0.0000000,0.0000000,0.0000000); //object(sfx_plant03) (4)
+	CreateObject(3802,2146.1000977,-1818.3000488,16.5000000,0.0000000,0.0000000,0.0000000); //object(sfx_plant03) (5)
+	CreateObject(1216,2176.8000488,-1760.5999756,13.1999998,0.0000000,0.0000000,179.9999390); //object(phonebooth1) (1)
+	CreateObject(3515,2184.1999512,-1800.5000000,12.8000002,0.0000000,0.0000000,0.0000000); //object(vgsfountain) (1)
+	CreateObject(918,2151.1000977,-1789.9000244,12.8999996,0.0000000,0.0000000,0.0000000); //object(cj_flame_drum) (1)
+	CreateObject(3065,2174.8999023,-1790.1999512,12.6999998,0.0000000,0.0000000,0.0000000); //object(bball_col) (1)
+	CreateObject(1428,2168.6999512,-1786.5000000,14.1000004,0.0000000,0.0000000,0.0000000); //object(dyn_ladder) (1)
+	CreateObject(2677,2164.3000488,-1797.8000488,12.6000004,0.0000000,0.0000000,0.0000000); //object(proc_rubbish_7) (1)
+	CreateObject(2676,2163.0000000,-1807.0000000,12.5000000,0.0000000,0.0000000,0.0000000); //object(proc_rubbish_8) (1)
+	CreateObject(1224,2151.6000977,-1803.5000000,13.1999998,0.0000000,0.0000000,0.0000000); //object(woodenbox) (1)
+	CreateObject(1264,2151.3999023,-1806.5000000,13.0000000,0.0000000,0.0000000,0.0000000); //object(blackbag1) (1)
+	CreateObject(12957,2173.6000977,-1812.9000244,13.3999996,0.0000000,0.0000000,272.0000000); //object(sw_pickupwreck01) (1)
+	CreateObject(1337,2186.6999512,-1814.9000244,13.1999998,0.0000000,0.0000000,0.0000000); //object(binnt07_la) (1)
+	CreateObject(1349,2190.8000488,-1803.3000488,13.1000004,0.0000000,0.0000000,0.0000000); //object(cj_shtrolly) (1)
+	CreateObject(1369,2172.5000000,-1796.1999512,13.0000000,0.0000000,0.0000000,328.0000000); //object(cj_wheelchair1) (1)
+	CreateObject(1462,2164.3000488,-1786.4000244,12.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_woodpile) (1)
+	CreateObject(1549,2191.6999512,-1815.3000488,12.5000000,0.0000000,0.0000000,0.0000000); //object(cj_ashtray_b) (1)
+	CreateObject(761,2184.1999512,-1800.4000244,13.6999998,0.0000000,0.0000000,0.0000000); //object(sm_drybrush_sm1) (1)
+	CreateObject(3810,2184.3999023,-1815.3000488,16.2000008,0.0000000,0.0000000,90.0000000); //object(sfx_plant04) (1)
+	CreateObject(3810,2188.3999023,-1815.5999756,16.2000008,0.0000000,0.0000000,90.0000000); //object(sfx_plant04) (2)
+	CreateObject(3810,2192.6000977,-1815.5999756,16.2000008,0.0000000,0.0000000,90.0000000); //object(sfx_plant04) (3)
+	CreateObject(2096,2157.0000000,-1786.9000244,12.5000000,0.0000000,0.0000000,0.0000000); //object(cj_rockingchair) (1)
+	CreateObject(1280,2184.3000488,-1803.0999756,12.8000002,0.0000000,0.0000000,90.0000000); //object(parkbench1) (1)
+	CreateObject(1280,2184.3000488,-1798.0000000,12.8000002,0.0000000,0.0000000,270.0000000); //object(parkbench1) (2)
+	CreateObject(1280,2181.6999512,-1800.4000244,12.8000002,0.0000000,0.0000000,0.0000000); //object(parkbench1) (3)
+	CreateObject(1280,2186.5000000,-1800.5000000,12.8000002,0.0000000,0.0000000,178.0000000); //object(parkbench1) (4)
+	CreateObject(14880,2189.3999023,-1809.0999756,12.8000002,0.0000000,0.0000000,0.0000000); //object(michelle-bed01) (1)
+	CreateObject(2630,2175.3999023,-1816.8000488,15.1000004,0.0000000,0.0000000,0.0000000); //object(gym_bike) (1)
+	CreateObject(1337,2181.8000488,-1798.6999512,12.8999996,0.0000000,0.0000000,0.0000000); //object(binnt07_la) (2)
+	CreateObject(3091,2170.6000977,-1790.6999512,13.1999998,0.0000000,0.0000000,0.0000000); //object(imy_track_barrier) (1)
+	CreateObject(2236,2173.6999512,-1806.8000488,12.3999996,0.0000000,0.0000000,0.0000000); //object(coffee_swank_1) (1)
+	CreateObject(2291,2176.0000000,-1807.3000488,12.3999996,0.0000000,0.0000000,221.9999695); //object(swk_single_1) (1)
+	CreateObject(2292,2173.8000488,-1807.9000244,12.3999996,0.0000000,0.0000000,90.0000000); //object(swk_single_1b) (1)
+	CreateObject(1429,2174.1999512,-1806.1999512,13.1999998,0.0000000,0.0000000,0.0000000); //object(dyn_tv) (1)
+	CreateObject(15037,2166.3999023,-1811.1999512,13.0000000,0.0000000,0.0000000,0.0000000); //object(med_dinning_2_sv) (1)
+	CreateObject(947,2180.1000977,-1808.5999756,14.6000004,0.0000000,0.0000000,0.0000000); //object(bskballhub_lax01) (1)
 	// [SML] Puerta Entrada
 	CreateDynamicObjectExUH(1557, 1778.90833, -1662.02808, 13.39300,   0.00000, 0.00000, -54.00000,-1,-1,-1,MAX_RADIO_STREAM);
 	/// Puerta Entrada NFS
 	CreateDynamicObjectExUH(1536, 534.40930, -1294.32996, 16.18970,   0.00000, 0.00000, 0.00000,-1,-1,-1,MAX_RADIO_STREAM);
+    // Sprays
+	CreateObject(365, 1538.66150, -1610.88574, 12.72320,   0.00000, 0.00000, 0.00000); // LSPD
+	CreateObject(365, 1538.58728, -1610.73059, 12.70860,   0.00000, 90.00000, 40.00000);
+	CreateObject(365, 1496.41479, -1749.84192, 14.53960,   0.00000, 85.00000, 30.00000); // Ayuntamiento
+	CreateObject(365, 1496.41003, -1750.07385, 14.59960,   0.00000, -5.00000, 0.00000);
+	// Ayuntamiento HeliPad, puerta garage y heli
+	CreateObject(9241, 1427.39709, -1790.10999, 34.15000,   0.00000, 0.00000, 180.00000);
+	CreateObject(1566, 1447.66589, -1778.28760, 33.83790,   0.00000, 0.00000, 0.00000);
+	CreateObject(11319, 1417.59790, -1810.53210, 14.26370,   0.00000, 0.00000, 0.00000);
+   // Neones taller
+	CreateObject(18652, 1483.23547, -1584.22925, 18.51280,   0.00000, 0.00000, 90.00000);
+	CreateObject(18647, 1485.47156, -1584.22925, 18.51280,   0.00000, 0.00000, 90.00000);
+	CreateObject(18649, 1480.98083, -1584.22925, 18.51280,   0.00000, 0.00000, 90.00000);
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////// Vayas Y Carteles////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Cartel SML Spawn Mochis
-    TextoTEST = CreateObject(19329, 1711.01587, -1888.08545, 15.58310,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}¿Necesitas Licencias?\n{f7faf7}S.M.L\n{00A5FF}Coche,Moto,Camión...", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+    // Cartel SML Spawn Mochis {6EF83C}
+	// Principal
+    TextoTEST = CreateObject(19329, 1711.01587, -1888.08545, 17.2269,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{F81414}Publicidad\nLos Santos", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
+	//1
+    TextoTEST = CreateObject(19329, 1711.0159, -1888.0854, 16.3900,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{6EF83C}San Andreas\nPolice Department\n{00A5FF}¡Postulaciones Abiertas!", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+	//2
+    TextoTEST = CreateObject(19329, 1711.0159, -1888.0854, 15.5631,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{6EF83C}Taller\n{6EF83C}Mexi{f7faf7}cá{FF0000}nicos\n{00A5FF}¡Postulaciones Abiertas!", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+	//3
+    TextoTEST = CreateObject(19329, 1711.0159, -1888.0854, 14.7304,   0.00000, 0.00000, 0.00000);
+    SetObjectMaterialText(TextoTEST, "{6EF83C}¿Necesitas Licencias?\n{00A5FF}Secretaría\nMaestros & Licencieros", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+
     // Cartel SML Job Recolector
     TextoTEST = CreateObject(19329, 1629.79846, -1882.39746, 14.94640,   0.00000, 0.00000, 0.00000);
     SetObjectMaterialText(TextoTEST, "{F81414}Gobierno\nLos Santos", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
     // Cartel SML Grotti
     TextoTEST = CreateObject(19329, 550.76813, -1259.96973, 16.57600,   0.00000, 0.00000, 35.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}¿Necesitas Licencias?\n{f7faf7}S.M.L\n{00A5FF}Coche,Moto,Camión...", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+    // Cartel Job Pizzero
+    TextoTEST = CreateObject(19329, 1418.66858, -1632.08801, 14.61020,   0.00000, 0.00000, 90.00000);
+    SetObjectMaterialText(TextoTEST, "{F81414}Repartidor\n{6EF83C}$500", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
+    // Cartel SML Job Recolector
+    TextoTEST = CreateObject(19329, -79.40760, -1140.59473, 1.95880,   0.02000, 0.00000, 67.00000);
+    SetObjectMaterialText(TextoTEST, "{F81414}Gobierno\nLos Santos", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
 
 	// Horario Ayuntamiento
     TextoTEST = CreateObject(19329, 1481.11060, -1772.66162, 21.26690,   0.00000, 0.00000, 0.00000);
@@ -41212,23 +41715,25 @@ public LoadStaticObjects()
     TextoTEST = CreateObject(19329, 1833.58704, -1839.53650, 13.94680,   0.00000, 0.00000, 90.00000);
     SetObjectMaterialText(TextoTEST, "{F81414}Horarios\n{f7faf7}Lunes a domingo\n{00A5FF}12:00am {f7faf7}- {00A5FF}12:00am", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
 
-	// Pandilla Groove Street
+	// Graffitis
+	// LSPD
+    TextoTEST = CreateObject(2789, 1539.65515, -1609.29651, 14.22640,   0.00000, 0.00000, -90.00000);
+    SetObjectMaterialText(TextoTEST, "{6EF83C}Groove\nStreet\nManda", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
 	// Ayuntamiento
     TextoTEST = CreateObject(2789, 1497.32532, -1750.34912, 16.11960,   0.00000, 0.00000, 180.00000);
-    SetObjectMaterialText(TextoTEST, "{6EF83C}Grove\n100%\nEstilo", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{6EF83C}Groove\n100%\nEstilo", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
 	// LSPD
     TextoTEST = CreateObject(2789, 1549.41956, -1714.43005, 15.38960,   0.00000, 0.00000, 0.00000);
     SetObjectMaterialText(TextoTEST, "{B700FF}PURO\nMALA\nNDRO", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
     // Cerca del binco
 	TextoTEST = CreateObject(2789, 2194.97754, -1741.98816, 13.86140,   0.00000, 0.00000, -89.99000);
-    SetObjectMaterialText(TextoTEST, "{6EF83C}Zona\nGrove", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{6EF83C}Zona\nGroove", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
     // En el Barrio
     TextoTEST = CreateObject(2789, 2490.64917, -1689.99817, 17.64700,   0.00000, 0.00000, 180.00000);
     SetObjectMaterialText(TextoTEST, "{6EF83C}LOS\nMALA\nMADRE", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
-    // Pandilla Los Ballas
 	// Unity
     TextoTEST = CreateObject(2789, 1763.60229, -1867.79077, 16.94210,   0.00000, 0.00000, 180.00000);
-    SetObjectMaterialText(TextoTEST, "{B700FF}Los\nBallas\nMandan", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{FFFF33}Latin\nkings\nMandan", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
 	// Barberia SML
     TextoTEST = CreateObject(2789, 1724.84607, -1741.59668, 15.28230,   0.00000, 0.00000, 180.00000);
     SetObjectMaterialText(TextoTEST, "{B700FF}Los\nBallas\nMandan", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
@@ -41238,13 +41743,22 @@ public LoadStaticObjects()
     // En el Barrio
     TextoTEST = CreateObject(2789, 2334.55029, -1235.38708, 30.71520,   0.00000, 0.00000, 180.00000);
     SetObjectMaterialText(TextoTEST, "{B700FF}LOS\nMALA\nJUNTA", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
+	// Tupamaros Garage 1
+    TextoTEST = CreateObject(2789, 1322.55750, -1658.77734, 14.10580,   0.00000, 0.00000, -90.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}ANAR\nQUIA", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
+	// Tupamaros Garage 2
+    TextoTEST = CreateObject(2789, 1322.55750, -1652.11719, 14.10580,   0.00000, 0.00000, -90.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}ANAR\nQUIA", 0, 50, "Goudy Stout", 24, 0, -16776961, 0, 1);
 
 	// Cartel LSPD
     TextoTEST = CreateObject(19353, 1555.08, -1675.72, 21.81,   0.00, 0.00, 0.10);
     SetObjectMaterialText(TextoTEST, "{f7faf7}L.S.P.D\n{0049FF}Tlf:{F81414} 911", 0, 50, "Arial", 24, 1, 0xF81414, 1, 1);
 	// Cartel ¿No encuentras tu auto?
     TextoTEST = CreateObject(7911, 1539.28943, -1609.85571, 25.45880,   0.00000, 0.00000, -90.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}¿No encuentras tu auto?\nNosotros{0049FF} L.S.P.D{F81414}\n{6EF83C}¡¡Te lo localizamos!!", 0, 50, "Arial", 14, 1, 0xB700FF, 1, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}¿Coche Extraviado?\nNosotros{0049FF} L.S.P.D{F81414}\n{6EF83C}¡¡Te lo localizamos!!", 0, 50, "Arial", 14, 1, 0xB700FF, 1, 1);
+	// Cartel ¿No encuentras tu auto?
+    TextoTEST = CreateObject(7911, 1427.01819, -964.12531, 44.11760,   0.00000, 0.00000, 169.39999);
+    SetObjectMaterialText(TextoTEST, "{FFFFFF}SUPER\n{0099FF}ME{FFFFFF}RCA{0099FF}DO", 0, 50, "Magneto", 20, 0, -16776961, 0, 1);
 
 	// Parqueo 1 y 2 LSPD
     TextoTEST = CreateObject(19353, 1535.80408, -1677.96558, 12.29570,   0.00000, -90.00000, 180.00000);
@@ -41258,13 +41772,16 @@ public LoadStaticObjects()
     SetObjectMaterialText(TextoTEST, "{f7faf7}PARQUEO\nCLIENTES", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(19353, 1759.95422, -1679.36328, 12.43180,   0.00000, -90.56000, -180.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}PARQUEO\nCLIENTES", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-	
+	// Presidente
+	TextoTEST = CreateObject(19353, 1415.13879, -1810.65784, 12.46460,   0.00000, -90.00000, 180.00000);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}PARQUEO\nGOBIERNO", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
 	// Cartel 24/7 Unity
 	TextoTEST = CreateObject(9314, 1834.46021, -1842.57703, 17.35337,   0.00000, 0.00000, 180.0000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Publica aquí\n tu anuncio\n{0049FF}Llama al {F81414}888", 0, 50, "Arial", 13, 1, 0x000000FF, 1, 1);
     // Cartel Burger Restaurant Unity
 	TextoTEST = CreateObject(9527, 1849.37634, -1871.59656, 17.23840,   0.00000, 0.00000, -90.00000);
-	SetObjectMaterialText(TextoTEST, "{F81414}Comida\n {6EF83C}Buena, Bonita y Barata \n{0049FF}Abierto", 0, 50, "Arial", 13, 1, 0x000000FF, 1, 1);
+	SetObjectMaterialText(TextoTEST, "{6EF83C}La Mejor Comida\nSe Sirve Aquí \nAbierto 24 Horas", 0, 50, "Arial", 13, 1, 0x000000FF, 1, 1);
     // Cartel 24/7 Ayuntamiento
 	TextoTEST = CreateObject(9314, 1352.49158, -1759.44592, 20.07310,   0.00000, 0.00000, 90.06000);
 	SetObjectMaterialText(TextoTEST, "{6EF83C}[24{0049FF}/7]\n{0049FF}El {F81414}Abuelo", 0, 50, "Dungeon", 20, 1, 0x000000FF, 1, 1);
@@ -41279,23 +41796,29 @@ public LoadStaticObjects()
 	SetObjectMaterialText(TextoTEST, "{B700FF}============\nBar\nJizzy\n============", 0, 50, "Wide Latin", 15, 1, 0xB700FF, 1, 1);
 	// Cartel Ayuntamiento
 	TextoTEST = CreateObject(7911, 1481.53564, -1751.30908, 29.32090,   0.00000, 0.00000, 180.00000);
-	SetObjectMaterialText(TextoTEST, "{F81414}AYUNTAMIENTO", 0, 50, "Arial", 21, 0, -16776961, 0, 1);
+	SetObjectMaterialText(TextoTEST, "{F81414}GOBIERNO", 0, 50, "Arial", 21, 0, -16776961, 0, 1);
 	// Cartel Hotel Marbelle
 	TextoTEST = CreateObject(7911, 1419.21570, -1570.17590, 20.27500,   0.00000, 0.00000, 90.00000);
 	SetObjectMaterialText(TextoTEST, "{B700FF}============\nHotel\nMarbelle\n============", 0, 50, "Magneto", 20, 0, -16776961, 0, 1);
 	// Cartel Hotel Marbelle
 	TextoTEST = CreateObject(7911, 2241.44067, -1722.52869, 18.52649,   0.00000, 0.00000, 0.00000);
 	SetObjectMaterialText(TextoTEST, "GYM\nLas Barquillas", 0, 50, "Dungeon", 15, 1, 0xB700FF, 1, 1);
+	// Cartel tALLER
+	TextoTEST = CreateObject(7911, 1482.80237, -1583.77734, 21.44680,   0.00000, 0.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{FF0000}============\nTaller\n{6EF83C}Mexi{f7faf7}cá{FF0000}nicos\n============", 0, 50, "Dungeon", 18, 1, 0xFF0000, 1, 1);
 
 	// Cartel Oferta Tuning
 	TextoTEST = CreateObject(2789, 1512.11682, -1570.36780, 17.20310,   0.00000, 0.00000, -90.00000);
 	SetObjectMaterialText(TextoTEST, "{0049FF}¡¡Oferta!!\nFull Tuning\nPor Solo $2500", 0, 50, "Arial", 15, 0, -16776961, 0, 1);
+
 	// Cartel Precio Superior
 	TextoTEST = CreateObject(2789, 1512.14758, -1564.06372, 20.09030,   0.00000, 0.00000, -90.00000);
 	SetObjectMaterialText(TextoTEST, "{0049FF}Tuning Precios\n{f7faf7}Pintura {6EF83C}${f7faf7}500\nVinilos {6EF83C}${f7faf7}800{f7faf7}", 0, 50, "Arial", 15, 1, 0xB700FF, 1, 1);
+
     // Cartel Precio Central
 	TextoTEST = CreateObject(2789, 1512.14758, -1564.06372, 17.05920,   0.00000, 0.00000, -90.00000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Llantas {6EF83C}${f7faf7}350\n{f7faf7}Suspención {6EF83C}${f7faf7}400\n{f7faf7}Techo {6EF83C}${f7faf7}250", 0, 50, "Arial", 15, 1, 0x6EF83C, 1, 1);
+
     // Cartel Precio Inferior
 	TextoTEST = CreateObject(2789, 1512.14758, -1564.06372, 14.04940,   0.00000, 0.00000, -90.00000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Capó {6EF83C}${f7faf7}250\nAleron {6EF83C}${f7faf7}350\nEscapes {6EF83C}${f7faf7}350", 0, 50, "Arial", 15, 1, 0x000000FF, 1, 1);
@@ -41387,7 +41910,7 @@ public LoadStaticObjects()
 
 	// Cartel Oficina 1 ID 31
     TextoTEST = CreateObject(9314, 1419.01904, -1607.36853, 18.11700,   0.00000, 18.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}Consultorio\nDr.Moon", 0, 50, "Broadway", 24, 1, 0x000000FF, 1, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nEn Venta", 0, 50, "Broadway", 24, 1, 0x000000FF, 1, 1);
 	// Cartel Oficina 2 ID 30
 	TextoTEST = CreateObject(9314, 1419.02771, -1640.15002, 18.13700,   0.00000, 18.00000, 0.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nEn Venta", 0, 50, "Magneto", 24, 1, 0x000000FF, 1, 1);
@@ -41413,26 +41936,33 @@ public LoadStaticObjects()
 	// Cartel Seguridad 6
 	TextoTEST = CreateObject(2661, 1834.13965, -1841.82935, 14.29560,   0.00000, 0.00000, -90.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Seguridad\n.::LSPD::.", 0, 50, "Dungeon", 25, 1, 0x828282FF, 1, 1);
-    
+
+  	// Cartel Bar Tupamaros
+	TextoTEST = CreateObject(2661, 1321.38965, -1665.80481, 16.54310,   0.00000, 0.00000, -90.00000);
+    SetObjectMaterialText(TextoTEST, "{000000}BAR", 0, 50, "Dungeon", 30, 0, -16776961, 0, 1);
+	// Motos
+	TextoTEST = CreateObject(19353, 1320.78284, -1666.59363, 12.46260,   0.00000, 90.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}PARQUEO\nMOTOS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
 // IDS coches en Wang
     TextoTEST = CreateObject(2661, 1756.79834, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}535", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}100", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(2661, 1760.65735, -1787.80029, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}567", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}101", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(2661, 1764.84277, -1787.80200, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}536", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}102", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(2661, 1769.06030, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}560", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}103", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(2661, 1773.07336, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}400", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}104", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(2661, 1777.10803, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}554", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}105", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
     TextoTEST = CreateObject(2661, 1781.40088, -1787.80505, 14.74090,   0.00000, 0.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{000000}422", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{000000}106", 0, 50, "Dungeon", 40, 0, -16776961, 0, 1);
 
 	// Cartel Job Basurero
     TextoTEST = CreateObject(7911, 1609.91040, -1890.64880, 21.70720,   0.00000, 0.00000, 90.00000);
-    SetObjectMaterialText(TextoTEST, "{F81414}¿Deseas Ganar {6EF83C}Dinero{F81414}?\nTrabaja de Recolector\n{F81414}¡¡{6EF83C}$400 {F81414}Por vuelta!!", 0, 50, "Arial", 14, 1, 0xB700FF, 1, 1);
+    SetObjectMaterialText(TextoTEST, "{F81414}¿Deseas Ganar {6EF83C}Dinero{F81414}?\nTrabaja de Recolector\n{F81414}¡¡{6EF83C}$500 {F81414}Por vuelta!!", 0, 50, "Arial", 14, 1, 0xB700FF, 1, 1);
 
 	// pARQUEO CAMIONES
 	TextoTEST = CreateObject(19353, 1640.24622, -1897.81616, 12.47570,   0.00000, 90.00000, -80.00000);
@@ -41490,32 +42020,163 @@ public LoadStaticObjects()
 
 	// Pantalla Con Movimiento Taller
 	TextoTEST = CreateObject(7313, 1483.06775, -1583.18054, 17.37920,   0.00000, 0.00000, 0.00000);
-	SetObjectMaterialText(TextoTEST, "{6EF83C}TUNING", 0, 50, "Arial", 17, 1, 0x000000FF, 1, 1);
+	SetObjectMaterialText(TextoTEST, "{6EF83C}MEXI{f7faf7}CA{FF0000}NICOS", 0, 50, "Arial", 17, 1, 0x000000FF, 1, 1);
 	// Pantalla Con Movimiento 24/7 Ayuntamiento
 	TextoTEST = CreateObject(7313, 1352.44446, -1759.10413, 15.22160,   0.00000, 0.00000, 180.00000);
 	SetObjectMaterialText(TextoTEST, "{6EF83C}ABIERTO", 0, 50, "Arial", 17, 1, 0x000000FF, 1, 1);
     // Pantalla Con Movimiento Barbero Ayuntamiento
 	TextoTEST = CreateObject(7313, 1416.5280, -1702.2318, 15.7097,   0.00000, 0.00000, 49.4000);
 	SetObjectMaterialText(TextoTEST, "{6EF83C}ABIERTO", 0, 50, "Arial", 17, 1, 0x000000FF, 1, 1);
+    // Pantalla Con Movimiento Wang CreateObject(7313, 1427.17236, -964.04919, 40.01600,   0.00000, 0.00000, 169.39999);
+	TextoTEST = CreateObject(7313, 1760.21631, -1804.51587, 15.71920,   0.00000, 0.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{0049FF}VENTA  COCHES", 0, 50, "Arial", 17, 1, 0x000000FF, 1, 1);
+
+    // Pantalla Con Movimiento Super (7313, 1427.17236, -964.04919, 40.01600,   0.00000, 0.00000, 169.39999);
+	TextoTEST = CreateObject(7313, 1427.17236, -964.04919, 40.01600,   0.00000, 0.00000, 169.39999);
+	SetObjectMaterialText(TextoTEST, "{0099FF}SUPER {FFFFFF}MERCADO", 0, 50, "Arial", 17, 1, 0x000000FF, 1, 1);
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////// PickUps de AYUDA////////////////////////////////////////////
+	///////////////////////////////////////////// Objetos Atados////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+//////////////////////////////////////////Motos Job Pizzero////////////////////////////////////////////////////
+	// Escalera Yakuza
+	CreateObject(5820, 717.26038, -1448.82788, 18.21960,   0.76000, -0.02000, 180.00000);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 96, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 96, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 97, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 97, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 98, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 98, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 99, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 99, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 100, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 100, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    
+	// Taxis 1 CocheTexto 19329
+	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 196, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
+	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 196, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 196, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
+    
+	// Taxis 2
+	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 197, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
+	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 197, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 197, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
+
+	// Taxis 3
+	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 198, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
+	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 198, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 198, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
+
+	// Taxis 4
+	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 199, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
+	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 199, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 199, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
+
+	// Taxis 5
+	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 200, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
+	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 200, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 200, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
+
+	//283
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+	//284
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+	//285
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+	//286
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+
+//////////////////////////////////////////// Coches Frente Wang Muestra/////////////////////////////////
+	// Slamvan
+	ObjPegado = CreateObject(19314,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 336, 0.000000,2.550000,0.225000,72.900001,-91.799980,-0.000000);
+	ObjPegado = CreateObject(19078,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 336, 0.974999,0.524999,0.674999,0.000000,-94.499977,0.000000);
+	// Blade
+	ObjPegado = CreateObject(2102,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 338, 0.000000,-1.875000,0.149999,-89.099983,-0.000001,0.000000);
+	ObjPegado = CreateObject(2404,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 338, -0.824999,-1.425000,0.375000,-140.399932,40.500003,0.000000);
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////// PickUps ayuda////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Pickup  Guia 1
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1711.1100,-1888.6885,13.5675,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1711.1100,-1888.6885,13.5675,15.0, 0);//Entrada
 	//Pickup  2
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1514.2794,-1717.4116,14.0469,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1514.2794,-1717.4116,14.0469,15.0, 0);//Entrada
 	//Pickup 3
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1321.2335,-1386.0626,13.6616,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1321.2335,-1386.0626,13.6616,15.0, 0);//Entrada
 	//Pickup  4
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1321.2335,-1386.0626,13.6616,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1321.2335,-1386.0626,13.6616,15.0, 0);//Entrada
 	//Pickup  5
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,563.5135,-1249.5322,17.2814,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,563.5135,-1249.5322,17.2814,15.0, 0);//Entrada
     //Pickup 6
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1816.1445,-2059.6919,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1816.1445,-2059.6919,13.5469,15.0, 0);//Entrada
 	//Pickup 7
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1827.8643,-1826.1737,13.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1827.8643,-1826.1737,13.5781,15.0, 0);//Entrada
 	//Pickup 8
-	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios,trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1816.1445,-2059.6919,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}¿Qué hacer?\n¿Negocios?\n¿Trabajos?\n{6EF83C}/Guia",0xFFFB00FF,1816.1445,-2059.6919,13.5469,15.0, 0);//Entrada
 	
 	// Pickup Bicis Mochis
 	Create3DTextLabel("{E6E6E6}Para alquilar Bicicleta: /Parqueo\nCosto:{6EF83C}$10",0xFFFB00FF,1768.9747,-1865.8627,13.5721,30.0, 0);//Entrada
@@ -41545,19 +42206,23 @@ public LoadStaticObjects()
 	Create3DTextLabel("{0049FF}Ballas\n{F81414}Casa Pandilla Los Ballas\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2334.6541,-1234.6598,27.9766,25.0, 0);//Entrada
 	// Pickup Faccion Pandilla Los Latinos
 	Create3DTextLabel("{0049FF}Latinos\n{F81414}Casa Pandilla Los Latinos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2766.0029,-1606.3961,10.9219,25.0, 0);//Entrada
+	// Pickup Faccion Tupamaros
+	Create3DTextLabel("{0049FF}Tupamaros\n{F81414}Casa Pandilla Los Tupamaros\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1347.3969,-1691.4637,13.5992,25.0, 0);//Entrada
+    // Pickup Faccion Yakuzas
+	Create3DTextLabel("{0049FF}YKZ\n{F81414}Yakuzas\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,725.6430,-1440.4512,13.5318,25.0, 0);//Entrada
 
 	// Pickup Faccion Pandilla Los Latinos
 	Create3DTextLabel("{0049FF}Banco Central\n{F81414}Los Santos\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1310.1892,-1366.7983,13.5066,25.0, 0);//Entrada
     //Pickup Cajero 1
-	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,1918.7743,-1765.2124,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Cajero\n/Retirar Cajero [Cantidad]\n/Depositar Cajero [Cantidad]",0xFFFB00FF,1918.7743,-1765.2124,13.5469,15.0, 0);//Entrada
 	//Pickup Cajero 2
-	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,1477.39343,-1772.28430,18.37810,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Cajero\n/Retirar Cajero [Cantidad]\n/Depositar Cajero [Cantidad]",0xFFFB00FF,1477.39343,-1772.28430,18.37810,15.0, 0);//Entrada
 	//PickupCajero 3
-	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,1366.6007,-1307.8550,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Cajero\n/Retirar Cajero [Cantidad]\n/Depositar Cajero [Cantidad]",0xFFFB00FF,1366.6007,-1307.8550,13.5469,15.0, 0);//Entrada
 	//Pickup Cajero 4
-	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,-79.9179,-1171.6565,2.1505,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Cajero\n/Retirar Cajero [Cantidad]\n/Depositar Cajero [Cantidad]",0xFFFB00FF,-79.9179,-1171.6565,2.1505,15.0, 0);//Entrada
 	//Pickup Cajero 5
-	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Banco",0xFFFB00FF,1346.5325,-1758.5590,13.5156,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para usar Cajero: {6EF83C}/Cajero\n/Retirar Cajero [Cantidad]\n/Depositar Cajero [Cantidad]",0xFFFB00FF,1346.5325,-1758.5590,13.5156,15.0, 0);//Entrada
 
     //Pickup Gasolinera 1
 	Create3DTextLabel("{E6E6E6}Para llenar Tanque del Vehículo: {6EF83C}/Llenar Tanque\n{E6E6E6}Para echar cierta cantidad: {6EF83C}/Llenar Tanque [Cantidad]\n{E6E6E6}Para llenar Bidón de 5 Litros:{6EF83C} /Llenar Bidon",0xFFFB00FF,1940.6564,-1772.8916,13.3906,15.0, 0);//Entrada
@@ -41586,63 +42251,63 @@ public LoadStaticObjects()
 	Create3DTextLabel("Para usar Peaje: /Peaje\n{E6E6E6}Coste Peaje:{6EF83C}$10",0xFFFB00FF,51.7069,-1539.4414,5.1381,20.0, 0);//Entrada
 
 	//Pickup Negocio ID 1
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1833.7675,-1842.5330,13.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1833.7675,-1842.5330,13.5781,15.0, 0);//Entrada
 	//Pickup Negocio ID 2
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1848.3214,-1871.7002,13.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1848.3214,-1871.7002,13.5781,15.0, 0);//Entrada
 	//Pickup Negocio ID 3
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1679.3724,-1846.1288,13.5317,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1679.3724,-1846.1288,13.5317,15.0, 0);//Entrada
 	//Pickup Negocio ID 4
-	Create3DTextLabel("{0049FF}El {F81414}Abuelo\n{F5FF00}Negocio:{0049FF}24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1352.2777,-1759.2507,13.5078,15.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}El {F81414}Abuelo\n{F5FF00}Negocio Tipo:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1352.2777,-1759.2507,13.5078,15.0, 0);//Entrada
 	//Pickup Negocio ID 5
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1411.5867,-1699.4906,13.5395,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1411.5867,-1699.4906,13.5395,15.0, 0);//Entrada
 	//Pickup Negocio ID 6
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1330.1461,-1558.9940,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1330.1461,-1558.9940,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 7
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1368.7368,-1279.8479,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1368.7368,-1279.8479,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 8
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1133.4271,-1370.1421,13.9844,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1133.4271,-1370.1421,13.9844,15.0, 0);//Entrada
     //Pickup Negocio ID 9
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1097.6742,-1370.1294,13.9844,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1097.6742,-1370.1294,13.9844,15.0, 0);//Entrada
     //Pickup Negocio ID 10
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,928.8099,-1352.9874,13.3438,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,928.8099,-1352.9874,13.3438,15.0, 0);//Entrada
 	//Pickup Negocio ID 11
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Sex Shop\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1000.4876,-919.9670,42.3281,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Sex Shop\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1000.4876,-919.9670,42.3281,15.0, 0);//Entrada
 	//Pickup Negocio ID 12
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1199.2874,-918.2720,43.1220,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1199.2874,-918.2720,43.1220,15.0, 0);//Entrada
 	//Pickup Negocio ID 13
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1315.4917,-897.7941,39.5781,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1315.4917,-897.7941,39.5781,15.0, 0);//Entrada
 	//Pickup Negocio ID 14
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Club\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1836.8966,-1682.4479,13.3288,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Club\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1836.8966,-1682.4479,13.3288,15.0, 0);//Entrada
 	//Pickup Negocio ID 15
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2244.3618,-1665.4406,15.4766,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2244.3618,-1665.4406,15.4766,15.0, 0);//Entrada
 	//Pickup Negocio ID 16
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2309.9858,-1643.6101,14.8270,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Bar\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2309.9858,-1643.6101,14.8270,15.0, 0);//Entrada
 	//Pickup Negocio ID 17
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2397.8088,-1898.8636,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Cluckin Bell\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2397.8088,-1898.8636,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 18
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2400.4600,-1981.8807,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Armería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2400.4600,-1981.8807,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 19
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,810.5869,-1616.2278,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,810.5869,-1616.2278,13.5469,15.0, 0);//Entrada
     //Pickup Negocio ID 20
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,823.9427,-1588.3691,13.5545,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,823.9427,-1588.3691,13.5545,15.0, 0);//Entrada
     //Pickup Negocio ID 21
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,499.5712,-1360.5472,16.3615,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,499.5712,-1360.5472,16.3615,15.0, 0);//Entrada
     //Pickup Negocio ID 22
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Pizza Stack\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2105.4729,-1806.3375,13.5547,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Pizza Stack\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,2105.4729,-1806.3375,13.5547,15.0, 0);//Entrada
     //Pickup Negocio ID 23
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Lil probe inn\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,681.6268,-473.4607,16.5363,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Lil probe inn\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,681.6268,-473.4607,16.5363,15.0, 0);//Entrada
     //Pickup Negocio ID 24
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,613.2142,-495.6638,16.3337,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,613.2142,-495.6638,16.3337,15.0, 0);//Entrada
     //Pickup Negocio ID 25
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,712.1761,-498.9280,16.3359,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,712.1761,-498.9280,16.3359,15.0, 0);//Entrada
    //Pickup Negocio ID 26
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,820.0663,-575.9793,16.5363,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,820.0663,-575.9793,16.5363,15.0, 0);//Entrada
 	//Pickup Negocio ID 27
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1720.2109,-1741.1588,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Barbero\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1720.2109,-1741.1588,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 28
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Pizzería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.1687,-1623.7549,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Pizzería\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.1687,-1623.7549,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 29
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Jizzy\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1081.2618,-1696.7834,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Jizzy\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1081.2618,-1696.7834,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 30
 	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.2784,-1640.2745,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 31
@@ -41650,11 +42315,11 @@ public LoadStaticObjects()
 	//Pickup Negocio ID 32
 	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1325.9154,-1741.9114,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 33
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Casino\n{F5FF00}Estado:{F81414} Cerrado\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,477.4289,-1534.5834,19.6706,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Casino\n{F5FF00}Estado:{F81414} Cerrado\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,943.0289,-1742.6741,13.5546,15.0, 0);//Entrada
 	//Pickup Negocio ID 34
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Hotel\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1418.5303,-1581.4398,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Hotel\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1797.5389,-1578.9215,14.0857,15.0, 0);//Entrada
 	//Pickup Negocio ID 35
-	Create3DTextLabel("{F5FF00}Negocio:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1567.9180,-1897.8309,13.5608,15.0, 0);//Entrada
+	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Burger Shot\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1567.9180,-1897.8309,13.5608,15.0, 0);//Entrada
 
     //Pickup Grotti 1
 	Create3DTextLabel("{F81414}OJO:{E6E6E6}Si tu coche {F81414}Explota\n{E6E6E6}Aparecerá donde hayas puesto\nEl comando: {F5FF00}/APARCAR",0xFFFB00FF,561.6829,-1253.2849,17.2087,15.0, 0);//Entrada
@@ -41664,11 +42329,11 @@ public LoadStaticObjects()
 	Create3DTextLabel("{E6E6E6}Para ver los precios de papeles\nPárate frente al coche y usa: /Precio Coche",0xFFFB00FF,558.3200,-1268.6315,17.2422,15.0, 0);//Entrada
 
 	//Pickup ZR-350
-	Create3DTextLabel("{E6E6E6}[Coche de Muestra]\nPrecio Coche:{6EF83C} $3500",0xFFFB00FF,1774.0258,-1813.8829,13.3202,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}[Coche de Muestra]",0xFFFB00FF,1774.0258,-1813.8829,13.3202,5.0, 0);//Entrada
 	//Pickup Land Satalker
-	Create3DTextLabel("{E6E6E6}[Coche de Muestra]\nPrecio Coche:{6EF83C} $2000",0xFFFB00FF,1777.4270,-1815.4230,13.6465,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}[Coche de Muestra]",0xFFFB00FF,1777.4270,-1815.4230,13.6465,5.0, 0);//Entrada
 	//Pickup Comet
-	Create3DTextLabel("{E6E6E6}[Coche de Muestra]\nPrecio Coche:{6EF83C} $3500",0xFFFB00FF,1780.8486,-1816.0397,13.3566,15.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}[Coche de Muestra]",0xFFFB00FF,1780.8486,-1816.0397,13.3566,5.0, 0);//Entrada
 	// Pick Up Estacionamiento wang coche 1
 	Create3DTextLabel("{E6E6E6}Slamvan\nPrecio Coche:{6EF83C} $3000",0xFFFB00FF,1756.6870,-1790.8840,13.2990,15.0, 0);//Entrada
 	// Pick Up Estacionamiento wang coche 2
@@ -41702,10 +42367,8 @@ public LoadStaticObjects()
 	//Pickup Job Basurero
 	Create3DTextLabel("Para Converirte en Recolector usa\n{6EF83C}/Trabajar",0xFFFB00FF,1640.9568,-1886.6553,13.5541,15.0, 0);//Entrada
 
-	//Pickup Job Pizzero
-	Create3DTextLabel("Para Converirte en Repartidor usa\n{6EF83C}/Trabajar",0xFFFB00FF,2099.4341,-1811.5439,13.5547,15.0, 0);//Entrada
-	//Pickup Job Pizzero
-	Create3DTextLabel("Sube a una Moto y usa\n{6EF83C}/Repartir",0xFFFB00FF,2098.8643,-1816.6917,13.3828,10.0, 0);//Entrada
+	//Pickup Job Pizzeroº
+	Create3DTextLabel("Sube a una Moto y usa\n{6EF83C}/Repartir",0xFFFB00FF,1423.0880,-1631.0970,13.5469,10.0, 0);//Entrada
 
 	//Pickup Loro
 	Create3DTextLabel("Para ponerse Loro use\n{6EF83C}/Varios",0xFFFB00FF,1414.0004,-1713.0400,13.5469,15.0, 0);//Entrada
@@ -41713,7 +42376,26 @@ public LoadStaticObjects()
 	Create3DTextLabel("Para Sacar Caña use\n{6EF83C}/Varios",0xFFFB00FF,913.26361, -2019.10327, 1.56320,15.0, 0);//Entrada
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Super Mercado Che Pibe
+	CreateObject(1349, 1419.61548, -966.84851, 37.03580,   0.00000, 0.00000, 80.00000);
+	CreateObject(1349, 1433.63367, -969.11670, 36.95580,   0.00000, 0.00000, 80.00000);
+	CreateObject(1349, 1433.95911, -967.68018, 36.95580,   0.00000, 0.00000, 80.00000);
+	CreateObject(1349, 1419.83679, -965.36987, 37.03580,   0.00000, 0.00000, 80.00000);
+	CreateObject(18648, 1430.58252, -969.63269, 40.08730,   0.10000, 0.00000, 80.00000);
+	CreateObject(18648, 1422.57275, -968.02399, 40.09570,   0.00000, 0.00000, 80.00000);
+	CreateObject(18652, 1426.51807, -968.89093, 40.09570,   0.00000, 0.00000, 81.00000);
+	CreateObject(1364, 1426.69214, -968.15930, 37.22510,   0.00000, 0.00000, 170.00000);
+	CreateObject(997, 1421.14746, -966.23340, 36.45810,   0.00000, 0.00000, 80.00000);
+	CreateObject(997, 1433.33521, -968.43628, 36.39740,   0.00000, 0.00000, 80.00000);
+	CreateObject(19078, 1428.34680, -967.78113, 37.78930,   0.00000, -90.00000, 0.00000);
+
+	// Puerta Tupamaros & Mapeo Bar
+	CreateObject(1569, 1347.00854, -1692.25928, 12.58440,   -0.02000, 0.00000, 90.00000);
+	CreateObject(19318, 1321.44836, -1663.17334, 16.61050,   0.00000, 60.00000, -90.00000);
+	CreateObject(19318, 1321.44836, -1668.20435, 16.61050,   0.00000, -60.00000, -90.00000);
+	CreateObject(18648, 1321.54773, -1665.81396, 15.96520,   0.00000, 0.00000, 0.00000);
 	// New WANG
+	CreateObject(10183, 1786.73743, -1745.98462, 12.56500,   0.00000, 0.00000, 45.40000); // Lineas
 	CreateObject(11317, 1782.23584, -1784.93445, 17.7067,   0.00000, 0.00000, 90.00000);
 	CreateObject(982, 1797.13635, -1803.72791, 13.22260,   0.00000, 0.00000, 90.00000);
 	CreateObject(983, 1780.42395, -1803.72791, 13.18260,   0.00000, 0.00000, 90.00000);
@@ -41739,10 +42421,6 @@ public LoadStaticObjects()
 	CreateObject(982, 1798.80261, -1742.25269, 13.23880,   0.00000, 0.00000, 90.00000);
 	CreateObject(982, 1773.17798, -1742.25317, 13.23880,   0.00000, 0.00000, 90.00000);
 	CreateObject(982, 1752.81055, -1755.02783, 13.23880,   0.00000, 0.00000, 0.00000);
-	CreateObject(19122, 1811.51245, -1768.27148, 13.05790,   0.00000, 0.00000, 0.00000);
-	CreateObject(19122, 1811.47900, -1777.43237, 13.05790,   0.00000, 0.00000, 0.00000);
-	CreateObject(19122, 1760.08716, -1742.35181, 13.05790,   0.00000, 0.00000, 0.00000);
-	CreateObject(19122, 1753.13245, -1742.41113, 13.05790,   0.00000, 0.00000, 0.00000);
 	CreateObject(1569, 1769.72583, -1762.75891, 12.57010,   0.00000, 0.00000, 0.00000);
 	CreateObject(2240, 1771.47253, -1762.47095, 12.92000,   0.00000, 0.00000, 0.00000);
 	CreateObject(2240, 1769.41846, -1762.47095, 12.92000,   0.00000, 0.00000, 0.00000);
@@ -41754,6 +42432,12 @@ public LoadStaticObjects()
 	CreateObject(3578, 1775.13123, -1789.45837, 11.84000,   0.00000, 0.00000, 90.00000);
 	CreateObject(3578, 1779.28552, -1789.45837, 11.84000,   0.00000, 0.00000, 90.00000);
 	CreateObject(3578, 1783.59875, -1789.45837, 11.84000,   0.00000, 0.00000, 90.00000);
+	CreateObject(966, 1811.39246, -1776.17322, 12.54470,   0.00000, 0.00000, -90.00000);
+	CreateObject(966, 1759.93652, -1742.52698, 12.54493,   0.00000, 0.00000, 0.00000);
+	CreateObject(968, 1811.41345, -1776.18652, 13.34160,   0.00000, 0.00000, 90.00000);
+	CreateObject(968, 1759.92090, -1742.52209, 13.32040,   0.00000, 0.00000, 0.00000);
+	CreateObject(1237, 1811.26880, -1776.99280, 12.54230,   0.00000, 0.00000, 0.00000);
+	CreateObject(1237, 1811.26880, -1768.53564, 12.54330,   0.00000, 0.00000, 0.00000);
 
 	// Parking entre Oficinas Ayunta y Restaurant Casa Jardín
 	CreateObject(982,1407.0000000,-1648.6999512,13.1000004,0.0000000,0.0000000,90.0000000); //object(fenceshit) (1)
@@ -48121,7 +48805,7 @@ public LoadStaticObjects()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// CONTRABANDISTAS
+// YKZ
 	CreateDynamicObjectExUH(4100,697.70282000,-1422.31140100,14.15188100,0,0,-38.90658449,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(4100,718.76098600,-1422.21838400,14.17510800,0,0,-38.90658449,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(966,711.30920400,-1422.33837900,12.52855900,0,0,-0.85943669,-1, -1, -1, MAX_RADIO_STREAM);
@@ -48132,7 +48816,7 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(3264,715.70300300,-1419.90234400,12.74840400,0,0,-89.99992398,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(3265,703.36108400,-1422.05615200,12.41406400,0,0,-180.00001985,-1, -1, -1, MAX_RADIO_STREAM);
 
-// Contrabandistas Parking (4-5-2011)
+// YKZ Parking (4-5-2011)
 	CreateDynamicObjectExUH(966,660.811462,-1448.604736,13.851562,0.000000,0.000000,90.000000,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(4100,660.805541,-1462.259521,15.600000,0.000000,0.000000,50.000000,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(4100,660.834045,-1441.054077,15.600000,0.000000,0.000000,49.998779,-1,-1,-1,MAX_RADIO_STREAM);
@@ -49485,7 +50169,7 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(3525,-2188.18408200,703.41510000,53.60958100,0,0,89.99998128,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(3861,-2185.91528300,696.47631800,54.06295800,0,0,180.00001985,-1, -1, -1, MAX_RADIO_STREAM);
 
-// CONTRABANDISTAS (Interior)
+// YKZ (Interior)
 	CreateDynamicObjectExUH(1501, -2171.09765625, 639.95935058594, 1051.3760986328, 0, 0, 0,-1, 1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(1487, -2161.607421875, 643.72943115234, 1057.5837402344, 0, 0, 0, -1, 1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(1665, -2161.6474609375, 644.39459228516, 1057.3967285156, 0, 0, 0, -1, 1, -1, MAX_RADIO_STREAM);
@@ -49499,7 +50183,7 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(1736, -2162.3266601563, 646.91302490234, 1059.9112548828, 0, 0, 0,-1, 1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(2829, -2160.8640136719, 637.14019775391, 1057.4418945313, 0, 0, 0, -1, 1, -1, MAX_RADIO_STREAM);
 
-// ZOTANO CONTRABANDISTAS (Interior)
+// ZOTANO YKZ (Interior)
 	CreateDynamicObjectExUH(2885, 1895.2775878906, 1016.8336181641, 37.59366607666, 0, 0, 90.065490722656, -1, 10, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(2885, 1888.7552490234, 1020.0472412109, 37.59366607666, 0, 0, 269.92858886719, -1, 10, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(2885, 1894.4251708984, 1022.3494262695, 37.59366607666, 0, 0, 179.86267089844, -1, 10, -1, MAX_RADIO_STREAM);
@@ -50251,7 +50935,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Entrada al Sal\xa6n");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	//////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 2228.5393066406;
@@ -50264,7 +50948,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Salida de la Oficina");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 1951.0385742188;
@@ -50277,7 +50961,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = 8;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Oficina del Director");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	//////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 2193.2702636719;
@@ -50290,7 +50974,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Oficina del Director");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = -794.9324;
@@ -50787,10 +51471,10 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Dueno]      = GOBIERNO;
 	//////////////////////////////
 	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = 1465.5310; // 1465.5310,-1805.5597,35.9928,111.6144
-	Teles[MAX_TELE][PosY]       = -1805.5597;
-	Teles[MAX_TELE][PosZ]       = 35.9928;
-	Teles[MAX_TELE][PosZZ]       = 111.6144;
+	Teles[MAX_TELE][PosX]       = 1448.4185; // 1448.4185,-1777.7811,33.4297,348.0792
+	Teles[MAX_TELE][PosY]       = -1777.7811;
+	Teles[MAX_TELE][PosZ]       = 33.4297;
+	Teles[MAX_TELE][PosZZ]       = 348.0792;
 	Teles[MAX_TELE][PickupID]           = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
 	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
 	Teles[MAX_TELE][Interior]            = 0;
@@ -51044,7 +51728,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Entrada al s\xa6tano");
-	Teles[MAX_TELE][Dueno]      = CONTRABANDISTAS;
+	Teles[MAX_TELE][Dueno]      = YKZ;
 	//////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 1889.8413;
@@ -51057,7 +51741,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Salida del s\xa6tano");
-	Teles[MAX_TELE][Dueno]      = CONTRABANDISTAS;
+	Teles[MAX_TELE][Dueno]      = YKZ;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 2157.3743;
@@ -51382,8 +52066,8 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Interior]            = 0;
 	Teles[MAX_TELE][World]       = WORLD_NORMAL;
 	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Entrada Trasera Contrabandistas");
-	Teles[MAX_TELE][Dueno]      = CONTRABANDISTAS;
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada Trasera Yakuza");
+	Teles[MAX_TELE][Dueno]      = YKZ;
 	//////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = -2170.2568;
@@ -51395,8 +52079,8 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Interior]            = 1;
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Salida Trasera Contrabandistas");
-	Teles[MAX_TELE][Dueno]      = CONTRABANDISTAS;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Trasera Yakuza");
+	Teles[MAX_TELE][Dueno]      = YKZ;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 1564.8403;
@@ -51503,16 +52187,16 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Dueno]      = CIVIL;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = 2408.9052734375;
-	Teles[MAX_TELE][PosY]       = 1133.2030029297;
-	Teles[MAX_TELE][PosZ]       = 34.267810821533;
-	Teles[MAX_TELE][PosZZ]       = 93.6150;
-	Teles[MAX_TELE][PickupID]           = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       -1);
+	Teles[MAX_TELE][PosX]       = 1321.9325; // 1321.9325,-1663.3185,13.5469,89.9204
+	Teles[MAX_TELE][PosY]       = -1663.3185;
+	Teles[MAX_TELE][PosZ]       = 13.5469;
+	Teles[MAX_TELE][PosZZ]       = 89.9204;
+	Teles[MAX_TELE][PickupID]           = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
 	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
-	Teles[MAX_TELE][Interior]            = 3;
-	Teles[MAX_TELE][World]       = 2;
+	Teles[MAX_TELE][Interior]            = 0;
+	Teles[MAX_TELE][World]       = WORLD_NORMAL;
 	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Bar del Tren");
+	SetStyleTextDrawTeles(MAX_TELE, "Bar Los Tupamaros");
 	Teles[MAX_TELE][Dueno]      = CIVIL;
 	//////////////////////////////
 	MAX_TELE++;
@@ -51525,7 +52209,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Interior]            = 3;
 	Teles[MAX_TELE][World]       = 3;
 	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Segundo Vag\xa6n");
+	SetStyleTextDrawTeles(MAX_TELE, "Salida del Bar");
 	Teles[MAX_TELE][Dueno]      = CIVIL;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
@@ -51643,7 +52327,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_NORMAL;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Entrada trasera");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	//////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 2193.3528;
@@ -51656,7 +52340,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Salida trasera");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = -2468.2424316406;
@@ -52661,7 +53345,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_NORMAL;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Taxistas San Fierro");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
@@ -52675,7 +53359,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Salida Taxistas");
-	Teles[MAX_TELE][Dueno]      = TAXI;
+	Teles[MAX_TELE][Dueno]      = MOONBEAN;
 	//////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 1871.1759033203;
@@ -53022,31 +53706,31 @@ public LoadTelesPublics()
 	SetStyleTextDrawTeles(MAX_TELE, "Entrada al Garage");
 	Teles[MAX_TELE][Dueno]      = HEORS;
 	/////////////////////////////////////////////////////////////////////
-	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = -2129.2333984375;
-	Teles[MAX_TELE][PosY]       = 894.77954101563;
-	Teles[MAX_TELE][PosZ]       = 80;
-	Teles[MAX_TELE][PosZZ]       = 90;
-	Teles[MAX_TELE][PickupID]    = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX],Teles[MAX_TELE][PosY],Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
-	Teles[MAX_TELE][PickupIDGo] = MAX_TELE + 1;
-	Teles[MAX_TELE][Interior]    = 0;
-	Teles[MAX_TELE][World]       = WORLD_NORMAL;
-	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Entrada al Garage");
-	Teles[MAX_TELE][Dueno]      = VELTRAN;
+//	MAX_TELE++;
+//	Teles[MAX_TELE][PosX]       = -2129.2333984375; -2129.2333984375 894.77954101563 80 90
+//	Teles[MAX_TELE][PosY]       = 894.77954101563;
+//	Teles[MAX_TELE][PosZ]       = 80;
+//	Teles[MAX_TELE][PosZZ]       = 90;
+//	Teles[MAX_TELE][PickupID]    = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX],Teles[MAX_TELE][PosY],Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
+//	Teles[MAX_TELE][PickupIDGo] = MAX_TELE + 1;
+//	Teles[MAX_TELE][Interior]    = 0;
+//	Teles[MAX_TELE][World]       = WORLD_NORMAL;
+//	Teles[MAX_TELE][Lock]       = false;
+//	SetStyleTextDrawTeles(MAX_TELE, "Entrada al Garage");
+//	Teles[MAX_TELE][Dueno]      = VELTRAN;
 	//////////////////////////////
-	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = -53.895202636719;
-	Teles[MAX_TELE][PosY]       = 2515.6477050781;
-	Teles[MAX_TELE][PosZ]       = 16.518749237061;
-	Teles[MAX_TELE][PosZZ]       = 270;
-	Teles[MAX_TELE][PickupID]    = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX],Teles[MAX_TELE][PosY],Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
-	Teles[MAX_TELE][PickupIDGo] = MAX_TELE - 1;
-	Teles[MAX_TELE][Interior]    = 5;
-	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
-	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Salida del Garage");
-	Teles[MAX_TELE][Dueno]      = VELTRAN;
+//	MAX_TELE++;
+//	Teles[MAX_TELE][PosX]       = -53.895202636719;
+//	Teles[MAX_TELE][PosY]       = 2515.6477050781;
+//	Teles[MAX_TELE][PosZ]       = 16.518749237061;
+//	Teles[MAX_TELE][PosZZ]       = 270;
+//	Teles[MAX_TELE][PickupID]    = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX],Teles[MAX_TELE][PosY],Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+//	Teles[MAX_TELE][PickupIDGo] = MAX_TELE - 1;
+//	Teles[MAX_TELE][Interior]    = 5;
+//	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+//	Teles[MAX_TELE][Lock]       = false;
+//	SetStyleTextDrawTeles(MAX_TELE, "Salida del Garage");
+//	Teles[MAX_TELE][Dueno]      = VELTRAN;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = 39.081974029541;
@@ -53071,7 +53755,7 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Interior]    = 5;
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Entrada a la Casa Volts");
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada a la Casa Tupamaro");
 	Teles[MAX_TELE][Dueno]      = VELTRAN;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
@@ -55045,6 +55729,7 @@ public CleanDataDeath(playerid)
 	PlayersDataOnline[playerid][CinturonSeguridad]			= false;
 	PlayersDataOnline[playerid][isEstereo]					= false;
 	PlayersDataOnline[playerid][inCosechaPoint]				= 0;
+	PlayersDataOnline[playerid][inTransportePoint]			= 0;
 	PlayersDataOnline[playerid][inPizzaPoint]				= 0;
 	PlayersDataOnline[playerid][inLlamadaPublic]			= false;
 	PlayersData[playerid][MyBonus] 							= false;
@@ -58997,7 +59682,7 @@ public LoadDoors()
 	Doors[MAX_DOORS][PosRotZFalse]    = 0;
 	Doors[MAX_DOORS][typeanim]       = 1;
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_BARRAS;
-	Doors[MAX_DOORS][Dueno]       = CONTRABANDISTAS;
+	Doors[MAX_DOORS][Dueno]       = YKZ;
 
 	MAX_DOORS++;
 	Doors[MAX_DOORS][objectmodel]    = 968;
@@ -59015,7 +59700,7 @@ public LoadDoors()
 	Doors[MAX_DOORS][PosRotZFalse]    = 0;
 	Doors[MAX_DOORS][typeanim]       = 1;
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_BARRAS;
-	Doors[MAX_DOORS][Dueno]       = CONTRABANDISTAS;
+	Doors[MAX_DOORS][Dueno]       = YKZ;
 
 	MAX_DOORS++; // CAMIONEROS
 	Doors[MAX_DOORS][objectmodel]    = 980;
@@ -59177,7 +59862,7 @@ public LoadDoors()
 	Doors[MAX_DOORS][PosRotZFalse]    = 89.99998128;
 	Doors[MAX_DOORS][typeanim]       = 1;
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_BARRAS;
-	Doors[MAX_DOORS][Dueno]       = TAXI;
+	Doors[MAX_DOORS][Dueno]       = MOONBEAN;
 
 	MAX_DOORS++; // Puerta LICENCIEROS
 	Doors[MAX_DOORS][objectmodel]    = 968; // LICENCIEROS 968
@@ -59412,7 +60097,7 @@ public LoadDoors()
 	Doors[MAX_DOORS][PosRotZFalse]    = 270;
 	Doors[MAX_DOORS][typeanim]       = 1;
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_BARRAS;
-	Doors[MAX_DOORS][Dueno]       = CONTRABANDISTAS;
+	Doors[MAX_DOORS][Dueno]       = YKZ;
 
 	MAX_DOORS++;
 	Doors[MAX_DOORS][objectmodel]    = 8378;
@@ -59430,7 +60115,7 @@ public LoadDoors()
 	Doors[MAX_DOORS][PosRotZFalse]    = 0;
 	Doors[MAX_DOORS][typeanim]       = 0;
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
-	Doors[MAX_DOORS][Dueno]       = CONTRABANDISTAS;
+	Doors[MAX_DOORS][Dueno]       = YKZ;
 
 	/*MAX_DOORS++;
 	Doors[MAX_DOORS][objectmodel]    = 980;
@@ -59816,9 +60501,9 @@ public LoadPointsExtraction()
 	FaccionesMercancias[CONTRABANDISTAS][PosZ] = 10.0000;
 	CreatePickup	(1210, 	1, 	FaccionesMercancias[CONTRABANDISTAS][PosX], FaccionesMercancias[CONTRABANDISTAS][PosY], FaccionesMercancias[CONTRABANDISTAS][PosZ],	 	-1);
 
-	FaccionesMercancias[TRAFICANTES][PosX] = -1421.7528;//-1421.7528 -964.7759 200.7651 || OLD obtener mercancias
-	FaccionesMercancias[TRAFICANTES][PosY] = -964.7759;//-576.9891 -1482.0560 10.7885 || New Obtener mercancías
-	FaccionesMercancias[TRAFICANTES][PosZ] = 200.7651;
+	FaccionesMercancias[TRAFICANTES][PosX] = 2101.8525;//-1421.7528 -964.7759 200.7651 || OLD obtener mercancias
+	FaccionesMercancias[TRAFICANTES][PosY] = -104.5903;//2101.8525,-104.5903,2.2769 || New Obtener mercancías
+	FaccionesMercancias[TRAFICANTES][PosZ] = 2.2769;
 	CreatePickup	(1210, 	1, 	FaccionesMercancias[TRAFICANTES][PosX], FaccionesMercancias[TRAFICANTES][PosY], FaccionesMercancias[TRAFICANTES][PosZ],	 	-1);
 }
 public LoadPickupsMisc()
@@ -60070,7 +60755,7 @@ public SetPlayerTutorial(playerid, tutorialid)
 				TextDrawHideForPlayer(playerid, TexdrawsTutorial[i]);
 				}
 
-				SendInfoMessage(playerid, 2, "0", "Bienvenidos a {00A5FF}Union Latina {F50000}RolePlay!");
+				SendInfoMessage(playerid, 2, "0", "Bienvenidos a {00A5FF}BioGames {F50000}RolePlay!");
 				return false;
 			}
 		}
@@ -60095,7 +60780,7 @@ public LoadTexDrawsTutorial()
 	// Taxis
 	SetTextDrawTutorial(2, "S\xa6lo pedimos que se respeten todas las reglas~N~del servidor, para eso le aconsejamos~N~que lea las reglas ~R~\"/Reglas\"~W~~N~y a la vez nos ayuda a ser un mejor servidor!");
 	// Taller
-	SetTextDrawTutorial(3, "Recuerde visitar el foro en: ~G~www.unionlatinarp.foroactivo.net ~W~donde ~N~ encontrar\x98 diversa informaci\xa6n ~N~para debatir");
+	SetTextDrawTutorial(3, "Recuerde visitar el foro en: ~G~foro.biogames.net (Sección BioSamp) ~W~donde ~N~ encontrar\x98 diversa informaci\xa6n ~N~para debatir");
 	// CNN
 	SetTextDrawTutorial(4, "Al igual el foro es un medio muy t\xa2pico ~N~de encontrar un empleo, as\xa2 ~N~que no pierda el tiempo!");
 	// Detectives
@@ -60109,7 +60794,7 @@ public LoadTexDrawsTutorial()
 	SetTextDrawTutorial(12, "~R~Que es CJ(CarJaked)~B~?~N~~N~~W~-Es cuando se acerca una persona en un auto y pulsas~N~ \"Enter\" y lo sacas del auto sin razon alguna.~N~~N~~R~Que es CK(CarKill)~B~?~N~~W~Es cuando se mata a una persona atropellandolo con un auto.");
 	SetTextDrawTutorial(13, "~R~Que es DB(Drive-By)~B~?~N~~N~~W~Es disparar desde el asiento del conductor de una~N~moto o de un auto (Generalmente tambien esta Prohi-~N~bido, debido a cuando se dispara desde el asiento~N~del conductor, el GTA SA utiliza el ~B~AUTO-AIM");
 	SetTextDrawTutorial(14, "~R~Que es BJ(Bunny-Jump)~B~?~N~~N~~W~Es ir corriendo y saltando a al mismo tiempo para~N~avanzar mas rapido y no cansarse.~N~Esto es considerado como ~R~Anti-Rol.");
-	SetTextDrawTutorial(15, "~G~Bienvenido a ~B~Union Latina RolePlay~N~~N~~R~¿Que hacer primero~B~?~N~~N~~W~1-.~R~Obtener el Pasaporte/DNI:~W~ Anda al Ayuntamiento~N~y obten tu pasaporte~N~~N~2-.~R~Sacarte las licencias:~W~ Busca un licenciero y hazte por las licencias,~N~~N~Si no hay disponible puedes ir a un ~B~24/7~W~ y poner ~G~ANUNCIO");
+	SetTextDrawTutorial(15, "~G~Bienvenido a ~B~BioGame RolePlay~N~~N~~R~¿Que hacer primero~B~?~N~~N~~W~1-.~R~Obtener el Pasaporte/DNI:~W~ Anda al Ayuntamiento~N~y obten tu pasaporte~N~~N~2-.~R~Sacarte las licencias:~W~ Busca un licenciero y hazte por las licencias,~N~~N~Si no hay disponible puedes ir a un ~B~24/7~W~ y poner ~G~ANUNCIO");
 	SetTextDrawTutorial(16, "3-.~R~Cambiar de Look:~B~~W~Anda a una tienda de Ropa!~N~En el ~B~MAPA~W~ veras los ~B~ICONOS~W~ ~N~~N~4-.~R~Comprar Auto en Grotti: ~W~Ve a Grotti~B~(concesionaria)~N~~W~y Dile a un ~B~NFS~W~ que te vendan un auto~N~~N~Si no hay disponible puedes ir a un ~B~24/7~W~ y poner ~G~ANUNCIO");
 	SetTextDrawTutorial(17, "5-.~R~Buscar un empleo:~W~ Puedes Unirte a los diferentes ~N~~B~Jobs ~W~& ~B~FACCIONES~W~ que ofrecemos!~N~~N~~R~PUBLICAS:~N~~G~Gobierno; LSPD (Policias); LSMD (Medicos); Taxis~N~~W~Entre otras...~N~~N~~R~PRIVADAS:~N~~B~SML (Licencieros); NFS (Vendedores de autos); ~N~Mecanicos; Camioneros; CNN;~N~~W~Entre otras...");
 	SetTextDrawTutorial(18, "~R~ILEGALES:~B~~N~~W~Encontrarás diversas entre ~B~PANDILLAS ~W~& ~R~MAFIAS~N~~W~Pero ten cuidado con la ~G~POLICIA!~N~~N~~R~FIN DEL TUTORIAL DE ~G~BIENVENIDA~B~~N~~N~~W~Para mas informacion usa el comando ~B~/Ayuda~N~~N~Disfruta!");
@@ -61669,7 +62354,7 @@ public SetPlayerFaccionEx(playerid, command[])
 								PlayersData[playeridF][Rango]   = RangoID;
 								PlayersData[playeridF][Skin] = RangosSkins[PlayersData[playeridF][Faccion]][PlayersData[playeridF][Rango]][0];
 
-								if ( PlayersData[playeridF][Job] == VENDEDOR_MOVIL ||  PlayersData[playeridF][Job] == MENSAJERO ||  PlayersData[playeridF][Job] == COSECHADOR ||  PlayersData[playeridF][Job] == PIZZERO)
+								if ( PlayersData[playeridF][Job] == VENDEDOR_MOVIL ||  PlayersData[playeridF][Job] == MENSAJERO ||  PlayersData[playeridF][Job] == COSECHADOR ||  PlayersData[playeridF][Job] == TRANSPORTERO ||  PlayersData[playeridF][Job] == PIZZERO)
 								{
 								    PlayersData[playeridF][Job] = NINGUNO;
 								}
@@ -61743,6 +62428,7 @@ public LoadJobs()
 	format(Jobs[VENDEDOR_MOVIL][NameJob], MAX_FACCION_NAME, "Vendedor de Móviles");
 	format(Jobs[MENSAJERO][NameJob], MAX_FACCION_NAME, "Mensajero");
 	format(Jobs[COSECHADOR][NameJob], MAX_FACCION_NAME, "Recolector de Basura");
+	format(Jobs[TRANSPORTERO][NameJob], MAX_FACCION_NAME, "Transportista de Cargas");
 	format(Jobs[PIZZERO][NameJob], MAX_FACCION_NAME, "Repartidor de Pizzas");
 }
 public LoadTextDrawInfo()
@@ -61811,15 +62497,6 @@ public LoadTextDrawInfo()
 
 	////////////////////////////////////////////////
 	MAX_TEXT_DRAW_INFO++;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 2393.4990234375;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 1113.5131835938;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 34.726249694824;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-    PickupExitVagones[2] = MAX_TEXT_DRAW_INFO;
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "Salida del Vag\xa6n 3");
-
-	////////////////////////////////////////////////
-	MAX_TEXT_DRAW_INFO++;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 2365.8909;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 1559.6465;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 27.9562;
@@ -61879,11 +62556,19 @@ public LoadTextDrawInfo()
     Jobs[COSECHADOR][pickupidGet] = TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo];
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "Para ser Recolector de Basura!~N~Use ~R~/~G~Trabajar");
 	////////////////////////////////////////////////
-	MAX_TEXT_DRAW_INFO++;// Repartidor de Pizzas
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 2099.4341; //-366.7468,-1457.1401,25.7266 // Basura 1640.9506,-1886.7334,13.5541
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1811.5439;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5547;
+	MAX_TEXT_DRAW_INFO++;// Transportista
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = -79.6897; //-79.6897,-1140.4485,1.0781
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1140.4485;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1.0781;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	WORLD_NORMAL);
+    Jobs[TRANSPORTERO][pickupidGet] = TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo];
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "Para ser Transportista!~N~Use ~R~/~G~Trabajar");
+	////////////////////////////////////////////////
+	MAX_TEXT_DRAW_INFO++;// Repartidor de Pizzas
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 369.0689; //369.0689,-118.7311,1001.4922ºº
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -118.7311;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1001.4922;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
     Jobs[PIZZERO][pickupidGet] = TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo];
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "Para ser Repartidor de pizzas!~N~Use ~R~/~G~Trabajar");
 
@@ -61909,8 +62594,8 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 361.8299; //358.4752,178.6662,1008.3828
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 173.5693;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1008.3828;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~/Obtener Pasaporte ~G~($400)");
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1581, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~/Obtener Pasaporte~N~~N~~G~($400)");
 
 	//////////////////////////////////////////////// Pandilla Grove
 	MAX_TEXT_DRAW_INFO++;
@@ -61933,6 +62618,14 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 303.9115; //358.4752,178.6662,1008.3828
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 303.7705;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 999.1484;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Usa el comando: ~G~/Obtener Arma");
+
+    //////////////////////////////////////////////// Pandilla Tupamaros 36.5004,2495.8853,16.4937,176.4574
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 36.5004; //358.4752,178.6662,1008.3828
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 2495.8853;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 16.4937;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Usa el comando: ~G~/Obtener Arma");
 
@@ -61989,7 +62682,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1720.7466;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5430;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 2
 	MAX_TEXT_DRAW_INFO++;
@@ -61997,7 +62690,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1868.1195;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5832;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 3
 	MAX_TEXT_DRAW_INFO++;
@@ -62005,7 +62698,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1740.9370;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5469;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 4
 	MAX_TEXT_DRAW_INFO++;
@@ -62013,7 +62706,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1415.0751;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.3486;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 5
 	MAX_TEXT_DRAW_INFO++;
@@ -62021,7 +62714,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1231.5399;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 18.3871;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 6
 	MAX_TEXT_DRAW_INFO++;
@@ -62029,7 +62722,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -923.2892;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 34.3952;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 7
 	MAX_TEXT_DRAW_INFO++;
@@ -62037,7 +62730,7 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1545.1656;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 9.8270;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// TELE PUBLICO 8
 	MAX_TEXT_DRAW_INFO++;
@@ -62045,25 +62738,38 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1375.2438;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 24.0000;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico ~r~/pLlamar");
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
 
 	//////////////////////////////////////////////// /uniformar basurero ,,
 	MAX_TEXT_DRAW_INFO++;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1610.8746;//,,
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1610.8746;//
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1893.8384;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5469;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1275, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Basurero ~n~~r~/Uniformar");
-
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Basurero ~n~~r~/Uniforme");
+	//////////////////////////////////////////////// /uniformar Transportista ,,
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = -76.8269;//-76.8269,-1136.7209,1.0781
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1136.7209;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1.0781;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1275, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Transportista ~n~~r~/Uniforme");
 	//////////////////////////////////////////////// /uniformar pizzero ,,
 	MAX_TEXT_DRAW_INFO++;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 2105.0557;//,,
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1819.5490;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 13.5547;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 369.0807; //º369.0807,-114.5767,1001.4995
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -114.5767;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1001.4995;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1275, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Pizzero ~n~~r~/Uniformar");
-	
-	// end textdraw info
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Uniforme Pizzero ~n~~r~/Uniforme");
+	//////////////////////////////////////////////// /Pick Up Camioeros ,,
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = -557.6221;//-557.6221,-539.2330,25.5234,359.8422,0,0,0,0,0,0); //
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -539.2330;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 25.5234;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1575, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Almacen Privado~n~~r~Camioneros");
+
+	// end textdraw infoº
 
 }
 public SetStyleTextDrawTextDrawInfo(textdrawid, text[])
@@ -62079,31 +62785,31 @@ public SetStyleTextDrawTextDrawInfo(textdrawid, text[])
 	TextDrawLetterSize(TextDrawInfoTextDraws[textdrawid], 0.5 , 1.2);
 	return textdrawid;
 }
-public SetVehicleTaxi(vehicleid)
+public SetVehicleMoonbean(vehicleid)
 {
-	TaxisTaximetro[MAX_TAXIS][TaxiVehicleid] = vehicleid;
-	SetTaxiReadyTextDraw(MAX_TAXIS, 0);
-	SetTaxiReadyTextDraw(MAX_TAXIS, 1);
-	SetTaxiReadyTextDraw(MAX_TAXIS, 2);
-	MAX_TAXIS++;
+	MoonbeansMoonbeanmetro[MAX_MOONBEANS][MoonbeanVehicleid] = vehicleid;
+	SetMoonbeanReadyTextDraw(MAX_MOONBEANS, 0);
+	SetMoonbeanReadyTextDraw(MAX_MOONBEANS, 1);
+	SetMoonbeanReadyTextDraw(MAX_MOONBEANS, 2);
+	MAX_MOONBEANS++;
 }
-public SetTaxiReadyTextDraw(taxiid, textdrawid)
+public SetMoonbeanReadyTextDraw(moonbeanid, textdrawid)
 {
-	TaxisTaximetro[taxiid][Seats][textdrawid] = TextDrawCreateEx(524.0, 395.0,"Empty");
-	TextDrawUseBox(TaxisTaximetro[taxiid][Seats][textdrawid], 1);
-	TextDrawBackgroundColor(TaxisTaximetro[taxiid][Seats][textdrawid], 0x000000A3);
-	TextDrawColor(TaxisTaximetro[taxiid][Seats][textdrawid], 0x2DFF00FF);
-	TextDrawBoxColor(TaxisTaximetro[taxiid][Seats][textdrawid], 0x000000A1);
-	TextDrawTextSize(TaxisTaximetro[taxiid][Seats][textdrawid], 625, 400.0);
-	TextDrawSetShadow(TaxisTaximetro[taxiid][Seats][textdrawid], 1);
-	TextDrawLetterSize(TaxisTaximetro[taxiid][Seats][textdrawid], 0.3 , 1.0);
-	TextDrawFont(TaxisTaximetro[taxiid][Seats][textdrawid], 2);
+	MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid] = TextDrawCreateEx(524.0, 395.0,"Empty");
+	TextDrawUseBox(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 1);
+	TextDrawBackgroundColor(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 0x000000A3);
+	TextDrawColor(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 0x2DFF00FF);
+	TextDrawBoxColor(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 0x000000A1);
+	TextDrawTextSize(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 625, 400.0);
+	TextDrawSetShadow(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 1);
+	TextDrawLetterSize(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 0.3 , 1.0);
+	TextDrawFont(MoonbeansMoonbeanmetro[moonbeanid][Seats][textdrawid], 2);
 }
-public IsVehicleTaxi(vehicleid)
+public IsVehicleMoonbean(vehicleid)
 {
-	for ( new i = 0; i < MAX_TAXIS; i++)
+	for ( new i = 0; i < MAX_MOONBEANS; i++)
 	{
-	    if ( TaxisTaximetro[i][TaxiVehicleid] == vehicleid )
+	    if ( MoonbeansMoonbeanmetro[i][MoonbeanVehicleid] == vehicleid )
 	    {
 	        return i;
 		}
@@ -62903,9 +63609,9 @@ public SaveDatosPlayerDisconnect(playerid)
 			{
 				PlayersData[playerid][IsPaga] = 0;
 			}
-			if ( PlayersDataOnline[playerid][IsTaxi] != -1 )
+			if ( PlayersDataOnline[playerid][IsMoonbean] != -1 )
 			{
-				PayTaxi(playerid, false);
+				PayMoonbean(playerid, false);
 			}
 		    if ( PlayersData[playerid][Phone] != 0 && PlayersDataOnline[playerid][InCall] != -1 )
 		    {
@@ -64222,7 +64928,7 @@ public ShowDialogGuia(playerid)
 	new ListDialog[350];
 
 	format(ListDialog, sizeof(ListDialog),
-	"{00F50A}1- {F81414}¿{E6E6E6}Qué hacer{F81414}?\r\n{00F50A}2- {F81414}¿{E6E6E6}Necesitas Licencias{F81414}?\r\n{00F50A}3- {F81414}¿{E6E6E6}Cómo comprar Coche{F81414}?\r\n{00F50A}4- {E6E6E6}Banco Central Los Santos\r\n{F81414}[GPS]{E6E6E6}Trabajos - Jobs\r\n{F81414}[GPS]{E6E6E6}Locales y Negocios\r\n{F81414}[GPS]{E6E6E6}Empresas Públicas & Privadas");
+	"{F81414}1- ¿{E6E6E6}Qué hacer{F81414}?\r\n{F81414}2- ¿{E6E6E6}Necesitas Licencias{F81414}?\r\n{F81414}3- ¿{E6E6E6}Cómo comprar Coche{F81414}?\r\n{F81414}4- {E6E6E6}Comandos Básicos\r\n{0049FF}[GPS]{6EF83C} Trabajos - Jobs\r\n{0049FF}[GPS]{E6E6E6} Locales & Negocios\r\n{0049FF}[GPS]{E6E6E6} Empresas Públicas & Privadas");
 
 	ShowPlayerDialogEx(playerid,157,DIALOG_STYLE_LIST,"{00A5FF}Guía nuevo Ciudadano", ListDialog, "Seleccionar", "Salir");
 }
@@ -64231,7 +64937,7 @@ public ShowDialogGuiaJobs(playerid)
 	new ListDialog[350];
 
 	format(ListDialog, sizeof(ListDialog),
-	"{00F50A}1- {E6E6E6}Pescador\r\n{00F50A}2- {E6E6E6}Vendedor de Móviles\r\n{00F50A}3- {E6E6E6}Recolector de Basura\r\n{00F50A}4- {E6E6E6}Repartidor de Pizzas");
+	"{00F50A}1- {E6E6E6}Pescador\r\n{00F50A}2- {E6E6E6}Transportista de Cargas\r\n{00F50A}3- {E6E6E6}Recolector de Basura\r\n{00F50A}4- {E6E6E6}Repartidor de Pizzas");
 
 	ShowPlayerDialogEx(playerid,158,DIALOG_STYLE_LIST,"{00A5FF}¿Buscas un trabajo?", ListDialog, "Seleccionar", "Salir");
 }
@@ -65413,7 +66119,7 @@ public ResetServer()
    	SendClientMessageToAll(0x000000FF, " ");
    	SendClientMessageToAll(0x000000FF, " ");
 	SendClientMessageToAll(COLOR_MESSAGES[2], "{00A5FF}Saludos Cordiales,");
-	SendClientMessageToAll(COLOR_MESSAGES[2], "{E6E6E6}Equipo de {00A5FF}Unión Latina {F50000}RP");
+	SendClientMessageToAll(COLOR_MESSAGES[2], "{E6E6E6}Equipo de {00A5FF}BioGames {F50000}RP");
 	GameTextForAll( "~B~Servidor Reiniciando...~N~Por favor espere...", 6000, 0);
 }
 public ConfirmDeletedAllSMS(playerid)
@@ -65978,7 +66684,7 @@ public GetVagonByVagonID(vehicleid, vagonid)
 }
 public IsPlayerNearTram(playerid)
 {
-	if ( PlayersData[playerid][Faccion] == TAXI )
+	if ( PlayersData[playerid][Faccion] == MOONBEAN )
 	{
 	    if ( IsVehicleOpen(playerid, TramSFID, 0) )
 	    {
@@ -67981,9 +68687,9 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Dueno] 		= SFMD;*/
 
 	// 1/////////////////////////////////////////////////////////////////////
-	// LS
+	// LS // Garage Ayuntamiento
 	MAX_GARAGES_EX++;
-	GaragesEx[MAX_GARAGES_EX][PosXOne]       = 2450.3898925781;
+	GaragesEx[MAX_GARAGES_EX][PosXOne]       = 2450.3898925781; 
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2374.7368164063;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 74.422454833984;
 	GaragesEx[MAX_GARAGES_EX][PosZZOne]    = 270;
@@ -67991,14 +68697,14 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PosYOneP]      = 2374.4838867188;
 	GaragesEx[MAX_GARAGES_EX][PosZOneP]      = 74.541236877441;
 	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 270;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1637.7884521484;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1681.7750244141;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.535420417786;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 90;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]    = 1642.2092285156;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]    = -1681.6961669922;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]    = 13.529174804688;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 90;
+	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1413.2725; // AddStaticVehicle(411,1413.2725,-1809.0320,13.2749,89.7325,4,3); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1809.0320;
+	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.2749;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 89.7325;
+	GaragesEx[MAX_GARAGES_EX][PosXTwoP]    = 1416.9714; // Afuera a pie AddPlayerClass(147,1416.9714,-1810.5645,13.5469,85.4806,0,0,0,0,0,0); //
+	GaragesEx[MAX_GARAGES_EX][PosYTwoP]    = -1810.5645;
+	GaragesEx[MAX_GARAGES_EX][PosZTwoP]    = 13.5469;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 85.4806;
 	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 4;
@@ -68149,7 +68855,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 16;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
 	MAX_GARAGES_EX++; // Garage Derecho
@@ -68173,7 +68879,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 16;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
 	MAX_GARAGES_EX++; // Garage Solo al lado de la puerta
@@ -68197,7 +68903,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 16;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
 	MAX_GARAGES_EX++;
@@ -68341,7 +69047,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 3;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
 	MAX_GARAGES_EX++; // NFS Concesionario Grotti 2
@@ -68365,7 +69071,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 3;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
 	MAX_GARAGES_EX++;
@@ -68510,7 +69216,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 10;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = NFS;
 
 	///////////////////////////////////////////////////////////////////// HEORS Garage HQ
@@ -68538,31 +69244,31 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = HEORS;
 
-	MAX_GARAGES_EX++;
-	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -27.256742477417;
-	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2520.5998535156;
-	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 16.343023300171;
-	GaragesEx[MAX_GARAGES_EX][PosZZOne]    = 180;
-	GaragesEx[MAX_GARAGES_EX][PosXOneP]    = -27.153844833374;
-	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2525.5729980469;
-	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 16.518749237061;
-	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 180;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -2105.2783203125;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 901.8046875;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 76.7109375;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 0;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -2105.2778320313;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 897.35693359375;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 76.7109375;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 0;
-	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
-	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
-	GaragesEx[MAX_GARAGES_EX][Interior]    = 5;
-	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
-	GaragesEx[MAX_GARAGES_EX][Dueno]       = VELTRAN;
+//	MAX_GARAGES_EX++; // Garage Frontal Veltran Al Lado de la Puerta de la entrada
+//	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -27.256742477417;
+//	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2520.5998535156;
+//	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 16.343023300171;
+//	GaragesEx[MAX_GARAGES_EX][PosZZOne]    = 180;
+//	GaragesEx[MAX_GARAGES_EX][PosXOneP]    = -27.153844833374;
+//	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2525.5729980469;
+//	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 16.518749237061;
+//	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 180;
+//	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -2105.2783203125;
+//	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 901.8046875;
+//	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 76.7109375;
+//	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 0;
+//	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -2105.2778320313;
+//	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 897.35693359375;
+//	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 76.7109375;
+//	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 0;
+//	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
+//	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
+//	GaragesEx[MAX_GARAGES_EX][Interior]    = 5;
+//	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
+//	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+//	GaragesEx[MAX_GARAGES_EX][Dueno]       = VELTRAN;
 
-	MAX_GARAGES_EX++;
+	MAX_GARAGES_EX++; // Garage Izquierdo Veltran (Hells Angels)
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -49.709205627441;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2521.1147460938;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 16.343023300171;
@@ -68571,22 +69277,22 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2521.0920410156;
 	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 16.518749237061;
 	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 270;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -2133.775390625;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 899.67431640625;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 80;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 90;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -2129.2312011719;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 899.56573486328;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 80;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 90;
+	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1319.4298; // En Coche 1319.4298,-1652.2531,13.2740,91.7685
+	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1652.2531;
+	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.2740;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 91.7685;
+	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = 1322.0000; // A pie 1322.0000,-1652.2653,13.5469,84.2547
+	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = -1652.2653;
+	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 13.5469;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 84.2547;
 	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 5;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = VELTRAN;
 
-	MAX_GARAGES_EX++;
+	MAX_GARAGES_EX++; // Garage Derecho Veltran (Hells Angels)
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = -49.725120544434;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = 2510.0656738281;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 16.343023300171;
@@ -68595,19 +69301,19 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][PosYOneP]    = 2510.0354003906;
 	GaragesEx[MAX_GARAGES_EX][PosZOneP]    = 16.518749237061;
 	GaragesEx[MAX_GARAGES_EX][PosZZOneP]    = 270;
-	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = -2133.763671875;
-	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = 890.0751953125;
-	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 80;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 90;
-	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = -2129.2338867188;
-	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = 890.00640869141;
-	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 80;
-	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 90;
+	GaragesEx[MAX_GARAGES_EX][PosXTwo]       = 1319.5311; // Afuera Coche Derecho 1319.5311,-1658.8983,13.2730,90.4135
+	GaragesEx[MAX_GARAGES_EX][PosYTwo]       = -1658.8983;
+	GaragesEx[MAX_GARAGES_EX][PosZTwo]       = 13.2730;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwo]    = 90.4135;
+	GaragesEx[MAX_GARAGES_EX][PosXTwoP]      = 1322.0061; // Afuera A Pie Izquierdo 1322.0061,-1658.8619,13.5469,90.9945
+	GaragesEx[MAX_GARAGES_EX][PosYTwoP]      = -1658.8619;
+	GaragesEx[MAX_GARAGES_EX][PosZTwoP]      = 13.5469;
+	GaragesEx[MAX_GARAGES_EX][PosZZTwoP]    = 88.8339;
 	GaragesEx[MAX_GARAGES_EX][PickupIDOneP]   = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXOneP], GaragesEx[MAX_GARAGES_EX][PosYOneP], GaragesEx[MAX_GARAGES_EX][PosZOneP], WORLD_DEFAULT_INTERIOR);
 	GaragesEx[MAX_GARAGES_EX][PickupIDTwoP] = CreatePickup(19132, 1, GaragesEx[MAX_GARAGES_EX][PosXTwoP], GaragesEx[MAX_GARAGES_EX][PosYTwoP], GaragesEx[MAX_GARAGES_EX][PosZTwoP], WORLD_NORMAL);
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 5;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
-	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
+	GaragesEx[MAX_GARAGES_EX][Lock]       = true;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = VELTRAN;
 
 	// LSMD Izquierda
@@ -68757,7 +69463,7 @@ public UpdateLockDoorForPlayer(pickupid, lock, pickup2)
 }
 public IsBizzBarra(playerid)
 {
-	if ( GetPlayerVirtualWorld(playerid) == 4 || PlayersData[playerid][IsPlayerInVehInt])
+	if ( GetPlayerVirtualWorld(playerid) == 4 || PlayersData[playerid][IsPlayerInVehInt]) // Crear /bar
 	{
 		if ( IsPlayerInRangeOfPoint(playerid, 	3.0,
 												-927.9366,2224.1982,43.2305) ||
@@ -68770,7 +69476,7 @@ public IsBizzBarra(playerid)
 			IsPlayerInRangeOfPoint(playerid, 	3.0,
 												-917.7833,2206.2751,51.3453) ||
 			IsPlayerInRangeOfPoint(playerid, 	3.0,
-												2398.5273,1107.9354,34.6063) ||
+												2397.8970,1109.1061,34.3278) || // Bar Tupamaros
 			IsPlayerInRangeOfPoint(playerid, 	3.0,
 												970.8110,-47.7546,1001.1172) ||
 			IsPlayerInRangeOfPoint(playerid, 	3.0,
@@ -70945,7 +71651,7 @@ public ShowPlayerLogin(playerid, option)
    	else
    	{
 		PlayersDataOnline[playerid][SaveAfterAgenda][0] = true;
-        ShowPlayerDialogEx(playerid, 1, DIALOG_STYLE_PASSWORD, MsgWelcome, "{F0F0F0}Intente nuevamente ingresar su contraseña y pulse en \"Ingresar\"\n\n{F50000}NOTA: {F0F0F0}Si ha olvidado su contraseña puede solicitarla mediante un E-mail pulsando en \"Recuperar\"\n{F0F0F0}o tratando directamente en el centro de soporte (www.unionlatinarp.foroactivo.net)", "Ingresar", "Recuperar");
+        ShowPlayerDialogEx(playerid, 1, DIALOG_STYLE_PASSWORD, MsgWelcome, "{F0F0F0}Intente nuevamente ingresar su contraseña y pulse en \"Ingresar\"\n\n{F50000}NOTA: {F0F0F0}Si ha olvidado su contraseña puede solicitarla mediante un E-mail pulsando en \"Recuperar\"\n{F0F0F0}o tratando directamente en el centro de soporte (foro.biogames.net Sección BioSamp)", "Ingresar", "Recuperar");
 	}
 }
 public ShowPlayerRegister(playerid, option)
@@ -70992,7 +71698,7 @@ public RecoveryEmailPlayer(playerid, response_code, data[])
 		}
 		else
 		{
-	        ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "{00A5FF}Información - Error! (Recuperación de contraseña)", "{F50000}Oops, un error ha ocurrído!\n\n{F0F0F0}Porfavor intenté luego realizar está operación\n{F0F0F0}Si el problema llega a persistir, nos puede contar el inconveniente en: {F5FF00}www.unionlatinarp.foroactivo.net\n\n\n{F0F0F0}Disculpar las molestías.", "Ok", "");
+	        ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "{00A5FF}Información - Error! (Recuperación de contraseña)", "{F50000}Oops, un error ha ocurrído!\n\n{F0F0F0}Porfavor intenté luego realizar está operación\n{F0F0F0}Si el problema llega a persistir, nos puede contar el inconveniente en: {F5FF00}foro.biogames.net (Sección BioSamp)\n\n\n{F0F0F0}Disculpar las molestías.", "Ok", "");
 		}
         KickEx(playerid, 9);
 	}
@@ -71634,9 +72340,9 @@ public RemovePlayerFromVehicleEx(playerid, seat, time)
 	}
 	else
 	{
-		if ( PlayersDataOnline[playerid][IsTaxi] != -1 )
+		if ( PlayersDataOnline[playerid][IsMoonbean] != -1 )
 		{
-			PayTaxi(playerid, true);
+			PayMoonbean(playerid, true);
 		}
     	PlayersDataOnline[playerid][InVehicle] = false;
 	}
@@ -74688,7 +75394,7 @@ public IsDoorInsideBizz(pickupid)
 	}
 	return false;
 }
-public IsValidSeatTaxi(seatid)
+public IsValidSeatMoonbean(seatid)
 {
 	if ( seatid >= 1 && seatid <= 3 )
 	{
@@ -74699,11 +75405,11 @@ public IsValidSeatTaxi(seatid)
 	    return false;
 	}
 }
-public CheckValidPlayerToTaxi(playerid, taxiid)
+public CheckValidPlayerToMoonbean(playerid, moonbeanid)
 {
-	if ( GetPlayerVehicleID(playerid) == TaxisTaximetro[taxiid][TaxiVehicleid] &&
-		 PlayersDataOnline[playerid][IsTaxi] == -1 &&
-		 IsValidSeatTaxi(GetPlayerVehicleSeat(playerid)) )
+	if ( GetPlayerVehicleID(playerid) == MoonbeansMoonbeanmetro[moonbeanid][MoonbeanVehicleid] &&
+		 PlayersDataOnline[playerid][IsMoonbean] == -1 &&
+		 IsValidSeatMoonbean(GetPlayerVehicleSeat(playerid)) )
 	{
 	    return true;
     }
@@ -74712,15 +75418,15 @@ public CheckValidPlayerToTaxi(playerid, taxiid)
         return false;
 	}
 }
-public SetPlayerTaxi(playerid, taxiid, seat)
+public SetPlayerMoonbean(playerid, moonbeanid, seat)
 {
     seat--;
-	PlayersDataOnline[playerid][IsTaxi] = taxiid;
-    PlayersDataOnline[playerid][SeatTaxi] = seat;
-	TextDrawShowForPlayer(playerid, TaxisTaximetro[taxiid][Seats][seat]);
-    TaxisTaximetro[taxiid][TaxiTime][seat] = gettime();
+	PlayersDataOnline[playerid][IsMoonbean] = moonbeanid;
+    PlayersDataOnline[playerid][SeatMoonbean] = seat;
+	TextDrawShowForPlayer(playerid, MoonbeansMoonbeanmetro[moonbeanid][Seats][seat]);
+    MoonbeansMoonbeanmetro[moonbeanid][MoonbeanTime][seat] = gettime();
 }
-public UpdateTaximetroSeat(playerid)
+public UpdateMoonbeanmetroSeat(playerid)
 {
 //      \x98 = A Con tílde
 // 		\x9e = E con tílde
@@ -74728,85 +75434,85 @@ public UpdateTaximetroSeat(playerid)
 //		\xa6 = O Con tílde
 
 	new TimeNow = gettime();
-	new TaxiStringUpdate[100];
+	new MoonbeanStringUpdate[100];
 	new MinutesT;
 	new SecondsT;
-	if ( (TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) <= 59 )
+	if ( (TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) <= 59 )
 	{
-        SecondsT = (TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]);
+        SecondsT = (TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]);
 	}
 	else
 	{
-        SecondsT = (TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) % 60;
+        SecondsT = (TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) % 60;
 	}
-	if ( (TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) <= 3600 )
+	if ( (TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) <= 3600 )
 	{
-        MinutesT = (TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) / 60;
+        MinutesT = (TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) / 60;
 	}
 	else
 	{
-        MinutesT = ((TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) % 3600) / 60;
+        MinutesT = ((TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) % 3600) / 60;
 	}
-	format(TaxiStringUpdate, sizeof(TaxiStringUpdate), "  ~R~.::Tax\xa2~R~metro::.~N~~N~~B~ Tiempo:~W~%2i:%2i:%2i~N~~B~    Pagar: ~G~$%4i",
+	format(MoonbeanStringUpdate, sizeof(MoonbeanStringUpdate), "  ~R~.::Tax\xa2~R~metro::.~N~~N~~B~ Tiempo:~W~%2i:%2i:%2i~N~~B~    Pagar: ~G~$%4i",
 
-	(TimeNow - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) / 3600,
+	(TimeNow - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) / 3600,
 	MinutesT,
 	SecondsT,
-	CalcularTaxiMoney(playerid)
+	CalcularMoonbeanMoney(playerid)
 	);
-	TextDrawSetString(TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][Seats][PlayersDataOnline[playerid][SeatTaxi]], TaxiStringUpdate);
+	TextDrawSetString(MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][Seats][PlayersDataOnline[playerid][SeatMoonbean]], MoonbeanStringUpdate);
 
-	if ( PlayersData[playerid][Dinero] <= CalcularTaxiMoney(playerid) )
+	if ( PlayersData[playerid][Dinero] <= CalcularMoonbeanMoney(playerid) )
 	{
-	    PayTaxi(playerid, true);
+	    PayMoonbean(playerid, true);
 	    RemovePlayerFromVehicle(playerid);
 		SendClientMessage(playerid, COLOR_MESSAGES[0], " No tienes dinero para pagar el taxí!");
 	}
-	else if ( !TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiOn] )
+	else if ( !MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanOn] )
 	{
-		PayTaxi(playerid, true);
+		PayMoonbean(playerid, true);
 	}
 }
-public PayTaxi(playerid, option)
+public PayMoonbean(playerid, option)
 {
-	if ( PlayersDataOnline[playerid][IsTaxi] != -1 )
+	if ( PlayersDataOnline[playerid][IsMoonbean] != -1 )
 	{
-	    new MoneyTaxi = CalcularTaxiMoney(playerid);
+	    new MoneyMoonbean = CalcularMoonbeanMoney(playerid);
 	    new NoPay;
-	    GivePlayerMoneyEx(playerid, -MoneyTaxi);
+	    GivePlayerMoneyEx(playerid, -MoneyMoonbean);
 	    for ( new i = 0; i < MAX_PLAYERS; i++ )
 	    {
 			if ( IsPlayerConnected(i) && PlayersDataOnline[i][State] == 3 &&
 				 IsPlayerInAnyVehicle(i) &&
-				 GetPlayerVehicleID(i) == TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiVehicleid] &&
+				 GetPlayerVehicleID(i) == MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanVehicleid] &&
 				 GetPlayerVehicleSeat(playerid) == 0 &&
-				 PlayersData[playerid][Faccion] == TAXI )
+				 PlayersData[playerid][Faccion] == MOONBEAN )
 			{
-				GivePlayerMoneyEx(i, MoneyTaxi);
+				GivePlayerMoneyEx(i, MoneyMoonbean);
 				NoPay = true;
 				break;
 			}
 	    }
 	    if ( !NoPay )
 	    {
-	    	FaccionData[TAXI][Deposito] += MoneyTaxi;
+	    	FaccionData[MOONBEAN][Deposito] += MoneyMoonbean;
     	}
 		if ( option )
 		{
-			TextDrawHideForPlayer(playerid, TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][Seats][PlayersDataOnline[playerid][SeatTaxi]]);
-			if ( MoneyTaxi > 0 )
+			TextDrawHideForPlayer(playerid, MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][Seats][PlayersDataOnline[playerid][SeatMoonbean]]);
+			if ( MoneyMoonbean > 0 )
 			{
-				new MsgPayTaxi[MAX_TEXT_CHAT];
-				format(MsgPayTaxi, sizeof(MsgPayTaxi), "Has pagado $%i por el servicio del taxí.", MoneyTaxi);
-				SendInfoMessage(playerid, 3, "0", MsgPayTaxi);
+				new MsgPayMoonbean[MAX_TEXT_CHAT];
+				format(MsgPayMoonbean, sizeof(MsgPayMoonbean), "Has pagado $%i por el servicio del taxí.", MoneyMoonbean);
+				SendInfoMessage(playerid, 3, "0", MsgPayMoonbean);
 			}
 		}
-	    PlayersDataOnline[playerid][IsTaxi] = -1;
+	    PlayersDataOnline[playerid][IsMoonbean] = -1;
 	}
 }
-public CalcularTaxiMoney(playerid)
+public CalcularMoonbeanMoney(playerid)
 {
-	return ((gettime() - TaxisTaximetro[PlayersDataOnline[playerid][IsTaxi]][TaxiTime][PlayersDataOnline[playerid][SeatTaxi]]) / SECONDS_TAXI);
+	return ((gettime() - MoonbeansMoonbeanmetro[PlayersDataOnline[playerid][IsMoonbean]][MoonbeanTime][PlayersDataOnline[playerid][SeatMoonbean]]) / SECONDS_MOONBEAN);
 }
 public SetVehicleHealthEx(vehicleid, Float:health)
 {
