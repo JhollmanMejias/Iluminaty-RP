@@ -7072,7 +7072,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 			    	    if ( PlayersData[playerid][Job] != NINGUNO )
 			    	    {
-						    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 			    	        if ( PlayersData[playerid][Job] == PESCA )
 			    	        {
 		    	    			new MsgDialogCopyright[500];
@@ -7133,12 +7132,21 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 			    	        if ( PlayersData[playerid][Rango] == 0 )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "/Llaves Coche - /Invitar [ID] - /Rango [ID] [ID_RANGO] - /Expulsar [ID]", "Facción: ");
-						    	SendInfoMessage(playerid, 1, "/Consultar Facción - /Depositar Facción [Cantidad] - /Retirar Facción [Cantidad]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Gobierno Los Santos:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llaves Coche - /Invitar [ID] - /Rango [ID] [ID_RANGO] - /Expulsar [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Consultar Facción - /Depositar Facción [Cantidad] - /Retirar Facción [Cantidad]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Gobierno", MsgDialogCopyright, "Aceptar", "");
+
 					    	}
 			    	        if ( PlayersData[playerid][Rango] <= 1 )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "/Asignar [ID] - /Desasignar [ID] [SLOT] - /Ver Horas [ID] - /Reiniciar Horas [ID] - /Escoger Spawn [ID] [Spawnid]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Gobierno Los Santos:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Asignar [ID] - /Desasignar [ID] [SLOT] - /Ver Horas [ID] - /Reiniciar Horas [ID] - /Escoger Spawn [ID] [Spawnid]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Gobierno", MsgDialogCopyright, "Aceptar", "");
 			    	        }
 						    // GOBIERNO
 							if ( PlayersData[playerid][Faccion] == GOBIERNO )
@@ -7249,7 +7257,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		    	    			new MsgDialogCopyright[500];
 		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
 								"{0049FF}Central Nacional de Noticias:\n\n");
-								strcat(MsgDialogCopyright, "/Na [Narrar] - /Tr [Transmitir] - /Entrevistar [ID] - /Sacar [ID] - /Finalizar Entrevista - /Obtener Cámara\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Na [Narrar] - /Tr [Transmitir] - /Entrevistar [ID] - /Sacar [ID] - /Finalizar Entrevista - /Obtener Cámara\n\n");
 								strcat(MsgDialogCopyright, "{CCCCFF}/Conectar [Número] - /Desconectar - /En [Texto] - /Poner canción [URL]\n\n");
 								strcat(MsgDialogCopyright, "{CCCCFF}/Na [Narrar] - /Tr [Transmitir] - /Entrevistar [ID] - /Sacar [ID] - /Finalizar Entrevista - /Obtener Cámara\n\n");
 								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "CNN", MsgDialogCopyright, "Aceptar", "");
@@ -7356,9 +7364,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							// LSMD
 							else if ( PlayersData[playerid][Faccion] == LSMD )
 							{
-   							    SendInfoMessage(playerid, 1, "/Llamadas - /Llamadas Bomberos - /Curar [ID] - /Estado Trabajo - /Obtener Extintor - /Debilitar Incendio\n\n", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Curar Enfermedad [ID] - /Poner Cono - /Poner Valla - /Recoger - /Rg [Radio General] - /Estado Rg\n\n", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Examinar Enfermedad [ID]\n\n", "Facción: ");
+			    				new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Los Santos Medical Department:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llamadas - /Llamadas Bomberos - /Curar [ID] - /Estado Trabajo - /Obtener Extintor - /Debilitar Incendio\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Curar Enfermedad [ID] - /Poner Cono - /Poner Valla - /Recoger - /Rg [Radio General] - /Estado Rg\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Examinar Enfermedad [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "LSMD", MsgDialogCopyright, "Aceptar", "");
 							}
 						}
 						else
@@ -7493,14 +7505,22 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Crear Arma - /Crear Cheque Efectivo [ID] [Cantidad] - /Crear Cheque Personal [ID] [Cantidad]", "Crear: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Crear:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Crear Arma - /Crear Cheque Efectivo [ID] [Cantidad] - /Crear Cheque Personal [ID] [Cantidad]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Crear", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Rangos
 				  	else if (strcmp("/Ayuda Negocio", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Comprar Negocio - /Vender Negocio - /Consultar Negocio - /Retirar Negocio [Cantidad] - /Depositar Negocio [Cantidad]", "Negocios: ");
-					    SendInfoMessage(playerid, 1, "/Cambiar Nombre [Nuevo Nombre] - /Cambiar Precio Entrada [Nuevo Precio] - /Cambiar Precio Materiales [Nuevo Precio]", "Negocios: ");
-					    SendInfoMessage(playerid, 1, "/Dar Extorsión [ID] - /Quitar Extorsión [ID] - /Retirar Extorsión - /Consultar Extorsión - /Llaves Negocio - /Info Negocio", "Negocios: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Crear:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Comprar Negocio - /Vender Negocio - /Consultar Negocio - /Retirar Negocio [Cantidad] - /Depositar Negocio [Cantidad\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Cambiar Nombre [Nuevo Nombre] - /Cambiar Precio Entrada [Nuevo Precio] - /Cambiar Precio Materiales [Nuevo Precio]\n\n");
+                        strcat(MsgDialogCopyright, "{CCCCFF}/Dar Extorsión [ID] - /Quitar Extorsión [ID] - /Retirar Extorsión - /Consultar Extorsión - /Llaves Negocio - /Info Negocio\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Crear", MsgDialogCopyright, "Aceptar", "");
 			    	}
 					// COMANDO: /Ayuda Admin
 				  	else if (strcmp("/Ayuda Admin", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
@@ -7572,17 +7592,21 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				// COMANDO: /Reglas
 			  	else if (strcmp("/Reglas", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
 		    	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, " - No se permite nada de lo siguiente:", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/DM - DeathMatch", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/CK - CarKill", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/DB - DriverBy", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/MG - MetaGaming", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/PG - PowerGaming", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/Flood - Flood", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "Faltas de respeto entre usuarios", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/CJ - /RK - /HQ", "Otras: ");
-				    SendInfoMessage(playerid, 1, " - LA LISTA NO TERMINA ACÁ CONSULTE EL FORO PARA INFORMACIÓN MÁS EXTENSA -", " ");
+	   				new MsgDialogCopyright[500];
+    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Crear:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}- No se permite nada de lo siguiente:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/DM - DeathMatch\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/CK - CarKill\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/DB - DriverBy\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/MG - MetaGaming\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/PG - PowerGaming\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/Flood - Flood\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/CJ - /RK - /HQ\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}LA LISTA NO TERMINA ACÁ CONSULTE EL FORO\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}EL FORO PARA INFORMACIÓN MÁS EXTENSA.\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Crear", MsgDialogCopyright, "Aceptar", "");
+
 		    	}
 			  	else if (strcmp("/HQ", cmdtext, true, 3) == 0 && strlen(cmdtext) == 3)
 		    	{
@@ -7767,24 +7791,26 @@ public OnPlayerCommandText(playerid, cmdtext[])
    	    			new MsgDialogCopyright[500];
 	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
 					"{0049FF}Ubicaciones:\n\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/Ayuntamiento\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/Talleres\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/Bancos\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/SuperMercados\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/Concesionarias\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/Hoteles\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/LSPD\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/LSMD\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/Camioneros\n");
-					strcat(MsgDialogCopyright, "{CCCCFF}/CNN\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Ayuntamiento\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Talleres\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Bancos\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/SuperMercados\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Concesionarias\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Hoteles\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/LSPD\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/LSMD\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Camioneros\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/CNN\n\n");
 					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Ubicaciones en la ciudad", MsgDialogCopyright, "Aceptar", "");
 			  	}
 			    	// COMANDO: /Ayuda Bolsa
 			  	else if (strcmp("/Bolsa", cmdtext, true, 6) == 0 && strlen(cmdtext) == 6)
    				{
-			    	SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-       				SendInfoMessage(playerid, 1, "Para Ponerse el objeto use /Varios - Para quitarselo /qVarios", "Bolsa: ");
-			    	SendInfoMessage(playerid, 1, "/Bolsa [ID] - /Usar Bolsa [ID_Bolsa] - /Dar Articulo [ID] [ID_Bolsa]", "Bolsa: ");
+   	    			new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Ubicaciones:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Para Ponerse el objeto use /Varios - Para quitarselo /qVarios\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Bolsa [ID] - /Usar Bolsa [ID_Bolsa] - /Dar Articulo [ID] [ID_Bolsa]\n\n");
 			    }
 				// COMANDO: /Escoger Spawn [ID] [Spawnid]
 				else if (strfind(cmdtext, "/Escoger Spawn ", true) == 0 )
@@ -11583,7 +11609,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					}
 	  			}
 				// COMANDO: /Online
-			  	else if (strcmp("/Online", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
+			  	else if (strcmp("/Miembros", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9)
 	  			{
 	  			    if ( PlayersData[playerid][Faccion] != CIVIL )
 	  			    {
@@ -17667,7 +17693,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									}
 							    }
 						    }
-
 							// COMANDO: /Dar Licencia Camión [ID]
 							else if (strfind(cmdtext, "/Dar Licencia Camión ", true) == 0 ||
 									 strfind(cmdtext, "/Dar Licencia Camion ", true) == 0 ) //20
@@ -17793,32 +17818,25 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									 "El jugador que le deseas dar una licencia de Bote no se ha logueado",
 									 "El jugador que le deseas dar una licencia de Bote no se encuentra cerca de tí") )
 							    {
-							        if(PlayersData[strval(cmdtext[20])][PasaporteID])
+							        if ( !PlayersData[strval(cmdtext[19])][Licencias][5] )
 							        {
-								        if ( !PlayersData[strval(cmdtext[19])][Licencias][5] )
-								        {
-											new MsgDarLicenciasMe[MAX_TEXT_CHAT];
-											new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
-											new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
-											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le da una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
-											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has dado una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
-											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido una licencia de Bote del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
+										new MsgDarLicenciasMe[MAX_TEXT_CHAT];
+										new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
+										new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
+										format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le da una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
+										format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has dado una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
+										format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido una licencia de Bote del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
 
-											Acciones(playerid, 8, MsgDarLicenciasMe);
-											SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
-											SendInfoMessage(strval(cmdtext[19]), 3, "0", MsgDarLicenciasInfoToPlayer);
+										Acciones(playerid, 8, MsgDarLicenciasMe);
+										SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
+										SendInfoMessage(strval(cmdtext[19]), 3, "0", MsgDarLicenciasInfoToPlayer);
 
-											PlayersData[strval(cmdtext[19])][Licencias][5] = true;
-											PlayersData[strval(cmdtext[19])][LicenciasTime][5] = Dias_Licencia_Bote;
-										}
-										else
-										{
-											SendInfoMessage(playerid, 0, "507", "Ya ese jugador tiene una licencia de Bote");
-										}
+										PlayersData[strval(cmdtext[19])][Licencias][5] = true;
+										PlayersData[strval(cmdtext[19])][LicenciasTime][6] = Dias_Licencia_Bote;
 									}
 									else
 									{
-										SendInfoMessage(playerid, 0, "490", "El jugador no tiene pasaporte");
+										SendInfoMessage(playerid, 0, "507", "Ya ese jugador tiene una licencia de Bote");
 									}
 							    }
 						    }
@@ -42180,7 +42198,14 @@ public LoadStaticObjects()
 	CreateObject(19122, 1533.39880, -1861.98682, 13.12610,   0.00000, 0.00000, 0.00000);
 	CreateObject(19122, 1529.00623, -1861.98682, 13.12610,   0.00000, 0.00000, 0.00000);
 	CreateObject(19122, 1524.67432, -1861.98682, 13.12610,   0.00000, 0.00000, 0.00000);
-
+	// Pizzas Cartel Pizzería Unity
+	CreateObject(19580, 1420.0544, -1621.16577, 19.70540,   0.00000, 90.00000, 0.00000);
+	CreateObject(19580, 1420.0544, -1626.80884, 19.70540,   0.00000, 90.00000, 0.00000);
+	CreateObject(19580, 1420.0544, -1626.80884, 17.41910,   0.00000, 90.00000, 0.00000);
+	CreateObject(19580, 1420.0544, -1621.16577, 17.41910,   0.00000, 90.00000, 0.00000);
+	// Laves Cartel Taller
+	CreateObject(3096, 1489.51160, -1583.9681, 22.6989,   0.00000, 40.00000, 0.00000);
+	CreateObject(3096, 1476.09045, -1583.9681, 22.6989,   0.00000, -40.00000, 0.00000);
 	//////////////////////////////////////////////Carteles Pablo Styk/////////////////////////////////////////
 
 	// Cartel ¿No encuentras tu auto?
@@ -42203,6 +42228,19 @@ public LoadStaticObjects()
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////// Vayas Y Carteles////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Publicidad Taller
+	TextoTEST = CreateObject(19329, 1490.72180, -1582.79822, 16.94640,   0.00000, 0.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{66FF00}Anuncios\nClasificados", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
+	//1
+	TextoTEST = CreateObject(19329, 1490.72180, -1582.79834, 16.12680,   0.00000, 0.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{FFFF00}SE VENDE TURISMO\n{FFFF00}¡$100.000!\n{FFFF00}Llama: 12345", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+	//2
+   	TextoTEST = CreateObject(19329, 1490.72180, -1582.79834, 15.30350,   0.00000, 0.00000, 0.00000);
+   	SetObjectMaterialText(TextoTEST, "{FFFF00}¿Quieres Protección?\n{FFFF00}¡Seguridad ADP!\n{FFFF00}Llama: 1394", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
+	//3
+	TextoTEST = CreateObject(19329, 1490.72180, -1582.79846, 14.47740,   0.00000, 0.00000, 0.00000);
+	SetObjectMaterialText(TextoTEST, "{66FF00}DISPONIBLE", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
+
 	// Cartel Mecánicos.
     TextoTEST = CreateObject(7911, 1427.01819, -964.12531, 44.11760,   0.00000, 0.00000, 169.39999);
     SetObjectMaterialText(TextoTEST, "{FFFFFF}SUPER\n{0099FF}ME{FFFFFF}RCA{0099FF}DO", 0, 50, "Magneto", 20, 0, -16776961, 0, 1);
@@ -42562,51 +42600,109 @@ public LoadStaticObjects()
 //////////////////////////////////////////Motos Job Pizzero////////////////////////////////////////////////////
 	// Escalera Yakuza
 	CreateObject(5820, 717.26038, -1448.82788, 18.21960,   0.76000, -0.02000, 180.00000);
+	// Sentineles SML
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 167, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 168, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 169, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 170, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	// Sentineles LSPD
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 330, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 331, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 332, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	// Patrullas LSPD
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 250, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 251, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 252, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 253, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 254, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 255, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 256, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	// Moonbeans Taxis
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 196, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 196, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 197, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 197, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 198, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 198, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 199, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 199, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-    
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 200, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 200, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-    
-	// Taxis 1 CocheTexto
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	// Taxis Maleta y Laptop
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 196, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 196, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 196, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
-    
-	// Taxis 2
+
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 197, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42614,7 +42710,6 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 197, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
-	// Taxis 3
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 198, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42622,7 +42717,6 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 198, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
-	// Taxis 4
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 199, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42630,7 +42724,6 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 199, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
-	// Taxis 5
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 200, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42638,13 +42731,78 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 200, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
-	//283
+	// Motos Pizzero
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
+	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
+
+	// Grúa LSPD
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 263, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 22, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 264, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 22, 0, -16776961, 0, 1);
+
+	// Grúa Taller
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 282, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 283, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 284, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 285, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 286, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	// Grúas NFS
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 208, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 209, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
+	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 298, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+
 	//284
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
