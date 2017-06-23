@@ -5580,10 +5580,10 @@ public OnGameModeInit()
 	FaccionData[GOBIERNO][PickupOut_Y] 		= -1772.2021;
 	FaccionData[GOBIERNO][PickupOut_Z] 		= 18.7958;
 	FaccionData[GOBIERNO][PickupOut_ZZ] 	= 358.9583;
-	FaccionData[GOBIERNO][PickupIn_X] 		= 390.6746;
-	FaccionData[GOBIERNO][PickupIn_Y] 		= 173.8038;
-	FaccionData[GOBIERNO][PickupIn_Z] 		= 1008.3828;
-	FaccionData[GOBIERNO][PickupIn_ZZ] 		= 91.3626;
+	FaccionData[GOBIERNO][PickupIn_X] 		= -1285.8341; // AddPlayerClass(185,-1285.8341,-445.0128,14.1489,267.7868,0,0,0,0,0,0); //
+	FaccionData[GOBIERNO][PickupIn_Y] 		= -445.0128;
+	FaccionData[GOBIERNO][PickupIn_Z] 		= 14.1489;
+	FaccionData[GOBIERNO][PickupIn_ZZ] 		= 267.7868;
 	FaccionData[GOBIERNO][InteriorFaccion] 	= 3;
 	FaccionData[GOBIERNO][PickupidOutF]		= CreatePickup	(19605, 	1, 	FaccionData[GOBIERNO][PickupOut_X], FaccionData[GOBIERNO][PickupOut_Y], FaccionData[GOBIERNO][PickupOut_Z],	 	WORLD_NORMAL);
 	FaccionData[GOBIERNO][PickupidInF] 		= CreatePickup	(19605, 	1, 	FaccionData[GOBIERNO][PickupIn_X], FaccionData[GOBIERNO][PickupIn_Y], FaccionData[GOBIERNO][PickupIn_Z],	 	WORLD_DEFAULT_INTERIOR);
@@ -5634,7 +5634,7 @@ public OnGameModeInit()
 	FaccionData[LICENCIEROS][Family] 			= true;
 	FaccionData[LICENCIEROS][Radio] 			= false;
 	
-	FaccionesRangos[LICENCIEROS][0]  = "Director"; 				RangosSkins[LICENCIEROS][0][0] 	= 171; 	RangosSkins[LICENCIEROS][0][1] 	= 194; RangosSkins[LICENCIEROS][0][2] 	= 240; 	FaccionData[LICENCIEROS][Paga][0] = 500;
+	FaccionesRangos[LICENCIEROS][0]  = "Director"; 				RangosSkins[LICENCIEROS][0][0] 	= 171; 	RangosSkins[LICENCIEROS][0][1] 	= 194; RangosSkins[LICENCIEROS][0][2] 	= 172; 	FaccionData[LICENCIEROS][Paga][0] = 500;
 	FaccionesRangos[LICENCIEROS][1]  = "Sub Director"; 			RangosSkins[LICENCIEROS][1][0] 	= 59;  	RangosSkins[LICENCIEROS][1][1] 	= 60;  RangosSkins[LICENCIEROS][1][2] 	= 194;	FaccionData[LICENCIEROS][Paga][1] = 450;
 	FaccionesRangos[LICENCIEROS][2]  = "Jefe de Licencieros"; 	RangosSkins[LICENCIEROS][2][0] 	= 59;  	RangosSkins[LICENCIEROS][2][1] 	= 60;  RangosSkins[LICENCIEROS][2][2] 	= 194;	FaccionData[LICENCIEROS][Paga][2] = 450;
 	FaccionesRangos[LICENCIEROS][3]  = "Jefe de Profesores"; 	RangosSkins[LICENCIEROS][3][0] 	= 59;  	RangosSkins[LICENCIEROS][3][1] 	= 60;  RangosSkins[LICENCIEROS][3][2] 	= 194;	FaccionData[LICENCIEROS][Paga][3] = 450;
@@ -5730,13 +5730,13 @@ public OnGameModeInit()
 	FaccionData[LCN][Family] 			= true;
 	FaccionData[LCN][Radio] 			= false;
 
-	FaccionesRangos[LCN][0]  = "Capi di tutti capi"; 	RangosSkins[LCN][0][0] 	= 113; 	RangosSkins[LCN][0][1] 	= 216;	RangosSkins[LCN][0][2] 	= 3;	FaccionData[LCN][Paga][0] = 2000;
-	FaccionesRangos[LCN][1]  = "Don"; 					RangosSkins[LCN][1][0] 	= 126;  RangosSkins[LCN][1][1] 	= 216;	RangosSkins[LCN][1][2] 	= 3;	FaccionData[LCN][Paga][1] = 1800;
-	FaccionesRangos[LCN][2]  = "Sottocapo"; 			RangosSkins[LCN][2][0] 	= 111; 	RangosSkins[LCN][2][1]	= 141;  								FaccionData[LCN][Paga][2] = 1700;
-	FaccionesRangos[LCN][3]  = "Consigliere"; 			RangosSkins[LCN][3][0] 	= 98; 	RangosSkins[LCN][3][1] 	= 141;									FaccionData[LCN][Paga][3] = 1650;
-	FaccionesRangos[LCN][4]  = "Capo"; 					RangosSkins[LCN][4][0] 	= 125; 	RangosSkins[LCN][4][1] 	= 141;									FaccionData[LCN][Paga][4] = 1600;
-	FaccionesRangos[LCN][5]  = "Soldado"; 				RangosSkins[LCN][5][0] 	= 124; 	RangosSkins[LCN][5][1] 	= 141;									FaccionData[LCN][Paga][5] = 1550;
-	FaccionesRangos[LCN][6]  = "Asociado"; 				RangosSkins[LCN][6][0] 	= 127; 	RangosSkins[LCN][6][1] 	= 141;									FaccionData[LCN][Paga][6] = 1500;
+	FaccionesRangos[LCN][0]  = "Capi di tutti capi"; 	RangosSkins[LCN][0][0] 	= 113; 	RangosSkins[LCN][0][1] 	= 216;	RangosSkins[LCN][0][2] 	= 3;	FaccionData[LCN][Paga][0] = 430;
+	FaccionesRangos[LCN][1]  = "Don"; 					RangosSkins[LCN][1][0] 	= 126;  RangosSkins[LCN][1][1] 	= 216;	RangosSkins[LCN][1][2] 	= 3;	FaccionData[LCN][Paga][1] = 450;
+	FaccionesRangos[LCN][2]  = "Sottocapo"; 			RangosSkins[LCN][2][0] 	= 111; 	RangosSkins[LCN][2][1]	= 141;  								FaccionData[LCN][Paga][2] = 400;
+	FaccionesRangos[LCN][3]  = "Consigliere"; 			RangosSkins[LCN][3][0] 	= 98; 	RangosSkins[LCN][3][1] 	= 141;									FaccionData[LCN][Paga][3] = 400;
+	FaccionesRangos[LCN][4]  = "Capo"; 					RangosSkins[LCN][4][0] 	= 125; 	RangosSkins[LCN][4][1] 	= 141;									FaccionData[LCN][Paga][4] = 370;
+	FaccionesRangos[LCN][5]  = "Soldado"; 				RangosSkins[LCN][5][0] 	= 124; 	RangosSkins[LCN][5][1] 	= 141;									FaccionData[LCN][Paga][5] = 370;
+	FaccionesRangos[LCN][6]  = "Asociado"; 				RangosSkins[LCN][6][0] 	= 127; 	RangosSkins[LCN][6][1] 	= 141;									FaccionData[LCN][Paga][6] = 370;
 
 // YAKUZA ID - 5
 	format(FaccionData[YKZ][NameFaccion], MAX_FACCION_NAME, "Yakuzas");
@@ -5766,12 +5766,12 @@ public OnGameModeInit()
 	FaccionData[YKZ][Family] 			= true;
 	FaccionData[YKZ][Radio] 			= false;
 
-	FaccionesRangos[YKZ][0]  = "Oyabun"; 			RangosSkins[YKZ][0][0] 	= 208; 	RangosSkins[YKZ][0][1] 	= 228;	 RangosSkins[YKZ][0][2] 	= 263; 	FaccionData[YKZ][Paga][0] = 2000;
-	FaccionesRangos[YKZ][1]  = "Wakashu"; 			RangosSkins[YKZ][1][0] 	= 186;  RangosSkins[YKZ][1][1] 	= 263;										FaccionData[YKZ][Paga][1] = 1850;
-	FaccionesRangos[YKZ][2]  = "Wakagashira"; 		RangosSkins[YKZ][2][0] 	= 120;  RangosSkins[YKZ][2][1] 	= 224;										FaccionData[YKZ][Paga][2] = 1800;
-	FaccionesRangos[YKZ][3]  = "Shateigashira"; 	RangosSkins[YKZ][3][0] 	= 123; 	RangosSkins[YKZ][3][1]	= 169; 										FaccionData[YKZ][Paga][3] = 1750;
-	FaccionesRangos[YKZ][4]  = "Kyodai"; 			RangosSkins[YKZ][4][0] 	= 122; 	RangosSkins[YKZ][4][1] 	= 169;										FaccionData[YKZ][Paga][4] = 1600;
-	FaccionesRangos[YKZ][5]  = "Shatei"; 			RangosSkins[YKZ][5][0] 	= 121; 	RangosSkins[YKZ][5][1] 	= 169;										FaccionData[YKZ][Paga][5] = 1500;
+	FaccionesRangos[YKZ][0]  = "Oyabun"; 			RangosSkins[YKZ][0][0] 	= 208; 	RangosSkins[YKZ][0][1] 	= 228;	 RangosSkins[YKZ][0][2] 	= 263; 	FaccionData[YKZ][Paga][0] = 500;
+	FaccionesRangos[YKZ][1]  = "Wakashu"; 			RangosSkins[YKZ][1][0] 	= 186;  RangosSkins[YKZ][1][1] 	= 263;										FaccionData[YKZ][Paga][1] = 480;
+	FaccionesRangos[YKZ][2]  = "Wakagashira"; 		RangosSkins[YKZ][2][0] 	= 120;  RangosSkins[YKZ][2][1] 	= 224;										FaccionData[YKZ][Paga][2] = 450;
+	FaccionesRangos[YKZ][3]  = "Shateigashira"; 	RangosSkins[YKZ][3][0] 	= 123; 	RangosSkins[YKZ][3][1]	= 169; 										FaccionData[YKZ][Paga][3] = 420;
+	FaccionesRangos[YKZ][4]  = "Kyodai"; 			RangosSkins[YKZ][4][0] 	= 122; 	RangosSkins[YKZ][4][1] 	= 169;										FaccionData[YKZ][Paga][4] = 400;
+	FaccionesRangos[YKZ][5]  = "Shatei"; 			RangosSkins[YKZ][5][0] 	= 121; 	RangosSkins[YKZ][5][1] 	= 169;										FaccionData[YKZ][Paga][5] = 370;
 
 // TAXIS ID - 6
 	format(FaccionData[MOONBEAN][NameFaccion], MAX_FACCION_NAME, "Transporte Publico");
@@ -6886,56 +6886,39 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 		        PlayersDataOnline[playerid][IsAFK] = false;
 
-				// COMANDO: /Ayuda [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+				// COMANDO: /Ayuda
 				if (strfind(cmdtext, "/Ayuda", true) == 0)
 				{
 				  	if (strcmp("/Ayuda", cmdtext, true, 6) == 0 && strlen(cmdtext) == 6)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Comandos básicos de Ayuda:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Básicos\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Canales\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Trabajo\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Coche\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Reglas\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Dar\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Coger\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "BioGames RolePlay.", MsgDialogCopyright, "Aceptar", "");
-					}
-			    	// COMANDO: /Ayuda Canales [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+	      				SendInfoMessage(playerid, 1, "/Créditos - /Reglas - /Duda - /Stats - /Cuenta - /Update - /Hora - /Hablar - /Móvil - /Saludar - /Caminar - /Reportar [ID] [Razón]", "Principales: ");
+					    SendInfoMessage(playerid, 1, "/Ayuda {Básicos, Canales, Facción, Rangos, Banco, Crear, Coche, Móvil, Casa, Negocio, Estados, Dar, Coger, Dejar, Usar, Otros, Bolsa}", "Info Extra: ");
+					    SendInfoMessage(playerid, 1, "/Ayuda {Basicos, Faccion, Trabajo, Coche, Reglas, Casa, Dar, Coger, Dejar, Animaciones 1 - 3}, Bolsa", "Info Extra: ");
+						SendInfoMessage(playerid, 1, "Para más información visite nuestros foros en rol.biogames.net (Sección BioSamp) Use /Duda o puede whispear a un admin con /W [ID] [Duda] (Ver /Admins)", "... ");
+			    	}
+			    	// COMANDO: /Ayuda Canales
 				  	else if (strcmp("/Ayuda Básicos", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14 ||
 							 strcmp("/Ayuda Basicos", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14					  )
 			    	{
-						////////////////////////////////////////////////////////
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Comandos Básicos de Ayuda:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Pagar [ID] [Cantidad] - /Bolsa [ID] - /Bolsillos [ID] - /Pasaporte [ID] - /Licencias [ID] - /Idiomas [ID]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Ad [Anuncio]- /Nacer - /Online - /Trabajar - /Bar - /Parqueo - /Contrato [ID] [Cantidad] - /Peaje\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Llamar 911 (LSPD) /Llamar 912 (SFPD) - /Llamar 106 (LSMD) - /Llamar 145 (Taxí) - /Llamar 555 (Taller SF)\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Llamar 888 (CNN) - /Llamar 777 (Taller LS) - /Id [Parte del Nombre] - /Objetos\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Comandos Básicos", MsgDialogCopyright, "Aceptar", "");
-					}
-			    	// COMANDO: /Ayuda Canales [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Pagar [ID] [Cantidad] - /Bolsa [ID] - /Bolsillos [ID] - /Pasaporte [ID] - /Licencias [ID] - /Idiomas [ID]", "Básicos: ");
+					    SendInfoMessage(playerid, 1, "/Ad [Anuncio]- /Nacer - /Online - /Trabajar - /Bar - /Parqueo - /Contrato [ID] [Cantidad] - /Peaje", "Básicos: ");
+					    SendInfoMessage(playerid, 1, "/Llamar 911 (LSPD) /Llamar 912 (SFPD) - /Llamar 106 (LSMD) - /Llamar 145 (Taxí) - ", "Básicos: ");
+					    SendInfoMessage(playerid, 1, "/Llamar 555 (Taller SF) - /Llamar 888 (CNN) - /Llamar 777 (Taller LS) - /Id [Parte del Nombre] - /Objetos", "Básicos: ");
+						SendInfoMessage(playerid, 1, "/Ayuntamiento - /Talleres - /Cajeros - /Bancos - /Concesionarias - /SuperMercados - /Hoteles - /LSPD - /LSMD - /Camioneros - /CNN", "Ubicaciones: ");
+			    	}
+			    	// COMANDO: /Ayuda Canales
 				  	else if (strcmp("/Ayuda Canales", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-						////////////////////////////////////////////////////////
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Canales:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Me [Acción] - /Yo [Acción]- /Intentar [Acción] - /Ame [Efecto]- /Do [Efecto] - /G [Gritar] - /S [Susurrar]\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Comandos Canales", MsgDialogCopyright, "Aceptar", "");
-					}
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Me [Acción] - /Yo [Acción]- /Intentar [Acción] - /Ame [Efecto]- /Do [Efecto] - /G [Gritar] - /S [Susurrar]", "Canales: ");
+			    	}
 			    	// COMANDO: /Ayuda Otros
 				  	else if (strcmp("/Ayuda Otros", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-						////////////////////////////////////////////////////////
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Otros:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Dormir - /Nacer - /Nacer Amigo - /Cartera - /Sexo - /Estado - /Admins\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Comandos Otros", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Dormir - /Nacer - /Nacer Amigo - /Cartera - /Sexo - /Estado - /Admins", "Otros: ");
 			    	}
 			    	// COMANDO: /Ayuda DeathMatch
 				  	else if (strcmp("/Ayuda DeathMatch", cmdtext, true, 17) == 0 && strlen(cmdtext) == 17)
@@ -6949,91 +6932,72 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Carreras - /Salir Carrera", "Carreras: ");
 				    }
-			    	// COMANDO: /Ayuda Animaciones 1 [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+			    	// COMANDO: /Ayuda Animaciones 1
 				  	else if (strcmp("/Ayuda Animaciones 1", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
 			    	{
-						////////////////////////////////////////////////////////
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Anmaciones 1:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [Opción] [Número]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Sentarse - /Acostarse - /Borracho - /Fuck - /Miedo - /Apuntar - /Rendirse - /Mear\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [ATTRACTORS - 2, BAR - 11, BAT - 10, FIRE - 12, PLAYA - 4, GYM - 6, BFINJECT - 3, BICID - 18]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [BICIH - 17, BICIL - 8, BICIS - 19, BICIV - 17, BICI - 3, GOLPE - 11, BMX - 17, BOMBER - 5]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [BOX - 9, BALL - 40, BUDDY - 4, BUS - 8, CAM - 13, CAR - 10, CARRY - 6, CARCHAT - 20, CASINO - 24]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [CHAINSAW - 10, CHOPA - 17, CLOTHES - 12, COACH - 5, COLT - 6, COP - 11, COPD - 3, CRACK - 9]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [CRIB - 4, DAM - 4, DANCE - 12, DEALER - 6, DILDO - 8, DODGE - 3, DOZER - 9, DRIVE - 7, FAT - 17]\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Anmaciones 1", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Anim [Opción] [Número] {1=Loop}", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Sentarse - /Acostarse - /Borracho - /Fuck - /Miedo - /Apuntar - /Rendirse - /Mear", "Animaciones Básicas: ");
+					    SendInfoMessage(playerid, 1, "/Anim [ATTRACTORS - 2, BAR - 11, BAT - 10, FIRE - 12, PLAYA - 4, GYM - 6, BFINJECT - 3, BICID - 18]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [BICIH - 17, BICIL - 8, BICIS - 19, BICIV - 17, BICI - 3, GOLPE - 11, BMX - 17, BOMBER - 5]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [BOX - 9, BALL - 40, BUDDY - 4, BUS - 8, CAM - 13, CAR - 10, CARRY - 6, CARCHAT - 20, CASINO - 24]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [CHAINSAW - 10, CHOPA - 17, CLOTHES - 12, COACH - 5, COLT - 6, COP - 11, COPD - 3, CRACK - 9]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [CRIB - 4, DAM - 4, DANCE - 12, DEALER - 6, DILDO - 8, DODGE - 3, DOZER - 9, DRIVE - 7, FAT - 17]", "Animaciones: ");
 					}
-			    	// COMANDO: /Ayuda Animaciones 2 [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+			    	// COMANDO: /Ayuda Animaciones 2
 				  	else if (strcmp("/Ayuda Animaciones 2", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Anmaciones 2:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [Opción] [Número]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [FIGHTB - 9, FIGHTC - 11, FIGHTD - 9, FIGHTE - 3, FINALE - 15, FINALE2 - 7, FLAME - 0, FLOWERS - 2]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [FOOD - 32, GYMA - 8, GANGS - 32, GHANDS - 19, GHETTO - 6, GOGGLES - 0, GRAFFITI - 1, GRAVE - 2]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [GRENADE - 2, GYMB - 23, HAIR - 12, HEIST - 9, HOUSE - 9, OFFICE - 9, INTSHOP - 7, BUISNESS - 3]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [KART - 3, KISSING - 14, KNIFE - 15, LAPDAN - 1, LOWRIDER - 38, CHASE - 24, END - 7, MEDIC - 0]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [CHAINSAW - 10, CHOPA - 17, CLOTHES - 12, COACH - 5, COLT - 6, COP - 11, COPD - 3, CRACK - 9]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [MISC - 40, MTB - 17, LOOKERS - 28, OTB - 10, PARA - 21, PARK - 2]\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Anmaciones 2", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Anim [Opción] [Número] {1=Loop}", "Animaciones: ");
+						SendInfoMessage(playerid, 1, "/Anim [FIGHTB - 9, FIGHTC - 11, FIGHTD - 9, FIGHTE - 3, FINALE - 15, FINALE2 - 7, FLAME - 0, FLOWERS - 2]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [FOOD - 32, GYMA - 8, GANGS - 32, GHANDS - 19, GHETTO - 6, GOGGLES - 0, GRAFFITI - 1, GRAVE - 2]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [GRENADE - 2, GYMB - 23, HAIR - 12, HEIST - 9, HOUSE - 9, OFFICE - 9, INTSHOP - 7, BUISNESS - 3]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [KART - 3, KISSING - 14, KNIFE - 15, LAPDAN - 1, LOWRIDER - 38, CHASE - 24, END - 7, MEDIC - 0]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [MISC - 40, MTB - 17, LOOKERS - 28, OTB - 10, PARA - 21, PARK - 2]", "Animaciones: "); // MUSCULAR - 16
 			    	}
-			    	// COMANDO: /Ayuda Animaciones 3 [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+			    	// COMANDO: /Ayuda Animaciones 3
 				  	else if (strcmp("/Ayuda Animaciones 3", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Anmaciones 3:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [Opción] [Número]\\nn");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [PAUL - 11, PLAYER - 3, PLAYID - 4, POLICE - 9, POOL - 20, POOR - 1, PYTHON - 4, QUAD - 16, QUADD - 3]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [RAP - 7, RIFLE - 4, RIOT - 6, ROB - 4, ROCKET - 4, RUSTLER - 4, RYDER - 15, SCRAT - 11, SHAMAL - 4]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [SHOP - 24, SHOTGUN - 2, SILENCED - 3, SMOK - 7, SNIPER - 0, SPRAY - 1, STRIP - 19, SUNBA - 17]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [SWAT - 22, SWEET - 6, SWIM - 6, SWORD - 9, TANK - 5, TATTOO - 56, TEC - 3, TRAIN - 3, TRUCK - 16]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [UZI - 4, VAN - 7, VENDING - 5, VORTEX - 3, WAYFA - 17, ARMA - 16, WUZI - 11]\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Anmaciones 3", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Anim [Opción] [Número] {1=Loop}", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [PAUL - 11, PLAYER - 3, PLAYID - 4, POLICE - 9, POOL - 20, POOR - 1, PYTHON - 4, QUAD - 16, QUADD - 3]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [RAP - 7, RIFLE - 4, RIOT - 6, ROB - 4, ROCKET - 4, RUSTLER - 4, RYDER - 15, SCRAT - 11, SHAMAL - 4]", "Animaciones: ");
+					    SendInfoMessage(playerid, 1, "/Anim [SHOP - 24, SHOTGUN - 2, SILENCED - 3, SMOK - 7, SNIPER - 0, SPRAY - 1, STRIP - 19, SUNBA - 17]", "Animaciones: "); // SKATE - 2
+					    SendInfoMessage(playerid, 1, "/Anim [SWAT - 22, SWEET - 6, SWIM - 6, SWORD - 9, TANK - 5, TATTOO - 56, TEC - 3, TRAIN - 3, TRUCK - 16]", "Animaciones: ");
+						SendInfoMessage(playerid, 1, "/Anim [UZI - 4, VAN - 7, VENDING - 5, VORTEX - 3, WAYFA - 17, ARMA - 16, WUZI - 11]", "Animaciones: ");
 			    	}
-			    	// COMANDO: /Ayuda Móvil [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+			    	// COMANDO: /Ayuda Móvil
 				  	else if (strcmp("/Ayuda Móvil", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 ||
 					         strcmp("/Ayuda Movil", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Móvil:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Móvil - /Agenda - /N [Normal] - /Tirar Móvil - /Dar Móvil [ID] - /Llamar [Número] - /C (Colgar) - /D (Descolgar)\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Estado Móvil - /Ver Saldo - /Tirar Agenda - /Dar Agenda [ID] - /SMS [Número] - /Altavoz\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Móvil", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Móvil - /Agenda - /N [Normal] - /Tirar Móvil - /Dar Móvil [ID] - /Llamar [Número] - /C (Colgar) - /D (Descolgar)", "Móvil: ");
+					    SendInfoMessage(playerid, 1, "/Estado Móvil - /Ver Saldo - /Tirar Agenda - /Dar Agenda [ID] - /SMS [Número] - /Altavoz", "Móvil: ");
 			    	}
-			    	// COMANDO: /Ayuda Habilidades [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+			    	// COMANDO: /Ayuda Habilidades
 				  	else if (strcmp("/Ayuda Habilidades", cmdtext, true, 18) == 0 && strlen(cmdtext) == 18)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Habilidades:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}1 - Normal\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}2 - Boxeo\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}3 - Kneehead\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}4 - Kungfu\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}5 - Elbow\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}6 - Grabkick\n\n");
-						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Habilidades", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "1 - Normal", "Habilidades: ");
+					    SendInfoMessage(playerid, 1, "2 - Boxeo", "Habilidades: ");
+					    SendInfoMessage(playerid, 1, "3 - Kneehead", "Habilidades: ");
+					    SendInfoMessage(playerid, 1, "4 - Kungfu", "Habilidades: ");
+					    SendInfoMessage(playerid, 1, "5 - Elbow", "Habilidades: ");
+					    SendInfoMessage(playerid, 1, "6 - Grabkick", "Habilidades: ");
 			    	}
-			    	// COMANDO: /Ayuda Idiomas [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+			    	// COMANDO: /Ayuda Idiomas
 				  	else if (strcmp("/Ayuda Idiomas", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Idiomas:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}- /Al [Alemán] \n\n- /Fr [Francés] \n\n- /Po [Portugés] \n\n- /It [Italiano] \n\n- /In [Inglés] \n\n- /Ja [Japonés]\n\n");
-   						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Idiomas", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Al [Alemán] - /Fr [Francés] - /Po [Portugés] - /It [Italiano] - /In [Inglés] - /Ja [Japonés]", "Idiomas: ");
 			    	}
-		    	// COMANDO: /Ayuda Llaves [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
+		    	// COMANDO: /Ayuda Llaves
 				  	else if (strcmp("/Ayuda Llaves", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13)
 			    	{
 						SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Llaves Coche - /Llaves Puerta - /Llaves PuertaEx - /Llaves Facción - /Llaves Refrigerador - /Llaves Casa", "Llaves: ");
 					    SendInfoMessage(playerid, 1, "/Llaves Armario - /Llaves Garage - /Llaves GarageEx - /Llaves Amigos - /Llaves Maletero", "Llaves: ");
+
 			    	}
 			    	// COMANDO: /Ayuda Estados
 				  	else if (strcmp("/Ayuda Estados", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
@@ -7052,14 +7016,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	// COMANDO: /Ayuda Dar
 				  	else if (strcmp("/Ayuda Dar", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10)
 			    	{
-		    	    	new MsgDialogCopyright[500];
-		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-						"{0049FF}Dar:\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Arma [ID] - /Dar ArmaEx [ID] [Munición] - /Dar Chaleco [ID] - /Dar Drogas [ID] [Cantidad]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Ganzúas [ID] [Cantidad] - /Dar Materiales [ID] [Cantidad] - /Dar Bombas [ID] [Cantidad] - /Dar Llaves [ID]\n\n");
-						strcat(MsgDialogCopyright, "/Dar Extorsión [ID] - /Dar Dados [ID] - /Dar Patines [ID] - /Dar Móvil [ID] - /Dar Agenda [ID] - /Dar Bolsa [ID]\n\n");
-						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Artículo [ID] [ID_Bolsa] - /Dar Cartera [ID] [ID_Cartera] - /Dar Coins [ID] [Cantidad]\n\n");
-   						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Dar", MsgDialogCopyright, "Aceptar", "");
+					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
+					    SendInfoMessage(playerid, 1, "/Dar Arma [ID] - /Dar ArmaEx [ID] [Munición] - /Dar Chaleco [ID] - /Dar Drogas [ID] [Cantidad]", "Dar: ");
+					    SendInfoMessage(playerid, 1, "/Dar Ganzúas [ID] [Cantidad] - /Dar Materiales [ID] [Cantidad] - /Dar Bombas [ID] [Cantidad] - /Dar Llaves [ID]", "Dar: ");
+					    SendInfoMessage(playerid, 1, "/Dar Extorsión [ID] - /Dar Dados [ID] - /Dar Patines [ID] - /Dar Móvil [ID] - /Dar Agenda [ID] - /Dar Bolsa [ID]", "Dar: ");
+					    SendInfoMessage(playerid, 1, "/Dar Artículo [ID] [ID_Bolsa] - /Dar Cartera [ID] [ID_Cartera] - /Dar Coins [ID] [Cantidad]", "Dar: ");
 			    	}
 			    	// COMANDO: /Ayuda Radio
 				  	else if (strcmp("/Ayuda Radio", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
@@ -7072,22 +7033,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 			    	    if ( PlayersData[playerid][Job] != NINGUNO )
 			    	    {
+						    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 			    	        if ( PlayersData[playerid][Job] == PESCA )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Pesca:\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}/Pescar - /Vender Peces\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pescador", MsgDialogCopyright, "Aceptar", "");
-
+						    	SendInfoMessage(playerid, 1, "/Pescar - /Vender Peces", "Pesca: ");
 			    	        }
 			    	        else if ( PlayersData[playerid][Job] == VENDEDOR_MOVIL )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Móvil:\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}/Vender Móvil [ID] [Precio] [Número]\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Vendedor", MsgDialogCopyright, "Aceptar", "");
+						    	SendInfoMessage(playerid, 1, "/Vender Móvil [ID] [Precio] [Número]", "Vendedor de Móviles: ");
 							}
 			    	        else if ( PlayersData[playerid][Job] == MENSAJERO )
 			    	        {
@@ -7095,27 +7048,15 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							}
 			    	        else if ( PlayersData[playerid][Job] == COSECHADOR )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Recolector:\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}Sube a un camión y usa {6EF83C}/Recolectar\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Recolector", MsgDialogCopyright, "Aceptar", "");
+						    	SendInfoMessage(playerid, 1, "{6EF83C}/Recolectar", "Recolector De Basura: {F81414}Sube a un camión y usa: ");
 							}
 			    	        else if ( PlayersData[playerid][Job] == TRANSPORTERO )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Transportista:\n\n");
-								strcat(MsgDialogCopyright, "Sube a un camión y usa {6EF83C}/Transportar\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Recolector", MsgDialogCopyright, "Aceptar", "");
+						    	SendInfoMessage(playerid, 1, "/Transportar", "Transportista:{F81414} Sube a un camión y usa: ");
 							}
 			    	        else if ( PlayersData[playerid][Job] == PIZZERO )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Pizzero:\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}Sube a una moto de pizzas y usa {6EF83C}/Repartir\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pizzero", MsgDialogCopyright, "Aceptar", "");
+						    	SendInfoMessage(playerid, 1, "{6EF83C}/Repartir", "Repartidor De Pizza: {F81414}Sube a una Moto y usa: ");
 							}
 			    	    }
 			    	    else
@@ -7129,24 +7070,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 			    	    if ( PlayersData[playerid][Faccion] != CIVIL )
 			    	    {
-						    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 			    	        if ( PlayersData[playerid][Rango] == 0 )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Gobierno Los Santos:\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}/Llaves Coche - /Invitar [ID] - /Rango [ID] [ID_RANGO] - /Expulsar [ID]\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}/Consultar Facción - /Depositar Facción [Cantidad] - /Retirar Facción [Cantidad]\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Gobierno", MsgDialogCopyright, "Aceptar", "");
-
+						    	SendInfoMessage(playerid, 1, "/Llaves Coche - /Invitar [ID] - /Rango [ID] [ID_RANGO] - /Expulsar [ID]", "Líder: ");
+						    	SendInfoMessage(playerid, 1, "/Consultar Facción - /Depositar Facción [Cantidad] - /Retirar Facción [Cantidad]", "Líder: ");
 					    	}
 			    	        if ( PlayersData[playerid][Rango] <= 1 )
 			    	        {
-		    	    			new MsgDialogCopyright[500];
-		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-								"{0049FF}Gobierno Los Santos:\n\n");
-								strcat(MsgDialogCopyright, "{CCCCFF}/Asignar [ID] - /Desasignar [ID] [SLOT] - /Ver Horas [ID] - /Reiniciar Horas [ID] - /Escoger Spawn [ID] [Spawnid]\n\n");
-								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Gobierno", MsgDialogCopyright, "Aceptar", "");
+						    	SendInfoMessage(playerid, 1, "/Asignar [ID] - /Desasignar [ID] [SLOT] - /Ver Horas [ID] - /Reiniciar Horas [ID] - /Escoger Spawn [ID] [Spawnid]", "Sub-Líder: ");
 			    	        }
 						    // GOBIERNO
 							if ( PlayersData[playerid][Faccion] == GOBIERNO )
@@ -8511,7 +8442,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					{
 						if ( !PlayersData[playerid][PasaporteID] )
 					    {
-							if (IsPlayerInRangeOfPoint(playerid, 10.0, 358.4752,178.6662,1008.3828))
+							if (IsPlayerInRangeOfPoint(playerid, 10.0, -1275.8550,-445.2574,14.1489)) // AddPlayerClass(185,-1275.8550,-445.2574,14.1489,271.2897,0,0,0,0,0,0); //
 						    {
 								Acciones(playerid, 8, "obtiene su pasaporte de ciudano");
                                 PlayersData[playerid][PasaporteID] = true;
@@ -8602,6 +8533,40 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							SendInfoMessage(playerid, 0, "1284", "Usted no es bombero!");
 						}
 				  	}
+					// COMANDO: /Obtener Equipo
+					else if (strcmp("/Obtener Equipo", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
+					{
+						if ( PlayersData[playerid][Faccion] == GOBIERNO ||
+							 PlayersData[playerid][Faccion] == GOBIERNO)
+					    {
+							if ( PlayersData[playerid][TimeEquipo] <= gettime() )
+						    {
+								if ( CheckWeapondCheat(playerid) && (PlayersData[playerid][Faccion] == GOBIERNO && IsPlayerInRangeOfPoint(playerid, 20.0, -1147.2017,-390.7404,14.1991) || // AddPlayerClass(93,-1147.2017,-390.7404,14.1991,272.5864,0,0,0,0,0,0); //
+																	 PlayersData[playerid][Faccion] == GOBIERNO && IsPlayerInRangeOfPoint(playerid, 20.0, -1147.2017,-390.7404,14.1991) ))
+							    {
+										PlayersData[playerid][TimeEquipo] = gettime() + 900;
+										SetPlayerArmourEx(playerid, 85);
+										GivePlayerWeaponEx(playerid, 24, 60);// Deagle
+
+										Acciones(playerid, 8, "Coge un equipo del armario");
+							    }
+							    else
+							    {
+									SendInfoMessage(playerid, 0, "1282", "Aquí no se encuentra el armario");
+								}
+						    }
+						    else
+						    {
+								new MsgPersonalizado[MAX_TEXT_CHAT];
+								format(MsgPersonalizado, sizeof(MsgPersonalizado), "Debe esperar %i minutos con %i segundos para volver a coger un equipo", (PlayersData[playerid][TimeEquipo] - gettime()) / 60, ((PlayersData[playerid][TimeEquipo] - gettime()) % 60));
+								SendInfoMessage(playerid, 0, "1283", MsgPersonalizado);
+							}
+					    }
+					    else
+					    {
+							SendInfoMessage(playerid, 0, "1284", "Usted no forma parte del Gobierno!");
+						}
+				  	}
 					// COMANDO: /Obtener Drogas
 				  	else if (strcmp("/Obtener Drogas", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
 			    	{
@@ -8631,7 +8596,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					}
 					else
 					{
-						SendInfoMessage(playerid, 0, "762", "Quizás quiso decir: /Obtener {Drogas, Mercancía, Cámara, Extintor, Bate, Pasaporte}");
+						SendInfoMessage(playerid, 0, "762", "Quizás quiso decir: /Obtener {Drogas, Equipo, Mercancía, Cámara, Extintor, Bate, Pasaporte}");
 					}
 				}
 				// COMANDO: /Apagar
@@ -9197,7 +9162,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		 					 PlayersData[playerid][Faccion] == LCN ||
 							 PlayersData[playerid][Faccion] == YKZ ||
 							 PlayersData[playerid][Faccion] == SICARIOS ||
-							 PlayersData[playerid][Admin] >= 9)
+							 PlayersData[playerid][Admin] >= 7 && PlayersDataOnline[playerid][AdminOn])
 					    {
 						    SetMenuTraficante(playerid);
 					    }
@@ -10821,7 +10786,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						SendInfoMessage(playerid, 0, "839", "Quizás quiso decir: /Poner {Candado [Razón], Canción, Cono, Pincho, Valla, Equipo [ID_EQUIPO], Bomba, Uniforme}");
 					}
 			  	}
-
 				// COMANDO: /Debilitar Incendio
 			  	else if (strcmp("/Debilitar Incendio", cmdtext, true, 19) == 0 && strlen(cmdtext) == 19)
 				{
@@ -11609,7 +11573,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					}
 	  			}
 				// COMANDO: /Online
-			  	else if (strcmp("/Miembros", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9)
+			  	else if (strcmp("/Online", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
 	  			{
 	  			    if ( PlayersData[playerid][Faccion] != CIVIL )
 	  			    {
@@ -11704,7 +11668,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	  			{
 					if ( PlayersData[playerid][IsPlayerInBizz] && IsBizzBar(playerid, NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]) )
 					{
-						if ( IsPlayerInRangeOfPoint(playerid, 100.0, NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInX_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInY_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInZ_PC]) )
+						if ( IsPlayerInRangeOfPoint(playerid, 2.0, NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInX_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInY_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInZ_PC]) )
 						{
 							ShowPlayerDialogEx(playerid,29,DIALOG_STYLE_LIST,"{00A5FF}Bar", "{E6E6E6}Agua          {00F50A}$10\r\n{E6E6E6}Refresco     {00F50A}$20\r\n{E6E6E6}Cerveza      {00F50A}$30\r\n{E6E6E6}Vodka        {00F50A}$40", "Comprar", "Salir");
 						}
@@ -11720,29 +11684,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					else
 					{
 						SendInfoMessage(playerid, 0, "999", "No estas en un bar");
-					}
-				}
-				// COMANDO: /Bar
-			  	else if (strcmp("/Maquina", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8)
-	  			{
-					if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
-					{
-						if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
-						{
-							ShowPlayerDialogEx(playerid,29,DIALOG_STYLE_LIST,"{00A5FF}Bar", "{E6E6E6}Agua          {00F50A}$10\r\n{E6E6E6}Refresco     {00F50A}$20\r\n{E6E6E6}Cerveza      {00F50A}$30\r\n{E6E6E6}Vodka        {00F50A}$40", "Comprar", "Salir");
-						}
-						else
-						{
-							SendInfoMessage(playerid, 0, "998", "No te encuentras en una máquina");
-						}
-					}
-					else if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
-					{
-						ShowPlayerDialogEx(playerid,76,DIALOG_STYLE_LIST,"{00A5FF}Máquina", "{E6E6E6}Agua          {00F50A}$10\r\n{E6E6E6}Refresco     {00F50A}$20\r\n{E6E6E6}Cerveza      {00F50A}$15\r\n{E6E6E6}Vodka        {00F50A}$40", "Comprar", "Salir");
-					}
-					else
-					{
-						SendInfoMessage(playerid, 0, "999", "No estas en una maquina");
 					}
 				}
 				// COMANDO: /Tren [Anuncio]
@@ -11854,26 +11795,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					strcat(MsgDialogCopyright, "{00A5FF}Game Mode [Base]: {F0F0F0} Unión Latín Players || ULP \n");
 					strcat(MsgDialogCopyright, "{00A5FF}Edición: {F0F0F0}@JhollmanMejias & @CIzaquita \n\n\n");
 		    	    strcat(MsgDialogCopyright, "{F5FF00}Agradecimientos: \n{F0F0F0}San Andrea Multiplayer (SA-MP)\n{F0F0F0}Rockstar Games\n{F0F0F0}Incognito - BlueG");
-		    	    strcat(MsgDialogCopyright, "\n{F0F0F0}www.zo0r.me\n\n\n\n{F5FF00}Copyright © 2017-2018 ");
-					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "BioGames RolePlay.", MsgDialogCopyright, "Aceptar", "");
-				}
-				// COMANDO: /Copyright
-			  	else if (strcmp("/Team", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5 ||
-				  	  	 strcmp("/Team", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5)
-		    	{
-		    	    //
-		    	    new MsgDialogCopyright[500];
-		    	    format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
-					"{00F50A}Equipo Samp BioGames:\n\n{00A5FF}Versión: {F0F0F0}%s\n\n",
-					GAMEMODE_VERSION);
-					strcat(MsgDialogCopyright, "{0049FF}Programación & Script: {F81414}Namllohj Saijem.\n");
-					strcat(MsgDialogCopyright, "{0049FF}Web, foro, dedicado: {F81414}Gonzalo Chope.\n");
-		    	    strcat(MsgDialogCopyright, "{0049FF}Mapper Oficial:{F81414} Pablo Styk.\n\n");
-		    	    strcat(MsgDialogCopyright, "{0049FF}---------------------------------------\n");
-		    	    strcat(MsgDialogCopyright, "{0049FF}       Administración General\n");
-		    	    strcat(MsgDialogCopyright, "{0049FF}---------------------------------------\n");
-		    	    strcat(MsgDialogCopyright, "{F81414}      Leo Salvatore & Ray West.\n\n");
-		    	    strcat(MsgDialogCopyright, "\n{F0F0F0}rol.biogames.net\n\n{F5FF00}Copyright © 2017-2018 ");
+		    	    strcat(MsgDialogCopyright, "\n{F0F0F0}www.zo0r.me\n\n\n\n{F5FF00}Copyright © 2016-2017 ");
 					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "BioGames RolePlay.", MsgDialogCopyright, "Aceptar", "");
 				}
 				// COMANDO: /Copyright
@@ -15943,32 +15865,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							SendInfoMessage(playerid, 0, "431", "No estas en un bar");
 						}
 					}
-					// COMANDO: /Comprar Refresco
-				  	else if (strcmp("/Comprar Curda", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
-				    {
-						if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
-						{
-						    if (IsPlayerInRangeOfPoint(playerid, 10.0, 1610.8798,-1893.7880,13.5469))
-						    {
-								if (PlayersData[playerid][Dinero] >= 10 )
-								{
-                                	SendInfoMessage(playerid, 0, "430", "No te encuentras cerca del la barra");
-								}
-								else
-								{
-									SendInfoMessage(playerid, 0, "429", "No tienes suficiente dinero para comprar un regfresco, cuesta $10");
-								}
-							}
-							else
-							{
-								SendInfoMessage(playerid, 0, "430", "No te encuentras cerca del la barra");
-							}
-						}
-						else
-						{
-							SendInfoMessage(playerid, 0, "431", "No estas en un bar");
-						}
-					}
 					else if (strcmp("/Comprar Cerveza", cmdtext, true, 16) == 0 && strlen(cmdtext) == 16)
 				    {
 						if ( PlayersData[playerid][IsPlayerInBizz] && IsBizzBar(playerid, NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]) )
@@ -17121,8 +17017,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						if ( PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 0 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 1 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 2 ||
-							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4 ||
-							 PlayersData[playerid][Admin] >= 9)
+							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4 )
 					    {
 		   					// COMANDO: /Renovar Licencia Armas [ID]
 					  		if (strfind(cmdtext, "/Renovar Licencia Armas ", true) == 0) //20
@@ -17463,8 +17358,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					// COMANDO: /Renovar Coche
 				  	else if (strfind(cmdtext, "/Renovar Coche ", true) == 0)
 				    {
-					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2 ||
-							 PlayersData[playerid][Admin] >= 9)
+					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2)
 					    {
 							new MyNearCar = IsPlayerInNearVehicle(playerid);
 			   				if ( MyNearCar)
@@ -17610,8 +17504,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						if ( PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 0 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 1 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 2 ||
-							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4 ||
-							 PlayersData[playerid][Admin] >= 9)
+							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4)
 					    {
 		   					// COMANDO: /Dar Licencia Armas [ID]
 					  		if (strfind(cmdtext, "/Dar Licencia Armas ", true) == 0) //20
@@ -17693,6 +17586,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									}
 							    }
 						    }
+
 							// COMANDO: /Dar Licencia Camión [ID]
 							else if (strfind(cmdtext, "/Dar Licencia Camión ", true) == 0 ||
 									 strfind(cmdtext, "/Dar Licencia Camion ", true) == 0 ) //20
@@ -17818,25 +17712,32 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									 "El jugador que le deseas dar una licencia de Bote no se ha logueado",
 									 "El jugador que le deseas dar una licencia de Bote no se encuentra cerca de tí") )
 							    {
-							        if ( !PlayersData[strval(cmdtext[19])][Licencias][5] )
+							        if(PlayersData[strval(cmdtext[20])][PasaporteID])
 							        {
-										new MsgDarLicenciasMe[MAX_TEXT_CHAT];
-										new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
-										new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
-										format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le da una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
-										format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has dado una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
-										format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido una licencia de Bote del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
+								        if ( !PlayersData[strval(cmdtext[19])][Licencias][5] )
+								        {
+											new MsgDarLicenciasMe[MAX_TEXT_CHAT];
+											new MsgDarLicenciasInfo[MAX_TEXT_CHAT];
+											new MsgDarLicenciasInfoToPlayer[MAX_TEXT_CHAT];
+											format(MsgDarLicenciasMe, sizeof(MsgDarLicenciasMe), "le da una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
+											format(MsgDarLicenciasInfo, sizeof(MsgDarLicenciasInfo), "Has dado una licencia de Bote a %s", PlayersDataOnline[strval(cmdtext[19])][NameOnlineFix]);
+											format(MsgDarLicenciasInfoToPlayer, sizeof(MsgDarLicenciasInfoToPlayer), "Has recibido una licencia de Bote del licenciero %s", PlayersDataOnline[playerid][NameOnlineFix]);
 
-										Acciones(playerid, 8, MsgDarLicenciasMe);
-										SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
-										SendInfoMessage(strval(cmdtext[19]), 3, "0", MsgDarLicenciasInfoToPlayer);
+											Acciones(playerid, 8, MsgDarLicenciasMe);
+											SendInfoMessage(playerid, 3, "0", MsgDarLicenciasInfo);
+											SendInfoMessage(strval(cmdtext[19]), 3, "0", MsgDarLicenciasInfoToPlayer);
 
-										PlayersData[strval(cmdtext[19])][Licencias][5] = true;
-										PlayersData[strval(cmdtext[19])][LicenciasTime][6] = Dias_Licencia_Bote;
+											PlayersData[strval(cmdtext[19])][Licencias][5] = true;
+											PlayersData[strval(cmdtext[19])][LicenciasTime][5] = Dias_Licencia_Bote;
+										}
+										else
+										{
+											SendInfoMessage(playerid, 0, "507", "Ya ese jugador tiene una licencia de Bote");
+										}
 									}
 									else
 									{
-										SendInfoMessage(playerid, 0, "507", "Ya ese jugador tiene una licencia de Bote");
+										SendInfoMessage(playerid, 0, "490", "El jugador no tiene pasaporte");
 									}
 							    }
 						    }
@@ -20084,8 +19985,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					// COMANDO: /Vender Coche
 				  	else if (strfind(cmdtext, "/Vender Coche ", true) == 0)
 				    {
-					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2 ||
-							 PlayersData[playerid][Admin] >= 9)
+					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2)
 					    {
 							new MyNearCar = IsPlayerInNearVehicle(playerid);
 			   				if ( MyNearCar)
@@ -25294,8 +25194,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			  	else if (strcmp("/ICoche", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
 	  			{
 					MsgAdminUseCommands(9, playerid, cmdtext);
-					if ( PlayersData[playerid][Faccion] == LSPD && PlayersData[playerid][Rango] == 2 ||
-						 PlayersData[playerid][Admin] >= 9)
+					if ( PlayersData[playerid][Admin] >= 6 )
 					{
 						new MyNearCar = IsPlayerInNearVehicleEx(playerid);
 		   				if ( MyNearCar)
@@ -28684,12 +28583,12 @@ public OnPlayerEnterCheckpoint(playerid)
 		// Tiendas de ropa
 		if (PlayersData[playerid][IsPlayerInBizz] && strfind(NegociosType[TypeBizz][TypeName], "Ropa", false) == 0)
 		{
-			SendInfoMessage(playerid, 2, "0", "Use (/Comprar Ropa) para ingresar en el vestidor!");
+			SendInfoMessage(playerid, 2, "0", "Use (/Comprar {Ropa, Lentes, Gorra, GorroN, Reloj, Casco}) para ingresar en el vestidor!");
 		}
 		// Barberías
 		else if ( TypeBizz >= 27 && TypeBizz <= 29 )
 		{
-			SendInfoMessage(playerid, 2, "0", "Use (/Comprar Peluca) para comprar pelucas.");
+			SendInfoMessage(playerid, 2, "0", "Use (/Comprar Peluca) para comprar pelucas o (/Comprar Boina) para boinas.");
 		}
 		// sexshop
 		else if ( TypeBizz >= 20 && TypeBizz <= 21 )
@@ -42131,15 +42030,11 @@ public LoadStaticObjects()
 	CreateObject(640, 1441.59021, -1621.87561, 13.48340,   0.00000, 0.00000, 0.00000);
 	CreateObject(640, 1441.59021, -1630.95728, 13.48340,   0.00000, 0.00000, 0.00000);
 	// Decorado Oficina Ray
-//	CreateObject(356, 1418.73193, -1643.11145, 14.44510,   0.00000, 20.00000, 100.00000);
-//	CreateObject(356, 1418.73193, -1643.11145, 13.77360,   0.00000, 20.00000, 100.00000);
+	CreateObject(356, 1418.73193, -1643.11145, 14.44510,   0.00000, 20.00000, 100.00000);
+	CreateObject(356, 1418.73193, -1643.11145, 13.77360,   0.00000, 20.00000, 100.00000);
 	CreateObject(1280, 1419.25708, -1642.92371, 12.92720,   0.00000, 0.00000, 180.00000);
 	CreateObject(1280, 1419.25708, -1637.58545, 12.92720,   0.00000, 0.00000, 180.00000);
 	CreateObject(11737, 1419.08130, -1640.29602, 12.54680,   0.00000, 0.00000, 90.00000);
-// Decorado Oficina 2
-	CreateObject(1280, 1419.12634, -1610.01697, 12.90460,   0.00000, 0.00000, 180.00000);
-	CreateObject(1280, 1419.21472, -1604.77832, 12.90460,   0.00000, 0.00000, 180.00000);
-	CreateObject(11737, 1419.01379, -1607.38867, 12.54360,   0.00000, 0.00000, 90.00000);
 	// Parqueo LSPD
 	CreateObject(19943, 1547.61694, -1623.80640, 12.37300,   0.00000, 0.00000, 0.00000);
 	CreateObject(19943, 1547.61694, -1632.03418, 12.37030,   0.00000, 0.00000, 0.00000);
@@ -42198,53 +42093,9 @@ public LoadStaticObjects()
 	CreateObject(19122, 1533.39880, -1861.98682, 13.12610,   0.00000, 0.00000, 0.00000);
 	CreateObject(19122, 1529.00623, -1861.98682, 13.12610,   0.00000, 0.00000, 0.00000);
 	CreateObject(19122, 1524.67432, -1861.98682, 13.12610,   0.00000, 0.00000, 0.00000);
-	// Pizzas Cartel Pizzería Unity
-	CreateObject(19580, 1420.0544, -1621.16577, 19.70540,   0.00000, 90.00000, 0.00000);
-	CreateObject(19580, 1420.0544, -1626.80884, 19.70540,   0.00000, 90.00000, 0.00000);
-	CreateObject(19580, 1420.0544, -1626.80884, 17.41910,   0.00000, 90.00000, 0.00000);
-	CreateObject(19580, 1420.0544, -1621.16577, 17.41910,   0.00000, 90.00000, 0.00000);
-	// Laves Cartel Taller
-	CreateObject(3096, 1489.51160, -1583.9681, 22.6989,   0.00000, 40.00000, 0.00000);
-	CreateObject(3096, 1476.09045, -1583.9681, 22.6989,   0.00000, -40.00000, 0.00000);
-	//////////////////////////////////////////////Carteles Pablo Styk/////////////////////////////////////////
-
-	// Cartel ¿No encuentras tu auto?
-	new cartel1 = CreateObject(7907, 1539.34570, -1609.99817, 25.50910,   0.00000, 0.00000, -90.00000);
-	SetObjectMaterialText(cartel1, "¿Coche Extraviado?\nNosotros {2AFA0A}LSPD\n{EE0D0D}!Te lo Localizamos¡", 0, 50, "Arial black", 16, 0, -1, -16776961, 1);	// Cartel ¿No encuentras tu auto?
-	// Cartel LSPD Postulaciones
-	new cartellspd1 = CreateObject(7907, 1414.31152, -1720.44275, 34.67540,   0.00000, 0.00000, 137.00000);
-	SetObjectMaterialText(cartellspd1, "¿Quieres Ser LSPD?\nPostulaciones \n{15E61C}Abiertas", 0, 50, "arial black", 15, 0, -1, -65536, 1);
-	new cartel = CreateObject(7907, 1412.38501, -1723.58752, 34.67540,   0.00000, 0.00000, -27.00000);
-	SetObjectMaterialText(cartel, "¿Quieres Ser LSPD?\nPostulaciones \n{15E61C}Abiertas", 0, 50, "arial black", 15, 0, -1, -65536, 1);
-	// Cartel LSMD En el ayuntamiento
-	new cartellsmd = CreateObject(7907, 1353.77112, -1713.86670, 25.99540,   0.00000, 0.00000, 90.00000);
-	SetObjectMaterialText(cartellsmd, "¿Quieres Ser Médico?\nPostulaciones\n{15E61C}Abiertas", 0, 50, "arial black", 15, 0, -1, -65536, 1);
-	// TPSA
-	new tpsa = CreateObject(7606, 1800.03845, -1877.34460, 20.55180,   0.00000, 0.00000, 90.00000);
-	SetObjectMaterialText(tpsa, "____T.P.S.A____\n¿Necesitas Taxi? \n¡Llama al 145!", 0, 50, "0x000000A", 20, 1, -65536, -256, 1);
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////End Carteles////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////// Vayas Y Carteles////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Publicidad Taller
-	TextoTEST = CreateObject(19329, 1490.72180, -1582.79822, 16.94640,   0.00000, 0.00000, 0.00000);
-	SetObjectMaterialText(TextoTEST, "{66FF00}Anuncios\nClasificados", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
-	//1
-	TextoTEST = CreateObject(19329, 1490.72180, -1582.79834, 16.12680,   0.00000, 0.00000, 0.00000);
-	SetObjectMaterialText(TextoTEST, "{FFFF00}SE VENDE TURISMO\n{FFFF00}¡$100.000!\n{FFFF00}Llama: 12345", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
-	//2
-   	TextoTEST = CreateObject(19329, 1490.72180, -1582.79834, 15.30350,   0.00000, 0.00000, 0.00000);
-   	SetObjectMaterialText(TextoTEST, "{FFFF00}¿Quieres Protección?\n{FFFF00}¡Seguridad ADP!\n{FFFF00}Llama: 1394", 0, 50, "Arial", 13, 1, 0xB700FF, 1, 1);
-	//3
-	TextoTEST = CreateObject(19329, 1490.72180, -1582.79846, 14.47740,   0.00000, 0.00000, 0.00000);
-	SetObjectMaterialText(TextoTEST, "{66FF00}DISPONIBLE", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
-
-	// Cartel Mecánicos.
-    TextoTEST = CreateObject(7911, 1427.01819, -964.12531, 44.11760,   0.00000, 0.00000, 169.39999);
-    SetObjectMaterialText(TextoTEST, "{FFFFFF}SUPER\n{0099FF}ME{FFFFFF}RCA{0099FF}DO", 0, 50, "Magneto", 20, 0, -16776961, 0, 1);
-
 	// Publicidad Los Santos Spawn Mochis
     TextoTEST = CreateObject(19329, 1711.01587, -1888.08545, 17.2269,   0.00000, 0.00000, 0.00000);
     SetObjectMaterialText(TextoTEST, "{F81414}Publicidad\nLos Santos", 0, 50, "Arial", 20, 1, 0xB700FF, 1, 1);
@@ -42316,7 +42167,13 @@ public LoadStaticObjects()
 	// Cartel LSPD
     TextoTEST = CreateObject(19353, 1555.08, -1675.72, 21.81,   0.00, 0.00, 0.10);
     SetObjectMaterialText(TextoTEST, "{f7faf7}L.S.P.D\n{0049FF}Tlf:{F81414} 911", 0, 50, "Arial", 24, 1, 0xF81414, 1, 1);
-    
+	// Cartel ¿No encuentras tu auto?
+    TextoTEST = CreateObject(7911, 1539.28943, -1609.85571, 25.45880,   0.00000, 0.00000, -90.00000);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}¿Coche Extraviado?\nNosotros{0049FF} L.S.P.D{F81414}\n{6EF83C}¡¡Te lo localizamos!!", 0, 50, "Arial", 14, 1, 0xB700FF, 1, 1);
+	// Cartel ¿No encuentras tu auto?
+    TextoTEST = CreateObject(7911, 1427.01819, -964.12531, 44.11760,   0.00000, 0.00000, 169.39999);
+    SetObjectMaterialText(TextoTEST, "{FFFFFF}SUPER\n{0099FF}ME{FFFFFF}RCA{0099FF}DO", 0, 50, "Magneto", 20, 0, -16776961, 0, 1);
+
 	// Parqueo 1 y 2 LSPD
     TextoTEST = CreateObject(19353, 1535.80408, -1677.96558, 12.29570,   0.00000, -90.00000, 180.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}PARQUEO\nL.S.P.D", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
@@ -42350,7 +42207,7 @@ public LoadStaticObjects()
 	SetObjectMaterialText(TextoTEST, "{B700FF}============\nBar\n La Lujuria\n============", 0, 50, "Wide Latin", 15, 1, 0xB700FF, 1, 1);
 	// Cartel Bar Jizzy
 	TextoTEST = CreateObject(7911, 1076.01721, -1698.18018, 21.89880,   0.00000, 0.00000, 0.00000);
-	SetObjectMaterialText(TextoTEST, "{F81414}Bar\n{0049FF}Sakae\n{B700FF}NightClubs", 0, 50, "Wide Latin", 15, 1, 0xB700FF, 1, 1);
+	SetObjectMaterialText(TextoTEST, "{B700FF}============\nBar\nJizzy\n============", 0, 50, "Wide Latin", 15, 1, 0xB700FF, 1, 1);
 	// Cartel Ayuntamiento
 	TextoTEST = CreateObject(7911, 1481.53564, -1751.30908, 29.32090,   0.00000, 0.00000, 180.00000);
 	SetObjectMaterialText(TextoTEST, "{F81414}GOBIERNO", 0, 50, "Arial", 21, 0, -16776961, 0, 1);
@@ -42409,6 +42266,9 @@ public LoadStaticObjects()
 	TextoTEST = CreateObject(9314, 1767.95093, -1804.68274, 20.62770,   0.00000, 0.00000, -90.00000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Renovaciones\nDropeos\n Y más", 0, 50, "Arial", 16, 1, 0xFFFFFF, 1, 1);
 
+	// Cartel En Transporte Publico
+	TextoTEST = CreateObject(7606, 1800.07617, -1877.15051, 20.53940,   0.00000, 0.00000, 90.00000);
+	SetObjectMaterialText(TextoTEST, "{f7faf7}Transporte Público\n¿Necesitas Taxi?\nLlama al 145", 0, 50, "Arial", 15, 1, 0x000000FF, 1, 1);
 	// Cartel En el banco
 	TextoTEST = CreateObject(7606, 1310.15308, -1365.90503, 19.09300,   0.00000, 0.00000, -90.00000);
 	SetObjectMaterialText(TextoTEST, "{f7faf7}Banco Central\n{F81414}Protegemos\nTu Dinero", 0, 50, "Dungeon", 15, 1, 0xFFFFFF, 1, 1);
@@ -42465,11 +42325,9 @@ public LoadStaticObjects()
 	// Cartel Oficina 1 ID 31
     TextoTEST = CreateObject(9314, 1419.01904, -1607.36853, 18.11700,   0.00000, 18.00000, 0.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Oficina\nEn Venta", 0, 50, "Broadway", 24, 1, 0x000000FF, 1, 1);
-	TextoTEST = CreateObject(2661, 1418.69556, -1609.85974, 15.43540,   0.00000, 0.00000, 90.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}Disponible\n.::0000::.", 0, 50, "Dungeon", 25, 0, -16776961, 0, 1);
 	// Cartel Oficina 2 ID 30
 	TextoTEST = CreateObject(9314, 1419.02771, -1640.15002, 18.13700,   0.00000, 18.00000, 0.00000);
-    SetObjectMaterialText(TextoTEST, "{FF0000}Detective\n{f7faf7}[Privado]", 0, 50, "Dungeon", 20, 1, 0x000000FF, 1, 1);
+    SetObjectMaterialText(TextoTEST, "{FF0000}[Oficina]\n{f7faf7}Dos Armas", 0, 50, "Dungeon", 20, 1, 0x000000FF, 1, 1);
 	TextoTEST = CreateObject(2661, 1418.70215, -1642.73853, 15.43540,   0.00000, 0.00000, 90.00000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Teléfono\n.::1394::.", 0, 50, "Dungeon", 25, 0, -16776961, 0, 1);
 	// Cartel Oficina 3 ID 32
@@ -42481,7 +42339,7 @@ public LoadStaticObjects()
     SetObjectMaterialText(TextoTEST, "{f7faf7}Seguridad\n.::LSPD::.", 0, 50, "Dungeon", 25, 1, 0xAA3333AA, 1, 1);
 	// Cartel Seguridad 2
 	TextoTEST = CreateObject(2661, 1418.68884, -1637.74390, 14.50160,   0.00000, 0.00000, 90.00000);
-    SetObjectMaterialText(TextoTEST, "{f7faf7}Seguridad\n.::ADP::.", 0, 50, "Dungeon", 25, 1, 0x0069FFFF, 1, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}Seguridad\n.::LSPD::.", 0, 50, "Dungeon", 25, 1, 0x0069FFFF, 1, 1);
 	// Cartel Seguridad 3
 	TextoTEST = CreateObject(2661, 1409.28894, -1702.15942, 14.71390,   0.00000, 0.00000, 54.60000);
     SetObjectMaterialText(TextoTEST, "{f7faf7}Seguridad\n.::LSPD::.", 0, 50, "Dungeon", 25, 1, 0x00EBFFFF, 1, 1);
@@ -42600,109 +42458,51 @@ public LoadStaticObjects()
 //////////////////////////////////////////Motos Job Pizzero////////////////////////////////////////////////////
 	// Escalera Yakuza
 	CreateObject(5820, 717.26038, -1448.82788, 18.21960,   0.76000, -0.02000, 180.00000);
-	// Sentineles SML
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 167, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 168, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 169, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 170, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}SML", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	// Sentineles LSPD
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 330, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 331, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 332, -0.000000,-1.425000,0.449999,-59.400009,0.000000,-0.000005);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	// Patrullas LSPD
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 250, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 251, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 252, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 253, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 254, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 255, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 256, 0.000000,-1.650000,0.524999,-54.000011,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}911", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	// Moonbeans Taxis
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 196, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
-	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 196, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 197, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 197, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 198, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 198, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 199, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 199, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 200, -0.899999,-1.650000,0.599999,-16.200000,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
  	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
  	AttachObjectToVehicle(TextoTEST, 200, 0.899999,-1.650000,0.599999,18.900003,0.000000,-89.099983);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	// Taxis Maleta y Laptop
+    SetObjectMaterialText(TextoTEST, "{f7faf7}TAXI", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+    
+	// Taxis 1 CocheTexto
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 196, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 196, 0.000000,1.200000,0.300000,0.000000,0.000000,0.000000);
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 196, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
-
+    
+	// Taxis 2
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 197, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42710,6 +42510,7 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 197, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
+	// Taxis 3
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 198, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42717,6 +42518,7 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 198, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
+	// Taxis 4
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 199, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42724,6 +42526,7 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 199, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
+	// Taxis 5
 	ObjPegado = CreateObject(19308,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 200, 0.000000,0.000000,1.125000,0.000000,0.000000,-89.099983);
 	ObjPegado = CreateObject(19893,0,0,-1000,0,0,0,100);
@@ -42731,78 +42534,13 @@ public LoadStaticObjects()
 	ObjPegado = CreateObject(19624,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 200, 0.674999,-1.800000,0.000000,-0.000001,0.000000,-91.799980);
 
-	// Motos Pizzero
+	//283
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 384, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
-
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
-
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 386, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
-
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.599999,0.000000,0.000000,0.000000);
-	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
-	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
-
-	// Grúa LSPD
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 263, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 22, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 264, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}LSPD", 0, 50, "Arial", 22, 0, -16776961, 0, 1);
-
-	// Grúa Taller
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 282, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 283, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 284, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 285, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 286, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}777", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	// Grúas NFS
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 208, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
- 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 209, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
-	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
- 	AttachObjectToVehicle(TextoTEST, 298, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
- 	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
-
 	//284
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
@@ -42935,7 +42673,7 @@ public LoadStaticObjects()
 	//Pickup Negocio ID 3
 	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Ropa\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1518.8466,-1838.9191,13.9190,15.0, 0);//Entrada
 	//Pickup Negocio ID 4
-	Create3DTextLabel("{0049FF}El {F81414}Abuelo\n{F5FF00}Negocio Tipo:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1352.3363,-1759.1455,13.5078,15.0, 0);//Entrada
+	Create3DTextLabel("{0049FF}El {F81414}Abuelo\n{F5FF00}Negocio Tipo:{0049FF} 24/7\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1352.2664,-1759.2533,13.5078,15.0, 0);//Entrada
 	//Pickup Negocio ID 5
 	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Restaurant\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1411.5867,-1699.4906,13.5395,15.0, 0);//Entrada
 	//Pickup Negocio ID 6
@@ -42987,7 +42725,7 @@ public LoadStaticObjects()
 	//Pickup Negocio ID 29
 	Create3DTextLabel("{F5FF00}Negocio Tipo:{0049FF} Jizzy\n{F5FF00}Estado:{6EF83C} Abierto\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1081.2618,-1696.7834,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 30
-	Create3DTextLabel("{F81414}Oficina Detective Privado\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.2784,-1640.2745,13.5469,15.0, 0);//Entrada
+	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.2784,-1640.2745,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 31
 	Create3DTextLabel("{F81414}Oficina Privada\n{E6E6E6}Para entrar presione: ENTER ó F",0xFFFB00FF,1419.1697,-1607.3702,13.5469,15.0, 0);//Entrada
 	//Pickup Negocio ID 32
@@ -43508,6 +43246,302 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(10671,1434.413085,1579.459228,16.300333,0.000000,0.000000,269.999877,-1,18,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(1232,1422.805541,1565.577758,12.365284,0.000000,0.000000,0.000000,-1,18,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(10671,1434.416870,1579.452270,12.551089,0.000000,0.000000,-90.000000,-1,18,-1,MAX_RADIO_STREAM);
+
+	// ========= Interior Ayuntamiento Nuevo Pablo Styk=======================
+	CreateDynamicObjectExUH(19450, -1286.40466, -445.25659, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1281.67822, -440.35291, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1281.16541, -445.22940, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1272.05396, -440.35080, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1270.69531, -445.23169, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1281.68896, -450.07321, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1272.05725, -450.07321, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1286.38025, -446.53870, 13.12890,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1286.37842, -443.53781, 13.12890,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11737, -1285.84253, -445.72620, 13.14770,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11737, -1285.85559, -444.30295, 13.14770,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2309, -1281.93127, -440.59869, 13.14880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2309, -1281.41125, -440.59869, 13.14880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2309, -1280.89136, -440.59869, 13.14880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2309, -1280.37134, -440.59869, 13.14880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2309, -1279.85132, -440.59869, 13.14880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2309, -1279.33130, -440.59869, 13.14880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11728, -1279.24402, -450.04291, 14.60440,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11728, -1279.90442, -450.06619, 14.60440,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11728, -1280.54114, -450.08740, 14.60440,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19435, -1274.98511, -445.33139, 13.25850,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19435, -1274.98511, -445.33139, 16.15850,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19431, -1274.26624, -443.68079, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19431, -1274.27087, -446.98199, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19431, -1272.67981, -443.68079, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19431, -1272.67981, -446.98199, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2607, -1274.49109, -445.25739, 13.54970,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1273.46936, -445.26837, 13.58880,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19807, -1274.25903, -445.92969, 14.01310,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19808, -1274.26624, -445.31451, 13.97370,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19611, -1274.28308, -444.69260, 12.57330,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19610, -1274.30615, -444.68759, 14.19310,   20.00000, 0.00000, -110,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19388, -1271.95984, -442.00510, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19388, -1271.98206, -448.58749, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1260.20544, -445.21689, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19388, -1265.65430, -440.35080, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1262.42468, -450.07269, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1263.96082, -450.04211, 13.16700,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1263.96082, -450.10211, 13.16700,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19381, -1263.30981, -454.86258, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1267.94568, -454.97003, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1258.16003, -454.87698, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1263.04163, -459.65393, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1259.28760, -440.34286, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1249.72412, -445.23349, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1257.64661, -440.36331, 13.16700,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1257.64661, -440.32330, 13.16700,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1263.75769, -435.57962, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1254.65845, -435.43347, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19381, -1259.74353, -435.60965, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19381, -1270.20459, -435.61389, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1259.45935, -430.72382, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2173, -1261.26660, -433.06732, 13.14870,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1259.24890, -431.17276, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2173, -1256.32532, -433.04089, 13.14870,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1269.07654, -430.72360, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1273.97815, -435.47711, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1249.31470, -435.61859, 13.06300,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1254.38892, -435.61981, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1252.80066, -450.07681, 14.89850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1247.99634, -445.32574, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1248.00183, -435.78232, 14.89850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18756, -1246.08154, -444.24060, 15.07440,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18755, -1246.03589, -446.25769, 15.06750,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18756, -1246.06152, -446.18060, 15.07440,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(14416, -1252.58691, -428.33817, 13.14397,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(14416, -1248.62048, -428.35645, 13.14397,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1254.33813, -429.21570, 18.28050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1254.33813, -429.21570, 14.82050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1254.33813, -426.06470, 17.26050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1247.99731, -429.38379, 14.82050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1247.99731, -426.06470, 17.26050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1247.99731, -429.21570, 18.28050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1247.99731, -426.06470, 20.68050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19362, -1254.33813, -426.06470, 20.68050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1250.62488, -421.65479, 16.26050,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1254.27771, -419.69110, 18.08050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1248.00598, -419.64081, 18.08050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19379, -1250.64905, -412.03970, 16.26050,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1254.27771, -410.06812, 18.08050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1248.00598, -410.03769, 18.08050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1251.95300, -407.14560, 18.08050,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1251.82446, -407.17929, 16.34640,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1254.24304, -419.74710, 16.34640,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1248.03333, -419.19662, 16.34640,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1281.16541, -445.22940, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1270.69531, -445.23169, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1260.20544, -445.21689, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1263.30981, -454.86261, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1249.72412, -445.23349, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1259.74353, -435.60959, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1270.20459, -435.61389, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1249.31470, -435.61859, 16.54280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1250.33496, -431.23553, 19.62280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1250.64905, -412.03970, 19.62280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1250.62488, -421.65479, 19.62280,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1250.92041, -430.94769, 21.72280,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1502, -1271.99084, -441.21930, 13.14860,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1502, -1271.99084, -449.33969, 13.14860,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2267, -1282.70740, -449.96271, 14.85830,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19173, -1280.57153, -440.44312, 14.79735,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2942, -1281.34705, -449.64691, 13.65120,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2942, -1278.46436, -449.64380, 13.65120,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2357, -1262.78894, -455.52420, 13.55010,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19167, -1261.59827, -455.92090, 13.97810,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19167, -1262.84998, -455.12839, 13.97810,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19167, -1263.95557, -455.92169, 13.97810,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1260.90466, -455.56116, 13.93830,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1262.77478, -455.95877, 13.93830,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1264.70569, -455.58203, 13.93830,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1263.91418, -455.09235, 13.93830,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1261.55420, -455.04684, 13.93830,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1261.55212, -454.09625, 13.15028,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1262.80554, -454.06506, 13.15028,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1263.94458, -454.07678, 13.15028,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1265.75867, -455.61584, 13.15030,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1259.99011, -455.50735, 13.15030,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1261.60864, -457.11273, 13.15030,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1262.98596, -457.21759, 13.15030,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1264.34033, -457.24319, 13.15030,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2690, -1258.29163, -452.78030, 14.55310,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19165, -1258.23145, -455.77570, 14.77020,   0.00000, 90.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1502, -1264.90454, -440.34781, 13.14860,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2607, -1271.58167, -438.82455, 13.54970,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1714, -1273.27063, -439.20630, 13.14890,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1266.93750, -431.63129, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1265.33606, -431.59326, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1265.35425, -432.58963, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1265.41870, -433.67465, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1265.31189, -434.69086, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1265.37390, -435.67587, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1266.94617, -432.57236, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1266.99316, -433.61816, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1267.00732, -434.61038, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1266.96375, -435.56781, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1268.43677, -431.68701, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1268.52539, -432.55106, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1268.48755, -433.57474, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1268.53601, -434.57361, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2120, -1268.49597, -435.53793, 13.77050,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1271.76245, -438.88486, 13.96840,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19920, -1271.51904, -438.20541, 13.97350,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2312, -1273.85620, -436.36731, 14.83400,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2611, -1273.83630, -433.54529, 14.86970,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1723, -1254.70007, -449.47931, 13.14810,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1723, -1257.63831, -449.45639, 13.14810,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(14604, -1258.64429, -458.07709, 14.13070,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19173, -1257.39038, -449.98599, 15.00090,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19172, -1273.42505, -443.77399, 15.17450,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19174, -1273.55481, -446.89261, 15.15770,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1723, -1263.72485, -440.90524, 13.14810,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1723, -1260.79382, -440.91928, 13.14810,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1892, -1272.32434, -442.49576, 13.15010,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1892, -1272.41541, -449.07010, 13.15010,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1706, -1253.62939, -412.99597, 16.34630,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19173, -1248.10156, -411.80908, 17.92050,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(638, -1253.72009, -415.52847, 17.02470,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(638, -1253.73914, -409.18854, 17.02470,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2164, -1248.15247, -415.02536, 16.34710,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2199, -1248.18909, -420.82349, 16.32260,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(3811, -1266.21887, -449.67712, 13.56960,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1360, -1267.60522, -445.45520, 13.40660,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1360, -1260.94995, -445.30011, 13.42660,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1360, -1255.01965, -445.30566, 13.42660,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2253, -1257.92712, -440.79803, 13.40910,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2253, -1264.58020, -440.84674, 13.40910,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2616, -1248.13245, -436.70270, 14.73380,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2942, -1253.95911, -438.44919, 13.78310,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2942, -1253.95435, -434.50821, 13.78310,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11728, -1254.31873, -437.41010, 14.42740,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11728, -1254.30176, -436.45020, 14.42740,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(11728, -1254.28455, -435.49017, 14.42740,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19273, -1248.08557, -448.72510, 14.49830,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2690, -1271.81116, -443.33121, 14.90540,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2690, -1271.85938, -447.41931, 14.90540,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2011, -1282.72876, -440.64313, 13.14960,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2011, -1278.52722, -440.68881, 13.14960,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1261.89563, -431.82126, 13.58880,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1256.63745, -431.82184, 13.58880,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1257.47058, -434.60843, 13.58880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1256.39343, -434.52805, 13.58880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1262.31689, -434.45480, 13.58880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1261.19666, -434.47650, 13.58880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2164, -1258.84692, -440.25037, 13.14930,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1722, -1254.95313, -436.86066, 13.14830,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1722, -1254.95642, -437.52090, 13.14830,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1722, -1254.89917, -438.19958, 13.14830,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1722, -1263.50964, -438.85922, 13.14830,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1722, -1263.53333, -438.23322, 13.14830,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1722, -1263.54468, -437.58182, 13.14830,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1261.85901, -432.99191, 13.93830,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1256.80029, -432.96655, 13.93830,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2162, -1258.51733, -430.83340, 13.95290,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2162, -1260.74976, -430.83380, 13.95290,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1828, -1261.66016, -434.47180, 13.14976,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1828, -1256.44653, -434.62946, 13.14976,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1546, -1261.11865, -433.05771, 14.02630,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1546, -1257.54211, -433.09204, 14.02630,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19807, -1256.20605, -432.90109, 14.00570,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19807, -1262.45398, -433.00089, 14.00570,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+
+	//========= oFICINA PRESIDENCIAL pablo Styk =========================
+	CreateDynamicObjectExUH(19375, -1160.65295, -390.42279, 13.11320,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1150.89185, -394.05679, 14.91710,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1164.45520, -390.63385, 14.91710,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1160.21179, -386.80634, 14.91710,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1160.35168, -395.04587, 14.91710,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2207, -1154.33533, -389.82098, 13.19740,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19375, -1150.16882, -390.38950, 13.11320,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1150.61938, -386.81146, 14.91710,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1150.75269, -395.04965, 14.91710,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1671, -1152.60400, -390.73392, 13.63860,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2161, -1151.37195, -389.64087, 13.17820,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2199, -1151.03247, -393.73926, 13.19840,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2163, -1150.92188, -389.46136, 14.84060,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2163, -1150.92175, -391.21490, 14.84060,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2200, -1156.27991, -394.80960, 13.19880,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2167, -1158.65979, -394.82974, 13.19910,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2344, -1153.57227, -391.92941, 13.97320,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1547, -1153.56995, -391.59720, 13.97320,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1546, -1153.56787, -391.59714, 14.07700,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19015, -1153.60559, -391.37637, 13.97699,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19015, -1153.61194, -390.08109, 14.05370,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2967, -1153.55334, -389.87216, 13.98080,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19807, -1153.90918, -390.23312, 14.01950,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2286, -1158.86426, -386.91849, 15.01850,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1767, -1161.14404, -387.57965, 13.19851,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1767, -1162.11902, -389.66965, 13.19850,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1767, -1159.15247, -388.36639, 13.19850,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1828, -1152.92029, -390.75281, 13.19757,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1828, -1160.32886, -388.92130, 13.19757,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1815, -1161.10608, -389.59668, 13.22189,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1164.43481, -393.63800, 13.19910,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2289, -1164.32581, -389.22391, 14.91640,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1663, -1155.40759, -390.06833, 13.65870,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1663, -1155.44470, -391.35373, 13.65870,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1808, -1153.83496, -394.73315, 13.19850,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2612, -1155.50024, -386.93359, 15.16960,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1829, -1152.48547, -394.44131, 13.66690,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1999, -1155.75464, -387.45438, 13.19771,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2202, -1153.67578, -387.46490, 13.19703,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19893, -1154.11670, -390.76135, 14.01940,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19388, -1150.89465, -387.69949, 14.91710,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1502, -1150.92908, -386.92380, 13.19960,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1146.04309, -390.84460, 14.91710,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2392, -1146.36743, -389.12509, 14.30390,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2399, -1147.00452, -387.16260, 14.40508,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19873, -1147.44519, -394.88919, 13.85790,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2525, -1147.90430, -394.39319, 13.19900,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2524, -1148.36426, -394.51071, 13.20020,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2258, -1146.15002, -392.91089, 14.86950,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1417, -1150.48389, -392.83044, 13.19970,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2167, -1146.13367, -390.73489, 13.20640,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19173, -1149.07227, -386.90158, 14.76203,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2256, -1150.79285, -390.65479, 14.96060,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1160.65295, -390.42279, 16.51320,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1150.16882, -390.38950, 16.51320,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(348, -1146.47522, -390.36301, 14.72750,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(348, -1146.47522, -390.61609, 14.72780,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1242, -1146.27502, -390.92270, 14.88750,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+
+	// =========== Oficina Comunicaciones Pablo Styk ===============
+	CreateDynamicObjectExUH(19381, -1228.16272, -482.39569, 13.09930,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1222.94897, -482.36230, 14.92360,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1227.06091, -487.11426, 14.92360,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1231.76257, -482.42310, 14.92360,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19450, -1226.98975, -477.71225, 14.92360,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2229, -1225.00281, -487.13669, 13.18440,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2229, -1230.25769, -487.11115, 13.18440,   0.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1557, -1228.64233, -477.75467, 13.18480,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1705, -1228.30469, -485.83206, 13.18470,   0.00000, 0.00000, 130,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1705, -1225.38721, -484.91925, 13.18470,   0.00000, 0.00000, -130,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2321, -1227.90149, -483.94312, 13.08500,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(3031, -1230.59949, -481.61124, 14.70520,   0.00000, 0.00000, -50,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(3031, -1224.11511, -481.37280, 14.70520,   0.00000, 0.00000, -130,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1670, -1227.17456, -484.01749, 13.61670,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2011, -1226.60010, -486.59460, 13.18316,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2011, -1227.75061, -486.50839, 13.18316,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19611, -1226.27576, -483.89182, 12.43720,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19611, -1228.04016, -483.96909, 12.43720,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19610, -1226.26489, -483.86499, 14.05590,   20.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19610, -1228.02954, -483.93750, 14.05590,   20.00000, 0.00000, 180,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19611, -1226.95154, -480.43985, 13.18651,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19623, -1226.95496, -480.43329, 14.77670,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19623, -1231.47693, -486.82733, 16.33670,   30.00000, 0.00000, 150,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19623, -1223.14258, -486.63885, 16.33670,   30.00000, 0.00000, -150,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2233, -1226.27930, -480.46667, 13.18550,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2233, -1227.29712, -480.43350, 13.18550,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18655, -1223.23035, -486.71552, 12.66430,   0.00000, 0.00000, -30,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18655, -1223.39209, -481.83115, 12.66430,   0.00000, 0.00000, 30,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18655, -1231.04553, -481.97836, 12.66430,   0.00000, 0.00000, -230,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(18655, -1231.37634, -486.58392, 12.66430,   0.00000, 0.00000, 230,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19380, -1228.16272, -482.39569, 16.57930,   0.00000, 90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+
 // OFICINA ADP 1
 	CreateDynamicObjectExUH(14581,2555.3681640625,1343.388671875,79.807739257813,0,0,0,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(1998,2556.1567382813,1339.3785400391,77.476387023926,0,0,90,-1, -1, -1, MAX_RADIO_STREAM);
@@ -43566,253 +43600,7 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(988,2553.8935546875,1336.7308349609,82.199996948242,90,0,90,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(988,2548.8918457031,1336.7244873047,82.199996948242,90,0,90,-1, -1, -1, MAX_RADIO_STREAM);
 
-// Oficina Pablo Styk Bar
-	CreateDynamicObjectExUH(19459, 157.35155, 1310.46204, 1083.63599,   0.00000, 0.00000, 0.00000, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 152.63100, 1305.58276, 1083.63599,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19440, 156.64380, 1315.35596, 1083.63599,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 155.76480, 1320.08704, 1083.63599,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19440, 147.02251, 1305.58154, 1083.63599,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 146.13710, 1310.26819, 1083.63599,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 151.04970, 1324.96155, 1083.63599,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 141.40221, 1315.16638, 1083.63599,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 141.44420, 1324.96277, 1083.63599,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 136.91800, 1320.10400, 1083.63599,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19380, 151.08051, 1310.47693, 1081.82898,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19380, 151.12241, 1320.09814, 1081.82898,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19380, 140.62550, 1320.05444, 1081.82898,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19452, 155.69051, 1310.46924, 1082.19470,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19433, 155.68690, 1315.20166, 1081.47461,   90.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19433, 154.01300, 1313.53796, 1081.47461,   90.00000, 0.00000, 0,-1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19433, 154.02910, 1310.04944, 1081.47461,   90.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19433, 154.02080, 1306.57800, 1081.47461,   90.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(14651, 140.98503, 1322.22156, 1084.15198,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(16151, 150.04660, 1323.79346, 1082.25269,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2748, 137.58009, 1322.54785, 1082.43164,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2748, 137.58122, 1324.05005, 1082.43164,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2748, 137.58780, 1321.00366, 1082.43164,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2748, 139.26820, 1319.61584, 1082.43164,   0.00000, 0.00000, -180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2748, 140.76801, 1319.62585, 1082.43164,   0.00000, 0.00000, -180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2748, 142.21440, 1319.63806, 1082.43164,   0.00000, 0.00000, -180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19459, 139.69250, 1318.96106, 1081.53601,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2799, 151.13736, 1308.74768, 1082.41296,   0.00000, 0.00000, 30, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2799, 151.97031, 1310.97241, 1082.41296,   0.00000, 0.00000, 30, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2799, 150.59566, 1311.98633, 1082.41296,   0.00000, 0.00000, 30, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(11686, 155.27670, 1318.92261, 1081.90906,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 154.76062, 1320.71985, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 154.77515, 1319.29041, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 154.82118, 1317.89514, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 151.28554, 1322.55530, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 152.53253, 1322.50916, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1670, 150.61754, 1311.99414, 1082.60620,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1670, 151.15135, 1308.71216, 1082.60620,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(11686, 146.64166, 1308.20996, 1081.90906,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(11686, 146.64000, 1312.76660, 1081.90906,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(11686, 148.74660, 1306.12305, 1081.92908,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 147.86584, 1313.62390, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 147.77336, 1312.17175, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 147.91873, 1310.66541, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 147.98940, 1309.11328, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 148.47427, 1307.70032, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 150.08607, 1307.47180, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 147.88989, 1315.14368, 1081.91504,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1486, 148.74550, 1322.80615, 1083.01868,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1486, 149.63730, 1322.78833, 1083.01868,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1486, 150.57703, 1322.80847, 1083.01868,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1486, 155.29770, 1320.13220, 1083.17871,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1546, 155.24620, 1319.91479, 1083.11865,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1546, 155.18291, 1318.87305, 1083.07874,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1546, 146.71326, 1311.75708, 1083.17871,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1546, 150.00281, 1306.20898, 1083.15869,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19823, 155.22200, 1320.34778, 1083.01770,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19823, 152.23820, 1322.69629, 1082.87769,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1665, 151.42690, 1322.60608, 1082.89246,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1951, 147.11360, 1322.89478, 1083.08374,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1670, 146.62990, 1314.03308, 1083.06604,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1670, 146.60188, 1307.02356, 1083.06604,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1670, 155.30479, 1317.70422, 1083.06604,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1520, 146.62242, 1309.31396, 1083.03809,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1520, 146.60994, 1309.63599, 1083.03809,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1520, 148.75018, 1306.03979, 1083.03809,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1520, 146.62856, 1312.35608, 1083.03809,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19317, 156.52138, 1310.56079, 1083.06030,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19319, 156.45384, 1311.35315, 1083.00024,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18647, 153.97746, 1313.83960, 1082.28088,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18647, 153.99600, 1310.76526, 1082.28088,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18647, 153.99754, 1307.27344, 1082.28088,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18654, 156.87776, 1306.09790, 1081.87939,   0.00000, 0.00000, -50, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18654, 157.18373, 1315.14368, 1081.87939,   0.00000, 0.00000, 50, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19609, 155.69089, 1307.30847, 1082.27942,   0.00000, 0.00000, -120, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1716, 156.60353, 1307.51099, 1082.25500,   0.00000, 0.00000, 0,-1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19611, 154.64780, 1311.10730, 1082.28076,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19611, 156.54057, 1311.34326, 1082.28076,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19611, 156.58633, 1310.56750, 1082.28076,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19614, 156.29254, 1312.27356, 1082.28027,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19614, 156.35355, 1309.64197, 1082.28027,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19610, 154.58110, 1311.10168, 1083.87744,   10.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19813, 157.25850, 1314.07751, 1082.75891,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19813, 157.26923, 1308.99548, 1082.75891,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 155.57021, 1315.48181, 1084.59961,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 153.41472, 1305.83875, 1084.59961,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2206, 156.90813, 1315.09070, 1082.28003,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19612, 156.76950, 1313.70166, 1083.21021,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19610, 156.71776, 1314.19604, 1083.23755,   10.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19610, 156.90659, 1313.31177, 1083.23755,   10.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19610, 156.91386, 1312.87170, 1083.23755,   10.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2102, 157.17821, 1314.06360, 1084.73511,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2102, 157.21812, 1311.49817, 1084.73511,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2102, 157.23032, 1308.55334, 1084.73511,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19421, 156.61642, 1313.14819, 1083.25671,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19617, 156.89050, 1314.65564, 1083.19385,   -90.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1736, 155.34898, 1318.66016, 1084.17078,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1736, 151.24860, 1324.55090, 1084.17078,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2232, 157.17281, 1310.16370, 1084.32825,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2232, 157.49229, 1312.92798, 1084.32825,   0.00000, 90.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2232, 157.48241, 1307.24512, 1084.32825,   0.00000, 90.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2232, 155.52098, 1315.67017, 1082.48730,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 151.70850, 1324.80627, 1084.53955,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 146.01630, 1324.80615, 1084.59961,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 137.66029, 1324.85291, 1084.57959,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 138.26270, 1315.26428, 1084.57959,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1840, 145.60265, 1315.29688, 1084.57959,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(2267, 141.80595, 1315.29858, 1083.58997,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19173, 141.38370, 1324.85291, 1083.63025,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(1557, 136.94920, 1316.16064, 1081.89441,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18648, 146.26430, 1307.77502, 1084.73364,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18648, 146.27080, 1313.59485, 1084.73364,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18648, 147.86983, 1324.79590, 1084.73364,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(18648, 153.09430, 1324.81702, 1084.73364,   0.00000, 0.00000, 90,  -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19375, 140.62550, 1320.05444, 1085.34900,   0.00000, 90.00000, 0,  -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19375, 151.12241, 1320.09814, 1085.34900,   0.00000, 90.00000, 0,  -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19375, 151.08051, 1310.47693, 1085.34900,   0.00000, 90.00000, 0,  -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19375, 161.54980, 1310.48633, 1085.34900,   0.00000, 90.00000, 0,  -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObjectExUH(19128, 150.67950, 1316.23108, 1081.85559,   0.00000, 0.00000, 0,  -1, -1, -1, MAX_RADIO_STREAM);
-
-	// Sherif Pablo Styk
-	CreateDynamicObject(19395, 129.29340, 1307.06287, 1085.75586,   0.00000, 0.00000, 0.00000, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 129.28220, 1297.52625, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 129.27718, 1302.30273, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 129.27730, 1304.69824, 1085.75854,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 129.27350, 1299.91772, 1085.75854,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 127.48360, 1305.69812, 1084.42444,   90.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19380, 124.27200, 1303.97693, 1083.94250,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19380, 124.27040, 1294.34900, 1083.94250,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 125.64350, 1304.04016, 1084.42444,   90.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 125.64350, 1300.54028, 1084.42444,   90.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 127.49460, 1298.89502, 1084.42444,   90.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 127.48360, 1305.69812, 1087.32434,   90.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 125.64350, 1304.04016, 1087.32434,   90.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 125.64350, 1300.54028, 1087.32434,   90.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19439, 127.49460, 1298.89502, 1087.32434,   90.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 124.54310, 1295.84314, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 124.56330, 1308.75708, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 119.66390, 1304.03101, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 119.66780, 1294.41919, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 124.58061, 1289.67908, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19380, 134.77100, 1294.37073, 1083.94250,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19380, 134.75549, 1303.98730, 1083.94250,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 129.27220, 1292.55115, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 129.27670, 1294.94482, 1085.75854,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 129.27090, 1290.16418, 1085.75854,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 138.77029, 1295.82031, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 139.94659, 1294.42712, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 132.35100, 1295.82776, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 134.18610, 1289.70459, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 139.79150, 1289.69543, 1085.75854,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 139.95670, 1300.81396, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19380, 145.22121, 1303.99194, 1083.94250,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 144.82680, 1299.27820, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 139.95531, 1307.23706, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 141.52679, 1302.53625, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 143.92940, 1302.52905, 1085.75854,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19395, 146.30560, 1302.54382, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 148.70633, 1302.54919, 1085.75854,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 144.70081, 1307.34070, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 149.67979, 1304.01245, 1085.75586,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 144.83360, 1308.74658, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19460, 134.18422, 1308.75989, 1085.75586,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19441, 139.53430, 1308.76465, 1085.75854,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19378, 124.27200, 1303.88599, 1087.40247,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19378, 124.27200, 1294.25073, 1087.40247,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19378, 134.75951, 1303.88220, 1087.40247,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19378, 134.78320, 1294.25208, 1087.40247,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19378, 145.25020, 1303.88354, 1087.40247,   0.00000, 90.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1557, 119.69850, 1301.84888, 1084.02368,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.91790, 1297.48621, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.91790, 1298.06616, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.91790, 1298.64624, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.91790, 1299.22620, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.89140, 1307.33081, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.89140, 1306.75085, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.89140, 1306.17078, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 119.89140, 1305.61084, 1084.02795,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1999, 126.25450, 1299.95959, 1084.03003,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1999, 126.25400, 1301.93396, 1084.03003,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1999, 126.24510, 1303.91821, 1084.03003,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1671, 127.29524, 1300.74353, 1084.48975,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1671, 127.22456, 1302.73840, 1084.48975,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1671, 127.27391, 1304.60388, 1084.48975,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2164, 129.17599, 1300.74255, 1084.02991,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2164, 129.19000, 1304.72937, 1084.02991,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2253, 120.04060, 1299.93652, 1084.28857,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2253, 120.00108, 1296.76489, 1084.28857,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2253, 120.02023, 1304.69885, 1084.28857,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2253, 119.99300, 1308.10547, 1084.28857,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2198, 121.26970, 1290.27722, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2198, 120.20030, 1295.25427, 1084.02795,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2180, 127.55840, 1290.16431, 1084.02917,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2356, 120.77659, 1291.28394, 1084.02844,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2356, 120.95631, 1294.29102, 1084.02844,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2181, 123.31090, 1295.27039, 1084.02698,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2181, 124.09653, 1290.28870, 1084.02698,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2356, 124.00607, 1294.02173, 1084.02844,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2356, 123.75839, 1291.28455, 1084.02844,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2606, 127.09780, 1289.71582, 1085.08813,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2356, 126.96467, 1291.60693, 1084.02844,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19808, 127.12530, 1290.47107, 1084.84814,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2967, 126.69544, 1290.51379, 1084.82947,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19623, 119.98560, 1295.56226, 1087.09167,   0.00000, 0.00000, 50, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19623, 119.86708, 1308.34692, 1087.09167,   0.00000, 0.00000, 50, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19623, 149.18391, 1299.61548, 1087.09167,   0.00000, 0.00000, -110, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2055, 119.77210, 1292.61572, 1085.38953,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(11729, 136.61430, 1290.08020, 1084.02856,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(11729, 135.94110, 1290.09265, 1084.02856,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(11729, 135.28110, 1290.09265, 1084.02856,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(11729, 134.62109, 1290.09265, 1084.02856,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(11729, 133.96111, 1290.09265, 1084.02856,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(18636, 131.86481, 1295.68958, 1085.64795,   0.00000, 90.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(18636, 132.18480, 1295.68958, 1085.64795,   0.00000, 90.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19141, 132.90320, 1295.61279, 1085.64795,   0.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19161, 133.60480, 1295.72961, 1085.64795,   -90.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19161, 133.26247, 1295.73425, 1085.64795,   -90.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19141, 132.55029, 1295.51990, 1085.66785,   0.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19142, 132.04550, 1295.55945, 1084.86072,   0.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19142, 132.80350, 1295.57349, 1084.86072,   0.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19142, 133.54871, 1295.56616, 1084.86072,   0.00000, -90.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19173, 139.85510, 1292.45911, 1085.56885,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2616, 131.52119, 1289.83264, 1085.28308,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2603, 142.63229, 1307.51270, 1084.46948,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2603, 147.39679, 1307.47217, 1084.46948,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2199, 135.69960, 1295.69336, 1084.02942,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2514, 144.10440, 1304.06885, 1084.03979,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2524, 144.44701, 1303.12231, 1084.02356,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2524, 149.00200, 1303.14136, 1084.02356,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2514, 148.99809, 1303.98425, 1084.03979,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2008, 149.06462, 1301.41101, 1084.02869,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19172, 144.38840, 1299.36841, 1085.48389,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 133.72629, 1308.54663, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 134.28630, 1308.54663, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 134.86630, 1308.54663, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 135.42630, 1308.54663, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1721, 136.00630, 1308.54663, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1723, 135.48380, 1296.44397, 1084.02795,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(2181, 139.35960, 1305.63147, 1084.02808,   0.00000, 0.00000, -90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19174, 131.06059, 1295.92041, 1085.65747,   0.00000, 0.00000, 180, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(19175, 131.21330, 1308.67517, 1085.65747,   0.00000, 0.00000, 0, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1892, 128.92529, 1297.06726, 1084.02881,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1892, 128.87323, 1306.59424, 1084.02881,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-	CreateDynamicObject(1892, 120.09480, 1302.05188, 1084.02881,   0.00000, 0.00000, 90, -1, -1, -1, MAX_RADIO_STREAM);
-
-	// OFICINA ADP 2
+// OFICINA ADP 2
 	CreateDynamicObjectExUH(14424,2573.9128417969,1348.2569580078,79.150001525879,0,0,0,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(1649,2600.9265136719,1342.7354736328,79.150001525879,0,0,90,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(1649,2600.9265136719,1347.0825195313,79.150001525879,0,0,90,-1, -1, -1, MAX_RADIO_STREAM);
@@ -43868,6 +43656,8 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(988,2603.6479492188,1339.4758300781,81.610908508301,90,0,270,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(988,2593.5219726563,1339.4897460938,81.610908508301,90,0,270,-1, -1, -1, MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(988,2593.521484375,1345.0356445313,81.610908508301,90,0,270,-1, -1, -1, MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1829, 1161.53650,1326.60144,10.28400,0.00000,0.00000, -90,-1, 1, -1, MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2921, 1161.77246,1331.40564,11.89950,0.00000,0.00000, 90,-1, 1, -1, MAX_RADIO_STREAM);
 
 // OFICINA DEL GOBIERNO (Interior)
 	CreateDynamicObjectExUH(14420,1858.9052734375,1398.3310546875,19.177722930908,0,0,270, -1, 7, -1, MAX_RADIO_STREAM);
@@ -52217,6 +52007,162 @@ public LoadTelesPublics()
 	SetStyleTextDrawTeles(MAX_TELE, "Salida de la casa de CJ");
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1263.2278; // AddPlayerClass(147,-1263.2278,-449.0345,14.1489,357.1551,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -449.0345;
+	Teles[MAX_TELE][PosZ]       = 14.1489;
+	Teles[MAX_TELE][PosZZ]       = 0;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Sala De Juntas");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	//////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1263.0746; // AddPlayerClass(147,-1263.0756,-451.3167,14.1489,179.1584,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -451.2501;
+	Teles[MAX_TELE][PosZ]       = 14.1489;
+	Teles[MAX_TELE][PosZZ]       = 179.1584;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Sala De Juntas");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	/////////////////////////////////////////////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1256.8378; // AddPlayerClass(147,-1256.8378 -441.3545 14.1489
+	Teles[MAX_TELE][PosY]       = -441.3545;
+	Teles[MAX_TELE][PosZ]       = 14.1489;
+	Teles[MAX_TELE][PosZZ]       = 184.2789;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada Oficinas de Alcalde y Vice-Pre");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	//////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1257.0411; // AddPlayerClass(147,-1257.0411,-439.3753,14.1489,0.9443,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -439.3753;
+	Teles[MAX_TELE][PosZ]       = 14.1489;
+	Teles[MAX_TELE][PosZZ]       = 0.9443;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Oficinas de Alcalde y Vice-Pre");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	/////////////////////////////////////////////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1253.3459; // AddPlayerClass(147,-1253.3459,-418.9216,17.3464,274.7548,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -418.9216;
+	Teles[MAX_TELE][PosZ]       = 17.3464;
+	Teles[MAX_TELE][PosZZ]       = 274.7548;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada Sala de Comunicaciones");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	//////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1227.8917; // AddPlayerClass(147,-1227.8917,-478.6844,14.1852,177.9556,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -478.6844;
+	Teles[MAX_TELE][PosZ]       = 14.1852;
+	Teles[MAX_TELE][PosZZ]       = 177.9556;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Sala de Comunicaciones");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	/////////////////////////////////////////////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1251.0504; // AddPlayerClass(147,-1251.0504,-408.1607,17.3464,181.4260,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -408.1607;
+	Teles[MAX_TELE][PosZ]       = 17.3464;
+	Teles[MAX_TELE][PosZZ]       = 181.4260;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada Oficina Presidencial");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	//////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1163.4749; // AddPlayerClass(147,-1163.4749,-392.8365,14.1991,271.6463,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -392.8365;
+	Teles[MAX_TELE][PosZ]       = 14.1991;
+	Teles[MAX_TELE][PosZZ]       = 271.6463;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Oficina Presidencial");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	/////////////////////////////////////////////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1248.9568; // AddPlayerClass(147,-1248.9568,-418.4054,17.3464,88.0369,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -418.4054;
+	Teles[MAX_TELE][PosZ]       = 17.3464;
+	Teles[MAX_TELE][PosZZ]       = 88.0369;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada Azotea del gobierno");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	//////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = 1448.4185; // 1448.4185,-1777.7811,33.4297,348.0792
+	Teles[MAX_TELE][PosY]       = -1777.7811;
+	Teles[MAX_TELE][PosZ]       = 33.4297;
+	Teles[MAX_TELE][PosZZ]       = 348.0792;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
+	Teles[MAX_TELE][Interior]            = 0;
+	Teles[MAX_TELE][World]       = WORLD_NORMAL;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Azotea del gobierno");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	/////////////////////////////////////////////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = -1248.9628; // AddPlayerClass(147,-1248.9628,-446.2769,14.1489,85.4251,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = -446.2769;
+	Teles[MAX_TELE][PosZ]       = 14.1489;
+	Teles[MAX_TELE][PosZZ]       = 85.4251;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
+	Teles[MAX_TELE][Interior]            = 1;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Entrada Garage");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+	//////////////////////////////
+	MAX_TELE++;
+	Teles[MAX_TELE][PosX]       = 2450.1716; // AddPlayerClass(147,2450.1716,2394.7527,71.0638,277.2713,0,0,0,0,0,0); //
+	Teles[MAX_TELE][PosY]       = 2394.7527;
+	Teles[MAX_TELE][PosZ]       = 71.0638;
+	Teles[MAX_TELE][PosZZ]       = 277.2713;
+	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
+	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
+	Teles[MAX_TELE][Interior]            = 4;
+	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
+	Teles[MAX_TELE][Lock]       = false;
+	SetStyleTextDrawTeles(MAX_TELE, "Salida Garage");
+	Teles[MAX_TELE][Dueno]      = GOBIERNO;
+/////////////////////////////////////////////////////////////////////
+	MAX_TELE++;
 	Teles[MAX_TELE][PosX]       = -1989.6453;
 	Teles[MAX_TELE][PosY]       = 1117.8682;
 	Teles[MAX_TELE][PosZ]       = 54.4688;
@@ -52319,32 +52265,6 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
 	Teles[MAX_TELE][Lock]       = false;
 	SetStyleTextDrawTeles(MAX_TELE, "Salida de la Oficina");
-	Teles[MAX_TELE][Dueno]      = GOBIERNO;
-	/////////////////////////////////////////////////////////////////////
-	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = 1859.1119384766;
-	Teles[MAX_TELE][PosY]       = 1413.4916992188;
-	Teles[MAX_TELE][PosZ]       = 16.922342300415;
-	Teles[MAX_TELE][PosZZ]       = 0;
-	Teles[MAX_TELE][PickupID]   = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_DEFAULT_INTERIOR);
-	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
-	Teles[MAX_TELE][Interior]            = 7;
-	Teles[MAX_TELE][World]       = WORLD_DEFAULT_INTERIOR;
-	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Entrada a la Azotea");
-	Teles[MAX_TELE][Dueno]      = GOBIERNO;
-	//////////////////////////////
-	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = 1448.4185; // 1448.4185,-1777.7811,33.4297,348.0792
-	Teles[MAX_TELE][PosY]       = -1777.7811;
-	Teles[MAX_TELE][PosZ]       = 33.4297;
-	Teles[MAX_TELE][PosZZ]       = 348.0792;
-	Teles[MAX_TELE][PickupID]           = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
-	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE - 1;
-	Teles[MAX_TELE][Interior]            = 0;
-	Teles[MAX_TELE][World]       = WORLD_NORMAL;
-	Teles[MAX_TELE][Lock]       = false;
-	SetStyleTextDrawTeles(MAX_TELE, "Salida de la Azotea");
 	Teles[MAX_TELE][Dueno]      = GOBIERNO;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
@@ -53051,10 +52971,10 @@ public LoadTelesPublics()
 	Teles[MAX_TELE][Dueno]      = CIVIL;
 	/////////////////////////////////////////////////////////////////////
 	MAX_TELE++;
-	Teles[MAX_TELE][PosX]       = 0; // 1321.9325,-1663.3185,13.5469,89.9204
-	Teles[MAX_TELE][PosY]       = 0;
-	Teles[MAX_TELE][PosZ]       = 0;
-	Teles[MAX_TELE][PosZZ]       = 0;
+	Teles[MAX_TELE][PosX]       = 1321.9325; // 1321.9325,-1663.3185,13.5469,89.9204
+	Teles[MAX_TELE][PosY]       = -1663.3185;
+	Teles[MAX_TELE][PosZ]       = 13.5469;
+	Teles[MAX_TELE][PosZZ]       = 89.9204;
 	Teles[MAX_TELE][PickupID]           = CreatePickup   (19902,    1,    Teles[MAX_TELE][PosX], Teles[MAX_TELE][PosY], Teles[MAX_TELE][PosZ],       WORLD_NORMAL);
 	Teles[MAX_TELE][PickupIDGo]        = MAX_TELE + 1;
 	Teles[MAX_TELE][Interior]            = 0;
@@ -55870,22 +55790,6 @@ public LoadDataBizzType()
 ///////////////////////////////////////////////////////////////////////////
     MAX_BIZZ_TYPE++;
 // 32 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 2
-    NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 1157.4987792969;
-    NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1323.1114501953;
-    NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 10.825625419617;
-    NegociosType[MAX_BIZZ_TYPE][PosInZZ]                 = 0;
-    NegociosType[MAX_BIZZ_TYPE][PosInX_PC]                 = 1157.4987792968;
-    NegociosType[MAX_BIZZ_TYPE][PosInY_PC]                 = 1323.1114501954;
-    NegociosType[MAX_BIZZ_TYPE][PosInZ_PC]                 = 10.825625419618;
-    NegociosType[MAX_BIZZ_TYPE][PosInZZ_PC]                = 0;
-    NegociosType[MAX_BIZZ_TYPE][InteriorId]             = 1;
-    format(NegociosType[MAX_BIZZ_TYPE][TypeName], MAX_PLAYER_NAME, "Oficina");
-    NegociosType[MAX_BIZZ_TYPE][TypePickupOrCheckponit] = true;
-    NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (1210,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
-    NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 57;
-///////////////////////////////////////////////////////////////////////////
-    MAX_BIZZ_TYPE++;
-// 33 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 2
     NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 2557.8662109375;
     NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1345.7208251953;
     NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 78.476387023926;
@@ -55900,21 +55804,6 @@ public LoadDataBizzType()
     NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (1210,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
     NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 57;
 ///////////////////////////////////////////////////////////////////////////
-    MAX_BIZZ_TYPE++;
-// 34 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 2 137.4744,1316.9459,1082.9149,264.9106
-    NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 137.4744;
-    NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1316.9459;
-    NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 1082.9149;
-    NegociosType[MAX_BIZZ_TYPE][PosInZZ]                 = 264.9106;
-    NegociosType[MAX_BIZZ_TYPE][PosInX_PC]                 = 137.4744;
-    NegociosType[MAX_BIZZ_TYPE][PosInY_PC]                 = 1316.9459;
-    NegociosType[MAX_BIZZ_TYPE][PosInZ_PC]                 = 1082.9149;
-    NegociosType[MAX_BIZZ_TYPE][PosInZZ_PC]                = 264.9106;
-    NegociosType[MAX_BIZZ_TYPE][InteriorId]             = 1;
-    format(NegociosType[MAX_BIZZ_TYPE][TypeName], MAX_PLAYER_NAME, "Hard Rock Café");
-    NegociosType[MAX_BIZZ_TYPE][TypePickupOrCheckponit] = true;
-    NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (19317,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
-    NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 16;
 }
 public SetFunctionsForBizz(playerid, bizzid)
 {
@@ -60490,58 +60379,6 @@ public LoadPickupsAlmacenes()
 }
 public LoadDoors()
 {
-
-	Doors[MAX_DOORS][objectmodel]    = 1536;
-	Doors[MAX_DOORS][PosXTrue]       = 129.2449; // 129.2449, 1309.2429, 1084.0303
-	Doors[MAX_DOORS][PosYTrue]       = 1309.2429;
-	Doors[MAX_DOORS][PosZTrue]       = 1084.0303;
-	Doors[MAX_DOORS][PosRotXTrue]    = 0;
-	Doors[MAX_DOORS][PosRotYTrue]    = 0;
-	Doors[MAX_DOORS][PosRotZTrue]    = -89.99998128;
-	Doors[MAX_DOORS][PosXFalse]    = 129.2249; // 129.2249, 1307.8629, 1084.0303
-	Doors[MAX_DOORS][PosYFalse]    = 1307.8629;
-	Doors[MAX_DOORS][PosZFalse]    = 1084.0303;
-	Doors[MAX_DOORS][PosRotXFalse]    = 0;
-	Doors[MAX_DOORS][PosRotYFalse]    = 0;
-	Doors[MAX_DOORS][PosRotZFalse]    = -89.99998128;
-	Doors[MAX_DOORS][typeanim]       = 0;
-	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
-	Doors[MAX_DOORS][Dueno]       = ADP;
-	
-	Doors[MAX_DOORS][objectmodel]    = 971;
-	Doors[MAX_DOORS][PosXTrue]       = 1548.05371100; // 144.7008, 1307.3407, 1085.7559
-	Doors[MAX_DOORS][PosYTrue]       = -1628.41015600;
-	Doors[MAX_DOORS][PosZTrue]       = 15.95274500;
-	Doors[MAX_DOORS][PosRotXTrue]    = 0;
-	Doors[MAX_DOORS][PosRotYTrue]    = 0;
-	Doors[MAX_DOORS][PosRotZTrue]    = -89.99998128; // 129.2860, 1296.7821, 1084.0303
-	Doors[MAX_DOORS][PosXFalse]    = 129.2860;
-	Doors[MAX_DOORS][PosYFalse]    = 1296.7821;
-	Doors[MAX_DOORS][PosZFalse]    = 1084.0303;
-	Doors[MAX_DOORS][PosRotXFalse]    = 0;
-	Doors[MAX_DOORS][PosRotYFalse]    = 0;
-	Doors[MAX_DOORS][PosRotZFalse]    = -89.99998128;
-	Doors[MAX_DOORS][typeanim]       = 0;
-	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
-	Doors[MAX_DOORS][Dueno]       = ADP;
-
-	Doors[MAX_DOORS][objectmodel]    = 971;
-	Doors[MAX_DOORS][PosXTrue]       = 1548.05371100;
-	Doors[MAX_DOORS][PosYTrue]       = -1628.41015600;
-	Doors[MAX_DOORS][PosZTrue]       = 15.95274500;
-	Doors[MAX_DOORS][PosRotXTrue]    = 0;
-	Doors[MAX_DOORS][PosRotYTrue]    = 0;
-	Doors[MAX_DOORS][PosRotZTrue]    = -89.99998128;
-	Doors[MAX_DOORS][PosXFalse]    = 1548.05981400;
-	Doors[MAX_DOORS][PosYFalse]    = -1635.40698200;
-	Doors[MAX_DOORS][PosZFalse]    = 15.95274500;
-	Doors[MAX_DOORS][PosRotXFalse]    = 0;
-	Doors[MAX_DOORS][PosRotYFalse]    = 0;
-	Doors[MAX_DOORS][PosRotZFalse]    = -89.99998128;
-	Doors[MAX_DOORS][typeanim]       = 0;
-	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
-	Doors[MAX_DOORS][Dueno]       = ADP;
-
 	Doors[MAX_DOORS][objectmodel]    = 971;
 	Doors[MAX_DOORS][PosXTrue]       = 1548.05371100;
 	Doors[MAX_DOORS][PosYTrue]       = -1628.41015600;
@@ -63538,9 +63375,9 @@ public LoadTextDrawInfo()
 
 	////////////////////////////////////////////////
 	MAX_TEXT_DRAW_INFO++;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 361.8299; //358.4752,178.6662,1008.3828
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 173.5693;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1008.3828;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = -1275.8550; //-1275.8550,-445.2574,14.1489
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -445.2574;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 14.1489;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1581, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~/Obtener Pasaporte~N~~N~~G~($400)");
 
@@ -63607,14 +63444,6 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Usa el comando: ~G~/Bar");
 
-	//////////////////////////////////////////////// Hard Rock Cafe
-	MAX_TEXT_DRAW_INFO++;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 150.3562; //150.3562,1322.1373,1082.9149
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = 1322.1373;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1082.9149;
-    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
-	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Usa el comando: ~G~/Bar");
-
 	//////////////////////////////////////////////// LSPD
 	MAX_TEXT_DRAW_INFO++;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 254.0161; //358.4752,178.6662,1008.3828
@@ -63630,7 +63459,15 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 1001.1172;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~G~/Dormir");
-	
+
+	//////////////////////////////////////////////// Hotel /-1147.2017,-390.7404,14.1991,272.5864,0,0,0,0,0,0); //
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = -1147.2017; //358.4752,178.6662,1008.3828
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -390.7404;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 14.1991;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~G~/Obtener Equipo");
+
 	//////////////////////////////////////////////// TELE PUBLCO 1
 	MAX_TEXT_DRAW_INFO++;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1721.0538;
@@ -64260,9 +64097,6 @@ public IsBizzBar(playerid, bizzid)
 		bizzid == 18 ||
 		bizzid == 19 ||
 		bizzid == 25 ||
-		bizzid == 32 ||
-		bizzid == 33 ||
-		bizzid == 35 ||
 		bizzid == 26
 	  )
 	{
@@ -70443,18 +70277,6 @@ public IsBizzBarra(playerid)
 		    return true;
 		}
 	}
-	if ( GetPlayerVirtualWorld(playerid) == 1 || PlayersData[playerid][IsPlayerInVehInt]) // Aqui loco
-	{
-		if ( IsPlayerInRangeOfPoint(playerid, 	100.0,
-												1159.3694,1327.7809,10.8256) ||
-			IsPlayerInRangeOfPoint(playerid, 	100.0,
-												1860.3937,1421.2242,16.9223) ||
- 			IsPlayerInRangeOfPoint(playerid, 	100.0,
-												137.4744,1316.9459,1082.9149)	)
-		{
-		    return true;
-		}
-	}
 	return false;
 }
 public ConvertMap(map[], option)
@@ -76513,9 +76335,7 @@ public RemoveBuildingForPlayerEx(playerid)
     // Carteles
     RemoveBuildingForPlayer(playerid, 4229, 1597.9063, -1699.7500, 30.2109, 0.25);
     RemoveBuildingForPlayer(playerid, 4230, 1597.9063, -1699.7500, 30.2109, 0.25);
-	RemoveBuildingForPlayer(playerid, 4236, 1387.0313, -1715.0234, 30.4141, 0.25);
-	RemoveBuildingForPlayer(playerid, 4235, 1387.0313, -1715.0234, 30.4141, 0.25);
-	
+    
 	// Grffitis
 	RemoveBuildingForPlayer(playerid, 1525, 1549.8906, -1714.5234, 15.1016, 0.25);
 	// Oiste Job Basurero
