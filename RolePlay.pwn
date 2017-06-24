@@ -1,8 +1,7 @@
 
+#include <streamer>
 #include <a_samp>
 #include <a_http>
-#include <streamer>
-#include <anticheat>
 
 #define LOGO_UNIONLP 						"{FFFFFF}Bienvenido a {0049FF}BioGames {F81414}RolePlay! {FFFFFF}Otra Realidad"// {00F50A}RolePlay!
 #define URL_WEB								"~B~"
@@ -308,6 +307,9 @@
 #define PizzaPoint14 		1525.9508,-1734.1329,12.9774
 #define PizzaPoint15 		1427.0687,-1631.0065,12.9826
 
+
+//Armas en el cuerpo
+#define TIME_ARMAS_CUERPO 250 //Tiempo en milisegundos para chequear las armas
 /////////////////// END DEFINES ///////////////////
 
 /// 				FORWARDS
@@ -432,6 +434,7 @@ forward LoadPickupsAlmacenes();
 forward LoadPickupsMisc();
 forward SendAlertCallRequest(faccionid, text[]);
 forward SendAlertCallRequestSAMD(type, text[], faccionid);
+forward SendAlertRefuerzos(faccionid, text[], Float:PosRefX, Float:PosRefY, Float:PosRefZ);
 forward LoadDoors();
 forward GetMyNearDoor(playerid, key, option);
 forward LoadPointsExtraction();
@@ -1007,6 +1010,9 @@ forward ValidingCancion(playerid, response_code, data[]);
 forward ValideTwitter(playerid, response_code, data[]);
 //forward ConectarMySQL();
 //forward UpdatWebStats(playerid);
+
+//Armas en el cuerpo
+forward AttachWeapon();
 /////////////////// END FORWARDS ///////////////////
 
 /// 				ENUMS
@@ -5327,6 +5333,10 @@ new WAYFA_ANIMATIONS      	[18][30];	// WAYFA - 17
 new ARMA_ANIMATIONS      	[17][30];	// ARMA - 16
 new WUZI_ANIMATIONS      	[12][30];	// WUZI - 11
 new PED_ANIMATIONS      	[286][30]; 	// PED - 285
+//Armas en el cuerpo
+new wep[MAX_PLAYERS] = -1, weps[12];
+
+///////// END NEWs
 
 
 //////////////////////////////// SCRIPTFILE ////////////////////////////////
@@ -5531,6 +5541,8 @@ public OnGameModeInit()
 		DataCars[i][IsLastSpawn] = false;
 //		printf("%i -- %i - %f - %f - %f - %f - %i - %i", DataCars[i][Time], DataCars[i][Modelo], DataCars[i][PosX], DataCars[i][PosY], DataCars[i][PosZ], DataCars[i][PosZZ], DataCars[i][Color1], DataCars[i][Color2]);
 	}
+	//Armas en el cuerpo timer para chequear las armas que lleva y "attachearlas"...
+	SetTimer("AttachWeapon", TIME_ARMAS_CUERPO, 1);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17368,7 +17380,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				   				    if (  strlen(DataCars[MyNearCar][Dueno]) > 1 )
 				   				    {
 				   				        new PriceCar = coches_Todos_Precios[GetVehicleModel(MyNearCar) - 400];
-				   				    	if ( PlayersData[playerid][Dinero] >= PriceCar / 3   )
+				   				    	if ( PlayersData[playerid][Dinero] >= floatround((PriceCar * 0.03),floatround_round) )
 				   				    	{
 										    if ( IsPlayerNear(playerid, strval(cmdtext[15]),
 												 "225",
@@ -17390,12 +17402,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 														"El vendedor de vehículos %s, quiere renovarte el vehículo modelo \"%s\" por $%i, Usa (/Aceptar Renovacion)",
 														PlayersDataOnline[playerid][NameOnlineFix],
 														coches_Todos_Nombres[GetVehicleModel(MyNearCar) - 400],
-														PriceCar);
+														floatround((PriceCar * 0.10),floatround_round));
 														format(MsgToVendedor, sizeof(MsgToVendedor),
 														"Ofreciste renovar un vehículo modelo \"%s\", a %s por $%i",
 														coches_Todos_Nombres[GetVehicleModel(MyNearCar) - 400],
 														PlayersDataOnline[strval(cmdtext[15])][NameOnlineFix],
-														PriceCar);
+														floatround((PriceCar * 0.10),floatround_round));
 														SendInfoMessage(strval(cmdtext[14]), 3, "0", MsgToComprador);
 														SendInfoMessage(playerid, 3, "0", MsgToVendedor);
 
@@ -18830,6 +18842,38 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	                    return 1;
 					}
 				}
+				// COMANDO: /refuerzos
+				else if (strcmp("/Refuerzos", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10 ||
+						 strcmp("/Ref", cmdtext, true, 4) == 0 && strlen(cmdtext) == 4)
+				{
+				    if(PlayersData[playerid][Faccion] == LSPD || PlayersData[playerid][Faccion] == SFPD)
+				    {
+				        new Float:PosRefuerzos[3];
+				        GetPlayerPos(playerid, PosRefuerzos[0], PosRefuerzos[1], PosRefuerzos[2]);
+				        if(PlayersData[playerid][Faccion] == LSPD)
+						{
+	                        SendInfoMessage(playerid, 3, "0", "Has solicitado refuerzos, se le ha marcado tu ubicación actual a tus compañeros de LSPD.");
+						    Acciones(playerid, 8, "ha utilizado su radio para llamar refuerzos a su posición.");
+							new MsgRefuerzos[MAX_TEXT_CHAT];
+							format(MsgRefuerzos, sizeof(MsgRefuerzos), "El [%s] %s ha solicitado refuerzos, se te ha marcado en el mapa la ubicación.", FaccionesRangos[PlayersData[playerid][Faccion]][PlayersData[playerid][Rango]], PlayersDataOnline[playerid][NameOnlineFix]);
+				        	SendAlertRefuerzos(LSPD, MsgRefuerzos, PosRefuerzos[0], PosRefuerzos[1], PosRefuerzos[2]);
+			 			}
+				        else if(PlayersData[playerid][Faccion] == SFPD)
+						{
+	                        SendInfoMessage(playerid, 3, "0", "Has solicitado refuerzos, se le ha marcado tu ubicación actual a tus compañeros de SFPD.");
+						    Acciones(playerid, 8, "ha utilizado su radio para llamar refuerzos a su posición.");
+							new MsgRefuerzos[MAX_TEXT_CHAT];
+							format(MsgRefuerzos, sizeof(MsgRefuerzos), "El [%s] %s ha solicitado refuerzos, se te ha marcado en el mapa la ubicación.", FaccionesRangos[PlayersData[playerid][Faccion]][PlayersData[playerid][Rango]], PlayersDataOnline[playerid][NameOnlineFix]);
+				        	SendAlertRefuerzos(SFPD, MsgRefuerzos, PosRefuerzos[0], PosRefuerzos[1], PosRefuerzos[2]);
+			 			}
+				        
+			        }
+			        else
+					{
+						SendInfoMessage(playerid, 0, "284", "No puedes utilizar este comando, solo LSPD o SFPD.");
+					}
+			        
+				}
 				// COMANDO: /Aceptar
 				else if (strfind(cmdtext, "/Aceptar", true) == 0)
 				{
@@ -19658,7 +19702,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 									{
 				   				        if (PlayersData[playerid][Car] == PlayersDataOnline[playerid][VCoche][1])
 				   				        {
-				   				            if ( PlayersData[playerid][Dinero] >= coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] )
+				   				            if ( PlayersData[playerid][Dinero] >= floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.10),floatround_round) )
 				   				            {
 					   				            //PlayersData[playerid][Car] = PlayersDataOnline[playerid][VCoche][1];
 					   				            //format(DataCars[PlayersDataOnline[playerid][VCoche][1]][Dueno], MAX_PLAYER_NAME, "%s", PlayersDataOnline[playerid][NameOnline]);
@@ -19670,20 +19714,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
 												"Has renovado al vendedor de vehículos %s, un vehículo modelo \"%s\" por $%i",
 												PlayersDataOnline[PlayersDataOnline[playerid][VCoche][0]][NameOnline],
 												coches_Todos_Nombres[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400],
-												coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400]);
+												floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.10),floatround_round) );
 												format(MsgToComprador, sizeof(MsgToComprador),
 												"Renovaste a %s un vehículo modelo \"%s\" por $%i, con un coste de $%i en papeles",
 												PlayersDataOnline[playerid][NameOnlineFix],
 												coches_Todos_Nombres[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400],
-												coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400],
-												coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] / 3);
+												floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.10),floatround_round),
+												floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.03),floatround_round));
 												SendInfoMessage(PlayersDataOnline[playerid][VCoche][0], 3, "0", MsgToComprador);
 												SendInfoMessage(playerid, 3, "0", MsgToVendedor);
 
-												FaccionData[NFS][Deposito] = FaccionData[NFS][Deposito] + coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] / 3;
+												FaccionData[NFS][Deposito] = FaccionData[NFS][Deposito] + floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.03),floatround_round);
 
-												GivePlayerMoneyEx(playerid, -coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400]);
-												GivePlayerMoneyEx(PlayersDataOnline[playerid][VCoche][0], (coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] / 3) * 2);
+												GivePlayerMoneyEx(playerid, -(floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.10),floatround_round)));
+												GivePlayerMoneyEx(PlayersDataOnline[playerid][VCoche][0], floatround((coches_Todos_Precios[GetVehicleModel(PlayersDataOnline[playerid][VCoche][1]) - 400] * 0.07),floatround_round));
 											}
 											else
 											{
@@ -29642,27 +29686,41 @@ public OnPlayerSelectedMenuRow(playerid, row)
 				// Llantas I
 				case 4:
 				{
-				    if ( IsValidVehicle(playerid, GetVehicleModel(PlayersDataOnline[playerid][MyIDVehicleTunning])) )
-				    {
-						ShowMenuForPlayer(Llantas1, playerid);
+				    if(PlayersData[playerid][Materiales] >= 10)
+					{
+					    if ( IsValidVehicle(playerid, GetVehicleModel(PlayersDataOnline[playerid][MyIDVehicleTunning])) )
+					    {
+							ShowMenuForPlayer(Llantas1, playerid);
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1094", "Éste vehículo no se le puede agregar llantas!");
+							ShowMenuForPlayer(TallerPrincipal, playerid);
+						}
 					}
 					else
 					{
-						SendInfoMessage(playerid, 0, "1094", "Éste vehículo no se le puede agregar llantas!");
-						ShowMenuForPlayer(TallerPrincipal, playerid);
+						SendInfoMessage(playerid, 0, "1094", "No tiene los suficientes materiales para agregar las llantas, necesita (10).");
 					}
 				}
 				// Llantas II
 				case 5:
 				{
-				    if ( IsValidVehicle(playerid, GetVehicleModel(PlayersDataOnline[playerid][MyIDVehicleTunning])) )
-				    {
-						ShowMenuForPlayer(Llantas2, playerid);
+				    if(PlayersData[playerid][Materiales] >= 10)
+					{
+					    if ( IsValidVehicle(playerid, GetVehicleModel(PlayersDataOnline[playerid][MyIDVehicleTunning])) )
+					    {
+							ShowMenuForPlayer(Llantas2, playerid);
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1093", "Éste vehículo no se le puede agregar llantas!");
+							ShowMenuForPlayer(TallerPrincipal, playerid);
+						}
 					}
 					else
 					{
-						SendInfoMessage(playerid, 0, "1093", "Éste vehículo no se le puede agregar llantas!");
-						ShowMenuForPlayer(TallerPrincipal, playerid);
+						SendInfoMessage(playerid, 0, "1094", "No tiene los suficientes materiales para agregar las llantas, necesita (10).");
 					}
 				}
 				// Tunning
@@ -29941,6 +29999,8 @@ public OnPlayerSelectedMenuRow(playerid, row)
 		if ( IsTunnigContinue(playerid) )
 		{
 	    	AddVehicleCommponentTaller(PlayersDataOnline[playerid][MyIDVehicleTunning], LlantasID1[row]);
+	    	PlayersData[playerid][Materiales] = PlayersData[playerid][Materiales] - 10;
+			SendInfoMessage(playerid, 3, "", "Has gastado 10 materiales poniendo unas llantas nuevas.");
 			ShowMenuForPlayer(Llantas1, playerid);
 			PlayPlayerStreamSound(playerid, SOUND_TUNNING);
     	}
@@ -29950,6 +30010,8 @@ public OnPlayerSelectedMenuRow(playerid, row)
 		if ( IsTunnigContinue(playerid) )
 		{
 	    	AddVehicleCommponentTaller(PlayersDataOnline[playerid][MyIDVehicleTunning], LlantasID2[row]);
+	    	PlayersData[playerid][Materiales] = PlayersData[playerid][Materiales] - 10;
+			SendInfoMessage(playerid, 3, "", "Has gastado 10 materiales poniendo unas llantas nuevas.");
 			ShowMenuForPlayer(Llantas2, playerid);
 			PlayPlayerStreamSound(playerid, SOUND_TUNNING);
     	}
@@ -65805,6 +65867,17 @@ public SendAlertCallRequest(faccionid, text[])
 		}
 	}
 }
+public SendAlertRefuerzos(faccionid, text[], Float:PosRefX, Float:PosRefY, Float:PosRefZ)
+{
+	for ( new i = 0; i < MAX_PLAYERS; i++ )
+	{
+		if ( IsPlayerConnected(i) && PlayersDataOnline[i][State] == 3 && PlayersData[i][Faccion] == faccionid)
+		{
+			SendInfoMessage(i, 3, "0", text);
+			SetPlayerCheckpoint(i, PosRefX, PosRefY, PosRefZ, 1.0);
+		}
+	}
+}
 public RemoveCall(callid, departament)
 {
 	CallPolice[callid][departament][Number] 			= 0;
@@ -77371,6 +77444,88 @@ public LoadObjectMaterial()
     SetObjectMaterial(HotelGood, 4, 10308, "lomall", "sf_hospitaldr2", 0);
     SetObjectMaterial(HotelGood, 5, 10308, "lomall", "sf_hospitaldr2", 0);
     SetObjectMaterial(GrottiGood, 0, 6487, "councl_law2", "rodeo3sjm", 0); // Piso
+}
+public AttachWeapon(){
+    for(new i = 0; i < MAX_PLAYERS+1; i++){
+        if(IsPlayerNPC(i)) return 1;
+
+        if(IsPlayerInAnyVehicle(i)) {
+            for(new a = 0; a < 9; a++) if(IsPlayerAttachedObjectSlotUsed(i, a)) RemovePlayerAttachedObject(i, a);
+            wep[i] = -1;
+            return 1;
+        }
+
+        if(wep[i] != GetPlayerWeapon(i)) {
+            for(new weaponarmed = 0; weaponarmed < 12; weaponarmed++){
+                GetPlayerWeaponData(i, weaponarmed, weps[weaponarmed], weps[6]);
+                switch(weaponarmed){
+                    case 0: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 0)) RemovePlayerAttachedObject(i, 0);
+                        if(weps[weaponarmed] == 1 && GetPlayerWeapon(i) != 1) SetPlayerAttachedObject( i, 0, 331, 6, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000 );
+                    }
+                    case 1: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 1)) RemovePlayerAttachedObject(i, 1);
+                        switch(weps[weaponarmed]){
+                                        case 4: if(GetPlayerWeapon(i) != 4) SetPlayerAttachedObject( i, 0, 335, 11, 0.142010, -0.100988, 0.055910, 76.125000, 75.876144, 1.143326, 1.000000, 1.000000, 1.000000 );
+                                        case 8: if(GetPlayerWeapon(i) != 8) SetPlayerAttachedObject( i, 1, 339, 15, 0.088326, 0.066626, 0.148351, 191.990447, 341.412963, 0.000000, 1.000000, 1.000000, 1.000000 );
+                        }
+                    }
+                    case 2: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 2)) RemovePlayerAttachedObject(i, 2);
+                        switch(weps[weaponarmed]){
+                                        case 22: if(GetPlayerWeapon(i) != 22) SetPlayerAttachedObject( i, 2, 346, 8, -0.028010, -0.033822, 0.097883, 270.000000, 15.999426, 354.161499, 1.000000, 1.000000, 1.000000 );
+                                        case 23: if(GetPlayerWeapon(i) != 23) SetPlayerAttachedObject( i, 2, 346, 8, -0.028010, -0.033822, 0.097883, 270.000000, 15.999426, 354.161499, 1.000000, 1.000000, 1.000000 );
+                                        case 24: if(GetPlayerWeapon(i) != 24) SetPlayerAttachedObject( i, 2, 348, 8, -0.040643, -0.048525, 0.085376, 270.000000, 8.253683, 0.000000, 1.000000, 1.000000, 1.000000 );
+                                }
+                    }
+                    case 3: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 3)) RemovePlayerAttachedObject(i, 3);
+                        switch(weps[weaponarmed]){
+                                        case 25: if(GetPlayerWeapon(i) != 25) SetPlayerAttachedObject( i, 3, 349, 16, 0.084126, 0.131737, 0.197423, 176.984542, 92.569320, 14.483574, 1.000000, 1.000000, 1.000000 );
+                                        case 26: if(GetPlayerWeapon(i) != 26) SetPlayerAttachedObject( i, 3, 350, 16, 0.090676, 0.085271, -0.075131, 0.000000, 289.166870, 355.209869, 1.000000, 1.000000, 1.000000 );
+                                        case 27: if(GetPlayerWeapon(i) != 27) SetPlayerAttachedObject( i, 3, 351, 16, 0.100795, 0.057224, -0.082939, 180.000000, 243.483581, 180.000000, 1.000000, 1.000000, 1.000000 );
+                                }
+                    }
+                    case 4: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 4)) RemovePlayerAttachedObject(i, 4);
+                        switch(weps[weaponarmed]){
+                                        case 28: if(GetPlayerWeapon(i) != 28) SetPlayerAttachedObject( i, 4, 352, 7, 0.138560, -0.033982, -0.047630, 281.671447, 276.618591, 4.068862, 1.000000, 1.000000, 1.000000 );
+                                        case 29: if(GetPlayerWeapon(i) != 29) SetPlayerAttachedObject( i, 4, 353, 7, 0.008329, -0.067031, -0.060214, 289.865051, 17.391622, 7.667663, 1.000000, 1.000000, 1.000000 );
+                                        case 32: if(GetPlayerWeapon(i) != 32) SetPlayerAttachedObject( i, 4, 372, 7, 0.056180, -0.008887, -0.007959, 270.000000, 13.921591, 5.905599, 1.000000, 1.000000, 1.000000 );
+                                }
+                    }
+                    case 5: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 5)) RemovePlayerAttachedObject(i, 5);
+                        switch(weps[weaponarmed]){
+                                        case 30: if(GetPlayerWeapon(i) != 30) SetPlayerAttachedObject( i, 5, 355, 1, -0.130044, -0.127836, 0.025491, 2.044970, 6.239807, 6.833646, 1.000000, 1.000000, 1.000000 );
+                                        case 31: if(GetPlayerWeapon(i) != 31) SetPlayerAttachedObject( i, 5, 356, 16, 0.019280, 0.118553, 0.396286, 70.920410, 274.673919, 253.978057, 1.000000, 1.000000, 1.000000 );
+                                }
+                    }
+                    case 8: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 6)) RemovePlayerAttachedObject(i, 6);
+                        switch(weps[weaponarmed]){
+                                        case 16: if(GetPlayerWeapon(i) != 16) SetPlayerAttachedObject( i, 6, 342, 16, -0.110845, -0.041751, 0.087840, 55.051963, 84.884071, 247.221984, 1.000000, 1.000000, 1.000000 );
+                                        case 17: if(GetPlayerWeapon(i) != 17) SetPlayerAttachedObject( i, 6, 1672, 16, -0.110606, -0.054021, 0.036716, 215.687911, 354.659393, 90.000000, 1.000000, 1.000000, 1.000000 );
+                                        case 18: if(GetPlayerWeapon(i) != 18) SetPlayerAttachedObject( i, 6, 344, 15, 0.029351, -0.208807, -0.164047, 0.000000, 359.932037, 0.000000, 1.000000, 1.000000, 1.000000 );
+                                }
+                    }
+                    case 9: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 7)) RemovePlayerAttachedObject(i, 7);
+                        switch(weps[weaponarmed]){
+                                        case 43: if(GetPlayerWeapon(i) != 43) SetPlayerAttachedObject( i, 7, 367, 1, 0.227036, 0.171111, -0.085516, 270.000000, 0.000000, 180.000000, 1.000000, 1.000000, 1.000000 );
+                                        case 41: if(GetPlayerWeapon(i) != 41) SetPlayerAttachedObject( i, 7, 365, 12, 0.174919, -0.004211, -0.142508, 0.000000, 270.000000, 0.000000, 1.000000, 1.000000, 1.000000 );
+                                }
+                    }
+                    case 11: {
+                        if(IsPlayerAttachedObjectSlotUsed(i, 8)) RemovePlayerAttachedObject(i, 8);
+                        if(weps[weaponarmed] == 44 || weps[weaponarmed] == 45) if(GetPlayerWeapon(i) != 44 && GetPlayerWeapon(i) != 45) SetPlayerAttachedObject( i, 8, 369, 2, 0.000000, 0.078037, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000 );
+                    }
+                }
+            }
+        }
+        wep[i] = GetPlayerWeapon(i);
+    }
+    return 1;
 }
 /*public AtachVehicleToVehicle(playerid)
 {
