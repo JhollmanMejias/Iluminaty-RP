@@ -235,25 +235,25 @@
 
 //Define Licencias --- Noueva
 
-#define Dias_Licencia_Armas     80
-#define Dias_Licencia_Coche 	100
-#define Dias_Licencia_Bote 		160
-#define Dias_Licencia_Moto 		100
-#define Dias_Licencia_Tren 		160
+#define Dias_Licencia_Armas     168
+#define Dias_Licencia_Coche 	168
+#define Dias_Licencia_Bote 		168
+#define Dias_Licencia_Moto 		168
+#define Dias_Licencia_Tren 		168
 #define Dias_Licencia_Pesca 	168
-#define Dias_Licencia_Avion 	100
-#define Dias_Licencia_Camion	100
+#define Dias_Licencia_Avion 	168
+#define Dias_Licencia_Camion	168
 
 //Define Licencias --Renovación
 
-#define Renovacion_Dias_Armas 40
-#define Renovacion_Dias_Coche 40
-#define Renovacion_Dias_Vuelo 40
-#define Renovacion_Dias_Tren 40
-#define Renovacion_Dias_Moto 40
-#define Renovacion_Dias_Pesca 40
-#define Renovacion_Dias_Camion 40
-#define Renovacion_Dias_Bote 40
+#define Renovacion_Dias_Armas 168
+#define Renovacion_Dias_Coche 168
+#define Renovacion_Dias_Vuelo 168
+#define Renovacion_Dias_Tren 168
+#define Renovacion_Dias_Moto 168
+#define Renovacion_Dias_Pesca 168
+#define Renovacion_Dias_Camion 168
+#define Renovacion_Dias_Bote 168
 
 // JOB COSECHADOR
 
@@ -6053,14 +6053,14 @@ public OnGameModeInit()
 	FaccionData[LSPD][Family] 			= true;
 	FaccionData[LSPD][Radio] 			= true;
 
-	FaccionesRangos[LSPD][0]  = "Director LSPD";			RangosSkins[LSPD][0][0] 	= 283;	RangosSkins[LSPD][0][1]	= 302; 	RangosSkins[LSPD][0][2] 	= 283; 	RangosSkins[LSPD][0][3] 	= 250; 	RangosSkins[LSPD][0][4] 	= 60; 	RangosSkins[LSPD][0][5] 	= 170; 	RangosSkins[LSPD][0][6] 	= 184;  RangosSkins[LSPD][0][7] 	= 285; 	RangosSkins[LSPD][0][8] 	= 287;  	RangosSkins[LSPD][0][9] 	= 148;   	RangosSkins[LSPD][0][10] 	= 191; FaccionData[LSPD][Paga][0] = 600;
-	FaccionesRangos[LSPD][1]  = "Sub-Director LSPD"; 		RangosSkins[LSPD][1][0] 	= 288;  RangosSkins[LSPD][1][1]	= 303; 	RangosSkins[LSPD][1][2] 	= 288; 	RangosSkins[LSPD][1][3] 	= 250; 	RangosSkins[LSPD][1][4] 	= 60; 	RangosSkins[LSPD][1][5] 	= 170; 	RangosSkins[LSPD][1][6] 	= 184;  RangosSkins[LSPD][1][7] 	= 285; 	RangosSkins[LSPD][1][8] 	= 287;  	RangosSkins[LSPD][1][9] 	= 148;   	RangosSkins[LSPD][1][10] 	= 191; FaccionData[LSPD][Paga][1] = 550;
-	FaccionesRangos[LSPD][2]  = "Comisario";				RangosSkins[LSPD][2][0] 	= 266; 	RangosSkins[LSPD][2][1]	= 311; 	RangosSkins[LSPD][2][2] 	= 306; 	RangosSkins[LSPD][2][3] 	= 250;  FaccionData[LSPD][Paga][2] = 500;
-	FaccionesRangos[LSPD][3]  = "Capitan";					RangosSkins[LSPD][3][0] 	= 265; 	RangosSkins[LSPD][3][1] = 311;	RangosSkins[LSPD][3][2] 	= 306; 	RangosSkins[LSPD][3][3] 	= 250;  FaccionData[LSPD][Paga][3] = 500;
-	FaccionesRangos[LSPD][4]  = "Teniente";					RangosSkins[LSPD][4][0] 	= 267; 	RangosSkins[LSPD][4][1] = 311;	RangosSkins[LSPD][4][2] 	= 306; 	RangosSkins[LSPD][4][3] 	= 250;  FaccionData[LSPD][Paga][4] = 500;
-	FaccionesRangos[LSPD][5]  = "Oficial";					RangosSkins[LSPD][5][0] 	= 281; 	RangosSkins[LSPD][5][1] = 311;	RangosSkins[LSPD][5][2] 	= 306; 	RangosSkins[LSPD][5][3] 	= 250;  FaccionData[LSPD][Paga][5] = 450;
-	FaccionesRangos[LSPD][6]  = "Cadete";					RangosSkins[LSPD][6][0] 	= 280; 	RangosSkins[LSPD][6][1] = 311;	RangosSkins[LSPD][6][2] 	= 306; 	RangosSkins[LSPD][6][3] 	= 250; 	FaccionData[LSPD][Paga][6] = 400;
-	FaccionesRangos[LSPD][7]  = "Cabo";						RangosSkins[LSPD][7][0] 	= 71; 	RangosSkins[LSPD][7][1] = 311;	RangosSkins[LSPD][7][2] 	= 306; 	RangosSkins[LSPD][7][3] 	= 250; 	FaccionData[LSPD][Paga][7] = 350;
+	FaccionesRangos[LSPD][0]  = "General";						RangosSkins[LSPD][0][0] 	= 283;	RangosSkins[LSPD][0][1]	= 302; 	RangosSkins[LSPD][0][2] 	= 283; 	RangosSkins[LSPD][0][3] 	= 250; 	RangosSkins[LSPD][0][4] 	= 60; 	RangosSkins[LSPD][0][5] 	= 170; 	RangosSkins[LSPD][0][6] 	= 184;  RangosSkins[LSPD][0][7] 	= 285; 	RangosSkins[LSPD][0][8] 	= 287;  	RangosSkins[LSPD][0][9] 	= 148;   	RangosSkins[LSPD][0][10] 	= 191; FaccionData[LSPD][Paga][0] = 600;
+	FaccionesRangos[LSPD][1]  = "Teniente"; 					RangosSkins[LSPD][1][0] 	= 288;  RangosSkins[LSPD][1][1]	= 303; 	RangosSkins[LSPD][1][2] 	= 288; 	RangosSkins[LSPD][1][3] 	= 250; 	RangosSkins[LSPD][1][4] 	= 60; 	RangosSkins[LSPD][1][5] 	= 170; 	RangosSkins[LSPD][1][6] 	= 184;  RangosSkins[LSPD][1][7] 	= 285; 	RangosSkins[LSPD][1][8] 	= 287;  	RangosSkins[LSPD][1][9] 	= 148;   	RangosSkins[LSPD][1][10] 	= 191; FaccionData[LSPD][Paga][1] = 550;
+	FaccionesRangos[LSPD][2]  = "Capitan";						RangosSkins[LSPD][2][0] 	= 266; 	RangosSkins[LSPD][2][1]	= 311; 	RangosSkins[LSPD][2][2] 	= 306; 	RangosSkins[LSPD][2][3] 	= 250;  FaccionData[LSPD][Paga][2] = 500;
+	FaccionesRangos[LSPD][3]  = "Oficial";						RangosSkins[LSPD][3][0] 	= 265; 	RangosSkins[LSPD][3][1] = 311;	RangosSkins[LSPD][3][2] 	= 306; 	RangosSkins[LSPD][3][3] 	= 250;  FaccionData[LSPD][Paga][3] = 500;
+	FaccionesRangos[LSPD][4]  = "Cabo Segundo";					RangosSkins[LSPD][4][0] 	= 267; 	RangosSkins[LSPD][4][1] = 311;	RangosSkins[LSPD][4][2] 	= 306; 	RangosSkins[LSPD][4][3] 	= 250;  FaccionData[LSPD][Paga][4] = 500;
+	FaccionesRangos[LSPD][5]  = "Cabo Primero";					RangosSkins[LSPD][5][0] 	= 281; 	RangosSkins[LSPD][5][1] = 311;	RangosSkins[LSPD][5][2] 	= 306; 	RangosSkins[LSPD][5][3] 	= 250;  FaccionData[LSPD][Paga][5] = 450;
+	FaccionesRangos[LSPD][6]  = "Cabo";							RangosSkins[LSPD][6][0] 	= 280; 	RangosSkins[LSPD][6][1] = 311;	RangosSkins[LSPD][6][2] 	= 306; 	RangosSkins[LSPD][6][3] 	= 250; 	FaccionData[LSPD][Paga][6] = 400;
+	FaccionesRangos[LSPD][7]  = "Cadete";						RangosSkins[LSPD][7][0] 	= 71; 	RangosSkins[LSPD][7][1] = 311;	RangosSkins[LSPD][7][2] 	= 306; 	RangosSkins[LSPD][7][3] 	= 250; 	FaccionData[LSPD][Paga][7] = 350;
 
 // CONTRABANDISTAS ID - 15
 	format(FaccionData[CONTRABANDISTAS][NameFaccion], MAX_FACCION_NAME, "Contrabandistas");
@@ -6679,8 +6679,8 @@ public OnPlayerSpawn(playerid)
             if ( !PlayersDataOnline[playerid][ModeDM] )
             {
 				SetPlayerTeam(playerid, -1);
-				MoneyCount = 10;
-				SendInfoMessage(playerid, 2, "0", "El hospital te ha costado $10");
+				MoneyCount = 200;
+				SendInfoMessage(playerid, 2, "0", "El hospital te ha costado $200");
 				ResetPlayerWeaponsEx(playerid);
 			}
 			else if (PlayersDataOnline[playerid][ModeDM])
@@ -7758,6 +7758,19 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				    SetPlayerCheckpoint(playerid, 1422.5170,-967.6074,37.4489, 1.0);
 				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
 			  	}
+			  	// COMANDOº: /Mecanicos 1483.2263,-1584.8630,13.5469
+			  	else if ( strcmp("/MercadoNegro", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13 )
+			  	{
+   					new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}MercadoNegro:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Venta ilegal: Armas, Drogas, Materiales, Medicinas\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Se te ha marcado un punto en el mapa.\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "MercadoNegro", MsgDialogCopyright, "Aceptar", "");
+
+				    SetPlayerCheckpoint(playerid, 956.0823,-1519.7230,13.5603, 1.0);
+				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			  	}
 				// COMANDOº: /LSPD 1555.4973,-1675.6937,16.1953
 			  	else if ( strcmp("/Lspd", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5 )
 			  	{
@@ -7790,7 +7803,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				    SetPlayerCheckpoint(playerid, 777.6288,-1386.3982,13.6827, 1.0);
 				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
 			  	}
-			  	// COMANDOº: /Cnn AddPlayerClass(26,557.4913,-1255.4297,17.0908,209.9956,0,0,0,0,0,0); //
 			  	// COMANDOº: /Cnn AddPlayerClass(26,557.4913,-1255.4297,17.0908,209.9956,0,0,0,0,0,0); //
 			  	else if ( strcmp("/Concesionarias", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15 )
 			  	{
@@ -8782,6 +8794,40 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							SendInfoMessage(playerid, 0, "1284", "Usted no forma parte de LSPD!");
 						}
 				  	}
+				  	// COMANDO: /Obtener Piezas
+					else if (strcmp("/Obtener Piezas", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15 ||
+							 strcmp("/Obtener Píezas", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
+					{
+						if ( PlayersData[playerid][Faccion] == TALLER_LS)
+					    {
+							if ( PlayersData[playerid][TimeEquipo] <= gettime() || PlayersData[playerid][Admin] >= 9 && PlayersDataOnline[playerid][AdminOn])
+						    {
+								if ( CheckWeapondCheat(playerid) && IsPlayerInRangeOfPoint(playerid, 20.0, 1381.9622,-1640.4337,14.0850) || CheckWeapondCheat(playerid) && IsPlayerInRangeOfPoint(playerid, 20.0, 1381.9622,-1640.4337,14.0850))
+							    {
+										PlayersData[playerid][TimeEquipo] = gettime() + 900;
+										GivePlayerWeaponEx(playerid, 41, 600);
+										PlayersData[playerid][Piezas] = PlayersData[playerid][Piezas] + 1000;
+
+										Acciones(playerid, 8, "coge un kit de piezas de la bodega");
+										Acciones(playerid, 7, "Piezas: 1000 unidades");
+							    }
+							    else
+							    {
+									SendInfoMessage(playerid, 0, "908", "Aquí no se encuentra la bodega del taller");
+								}
+						    }
+						    else
+						    {
+								new MsgPersonalizado[MAX_TEXT_CHAT];
+								format(MsgPersonalizado, sizeof(MsgPersonalizado), "Debe esperar %i minutos con %i segundos para volver a coger un kit", (PlayersData[playerid][TimeEquipo] - gettime()) / 60, ((PlayersData[playerid][TimeEquipo] - gettime()) % 60));
+								SendInfoMessage(playerid, 0, "909", MsgPersonalizado);
+							}
+					    }
+					    else
+					    {
+							SendInfoMessage(playerid, 0, "910", "Usted no es Mecánico");
+						}
+				  	}
 					// COMANDO: /Obtener Drogas
 				  	else if (strcmp("/Obtener Drogas", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
 			    	{
@@ -9738,9 +9784,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				{
 			        new playerid_aceite = strval(cmdtext[GetPosSpace(cmdtext, 1)]);
 			        new dinero_aceite = strval(cmdtext[GetPosSpace(cmdtext, 2)]);
-					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF || PlayersData[playerid][Admin] >= 5 && PlayersDataOnline[playerid][AdminOn] )
+					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF || PlayersData[playerid][Admin] >= 8 )
 				    {
-			            if ( IsPlayerInTaller(playerid) || PlayersData[playerid][Admin] >= 5 && PlayersDataOnline[playerid][AdminOn] )
+			            if ( IsPlayerInRangeOfPoint(playerid, 20.0, 1412.1743,-1614.6913,13.7407) || PlayersData[playerid][Admin] >= 5 && PlayersDataOnline[playerid][AdminOn] )
 			            {
 			                if ( playerid_aceite == playerid )
 			                {
@@ -9803,7 +9849,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			        new dinero_repair = strval(cmdtext[GetPosSpace(cmdtext, 2)]);
 					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF || PlayersData[playerid][Admin] >= 5 && PlayersDataOnline[playerid][AdminOn] )
 				    {
-			            if ( IsPlayerInTaller(playerid) || PlayersData[playerid][Admin] >= 5 && PlayersDataOnline[playerid][AdminOn]  )
+			            if (IsPlayerInRangeOfPoint(playerid, 20.0, 1415.8677,-1639.6478,13.7407) || IsPlayerInRangeOfPoint(playerid, 20.0, 1410.7218,-1639.7690,13.7407) || IsPlayerInRangeOfPoint(playerid, 20.0, 1412.0856,-1614.5953,13.7407) || PlayersData[playerid][Admin] >= 5 && PlayersDataOnline[playerid][AdminOn]  )
 			            {
 			                if ( playerid_repair == playerid )
 			                {
@@ -9955,7 +10001,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				// COMANDO: /Taller
 			  	else if (strcmp("/Taller", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
 	  			{
-					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF ||PlayersData[playerid][Admin] >= 8 && PlayersDataOnline[playerid][AdminOn])
+					if ( PlayersData[playerid][Faccion] == TALLER_LS || PlayersData[playerid][Faccion] == TALLER_SF || PlayersData[playerid][Admin] >= 8)
 				    {
 					    new MyNearVehicle = IsPlayerInNearVehicle(playerid);
 				        if ( MyNearVehicle )
@@ -11984,7 +12030,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	  			{
 					if ( PlayersData[playerid][IsPlayerInBizz] && IsBizzBar(playerid, NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]) )
 					{
-						if ( IsPlayerInRangeOfPoint(playerid, 2.0, NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInX_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInY_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInZ_PC]) )
+						if ( IsPlayerInRangeOfPoint(playerid, 100.0, NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInX_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInY_PC], NegociosType[NegociosData[PlayersData[playerid][IsPlayerInBizz]][Type]][PosInZ_PC]) )
 						{
 							ShowPlayerDialogEx(playerid,29,DIALOG_STYLE_LIST,"{00A5FF}Bar", "{E6E6E6}Agua          {00F50A}$10\r\n{E6E6E6}Refresco     {00F50A}$20\r\n{E6E6E6}Cerveza      {00F50A}$30\r\n{E6E6E6}Vodka        {00F50A}$40", "Comprar", "Salir");
 						}
@@ -16069,6 +16115,92 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							SendInfoMessage(playerid, 0, "1547", "No estas en una barbería");
 						}
 				    }
+				    ////////////////////////Comandos Black Market////////////////////////////////////
+   					// COMANDO: /Comprar Desert
+				  	else if (strcmp("/Comprar Silenciada", cmdtext, true, 19) == 0 && strlen(cmdtext) == 19)
+				    {
+						if ( PlayersData[playerid][Dinero] >= 1200 )
+						{
+						    if(IsPlayerInRangeOfPoint(playerid, 10.0, 973.2902,-1521.7252,13.5525))
+						    {
+                                GivePlayerWeaponEx(playerid, 23, 60);// Silenciada
+                                GivePlayerMoneyEx(playerid, -1200);
+								SendInfoMessage(playerid, 2, "", "Has comprado una silenciada por 1200$!");
+							}
+							else
+							{
+								SendInfoMessage(playerid, 0, "1546", "No te encuentras en el mercado negro usa /MercadoNegro!");
+							}
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1547", "No tienes suficiente dinero para comprar esto!");
+						}
+				    }
+   					// COMANDO: /Comprar Materiales
+				  	else if (strcmp("/Comprar Materiales", cmdtext, true, 19) == 0 && strlen(cmdtext) == 19)
+				    {
+						if ( PlayersData[playerid][Dinero] >= 2000 )
+						{
+						    if(IsPlayerInRangeOfPoint(playerid, 10.0, 985.2164,-1521.8710,13.5527))
+						    {
+                                PlayersData[playerid][Materiales] = PlayersData[playerid][Materiales] + 500;
+                                GivePlayerMoneyEx(playerid, -2000);
+								SendInfoMessage(playerid, 2, "", "Has comprado una caja con 500 piezas de materiales por $2000!");
+							}
+							else
+							{
+								SendInfoMessage(playerid, 0, "1546", "No te encuentras en el mercado negro usa /MercadoNegro!");
+							}
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1547", "No tienes suficiente dinero para comprar esto!");
+						}
+				    }
+   					// COMANDO: /Comprar Drogas
+				  	else if (strcmp("/Comprar drogas", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
+				    {
+						if ( PlayersData[playerid][Dinero] >= 500 )
+						{
+						    if(IsPlayerInRangeOfPoint(playerid, 10.0, 979.3564,-1521.8431,13.5527))
+						    {
+								PlayersData[playerid][Drogas] = PlayersData[playerid][Drogas] + 20;
+								GivePlayerMoneyEx(playerid, -500);
+								SendInfoMessage(playerid, 2, "", "Has comprado un paquete con 20gr de drogas. Usa /Fumar!");
+							}
+							else
+							{
+								SendInfoMessage(playerid, 0, "1546", "No te encuentras en el mercado negro usa /MercadoNegro!");
+							}
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1547", "No tienes suficiente dinero para comprar esto!");
+						}
+				    }
+   					// COMANDO: /Comprar Medicina
+				  	else if (strcmp("/Comprar Medicina", cmdtext, true, 17) == 0 && strlen(cmdtext) == 17)
+				    {
+						if ( PlayersData[playerid][Dinero] >= 500 )
+						{
+						    if(IsPlayerInRangeOfPoint(playerid, 10.0, 994.5077,-1527.8804,13.5645))
+						    {
+                                ChangeEnfermedad(playerid, 0);
+                                GivePlayerMoneyEx(playerid, -250);
+								SendInfoMessage(playerid, 2, "", "Te has curado la enfermedad!");
+							}
+							else
+							{
+								SendInfoMessage(playerid, 0, "1546", "No te encuentras en el mercado negro usa /MercadoNegro!");
+							}
+						}
+						else
+						{
+							SendInfoMessage(playerid, 0, "1547", "No tienes suficiente dinero para comprar esto!");
+						}
+				    }
+				    ///////////////////////////////////////////////////////////////////////////////////////////////////
 				  	else if (strcmp("/Comprar Casa", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13)
 				    {
 				        if ( PlayersDataOnline[playerid][InPickup] >= HouseData[1][PickupId] &&
@@ -17162,6 +17294,32 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			  	{
 				  	ShowHomeBanco(playerid);
 				}
+				else if (strcmp("/Mbanco", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
+				{
+					if ( PlayersData[playerid][HoursPlaying] >= 24 )
+	    			{
+						if ( PlayersData[playerid][Dinero] >= 25 )
+		    			{
+							if ( PlayersData[playerid][Phone] != 0)
+			    			{
+								ShowBankTransferencia(playerid);
+								Acciones(playerid, 8, "Saca su teléfono para hacer una transferencia");
+				    		}
+						    else
+						    {
+								SendInfoMessage(playerid, 0, "1282", "Usted no tiene teléfono Móvil");
+							}
+			    		}
+					    else
+					    {
+         					SendInfoMessage(playerid, 0, "1282", "Tienes que se mayor a nivel 3 para usar esta opción");
+						}
+		    		}
+				    else
+				    {
+						SendInfoMessage(playerid, 0, "1284", "Transferencia móvil tiene un costo de $25");
+					}
+		  		}
 				// COMANDO: /Autorizar [ID]
 		  		else if (strfind(cmdtext, "/Autorizar ", true) == 0 )
 			    {
@@ -17372,7 +17530,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						if ( PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 0 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 1 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 2 ||
-							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4 )
+							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4 ||PlayersData[playerid][Admin] >= 8)
 					    {
 		   					// COMANDO: /Renovar Licencia Armas [ID]
 					  		if (strfind(cmdtext, "/Renovar Licencia Armas ", true) == 0) //20
@@ -17713,7 +17871,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					// COMANDO: /Renovar Coche
 				  	else if (strfind(cmdtext, "/Renovar Coche ", true) == 0)
 				    {
-					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2)
+					    if ( PlayersData[playerid][Faccion] == NFS && PlayersData[playerid][Rango] <= 2 ||PlayersData[playerid][Admin] >= 8)
 					    {
 							new MyNearCar = IsPlayerInNearVehicle(playerid);
 			   				if ( MyNearCar)
@@ -17723,7 +17881,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				   				    if (  strlen(DataCars[MyNearCar][Dueno]) > 1 )
 				   				    {
 				   				        new PriceCar = coches_Todos_Precios[GetVehicleModel(MyNearCar) - 400];
-				   				    	if ( PlayersData[playerid][Dinero] >= floatround((PriceCar * 0.03),floatround_round) )
+				   				    	if ( PlayersData[playerid][Dinero] >= floatround((PriceCar * 0.02),floatround_round) )
 				   				    	{
 										    if ( IsPlayerNear(playerid, strval(cmdtext[15]),
 												 "225",
@@ -17745,12 +17903,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 														"El vendedor de vehículos %s, quiere renovarte el vehículo modelo \"%s\" por $%i, Usa (/Aceptar Renovacion)",
 														PlayersDataOnline[playerid][NameOnlineFix],
 														coches_Todos_Nombres[GetVehicleModel(MyNearCar) - 400],
-														floatround((PriceCar * 0.10),floatround_round));
+														floatround((PriceCar * 0.05),floatround_round));
 														format(MsgToVendedor, sizeof(MsgToVendedor),
 														"Ofreciste renovar un vehículo modelo \"%s\", a %s por $%i",
 														coches_Todos_Nombres[GetVehicleModel(MyNearCar) - 400],
 														PlayersDataOnline[strval(cmdtext[15])][NameOnlineFix],
-														floatround((PriceCar * 0.10),floatround_round));
+														floatround((PriceCar * 0.05),floatround_round));
 														SendInfoMessage(strval(cmdtext[14]), 3, "0", MsgToComprador);
 														SendInfoMessage(playerid, 3, "0", MsgToVendedor);
 
@@ -17859,7 +18017,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						if ( PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 0 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 1 ||
 							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 2 ||
-							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4)
+							 PlayersData[playerid][Faccion] == LICENCIEROS && PlayersData[playerid][Rango] == 4 ||PlayersData[playerid][Admin] >= 8)
 					    {
 		   					// COMANDO: /Dar Licencia Armas [ID]
 					  		if (strfind(cmdtext, "/Dar Licencia Armas ", true) == 0) //20
@@ -19257,7 +19415,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				{
 				    if (IsPlayerInAnyVehicle(playerid))
 				    {
-				        if(IsPlayerInRangeOfPoint(playerid, 10.0, 1411.6541,-1606.4640,13.5469))
+				        if(IsPlayerInRangeOfPoint(playerid, 10.0, 1411.6541,-1606.4640,13.5469) ||
+				           IsPlayerInRangeOfPoint(playerid, 10.0, 1620.5975,-1857.5551,12.5362))
 						{
 				        	RepairVehicle(GetPlayerVehicleID(playerid));
 				        	SetVehicleHealthEx(GetPlayerVehicleID(playerid), 1000.0);
@@ -19282,6 +19441,83 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						SendInfoMessage(playerid, 0, "284", "Debes estar en un vehículo");
 					}
 				}
+				// COMANDO: /Obtener Licencia Coche
+				else if (strcmp("/Licencia Coche", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15)
+				{
+				    if ( PlayersData[playerid][Dinero] >= 800 )
+				    {
+				        if ( !PlayersData[strval(cmdtext[15])][Licencias][1] )
+				    	{
+				        	if(IsPlayerInRangeOfPoint(playerid, 10.0, 1694.8750,-1394.2955,85.0771))
+							{
+								PlayersData[strval(cmdtext[15])][Licencias][1] = false;
+								PlayersData[strval(cmdtext[15])][LicenciasTime][1] = Dias_Licencia_Coche;
+								
+				        		GivePlayerMoneyEx(playerid, -800);
+            					FaccionData[LICENCIEROS][Deposito] = FaccionData[LICENCIEROS][Deposito] + 800;
+
+								PlayersData[strval(cmdtext[15])][Licencias][1] = true;
+								PlayersData[strval(cmdtext[15])][LicenciasTime][1] = Dias_Licencia_Coche;
+
+	             				SendInfoMessage(playerid, 3, "0", "Has obtenido licencia de coche por $800!");
+				 			}
+					        else
+							{
+		                        SendInfoMessage(playerid, 0, "283", "Debes estar en SML para obtener licencias");
+								SendInfoMessage(playerid, 2, "0", "Se te ha marcado la ubicación en el mapa.");
+
+	     			    		SetPlayerCheckpoint(playerid, 1778.4478,-1663.3213,14.4366, 4.0);
+								PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			 				}
+			 			}
+       					else
+						{
+      					SendInfoMessage(playerid, 0, "283", "Ya tienes licencia de coche, espera la tengas vencida");
+	 					}
+			        }
+			        else
+					{
+						SendInfoMessage(playerid, 0, "284", "Necesitas $800 para obtener esta licencia");
+					}
+				}
+				// COMANDO: /Obtener Licencia Moto 10.0, 1692.7456,-1394.2253,84.9681))
+				else if (strcmp("/Licencia Moto", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
+				{
+				    if ( PlayersData[playerid][Dinero] >= 700 )
+				    {
+            			if ( !PlayersData[strval(cmdtext[14])][Licencias][3] )
+				    	{
+				        	if(IsPlayerInRangeOfPoint(playerid, 10.0, 1692.7456,-1394.2253,84.9681))
+							{
+								PlayersData[strval(cmdtext[14])][Licencias][3] = false;
+								PlayersData[strval(cmdtext[14])][LicenciasTime][3] = Dias_Licencia_Moto;
+								
+				        		GivePlayerMoneyEx(playerid, -700);
+            					FaccionData[LICENCIEROS][Deposito] = FaccionData[LICENCIEROS][Deposito] + 700;
+
+								PlayersData[strval(cmdtext[14])][Licencias][3] = true;
+								PlayersData[strval(cmdtext[14])][LicenciasTime][3] = Dias_Licencia_Moto;
+
+	             				SendInfoMessage(playerid, 3, "0", "Has obtenido licencia de Moto por $700!");
+				 			}
+					        else
+							{
+		                        SendInfoMessage(playerid, 0, "283", "Debes estar en SML para obtener licencias");
+								SendInfoMessage(playerid, 2, "0", "Se te ha marcado la ubicación en el mapa.");
+	     			    		SetPlayerCheckpoint(playerid, 1778.4478,-1663.3213,14.4366, 4.0);
+								PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
+			 				}
+			 			}
+       					else
+						{
+      					SendInfoMessage(playerid, 0, "283", "Ya tienes licencia de Moto, espera la tengas vencida");
+	 					}
+			        }
+			        else
+					{
+						SendInfoMessage(playerid, 0, "284", "Necesitas $700 para obtener esta licencia");
+					}
+				}
 				// COMANDO: /Aceptar
 				else if (strfind(cmdtext, "/Aceptar", true) == 0)
 				{
@@ -19291,7 +19527,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 			    	    if ( PlayersDataOnline[playerid][VRepair][0] != -1 )
 			    	    {
-				            if ( IsPlayerInTallerEx(playerid) )
+				            if(IsPlayerInRangeOfPoint(playerid, 20.0, 1415.8677,-1639.6478,13.7407) ||
+                               IsPlayerInRangeOfPoint(playerid, 20.0, 1410.7218,-1639.7690,13.7407) ||
+			           		   IsPlayerInRangeOfPoint(playerid, 20.0, 1412.0856,-1614.5953,13.7407))
 				            {
 				                if (IsPlayerInAnyVehicle(playerid))
 				                {
@@ -19340,7 +19578,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 			    	    if ( PlayersDataOnline[playerid][VAceite][0] != -1 )
 			    	    {
-				            if ( IsPlayerInTallerEx(playerid) )
+				            if (IsPlayerInRangeOfPoint(playerid, 20.0, 1412.1743,-1614.6913,13.7407))
 				            {
 				                if (IsPlayerInAnyVehicle(playerid))
 				                {
@@ -20030,7 +20268,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						    {
 			   				    if (  strlen(DataCars[PlayersDataOnline[playerid][VCoche][1]][Dueno]) == 1 )
 			   				    {
-									if ( PlayersData[PlayersDataOnline[playerid][VCoche][0]][Faccion] == NFS && PlayersData[PlayersDataOnline[playerid][VCoche][0]][Rango] <= 2)
+									if ( PlayersData[PlayersDataOnline[playerid][VCoche][0]][Faccion] == NFS && PlayersData[PlayersDataOnline[playerid][VCoche][0]][Rango] <= 2 || PlayersData[PlayersDataOnline[playerid][VCoche][0]][Admin] >= 8)
 									{
 				   				        if (PlayersData[playerid][Car] == -1)
 				   				        {
@@ -38655,7 +38893,7 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [8]     = 2000;      coches_Todos_Nombres    [8] 	= "Trashmaster"; 		coches_Todos_Type	[NEXT] = VUELO;		    coches_Todos_Velocidad [NEXT] = 0;	 	// Nombre: NINGUNO       ID:408
 	NEXT++; coches_Todos_Precios    [9]     = 2000;      coches_Todos_Nombres    [9]	= "Stretch"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:409
 	NEXT++; coches_Todos_Precios    [10]     = 2000;     coches_Todos_Nombres    [10] 	= "Manana";       		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 86; 	// Nombre: NINGUNO       ID:410
-	NEXT++; coches_Todos_Precios    [11]     = 5000;     coches_Todos_Nombres    [11] 	= "Infernus";   		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 148; 	// Nombre: NINGUNO       ID:411
+	NEXT++; coches_Todos_Precios    [11]     = 150000;     coches_Todos_Nombres    [11] 	= "Infernus";   		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 148; 	// Nombre: NINGUNO       ID:411
 	NEXT++; coches_Todos_Precios    [12]     = 2000;     coches_Todos_Nombres    [12] 	= "Voodoo"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 112; 	// Nombre: NINGUNO       ID:412
 	NEXT++; coches_Todos_Precios    [13]     = 2000;     coches_Todos_Nombres    [13] 	= "Pony"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 73; 	// Nombre: NINGUNO       ID:413
 	NEXT++; coches_Todos_Precios    [14]     = 2000;     coches_Todos_Nombres    [14] 	= "Mule";				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 70; 	// Nombre: NINGUNO       ID:414
@@ -38670,7 +38908,7 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [23]     = 2000;     coches_Todos_Nombres    [23] 	= "Mr Whoopee"; 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:423
 	NEXT++; coches_Todos_Precios    [24]     = 2500;     coches_Todos_Nombres    [24] 	= "Bfinject";  			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 90; 	// Nombre: NINGUNO       ID:424
 	NEXT++; coches_Todos_Precios    [25]     = 2000;     coches_Todos_Nombres    [25]	= "Hunter"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:425
-	NEXT++; coches_Todos_Precios    [26]     = 2500;     coches_Todos_Nombres    [26] 	= "Premier"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 116; 	// Nombre: NINGUNO       ID:426
+	NEXT++; coches_Todos_Precios    [26]     = 28000;     coches_Todos_Nombres    [26] 	= "Premier"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 116; 	// Nombre: NINGUNO       ID:426
 	NEXT++; coches_Todos_Precios    [27]     = 2000;     coches_Todos_Nombres    [27] 	= "Enforcer"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 110; 	// Nombre: NINGUNO       ID:427
 	NEXT++; coches_Todos_Precios    [28]     = 2000;     coches_Todos_Nombres    [28] 	= "Securicar"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:428
 	NEXT++; coches_Todos_Precios    [29]     = 5000;     coches_Todos_Nombres    [29] 	= "Banshee";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 134; 	// Nombre: NINGUNO       ID:429
@@ -38683,19 +38921,19 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [36]     = 2500;     coches_Todos_Nombres    [36] 	= "Previon";   			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 96; 	// Nombre: NINGUNO       ID:436
 	NEXT++; coches_Todos_Precios    [37]     = 2000;     coches_Todos_Nombres    [37]	= "Coach"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:437
 	NEXT++; coches_Todos_Precios    [38]     = 2000;     coches_Todos_Nombres    [38] 	= "Cabbie"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:438
-	NEXT++; coches_Todos_Precios    [39]     = 2500;     coches_Todos_Nombres    [39]	= "Stallion"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 112; 	// Nombre: NINGUNO       ID:439
+	NEXT++; coches_Todos_Precios    [39]     = 35000;     coches_Todos_Nombres    [39]	= "Stallion"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 112; 	// Nombre: NINGUNO       ID:439
 	NEXT++; coches_Todos_Precios    [40]     = 2000;     coches_Todos_Nombres    [40] 	= "Rumpo"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 91; 	// Nombre: NINGUNO       ID:440
 	NEXT++; coches_Todos_Precios    [41]     = 2000;     coches_Todos_Nombres    [41] 	= "RC bandit";			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:441
 	NEXT++; coches_Todos_Precios    [42]     = 2000;     coches_Todos_Nombres    [42] 	= "Romero"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:442
 	NEXT++; coches_Todos_Precios    [43]     = 2000;     coches_Todos_Nombres    [43] 	= "Packer"; 			coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 84; 	// Nombre: NINGUNO       ID:443
 	NEXT++; coches_Todos_Precios    [44]     = 2000;     coches_Todos_Nombres    [44] 	= "Monster"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 74; 	// Nombre: NINGUNO       ID:444
-	NEXT++; coches_Todos_Precios    [45]     = 2500;     coches_Todos_Nombres    [45] 	= "Admiral";	 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 109; 	// Nombre: NINGUNO       ID:445
+	NEXT++; coches_Todos_Precios    [45]     = 7000;     coches_Todos_Nombres    [45] 	= "Admiral";	 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 109; 	// Nombre: NINGUNO       ID:445
 	NEXT++; coches_Todos_Precios    [46]     = 2000;     coches_Todos_Nombres    [46] 	= "Squallo";			coches_Todos_Type	[NEXT] = BOTE; 			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:446
 	NEXT++; coches_Todos_Precios    [47]     = 2000;     coches_Todos_Nombres    [47] 	= "Seasparrow"; 		coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:447
 	NEXT++; coches_Todos_Precios    [48]     = 2000;     coches_Todos_Nombres    [48] 	= "Pizzaboy";   		coches_Todos_Type	[NEXT] = VUELO; 		coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:448
 	NEXT++; coches_Todos_Precios    [49]     = 2000;     coches_Todos_Nombres    [49] 	= "Tram";				coches_Todos_Type	[NEXT] = TREN; 			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:449
 	NEXT++; coches_Todos_Precios    [50]     = 2000;     coches_Todos_Nombres    [50] 	= "Article Trailer 2";	coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:450
-	NEXT++; coches_Todos_Precios    [51]     = 5000;     coches_Todos_Nombres    [51] 	= "Turismo";  			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 129; 	// Nombre: NINGUNO       ID:451
+	NEXT++; coches_Todos_Precios    [51]     = 135000;     coches_Todos_Nombres    [51] 	= "Turismo";  			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 129; 	// Nombre: NINGUNO       ID:451
 	NEXT++; coches_Todos_Precios    [52]     = 2000;     coches_Todos_Nombres    [52] 	= "Speeder";			coches_Todos_Type	[NEXT] = BOTE; 			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:452
 	NEXT++; coches_Todos_Precios    [53]     = 2000;     coches_Todos_Nombres    [53] 	= "Reefer"; 			coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:453
 	NEXT++; coches_Todos_Precios    [54]     = 2000;     coches_Todos_Nombres    [54] 	= "Tropic"; 			coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:454
@@ -38705,17 +38943,17 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [58]     = 3000;     coches_Todos_Nombres    [58] 	= "Solair";				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:458
 	NEXT++; coches_Todos_Precios    [59]     = 2000;     coches_Todos_Nombres    [59] 	= "Berkley's RC Van";	coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0;	 	// Nombre: NINGUNO       ID:459
 	NEXT++; coches_Todos_Precios    [60]     = 2000;     coches_Todos_Nombres    [60] 	= "Skimmer"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:460
-	NEXT++; coches_Todos_Precios    [61]     = 3000;     coches_Todos_Nombres    [61] 	= "PCJ-600";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 109; 	// Nombre: NINGUNO       ID:461
-	NEXT++; coches_Todos_Precios    [62]     = 2000;     coches_Todos_Nombres    [62] 	= "Faggio";       		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 50; 	// Nombre: NINGUNO       ID:462
-	NEXT++; coches_Todos_Precios    [63]     = 2000;     coches_Todos_Nombres    [63] 	= "Freeway";    		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:463
+	NEXT++; coches_Todos_Precios    [61]     = 60000;     coches_Todos_Nombres    [61] 	= "PCJ-600";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 109; 	// Nombre: NINGUNO       ID:461
+	NEXT++; coches_Todos_Precios    [62]     = 10000;     coches_Todos_Nombres    [62] 	= "Faggio";       		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 50; 	// Nombre: NINGUNO       ID:462
+	NEXT++; coches_Todos_Precios    [63]     = 45000;     coches_Todos_Nombres    [63] 	= "Freeway";    		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:463
 	NEXT++; coches_Todos_Precios    [64]     = 2000;     coches_Todos_Nombres    [64] 	= "RC Baron"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:464
 	NEXT++; coches_Todos_Precios    [65]     = 2000;     coches_Todos_Nombres    [65] 	= "RC Raider"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:465
-	NEXT++; coches_Todos_Precios    [66]     = 2000;     coches_Todos_Nombres    [66] 	= "Glendale";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 98; 	// Nombre: NINGUNO       ID:466
+	NEXT++; coches_Todos_Precios    [66]     = 5000;     coches_Todos_Nombres    [66] 	= "Glendale";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 98; 	// Nombre: NINGUNO       ID:466
 	NEXT++; coches_Todos_Precios    [67]     = 2000;     coches_Todos_Nombres    [67] 	= "Oceanic";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 94; 	// Nombre: NINGUNO       ID:467
-	NEXT++; coches_Todos_Precios    [68]     = 3000;     coches_Todos_Nombres    [68] 	= "Sanchez";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:468
+	NEXT++; coches_Todos_Precios    [68]     = 50000;     coches_Todos_Nombres    [68] 	= "Sanchez";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:468
 	NEXT++; coches_Todos_Precios    [69]     = 2000;     coches_Todos_Nombres    [69] 	= "Sparrow"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:469
 	NEXT++; coches_Todos_Precios    [70]     = 2000;     coches_Todos_Nombres    [70] 	= "Patriot"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:470
-	NEXT++; coches_Todos_Precios    [71]     = 2000;     coches_Todos_Nombres    [71] 	= "Quad";       		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 74; 	// Nombre: NINGUNO       ID:471
+	NEXT++; coches_Todos_Precios    [71]     = 45000;     coches_Todos_Nombres    [71] 	= "Quad";       		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 74; 	// Nombre: NINGUNO       ID:471
 	NEXT++; coches_Todos_Precios    [72]     = 2000;     coches_Todos_Nombres    [72] 	= "Coastguard"; 		coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:472
 	NEXT++; coches_Todos_Precios    [73]     = 2000;     coches_Todos_Nombres    [73] 	= "Dinghy"; 			coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:473
 	NEXT++; coches_Todos_Precios    [74]     = 2500;     coches_Todos_Nombres    [74] 	= "Hermes"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:474
@@ -38723,7 +38961,7 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [76]     = 2000;     coches_Todos_Nombres    [76] 	= "Rustler"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:476
 	NEXT++; coches_Todos_Precios    [77]     = 3500;     coches_Todos_Nombres    [77] 	= "ZR-350"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 124; 	// Nombre: NINGUNO       ID:477
 	NEXT++; coches_Todos_Precios    [78]     = 1000;     coches_Todos_Nombres    [78] 	= "Walton"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 78; 	// Nombre: NINGUNO       ID:478
-	NEXT++; coches_Todos_Precios    [79]     = 2000;     coches_Todos_Nombres    [79] 	= "Regina"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:479
+	NEXT++; coches_Todos_Precios    [79]     = 6000;     coches_Todos_Nombres    [79] 	= "Regina"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:479
 	NEXT++; coches_Todos_Precios    [80]     = 3500;     coches_Todos_Nombres    [80] 	= "Comet";       		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 123; 	// Nombre: NINGUNO       ID:480
 	NEXT++; coches_Todos_Precios    [81]     = 2000;     coches_Todos_Nombres    [81]	= "BMX"; 				coches_Todos_Type	[NEXT] = BICI;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:481
 	NEXT++; coches_Todos_Precios    [82]     = 2000;     coches_Todos_Nombres    [82] 	= "Burrito"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 104; 	// Nombre: NINGUNO       ID:482
@@ -38733,10 +38971,10 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [86]     = 2000;     coches_Todos_Nombres    [86] 	= "Dozer"; 				coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:486
 	NEXT++; coches_Todos_Precios    [87]     = 2000;     coches_Todos_Nombres    [87] 	= "Maverick"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:487
 	NEXT++; coches_Todos_Precios    [88]     = 2000;     coches_Todos_Nombres    [88] 	= "SAN News Maverick"; 	coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:488
-	NEXT++; coches_Todos_Precios    [89]     = 2500;     coches_Todos_Nombres    [89] 	= "Rancher"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:489
+	NEXT++; coches_Todos_Precios    [89]     = 60000;     coches_Todos_Nombres    [89] 	= "Rancher"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 93; 	// Nombre: NINGUNO       ID:489
 	NEXT++; coches_Todos_Precios    [90]     = 2000;     coches_Todos_Nombres    [90] 	= "FBI Rancher"; 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:490
 	NEXT++; coches_Todos_Precios    [91]     = 2500;     coches_Todos_Nombres    [91] 	= "Virgo"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:491
-	NEXT++; coches_Todos_Precios    [92]     = 2500;     coches_Todos_Nombres    [92] 	= "Greenwoo";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 94; 	// Nombre: NINGUNO       ID:492
+	NEXT++; coches_Todos_Precios    [92]     = 7500;     coches_Todos_Nombres    [92] 	= "Greenwoo";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 94; 	// Nombre: NINGUNO       ID:492
 	NEXT++; coches_Todos_Precios    [93]     = 2000;     coches_Todos_Nombres    [93] 	= "Jetmax"; 			coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:493
 	NEXT++; coches_Todos_Precios    [94]     = 2000;     coches_Todos_Nombres    [94] 	= "Hotring Racer"; 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:494
 	NEXT++; coches_Todos_Precios    [95]     = 2000;     coches_Todos_Nombres    [95] 	= "Sandking"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 118; 	// Nombre: NINGUNO       ID:495
@@ -38744,7 +38982,7 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [97]     = 2000;     coches_Todos_Nombres    [97] 	= "Police Maverick"; 	coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:497
 	NEXT++; coches_Todos_Precios    [98]     = 2000;     coches_Todos_Nombres    [98] 	= "Boxville"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:498
 	NEXT++; coches_Todos_Precios    [99]     = 2000;     coches_Todos_Nombres    [99] 	= "Benson"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:499
-	NEXT++; coches_Todos_Precios    [100]    = 2500;     coches_Todos_Nombres    [100] 	= "Mesa"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 94; 	// Nombre: NINGUNO       ID:500
+	NEXT++; coches_Todos_Precios    [100]    = 48000;     coches_Todos_Nombres    [100] 	= "Mesa"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 94; 	// Nombre: NINGUNO       ID:500
 	NEXT++; coches_Todos_Precios    [101]    = 2000;     coches_Todos_Nombres    [101] 	= "RC Goblin"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:501
 	NEXT++; coches_Todos_Precios    [102]    = 2000;     coches_Todos_Nombres    [102] 	= "Hotring Racer"; 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:502
 	NEXT++; coches_Todos_Precios    [103]    = 2000;     coches_Todos_Nombres    [103] 	= "Hotring Racer"; 		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:503
@@ -38761,32 +38999,32 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [114]    = 2000;     coches_Todos_Nombres    [114] 	= "Tanker";				coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 80; 	// Nombre: NINGUNO       ID:514
 	NEXT++; coches_Todos_Precios    [115]    = 2000;     coches_Todos_Nombres    [115] 	= "Roadtrain"; 			coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 95; 	// Nombre: NINGUNO       ID:515
 	NEXT++; coches_Todos_Precios    [116]    = 2500;     coches_Todos_Nombres    [116] 	= "Nebula";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:516
-	NEXT++; coches_Todos_Precios    [117]    = 2000;     coches_Todos_Nombres    [117] 	= "Majestic";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:517
+	NEXT++; coches_Todos_Precios    [117]    = 6500;     coches_Todos_Nombres    [117] 	= "Majestic";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:517
 	NEXT++; coches_Todos_Precios    [118]    = 2500;     coches_Todos_Nombres    [118] 	= "Buccanee";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 110; 	// Nombre: NINGUNO       ID:518
 	NEXT++; coches_Todos_Precios    [119]    = 2000;     coches_Todos_Nombres    [119] 	= "Shamal"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:519
 	NEXT++; coches_Todos_Precios    [120]    = 2000;     coches_Todos_Nombres    [120] 	= "Hydra"; 				coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:520
-	NEXT++; coches_Todos_Precios    [121]    = 3000;     coches_Todos_Nombres    [121] 	= "FCR-900";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 115; 	// Nombre: NINGUNO       ID:521
-	NEXT++; coches_Todos_Precios    [122]    = 4000;     coches_Todos_Nombres    [122] 	= "NRG-500";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 120; 	// Nombre: NINGUNO       ID:522
+	NEXT++; coches_Todos_Precios    [121]    = 80000;     coches_Todos_Nombres    [121] 	= "FCR-900";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 115; 	// Nombre: NINGUNO       ID:521
+	NEXT++; coches_Todos_Precios    [122]    = 120000;     coches_Todos_Nombres    [122] 	= "NRG-500";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 120; 	// Nombre: NINGUNO       ID:522
 	NEXT++; coches_Todos_Precios    [123]    = 2000;     coches_Todos_Nombres    [123] 	= "CopBike";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 117; 	// Nombre: NINGUNO       ID:523
 	NEXT++; coches_Todos_Precios    [124]    = 2000;     coches_Todos_Nombres    [124] 	= "Cement Truck"; 		coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:524
 	NEXT++; coches_Todos_Precios    [125]    = 2000;     coches_Todos_Nombres    [125] 	= "Towtruck"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 107; 	// Nombre: NINGUNO       ID:525
 	NEXT++; coches_Todos_Precios    [126]    = 2000;     coches_Todos_Nombres    [126] 	= "Fortune";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:526
 	NEXT++; coches_Todos_Precios    [127]    = 2000;     coches_Todos_Nombres    [127] 	= "Cadrona";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:527
 	NEXT++; coches_Todos_Precios    [128]    = 2000;     coches_Todos_Nombres    [128] 	= "FBI Truck"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 118; 	// Nombre: NINGUNO       ID:528
-	NEXT++; coches_Todos_Precios    [129]    = 2000;     coches_Todos_Nombres    [129] 	= "Williard";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:529
+	NEXT++; coches_Todos_Precios    [129]    = 28000;     coches_Todos_Nombres    [129] 	= "Williard";    		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:529
 	NEXT++; coches_Todos_Precios    [130]    = 2000;     coches_Todos_Nombres    [130] 	= "Forklift"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:530
 	NEXT++; coches_Todos_Precios    [131]    = 2000;     coches_Todos_Nombres    [131] 	= "Tractor";			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:531
 	NEXT++; coches_Todos_Precios    [132]    = 2000;     coches_Todos_Nombres    [132] 	= "Combine Harvester"; 	coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:532
-	NEXT++; coches_Todos_Precios    [133]    = 2500;     coches_Todos_Nombres    [133] 	= "Felzer";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 111; 	// Nombre: NINGUNO       ID:533
+	NEXT++; coches_Todos_Precios    [133]    = 45000;     coches_Todos_Nombres    [133] 	= "Felzer";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 111; 	// Nombre: NINGUNO       ID:533
 	NEXT++; coches_Todos_Precios    [134]    = 2000;     coches_Todos_Nombres    [134] 	= "Remington"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 112; 	// Nombre: NINGUNO       ID:534
-	NEXT++; coches_Todos_Precios    [135]    = 3000;     coches_Todos_Nombres    [135] 	= "Slamvan"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:535
+	NEXT++; coches_Todos_Precios    [135]    = 60000;     coches_Todos_Nombres    [135] 	= "Slamvan"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:535
 	NEXT++; coches_Todos_Precios    [136]    = 2500;     coches_Todos_Nombres    [136] 	= "Blade";         		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 115; 	// Nombre: NINGUNO       ID:536
 	NEXT++; coches_Todos_Precios    [137]    = 2000;     coches_Todos_Nombres    [137] 	= "Freight"; 			coches_Todos_Type	[NEXT] = TREN;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:537
 	NEXT++; coches_Todos_Precios    [138]    = 2000;     coches_Todos_Nombres    [138] 	= "Brownstreak"; 		coches_Todos_Type	[NEXT] = TREN;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:538
 	NEXT++; coches_Todos_Precios    [139]    = 2000;     coches_Todos_Nombres    [139] 	= "Vortex";				coches_Todos_Type	[NEXT] = BOTE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:539
 	NEXT++; coches_Todos_Precios    [140]    = 2000;     coches_Todos_Nombres    [140] 	= "Vincent"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 99; 	// Nombre: NINGUNO       ID:540
-	NEXT++; coches_Todos_Precios    [141]    = 5000;     coches_Todos_Nombres    [141] 	= "Bullet";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 135; 	// Nombre: NINGUNO       ID:541
-	NEXT++; coches_Todos_Precios    [142]    = 2500;     coches_Todos_Nombres    [142] 	= "Clover";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 109; 	// Nombre: NINGUNO       ID:542
+	NEXT++; coches_Todos_Precios    [141]    = 135000;     coches_Todos_Nombres    [141] 	= "Bullet";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 135; 	// Nombre: NINGUNO       ID:541
+	NEXT++; coches_Todos_Precios    [142]    = 4000;     coches_Todos_Nombres    [142] 	= "Clover";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 109; 	// Nombre: NINGUNO       ID:542
 	NEXT++; coches_Todos_Precios    [143]    = 2000;     coches_Todos_Nombres    [143] 	= "Sadler"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 110; 	// Nombre: NINGUNO       ID:543
 	NEXT++; coches_Todos_Precios    [144]    = 2000;     coches_Todos_Nombres    [144] 	= "Firetruck"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:544
 	NEXT++; coches_Todos_Precios    [145]    = 2000;     coches_Todos_Nombres    [145] 	= "Hustler"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 100; 	// Nombre: NINGUNO       ID:545
@@ -38803,13 +39041,13 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [156]    = 2000;     coches_Todos_Nombres    [156] 	= "Monster A"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:556
 	NEXT++; coches_Todos_Precios    [157]    = 2000;     coches_Todos_Nombres    [157] 	= "Monster B"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:557
 	NEXT++; coches_Todos_Precios    [158]    = 3000;     coches_Todos_Nombres    [158] 	= "Uranus";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 104; 	// Nombre: NINGUNO       ID:558
-	NEXT++; coches_Todos_Precios    [159]    = 3500;     coches_Todos_Nombres    [159] 	= "Jester"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 118; 	// Nombre: NINGUNO       ID:559
-	NEXT++; coches_Todos_Precios    [160]    = 3500;     coches_Todos_Nombres    [160] 	= "Sultan";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 103; 	// Nombre: NINGUNO       ID:560
-	NEXT++; coches_Todos_Precios    [161]    = 3000;     coches_Todos_Nombres    [161] 	= "Stratum";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 103; 	// Nombre: NINGUNO       ID:561
-	NEXT++; coches_Todos_Precios    [162]    = 3500;     coches_Todos_Nombres    [162] 	= "Elegy";       		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 118; 	// Nombre: NINGUNO       ID:562
+	NEXT++; coches_Todos_Precios    [159]    = 63000;     coches_Todos_Nombres    [159] 	= "Jester"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 118; 	// Nombre: NINGUNO       ID:559
+	NEXT++; coches_Todos_Precios    [160]    = 65000;     coches_Todos_Nombres    [160] 	= "Sultan";      		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 103; 	// Nombre: NINGUNO       ID:560
+	NEXT++; coches_Todos_Precios    [161]    = 45000;     coches_Todos_Nombres    [161] 	= "Stratum";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 103; 	// Nombre: NINGUNO       ID:561
+	NEXT++; coches_Todos_Precios    [162]    = 70000;     coches_Todos_Nombres    [162] 	= "Elegy";       		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 118; 	// Nombre: NINGUNO       ID:562
 	NEXT++; coches_Todos_Precios    [163]    = 2000;     coches_Todos_Nombres    [163] 	= "Raindance"; 			coches_Todos_Type	[NEXT] = VUELO;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:563
 	NEXT++; coches_Todos_Precios    [164]    = 2000;     coches_Todos_Nombres    [164]	= "RC Tiger"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:564
-	NEXT++; coches_Todos_Precios    [165]    = 3000;     coches_Todos_Nombres    [165] 	= "Flash";       		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 110; 	// Nombre: NINGUNO       ID:565
+	NEXT++; coches_Todos_Precios    [165]    = 65000;     coches_Todos_Nombres    [165] 	= "Flash";       		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 110; 	// Nombre: NINGUNO       ID:565
 	NEXT++; coches_Todos_Precios    [166]    = 2000;     coches_Todos_Nombres    [166] 	= "Tahoma"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 107; 	// Nombre: NINGUNO       ID:566
 	NEXT++; coches_Todos_Precios    [167]    = 2000;     coches_Todos_Nombres    [167] 	= "Savanna"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 115; 	// Nombre: NINGUNO       ID:567
 	NEXT++; coches_Todos_Precios    [168]    = 2000;     coches_Todos_Nombres    [168] 	= "Bandito"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:568
@@ -38825,12 +39063,12 @@ public LoadPriceAndNameVehicles()
 	NEXT++; coches_Todos_Precios    [178]    = 2000;     coches_Todos_Nombres    [178] 	= "DFT-30"; 			coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 87; 	// Nombre: NINGUNO       ID:578
 	NEXT++; coches_Todos_Precios    [179]    = 2000;     coches_Todos_Nombres    [179] 	= "Huntley";			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 105; 	// Nombre: NINGUNO       ID:579
 	NEXT++; coches_Todos_Precios    [180]    = 2500;     coches_Todos_Nombres    [180] 	= "Stafford"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 102; 	// Nombre: NINGUNO       ID:580
-	NEXT++; coches_Todos_Precios    [181]    = 3000;     coches_Todos_Nombres    [181] 	= "BF-400";      		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 100; 	// Nombre: NINGUNO       ID:581
+	NEXT++; coches_Todos_Precios    [181]    = 45000;     coches_Todos_Nombres    [181] 	= "BF-400";      		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 100; 	// Nombre: NINGUNO       ID:581
 	NEXT++; coches_Todos_Precios    [182]    = 2000;     coches_Todos_Nombres    [182] 	= "Newsvan";     		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 81; 	// Nombre: NINGUNO       ID:582
 	NEXT++; coches_Todos_Precios    [183]    = 2000;     coches_Todos_Nombres    [183] 	= "Tug"; 				coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:583
 	NEXT++; coches_Todos_Precios    [184]    = 2000;     coches_Todos_Nombres    [184] 	= "Petrol Trailer"; 	coches_Todos_Type	[NEXT] = CAMION;		coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:584
 	NEXT++; coches_Todos_Precios    [185]    = 2000;     coches_Todos_Nombres    [185] 	= "Emperor"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 102; 	// Nombre: NINGUNO       ID:585
-	NEXT++; coches_Todos_Precios    [186]    = 3000;     coches_Todos_Nombres    [186] 	= "Wayfarer";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 95; 	// Nombre: NINGUNO       ID:586
+	NEXT++; coches_Todos_Precios    [186]    = 38000;     coches_Todos_Nombres    [186] 	= "Wayfarer";     		coches_Todos_Type	[NEXT] = MOTO;			coches_Todos_Velocidad [NEXT] = 95; 	// Nombre: NINGUNO       ID:586
 	NEXT++; coches_Todos_Precios    [187]    = 3500;     coches_Todos_Nombres    [187] 	= "Euros";        		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 110; 	// Nombre: NINGUNO       ID:587
 	NEXT++; coches_Todos_Precios    [188]    = 2000;     coches_Todos_Nombres    [188] 	= "Hotdog"; 			coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 0; 		// Nombre: NINGUNO       ID:588
 	NEXT++; coches_Todos_Precios    [189]    = 2500;     coches_Todos_Nombres    [189] 	= "Club";        		coches_Todos_Type	[NEXT] = COCHE;			coches_Todos_Velocidad [NEXT] = 108; 	// Nombre: NINGUNO       ID:589
@@ -38959,12 +39197,12 @@ public MostrarHora(Accion ,playerid)
 				}
 				if ( PlayersData[i][Car] != -1 )
 				{
-				    if ( (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car] - 400)] / 10) <= PlayersData[i][Banco] )
+				    if ( (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car] - 400)] / 1) <= PlayersData[i][Banco] )
 				    {
-				   		format(MensajeBanco[3], 70, "{F50000}-{00F50A}$%i", (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car]) - 400] / 10));
+				   		format(MensajeBanco[3], 70, "{F50000}-{00F50A}$%i", (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car]) - 400] / 95));
 		    			SendInfoMessage(i, 1, MensajeBanco[3], "Impuesto y Seguro del Vehículo: ");
-						PlayersData[i][Banco] = PlayersData[i][Banco] - (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car]) - 400] / 10);
-						FaccionData[GOBIERNO][Deposito] = FaccionData[GOBIERNO][Deposito] + (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car]) - 400] / 10);
+						PlayersData[i][Banco] = PlayersData[i][Banco] - (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car]) - 400] / 95);
+						FaccionData[GOBIERNO][Deposito] = FaccionData[GOBIERNO][Deposito] + (coches_Todos_Precios[GetVehicleModel(PlayersData[i][Car]) - 400] / 95);
 					}
 					else
 					{
@@ -41116,10 +41354,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = LSPD;
 
 	MAX_CAR++;  // Grúa 1
-	DataCars[MAX_CAR][PosX]   = 1457.2450; // 1457.2450,-1515.5251,13.4210,257.5952,1,0); // Grua1
-	DataCars[MAX_CAR][PosY]     = -1515.5251;
-	DataCars[MAX_CAR][PosZ]     = 13.4210;
-	DataCars[MAX_CAR][PosZZ]  = 257.5952;
+	DataCars[MAX_CAR][PosX]   = 1393.9709; // AddStaticVehicle(525,1393.9709,-1605.0337,13.4299,165.9664,1,0); //
+	DataCars[MAX_CAR][PosY]     = -1605.0337;
+	DataCars[MAX_CAR][PosZ]     = 13.4299;
+	DataCars[MAX_CAR][PosZZ]  = 165.9664;
 	DataCars[MAX_CAR][Modelo] = 525;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -41128,10 +41366,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = TALLER_LS;
 
 	MAX_CAR++;  // Grúa 2
-	DataCars[MAX_CAR][PosX]   = 1456.0712; // 1456.0712,-1520.7057,13.4621,258.0535,1,0); // Grua2
-	DataCars[MAX_CAR][PosY]     = -1520.7057;
-	DataCars[MAX_CAR][PosZ]     = 13.4621;
-	DataCars[MAX_CAR][PosZZ]  = 258.0535;
+	DataCars[MAX_CAR][PosX]   = 1388.7725; // AddStaticVehicle(525,1388.7725,-1603.7330,13.4403,165.4408,1,0); //
+	DataCars[MAX_CAR][PosY]     = -1603.7330;
+	DataCars[MAX_CAR][PosZ]     = 13.4403;
+	DataCars[MAX_CAR][PosZZ]  = 165.4408;
 	DataCars[MAX_CAR][Modelo] = 525;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -41140,10 +41378,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = TALLER_LS;
 
 	MAX_CAR++;  // Grúa 3
-	DataCars[MAX_CAR][PosX]   = 1454.4583; // 1454.4583,-1526.1141,13.4474,259.2755,1,0); // Grua3
-	DataCars[MAX_CAR][PosY]     = -1526.1141;
-	DataCars[MAX_CAR][PosZ]     = 13.4474;
-	DataCars[MAX_CAR][PosZZ]  = 259.2755;
+	DataCars[MAX_CAR][PosX]   = 1383.4340; // AddStaticVehicle(525,1383.4340,-1602.4622,13.4277,163.8952,1,0); //
+	DataCars[MAX_CAR][PosY]     = -1602.4622;
+	DataCars[MAX_CAR][PosZ]     = 13.4277;
+	DataCars[MAX_CAR][PosZZ]  = 163.8952;
 	DataCars[MAX_CAR][Modelo] = 525;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -41152,10 +41390,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = TALLER_LS;
 
 	MAX_CAR++;  // Grúa 4
-	DataCars[MAX_CAR][PosX]   = 1452.8412; // 1452.8412,-1531.2793,13.4365,257.0867,1,0); // Grua4
-	DataCars[MAX_CAR][PosY]     = -1531.2793;
-	DataCars[MAX_CAR][PosZ]     = 13.4365;
-	DataCars[MAX_CAR][PosZZ]  = 257.0867;
+	DataCars[MAX_CAR][PosX]   = 1377.9561; // AddStaticVehicle(525,1377.9561,-1601.3253,13.4278,166.9039,1,0); //
+	DataCars[MAX_CAR][PosY]     = -1601.3253;
+	DataCars[MAX_CAR][PosZ]     = 13.4278;
+	DataCars[MAX_CAR][PosZZ]  = 166.9039;
 	DataCars[MAX_CAR][Modelo] = 525;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -41164,10 +41402,10 @@ public LoadCarsFaccion()
 	DataCars[MAX_CAR][Time]     = TALLER_LS;
 
 	MAX_CAR++;  // Grúa 5
-	DataCars[MAX_CAR][PosX]   = 1451.3781; // 1451.3781,-1536.7878,13.4518,257.6994,1,0); // Grua5
-	DataCars[MAX_CAR][PosY]     = -1536.7878;
-	DataCars[MAX_CAR][PosZ]     = 13.4518;
-	DataCars[MAX_CAR][PosZZ]  = 257.6994;
+	DataCars[MAX_CAR][PosX]   = 1372.5774; // AddStaticVehicle(525,1372.5774,-1600.3325,13.4340,165.1756,1,0); //
+	DataCars[MAX_CAR][PosY]     = -1600.3325;
+	DataCars[MAX_CAR][PosZ]     = 13.4340;
+	DataCars[MAX_CAR][PosZZ]  = 165.1756;
 	DataCars[MAX_CAR][Modelo] = 525;
 	DataCars[MAX_CAR][Color1] = 1;
 	DataCars[MAX_CAR][Color2] = 0;
@@ -43379,6 +43617,7 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(792,1365.9000244,-1738.8000488,12.8000002,0.0000000,0.0000000,0,-1,-1,-1,MAX_RADIO_STREAM); //object(aw_streettree1) (10)
 	CreateDynamicObjectExUH(792,1372.8000488,-1738.9000244,12.8000002,0.0000000,0.0000000,0,-1,-1,-1,MAX_RADIO_STREAM); //object(aw_streettree1) (11)
 	CreateDynamicObjectExUH(971,1378.5000000,-1771.6999512,16.1000004,0.0000000,0.0000000,269.9999695,-1,-1,-1,MAX_RADIO_STREAM); //object(subwaygate) (1)
+
 	// Pay N Spray Frente job basurero
 	CreateDynamicObjectExUH(12943, 1620.56714, -1854.28784, 12.53410,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(19817, 1620.59753, -1857.55505, 10.93710,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
@@ -43388,6 +43627,7 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(18654, 1623.79077, -1860.94519, 11.54620,   0.00000, 0.00000, -50,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(18654, 1617.49109, -1860.94519, 11.54660,   0.00000, 0.00000, 240,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(5422, 1620.59753, -1862.18616, 15.58630,   0.04000, 80.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+
 	//1 Garage NFS Wang
 	CreateDynamicObjectExUH(7245, 27.53720, 1820.01001, 20.19300,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
 	CreateDynamicObjectExUH(16775, 1.03123, 1821.89343, 23.51740,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
@@ -43399,6 +43639,52 @@ public LoadStaticObjects()
 	CreateDynamicObjectExUH(640, 539.02368, -1234.62476, 16.53040,   0.00000, 0.00000, -60,-1,-1,-1,MAX_RADIO_STREAM); // Decorado Caseta
 	CreateDynamicObjectExUH(640, 551.14807, -1227.73096, 16.85040,   0.00000, 0.00000, -60,-1,-1,-1,MAX_RADIO_STREAM);
 
+	// Mercado Negro
+	CreateDynamicObjectExUH(1570, 973.69818, -1520.50586, 13.70260,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1570, 979.77509, -1520.62378, 13.70260,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1570, 985.70599, -1520.66382, 13.76260,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(32, 973.27979, -1520.20654, 13.48000,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(78, 979.29352, -1520.27844, 13.52840,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(77, 985.15948, -1520.28284, 13.46840,   90.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1575, 985.20740, -1521.17249, 13.11100,   30.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1575, 985.84943, -1521.17249, 13.11100,   30.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1575, 984.46503, -1521.17249, 13.11100,   30.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2060, 983.63843, -1520.31433, 12.62880,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(6160, 983.57727, -1520.29492, 12.75810,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2060, 983.63843, -1520.31433, 13.21310,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2060, 983.63843, -1520.31433, 12.83030,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2060, 983.63843, -1520.31433, 13.04860,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(3860, 996.23694, -1527.84106, 13.68480,   0.00000, 0.00000, -90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(70, 996.29022, -1527.89307, 13.52920,   90.00000, -90.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1240, 996.73511, -1527.90125, 15.29890,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2036, 972.39142, -1520.69495, 13.34980,   0.00000, -30.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2036, 972.77942, -1520.69495, 13.34980,   0.00000, -30.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1672, 974.12598, -1521.12976, 13.13900,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1672, 974.03162, -1521.12976, 13.13900,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1672, 973.94519, -1521.12976, 13.13900,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1342, 985.70599, -1532.82043, 13.56720,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1342, 979.77509, -1532.82043, 13.56720,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1342, 973.69818, -1532.82043, 13.56720,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2057, 972.74188, -1520.89575, 12.72900,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(3515, 979.17719, -1526.74121, 12.18590,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM); // Fuente
+	CreateDynamicObjectExUH(849, 974.61517, -1527.05371, 12.82530,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(849, 973.05035, -1526.19958, 12.82530,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(849, 973.35803, -1527.57410, 12.82530,   0.00000, 0.00000, 70,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1265, 976.51959, -1520.71863, 12.80730,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1265, 977.14447, -1520.15308, 12.80730,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1265, 975.75513, -1520.19080, 12.80730,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1349, 982.36401, -1520.49390, 13.10800,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1441, 994.90094, -1520.27734, 13.18630,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(1369, 984.97778, -1527.21680, 13.10330,   0.00000, 0.00000, 30,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2670, 973.87622, -1531.25354, 12.62640,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2672, 982.52332, -1526.58484, 12.84630,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19823, 995.29761, -1528.55884, 13.32790,   0.00000, 0.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19823, 995.50543, -1528.06738, 13.32777,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(19823, 995.30573, -1527.20068, 13.34780,   90.00000, 120.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(2901, 979.31195, -1520.99792, 13.15610,   0.00000, 0.00000, 0,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(347, 973.22119, -1521.23657, 13.10880,   0.00000, 10.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(347, 973.36517, -1521.23657, 13.10880,   0.00000, 10.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
+	CreateDynamicObjectExUH(347, 973.07867, -1521.23657, 13.10880,   0.00000, 10.00000, 90,-1,-1,-1,MAX_RADIO_STREAM);
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////// Vayas Y Carteles////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44014,6 +44300,11 @@ public LoadStaticObjects()
  	AttachObjectToVehicle(TextoTEST, 298, 0.524999,0.899999,0.974999,37.800003,0.000000,0.000000);
  	SetObjectMaterialText(TextoTEST, "{f7faf7}NFS", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
 
+	// Bullet ID
+ 	TextoTEST = CreateObject(19329,0,0,-1000,0,0,0,100); //create the object
+ 	AttachObjectToVehicle(TextoTEST, 1, 0.000000,-1.049999,0.514999,-78.299995,0.000000,0.000000);
+ 	SetObjectMaterialText(TextoTEST, "{f7faf7}CHINO", 0, 50, "Arial", 24, 0, -16776961, 0, 1);
+ 	
 	//284
 	ObjPegado = CreateObject(2814,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 385, 0.000000,-0.899999,0.524999,0.000000,0.000000,0.000000);
@@ -44037,6 +44328,12 @@ public LoadStaticObjects()
 	AttachObjectToVehicle(ObjPegado, 387, 0.000000,-0.899999,0.674999,0.000000,0.000000,0.000000);
 
 //////////////////////////////////////////// Coches Frente Wang Muestra/////////////////////////////////
+	// Bullet ID
+	ObjPegado = CreateObject(1016,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 1, 0.000000,-2.100000,0.300000,0.000000,0.000000,0.000000); // Aleron
+	ObjPegado = CreateObject(19078,0,0,-1000,0,0,0,100);
+	AttachObjectToVehicle(ObjPegado, 1, -1.049999,0.674999,0.300000,-0.000000,-89.099983,0.000000); // Loro
+
 	// Slamvan
 	ObjPegado = CreateObject(19314,0,0,-1000,0,0,0,100);
 	AttachObjectToVehicle(ObjPegado, 336, 0.000000,2.550000,0.225000,72.900001,-91.799980,-0.000000);
@@ -44063,8 +44360,12 @@ public LoadStaticObjects()
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////// PickUps ayuda////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Pickup Pay N Spray Taller
+	Create3DTextLabel("{E6E6E6}Para reparar vehículo usa: {6EF83C}/Reparar\n$1200",0xFFFB00FF,1414.3529,-1606.4731,12.5470,8.0, 0);//Entrada
+	// Pickup Pay N Spray Unity
+	Create3DTextLabel("{E6E6E6}Para reparar vehículo usa: {6EF83C}/Reparar\n$1200",0xFFFB00FF,1620.5975,-1857.5551,12.5362,8.0, 0);//Entrada
 	// Pickup Pay N Spray
-	Create3DTextLabel("{E6E6E6}Para reparar vehículo usa: {6EF83C}/Reparar\n$1200",0xFFFB00FF,1411.6541,-1606.4640,13.5469,12.0, 0);//Entrada
+	Create3DTextLabel("{E6E6E6}Para obtener piezas usa: {6EF83C}/Obtener Piezas",0xFFFB00FF,1381.9622,-1640.4337,14.0850,8.0, 0);//Entrada
 
 	// Pick Ups Concesionario Unity
 	Create3DTextLabel("{E6E6E6}Glendale\nPrecio Coche:{6EF83C} $5000",0xFFFB00FF,1756.7175,-1791.3805,13.2810,10.0, 0);//Entrada
@@ -57060,7 +57361,7 @@ public LoadDataBizzType()
     NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 40;
 ///////////////////////////////////////////////////////////////////////////
     MAX_BIZZ_TYPE++;
-// 31 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 1 // Lista.
+// 31 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 1 Tipo Gobierno
     NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 1857.7513427734;
     NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1426.7786865234;
     NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 16.922342300415;
@@ -57076,7 +57377,23 @@ public LoadDataBizzType()
     NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 57;
 ///////////////////////////////////////////////////////////////////////////
     MAX_BIZZ_TYPE++;
-// 32 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 2
+// 32 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 2(ADP
+    NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 1157.4987792969;
+    NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1323.1114501953;
+    NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 10.825625419617;
+    NegociosType[MAX_BIZZ_TYPE][PosInZZ]                 = 0;
+    NegociosType[MAX_BIZZ_TYPE][PosInX_PC]                 = 1157.4987792968;
+    NegociosType[MAX_BIZZ_TYPE][PosInY_PC]                 = 1323.1114501954;
+    NegociosType[MAX_BIZZ_TYPE][PosInZ_PC]                 = 10.825625419618;
+    NegociosType[MAX_BIZZ_TYPE][PosInZZ_PC]                = 0;
+    NegociosType[MAX_BIZZ_TYPE][InteriorId]             = 1;
+    format(NegociosType[MAX_BIZZ_TYPE][TypeName], MAX_PLAYER_NAME, "Oficina");
+    NegociosType[MAX_BIZZ_TYPE][TypePickupOrCheckponit] = true;
+    NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (1210,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
+    NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 57;
+///////////////////////////////////////////////////////////////////////////
+    MAX_BIZZ_TYPE++;
+// 33 /////////////////////////////////////////////////////////////////////// Lugar: Oficina 3 (CNN)
     NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 2557.8662109375;
     NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1345.7208251953;
     NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 78.476387023926;
@@ -57090,6 +57407,38 @@ public LoadDataBizzType()
     NegociosType[MAX_BIZZ_TYPE][TypePickupOrCheckponit] = true;
     NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (1210,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
     NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 57;
+///////////////////////////////////////////////////////////////////////////
+    MAX_BIZZ_TYPE++;
+// 34 /////////////////////////////////////////////////////////////////////// Lugar: Hard Rock Café
+    NegociosType[MAX_BIZZ_TYPE][PosInX]                 = 137.4744;
+    NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 1316.9459;
+    NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 1082.9149;
+    NegociosType[MAX_BIZZ_TYPE][PosInZZ]                 = 264.9106;
+    NegociosType[MAX_BIZZ_TYPE][PosInX_PC]                 = 137.4744;
+    NegociosType[MAX_BIZZ_TYPE][PosInY_PC]                 = 1316.9459;
+    NegociosType[MAX_BIZZ_TYPE][PosInZ_PC]                 = 1082.9149;
+    NegociosType[MAX_BIZZ_TYPE][PosInZZ_PC]                = 264.9106;
+    NegociosType[MAX_BIZZ_TYPE][InteriorId]             = 1;
+    format(NegociosType[MAX_BIZZ_TYPE][TypeName], MAX_PLAYER_NAME, "Hard Rock Café");
+    NegociosType[MAX_BIZZ_TYPE][TypePickupOrCheckponit] = true;
+    NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (19317,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
+    NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 16;
+// 34 ///////////////////////////////////////////////////////////////////////
+    MAX_BIZZ_TYPE++;
+// 35 /////////////////////////////////////////////////////////////////////// Lugar: Partido Politico
+    NegociosType[MAX_BIZZ_TYPE][PosInX]                 = -63.4559;
+    NegociosType[MAX_BIZZ_TYPE][PosInY]                 = 2499.3293;
+    NegociosType[MAX_BIZZ_TYPE][PosInZ]                 = 16.4145;
+    NegociosType[MAX_BIZZ_TYPE][PosInZZ]                 = 0;
+    NegociosType[MAX_BIZZ_TYPE][PosInX_PC]                 = -63.4559;
+    NegociosType[MAX_BIZZ_TYPE][PosInY_PC]                 = 2499.3293;
+    NegociosType[MAX_BIZZ_TYPE][PosInZ_PC]                 = 16.4145;
+    NegociosType[MAX_BIZZ_TYPE][PosInZZ_PC]                = 0;
+    NegociosType[MAX_BIZZ_TYPE][InteriorId]             = 1;
+    format(NegociosType[MAX_BIZZ_TYPE][TypeName], MAX_PLAYER_NAME, "Partido Politico");
+    NegociosType[MAX_BIZZ_TYPE][TypePickupOrCheckponit] = true;
+    NegociosType[MAX_BIZZ_TYPE][PickupId]                 = CreatePickup    (19317,     1,     NegociosType[MAX_BIZZ_TYPE][PosInX],NegociosType[MAX_BIZZ_TYPE][PosInY],NegociosType[MAX_BIZZ_TYPE][PosInZ],         -1);
+    NegociosType[MAX_BIZZ_TYPE][IdMapIcon]              = 16;
 ///////////////////////////////////////////////////////////////////////////
 }
 public SetFunctionsForBizz(playerid, bizzid)
@@ -62210,42 +62559,6 @@ public LoadDoors()
 	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS;
 	Doors[MAX_DOORS][Dueno]       = TALLER_LS;*/
 
-	MAX_DOORS++; // GRUA 1
-	Doors[MAX_DOORS][objectmodel]    = 931;
-	Doors[MAX_DOORS][PosXTrue]       = 1801.35327100;
-	Doors[MAX_DOORS][PosYTrue]       = -2032.92175300;
-	Doors[MAX_DOORS][PosZTrue]       = 11.45743400;
-	Doors[MAX_DOORS][PosRotXTrue]    = 0;
-	Doors[MAX_DOORS][PosRotYTrue]    = 0;
-	Doors[MAX_DOORS][PosRotZTrue]    = 0;
-	Doors[MAX_DOORS][PosXFalse]    = 1801.35327100;
-	Doors[MAX_DOORS][PosYFalse]    = -2032.92175300;
-	Doors[MAX_DOORS][PosZFalse]    = 13.45740300;
-	Doors[MAX_DOORS][PosRotXFalse]    = 0;
-	Doors[MAX_DOORS][PosRotYFalse]    = 0;
-	Doors[MAX_DOORS][PosRotZFalse]    = 0;
-	Doors[MAX_DOORS][typeanim]       = 0;
-	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS_GRUAS;
-	Doors[MAX_DOORS][Dueno]       = TALLER_LS;
-
-	MAX_DOORS++; // GRUA 2
-	Doors[MAX_DOORS][objectmodel]    = 931;
-	Doors[MAX_DOORS][PosXTrue]       = 1801.34387200;
-	Doors[MAX_DOORS][PosYTrue]       = -2041.02465800;
-	Doors[MAX_DOORS][PosZTrue]       = 11.47949800;
-	Doors[MAX_DOORS][PosRotXTrue]    = 0;
-	Doors[MAX_DOORS][PosRotYTrue]    = 0;
-	Doors[MAX_DOORS][PosRotZTrue]    = 89.99998128;
-	Doors[MAX_DOORS][PosXFalse]    = 1801.34387200;
-	Doors[MAX_DOORS][PosYFalse]    = -2041.02465800;
-	Doors[MAX_DOORS][PosZFalse]    = 13.50446700;
-	Doors[MAX_DOORS][PosRotXFalse]    = 0;
-	Doors[MAX_DOORS][PosRotYFalse]    = 0;
-	Doors[MAX_DOORS][PosRotZFalse]    = 0;
-	Doors[MAX_DOORS][typeanim]       = 0;
-	Doors[MAX_DOORS][speedmove]    = STANDARD_SPEED_DOORS_GRUAS;
-	Doors[MAX_DOORS][Dueno]       = TALLER_LS;
-
 	MAX_DOORS++; // AK Puerta Principal
 	Doors[MAX_DOORS][objectmodel]    = 968;
 	Doors[MAX_DOORS][PosXTrue]       = -2479.8527832031;
@@ -62409,21 +62722,21 @@ public LoadDoors()
 	Doors[MAX_DOORS][speedmove] = STANDARD_SPEED_BARRAS;
 	Doors[MAX_DOORS][Dueno] = LICENCIEROS;
 
-//TALLER_LS NEW
+	//TALLER_LS NEW Biogames
 	MAX_DOORS++;
-	Doors[MAX_DOORS][objectmodel] = 980;
-	Doors[MAX_DOORS][PosXTrue] = 1482.87073; //980, 1482.87073, -1582.30249, 15.34820,   0.00000, 0.00000, 900.00000,-1,-1,-1,MAX_RADIO_STREAM);
-	Doors[MAX_DOORS][PosYTrue] = -1582.30249;
-	Doors[MAX_DOORS][PosZTrue] = 15.34820;
+	Doors[MAX_DOORS][objectmodel] = 19912;
+	Doors[MAX_DOORS][PosXTrue] = 1419.60706;
+	Doors[MAX_DOORS][PosYTrue] = -1634.68921;
+	Doors[MAX_DOORS][PosZTrue] = 15.33660;
 	Doors[MAX_DOORS][PosRotXTrue] = 0.000000;
 	Doors[MAX_DOORS][PosRotYTrue] = 0.000000;
-	Doors[MAX_DOORS][PosRotZTrue] = -180.0000;
-	Doors[MAX_DOORS][PosXFalse] = 1472.876098; // 980,1472.876098,-1582.353881,15.329833,0.000000,0.000000,-179.600006,-1,-1,-1,MAX_RADIO_STREAM);
-	Doors[MAX_DOORS][PosYFalse] = -1582.30249;
-	Doors[MAX_DOORS][PosZFalse] = 15.34820;
+	Doors[MAX_DOORS][PosRotZTrue] = -90.00000;
+	Doors[MAX_DOORS][PosXFalse] = 1419.60706;
+	Doors[MAX_DOORS][PosYFalse] = -1644.58704;
+	Doors[MAX_DOORS][PosZFalse] = 15.33660;
 	Doors[MAX_DOORS][PosRotXFalse] = 0.000000;
 	Doors[MAX_DOORS][PosRotYFalse] = 0.000000;
-	Doors[MAX_DOORS][PosRotZFalse] = -180.0000;
+	Doors[MAX_DOORS][PosRotZFalse] = -90.00000;
 	Doors[MAX_DOORS][typeanim] = 1;
 	Doors[MAX_DOORS][speedmove] = STANDARD_SPEED_BARRAS;
 	Doors[MAX_DOORS][Dueno] = TALLER_LS;
@@ -64822,7 +65135,20 @@ public LoadTextDrawInfo()
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 24.0000;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(1239, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
 	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~Telefono publico~n~~n~~r~/pLlamar~g~ [Numero]");
-
+	//////////////////////////////////////////////// /Licenia Coche 1694.8750,-1394.2955,85.0771
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1694.8750;//
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1394.2955;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 85.0771;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(19792, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~r~/Licencia Coche ~r~($800)");
+	//////////////////////////////////////////////// /Licenia Moto 1692.7456,-1394.2253,84.9681
+	MAX_TEXT_DRAW_INFO++;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1692.7456;//
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY] = -1394.2253;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ] = 84.9681;
+    TextDrawInfo[MAX_TEXT_DRAW_INFO][PickupidTextInfo] = CreatePickup	(19792, 	1,  TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoY], TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoZ],	 	-1);
+	SetStyleTextDrawTextDrawInfo(MAX_TEXT_DRAW_INFO, "~W~/Licencia Moto ~r~($700)");
 	//////////////////////////////////////////////// /uniformar basurero ,,
 	MAX_TEXT_DRAW_INFO++;
     TextDrawInfo[MAX_TEXT_DRAW_INFO][PosInfoX] = 1610.8746;//
@@ -65388,6 +65714,9 @@ public IsBizzBar(playerid, bizzid)
 		bizzid == 18 ||
 		bizzid == 19 ||
 		bizzid == 25 ||
+		bizzid == 32 ||
+		bizzid == 33 ||
+		bizzid == 34 ||
 		bizzid == 26
 	  )
 	{
@@ -71024,7 +71353,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = LCN;
 
-/*	MAX_GARAGES_EX++; // Talelr LS Puerta 1
+	/*	MAX_GARAGES_EX++; // Talelr LS Puerta 1
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = 1769.3964;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = -2014.1255;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 20.6677;
@@ -71046,7 +71375,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Interior]    = 15;
 	GaragesEx[MAX_GARAGES_EX][World]       = WORLD_DEFAULT_INTERIOR;
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
-	GaragesEx[MAX_GARAGES_EX][Dueno]       = TALLER_LS;*/
+	GaragesEx[MAX_GARAGES_EX][Dueno]       = TALLER_LS;
 
 	MAX_GARAGES_EX++; // Talelr LS Puerta 2
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = 1758.8389;
@@ -71096,7 +71425,7 @@ public LoadGaragesEx()
 	GaragesEx[MAX_GARAGES_EX][Lock]       = false;
 	GaragesEx[MAX_GARAGES_EX][Dueno]       = TALLER_LS;
 
-	/*MAX_GARAGES_EX++; // Talelr LS Puerta 4
+	MAX_GARAGES_EX++; // Talelr LS Puerta 4
 	GaragesEx[MAX_GARAGES_EX][PosXOne]       = 1751.2491;
 	GaragesEx[MAX_GARAGES_EX][PosYOne]       = -2048.4993;
 	GaragesEx[MAX_GARAGES_EX][PosZOne]       = 20.6677;
@@ -71607,7 +71936,7 @@ public UpdateLockDoorForPlayer(pickupid, lock, pickup2)
 }
 public IsBizzBarra(playerid)
 {
-	if ( GetPlayerVirtualWorld(playerid) == 4 || PlayersData[playerid][IsPlayerInVehInt]) // Crear /bar
+	if ( GetPlayerVirtualWorld(playerid) == 4 || GetPlayerVirtualWorld(playerid) == 31 || GetPlayerVirtualWorld(playerid) == 35 || GetPlayerVirtualWorld(playerid) == 36 || GetPlayerVirtualWorld(playerid) == 7 || GetPlayerVirtualWorld(playerid) == 9 || GetPlayerVirtualWorld(playerid) == 1 || PlayersData[playerid][IsPlayerInVehInt]) // Crear /bar
 	{
 		if ( IsPlayerInRangeOfPoint(playerid, 	3.0,
 												-927.9366,2224.1982,43.2305) ||
@@ -71619,12 +71948,12 @@ public IsBizzBarra(playerid)
 												-927.8519,2224.3909,51.34535)||
 			IsPlayerInRangeOfPoint(playerid, 	3.0,
 												-917.7833,2206.2751,51.3453) ||
-			IsPlayerInRangeOfPoint(playerid, 	3.0,
-												2397.8970,1109.1061,34.3278) || // Bar Tupamaros
-			IsPlayerInRangeOfPoint(playerid, 	3.0,
-												970.8110,-47.7546,1001.1172) ||
-			IsPlayerInRangeOfPoint(playerid, 	3.0,
-												-786.2424,498.2604,1371.7422)	)
+			IsPlayerInRangeOfPoint(playerid, 	100.0,
+												1860.3937,1421.2974,16.9223) || // Oficina 1
+			IsPlayerInRangeOfPoint(playerid, 	100.0,
+												2553.5828,1345.8226,79.1774) || // Oficina 2
+			IsPlayerInRangeOfPoint(playerid, 	100.0,
+												1159.5612,1327.7828,10.8256)	) // Oficina 3
 		{
 		    return true;
 		}
@@ -73143,6 +73472,7 @@ public TransferirMoney(playerid, account, amount)
 				    SendClientMessage(playeridConnected, COLOR_INFO_MOVIL, MsgBankSMS);
 
 				    Banking[playeridConnected][Balance] -= 10;
+
 				}
 
 				ShowPlayerDialogEx(playerid,32,DIALOG_STYLE_MSGBOX, "{00A5FF}Banco - Transferencia Realizada",StatsBank, "Aceptar", "Volver");
