@@ -36824,7 +36824,7 @@ public DataUserClean(playerid)
 	PlayersData[playerid][DescriptionColor]		= 0;
 	PlayersData[playerid][DescriptionSelect]	= 0;
 	PlayersData[playerid][SpawnFac]		= 0;
-	format(PlayersData[playerid][Referido], MAX_PLAYER_NAME, "Ninguna");
+	format(PlayersData[playerid][Referido], MAX_PLAYER_NAME, "Nadie");
 	
 	// Nuevos 77
 	PlayersData[playerid][WantAudio]	= 0;
@@ -37451,7 +37451,7 @@ public DataUserSave(playerid)
 	new File:SaveUser = fopen(DirBD, io_write);
 	fwrite(SaveUser, MyData);
     format(MyData, sizeof(MyData),
-    "\r\n%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%s³%i³%i³%i³%i³",
+    "\r\n%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%i³%s³%i³%i³%i³%s³",
 	    PlayersData[playerid][WeaponS][0],
 	    PlayersData[playerid][WeaponS][1],
 	    PlayersData[playerid][WeaponS][2],
