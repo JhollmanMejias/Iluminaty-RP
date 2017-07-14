@@ -1686,7 +1686,7 @@ enum DataUsers
 	DescriptionColor,
 	DescriptionSelect,
 	SpawnFac,
-	Referido,
+	Empy_77,
  	/////Tercera linea/////////////////
 	WantAudio,
 	Objetos[MAX_OBJECTS_PLAYERS],
@@ -32056,8 +32056,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	        {
 				if ( strlen(inputtext) >= 4 && strlen(inputtext) <= 25)
 				{
+<<<<<<< HEAD
 					if ( IsValidStringServerOther(playerid, inputtext) )
 					{
+=======
+				    if ( IsValidStringServerOther(playerid, inputtext) )
+				    {
+>>>>>>> 417247c08253b3c6fd076e438dfe37f2b1fdd21d
 						format(PlayersData[playerid][Password], 25, "%s", inputtext);
 						ShowPlayerDialogEx(playerid, 3, DIALOG_STYLE_MSGBOX, "{00A5FF}Sexo", "{F0F0F0}¿Cuál es el sexo de su personaje?", Sexos[1], Sexos[0]);
 						PlayerPlaySound(playerid, 1186, -1999.2559, 743.3678, 58.7168);
@@ -32098,7 +32103,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if ( strval(inputtext) >= 15 && strval(inputtext) <= 60 )
 				{
 				    PlayersData[playerid][Edad] = strval(inputtext);
-					ShowPlayerDialogEx(playerid, 164, DIALOG_STYLE_INPUT, "{00A5FF}Referido", "{F0F0F0}¿Cómo conoció el servidor?\nEscriba el Nombre_Apellido de la persona.\nEl lugar donde vió la IP del servidor.\nO deje en blanco.", "Seguir", "Volver");
+					ShowPlayerDialogEx(playerid, 4, DIALOG_STYLE_MSGBOX, "{00A5FF}Ciudad", "{F0F0F0}¿En qué ciudad desea vivir? {33FF66}Por el momento nos centraremos en {FFFFFF}Los Santos{33FF66}!", Ciudades[1], Ciudades[0]);
 				}
 				else
 				{
@@ -36529,34 +36534,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 		    }
 		}
-		// REFERIDO POR
-		case 164:
-		{
-   		    if ( response == 1 )
-		    {
-		        if(strlen(inputtext) < MAX_PLAYER_NAME)
-		        {
-				    if ( IsValidStringServerOther(playerid, inputtext) )
-				    {
-						format(PlayersData[playerid][Referido], 25, "%s", inputtext);
-				        ShowPlayerDialogEx(playerid, 4, DIALOG_STYLE_MSGBOX, "{00A5FF}Ciudad", "{F0F0F0}¿En qué ciudad desea vivir? {33FF66}Por el momento nos centraremos en {FFFFFF}Los Santos{33FF66}!", Ciudades[1], Ciudades[0]);
-			        }
-					else
-					{
-						ShowPlayerDialogEx(playerid, 164, DIALOG_STYLE_INPUT, "{00A5FF}Referido", "{F0F0F0}¿Cómo conoció el servidor?\nEscriba el Nombre_Apellido de la persona.\nEl lugar donde vió la IP del servidor.\nO deje en blanco.", "Seguir", "Volver");
-					}
-				}
-				else
-				{
-					SendInfoMessage(playerid, 0, "1376", "No puede ingresar más de 25 carácteres.");
-					ShowPlayerDialogEx(playerid, 164, DIALOG_STYLE_INPUT, "{00A5FF}Referido", "{F0F0F0}¿Cómo conoció el servidor?\nEscriba el Nombre_Apellido de la persona.\nEl lugar donde vió la IP del servidor.\nO deje en blanco.", "Seguir", "Volver");
-				}
-			}
-			else
-			{
-				ShowPlayerDialogEx(playerid, 15, DIALOG_STYLE_INPUT, "{00A5FF}Edad", "{F0F0F0}¿Qué edad tiene?", "Seguir", "Volver");
-			}
-		}
 		/// END CASES
 	}
 	//// END DIALOGS
@@ -36824,7 +36801,7 @@ public DataUserClean(playerid)
 	PlayersData[playerid][DescriptionColor]		= 0;
 	PlayersData[playerid][DescriptionSelect]	= 0;
 	PlayersData[playerid][SpawnFac]		= 0;
-	format(PlayersData[playerid][Referido], MAX_PLAYER_NAME, "Ninguna");
+	PlayersData[playerid][Empy_77]		= 0;
 	
 	// Nuevos 77
 	PlayersData[playerid][WantAudio]	= 0;
@@ -37227,10 +37204,7 @@ public DataUserLoad(playerid)
 		GetDataPlayersInt	(playerid, MyData, PlayersData[playerid][DescriptionColor],	PosSplitLast, PosSplitAfter); // 74
 		GetDataPlayersInt	(playerid, MyData, PlayersData[playerid][DescriptionSelect],PosSplitLast, PosSplitAfter); // 75
 		GetDataPlayersInt	(playerid, MyData, PlayersData[playerid][SpawnFac],			PosSplitLast, PosSplitAfter); // 76
-	    // Referido
-		PosSplitAfter = strfind(MyData, "³", false, PosSplitLast);
-		strmid(PlayersData[playerid][Referido], MyData, PosSplitLast, PosSplitAfter, MAX_PLAYER_NAME);  	  		  // 77
-		PosSplitLast = PosSplitAfter + 1;
+		GetDataPlayersInt	(playerid, MyData, PlayersData[playerid][Empy_77], 			PosSplitLast, PosSplitAfter); // 77
 
 		fread(LoadUser, MyData);
 		PosSplitLast 	= 0;
@@ -37529,7 +37503,7 @@ public DataUserSave(playerid)
 		PlayersData[playerid][DescriptionColor],
 		PlayersData[playerid][DescriptionSelect],
 		PlayersData[playerid][SpawnFac],
-		PlayersData[playerid][Referido]
+		PlayersData[playerid][Empy_77]
     );
 	fwrite(SaveUser, MyData);
     format(MyData, sizeof(MyData),
@@ -38342,12 +38316,16 @@ public GetPlayerStats(playerid, playeridshow)
 		Jobs[PlayersData[playerid][Job]][NameJob]
 	);
 	SendInfoMessage(playeridshow, 1, StatsStrings, "Estadísticas: ");
-	format(StatsStrings, sizeof(StatsStrings), "Spawn Facción: %i | Número de cuenta Bancaria: %i | Coins: %i | Piezas: %i | Referido: %s",
+	format(StatsStrings, sizeof(StatsStrings), "Spawn Facción: %i | Número de cuenta Bancaria: %i | Coins: %i | Piezas: %i",
 		PlayersData[playerid][SpawnFac] + 1,
 		PlayersData[playerid][AccountBankingOpen],
 		PlayersData[playerid][Coins],
+<<<<<<< HEAD
 		PlayersData[playerid][Piezas],
 		PlayersData[playerid][Referido]
+=======
+		PlayersData[playerid][Piezas]
+>>>>>>> 417247c08253b3c6fd076e438dfe37f2b1fdd21d
 	);
 	SendInfoMessage(playeridshow, 1, StatsStrings, "Estadísticas: ");
 }
