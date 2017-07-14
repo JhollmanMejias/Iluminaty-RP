@@ -1686,7 +1686,7 @@ enum DataUsers
 	DescriptionColor,
 	DescriptionSelect,
 	SpawnFac,
-	Referido,
+	Referido[MAX_PLAYER_NAME],
  	/////Tercera linea/////////////////
 	WantAudio,
 	Objetos[MAX_OBJECTS_PLAYERS],
@@ -37230,7 +37230,6 @@ public DataUserLoad(playerid)
 	    // Referido
 		PosSplitAfter = strfind(MyData, "³", false, PosSplitLast);
 		strmid(PlayersData[playerid][Referido], MyData, PosSplitLast, PosSplitAfter, MAX_PLAYER_NAME);  	  		  // 77
-		PosSplitLast = PosSplitAfter + 1;
 
 		fread(LoadUser, MyData);
 		PosSplitLast 	= 0;
