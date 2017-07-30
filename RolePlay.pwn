@@ -2121,7 +2121,7 @@ new Cajeros[MAX_CAJEROS_COUNT][CajerosEnum];
 new TextDrawInfo[MAX_TEXT_DRAW_INFO_COUNT][TextDrawInfoEnum];
 new Jobs[MAX_JOB][JobsEnum];
 new JobsData[JobsDataEnum];
-new LOGO_STAFF[50] = "Administración:";
+new LOGO_STAFF[50] = "";
 new DataCars[MAX_VEHICLE_COUNT][DataCarsEnum];
 new Text:FaccionTextDraws[MAX_FACCION_COUNT];
 new Text:TelesTextDraws[MAX_TELES_COUNT];
@@ -2372,15 +2372,15 @@ new Meses[12][11] =
 };
 new AdminsRangos[9][30] =
 {
-	{"{EFFD78}Aprendíz  (1)"},//amarillo claro
-	{"{E4FF00}Moderador (2)"},//Verde oscuro
-	{"{90FC79}Moderador (3)"},//verde claro
+	{"{EFFD78}Destacado  (1)"},//amarillo claro
+	{"{E4FF00}Ayudante (2)"},//Verde oscuro
+	{"{90FC79}Colaborador (3)"},//verde claro
 	{"{2DFF00}Moderador (4)"},//Verde oscuro
-	{"{1FB200}Moderador (5)"},//Más oscuro
-	{"{FB4C4C}Moderador Global (6)"},//Rojo claro
-	{"{FB0000}Co-Admin (7)"},//Rojo oscuro
-	{"{7166EB}Administrador (8)"},//Azul claro
-	{"{1E12A8}Líder"}//Azul oscuro
+	{"{1FB200}Mod Superior (5)"},//Más oscuro
+	{"{FB4C4C}Administrador (6)"},//Rojo claro
+	{"{FB0000}Admin Superior (7)"},//Rojo oscuro
+	{"{7166EB}Sub Dueño (8)"},//Azul claro
+	{"{1E12A8}Dueño"}//Azul oscuro
 };
 new AdminsRangosColors[9] =
 {
@@ -2393,6 +2393,18 @@ new AdminsRangosColors[9] =
 	0xFB0000FF,
 	0x7166EBFF,
 	0x1E12A8FF
+};
+new AdminsRangosNames[9][30] =
+{
+	"[Destacado]",
+	"[Ayudante]",
+	"[Colaborador]",
+	"[Moderador]",
+	"[Mod Superior]",
+	"[Administrador]",
+	"[Admin Superior]",
+	"[Sub Dueño]",
+	"[Dueño]"
 };
 new DescriptionsPerType[2][14] =
 {
@@ -6796,39 +6808,56 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 		        PlayersDataOnline[playerid][IsAFK] = false;
 
-				// COMANDO: /Ayuda
+				// COMANDO: /Ayuda [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				if (strfind(cmdtext, "/Ayuda", true) == 0)
 				{
 				  	if (strcmp("/Ayuda", cmdtext, true, 6) == 0 && strlen(cmdtext) == 6)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-	      				SendInfoMessage(playerid, 1, "/Créditos - /Reglas - /Duda - /Stats - /Cuenta - /Update - /Hora - /Hablar - /Móvil - /Saludar - /Caminar - /Reportar [ID] [Razón]", "Principales: ");
-					    SendInfoMessage(playerid, 1, "/Ayuda {Básicos, Canales, Facción, Rangos, Banco, Crear, Coche, Móvil, Casa, Negocio, Estados, Dar, Coger, Dejar, Usar, Otros, Bolsa}", "Info Extra: ");
-					    SendInfoMessage(playerid, 1, "/Ayuda {Basicos, Faccion, Trabajo, Coche, Reglas, Casa, Dar, Coger, Dejar, Animaciones 1 - 3}, Bolsa", "Info Extra: ");
-						SendInfoMessage(playerid, 1, "Para más información visite nuestros foros en rol.biogames.net (Sección BioSamp) Use /Duda o puede whispear a un admin con /W [ID] [Duda] (Ver /Admins)", "... ");
-			    	}
-			    	// COMANDO: /Ayuda Canales
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Comandos básicos de Ayuda:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Básicos\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Canales\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Trabajo\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Coche\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Reglas\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Dar\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Coger\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Iluminaty RolePlay.", MsgDialogCopyright, "Aceptar", "");
+					}
+			    	// COMANDO: /Ayuda Canales [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Básicos", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14 ||
 							 strcmp("/Ayuda Basicos", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14					  )
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Pagar [ID] [Cantidad] - /Bolsa [ID] - /Bolsillos [ID] - /Pasaporte [ID] - /Licencias [ID] - /Idiomas [ID]", "Básicos: ");
-					    SendInfoMessage(playerid, 1, "/Ad [Anuncio]- /Nacer - /Online - /Trabajar - /Bar - /Parqueo - /Contrato [ID] [Cantidad] - /Peaje", "Básicos: ");
-					    SendInfoMessage(playerid, 1, "/Llamar 911 (LSPD) /Llamar 912 (SFPD) - /Llamar 106 (LSMD) - /Llamar 145 (Taxí) - ", "Básicos: ");
-					    SendInfoMessage(playerid, 1, "/Llamar 555 (Taller SF) - /Llamar 888 (CNN) - /Llamar 777 (Taller LS) - /Id [Parte del Nombre] - /Objetos", "Básicos: ");
-						SendInfoMessage(playerid, 1, "/Ayuntamiento - /Talleres - /Cajeros - /Bancos - /Concesionarias - /SuperMercados - /Hoteles - /LSPD - /LSMD - /Camioneros - /CNN", "Ubicaciones: ");
-			    	}
-			    	// COMANDO: /Ayuda Canales
+						////////////////////////////////////////////////////////
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Comandos Básicos de Ayuda:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Pagar [ID] [Cantidad] - /Bolsa [ID] - /Bolsillos [ID] - /Pasaporte [ID] - /Licencias [ID] - /Idiomas [ID]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ad [Anuncio]- /Nacer - /Online - /Trabajar - /Bar - /Parqueo - /Contrato [ID] [Cantidad] - /Peaje\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Llamar 911 (LSPD) /Llamar 912 (SFPD) - /Llamar 106 (LSMD) - /Llamar 145 (Taxí) - /Llamar 555 (Taller SF)\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Llamar 888 (CNN) - /Llamar 777 (Taller LS) - /Id [Parte del Nombre] - /Objetos\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Comandos Básicos", MsgDialogCopyright, "Aceptar", "");
+					}
+			    	// COMANDO: /Ayuda Canales [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Canales", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Me [Acción] - /Yo [Acción]- /Intentar [Acción] - /Ame [Efecto]- /Do [Efecto] - /G [Gritar] - /S [Susurrar]", "Canales: ");
-			    	}
+						////////////////////////////////////////////////////////
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Canales:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Me [Acción] - /Yo [Acción]- /Intentar [Acción] - /Ame [Efecto]- /Do [Efecto] - /G [Gritar] - /S [Susurrar]\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Comandos Canales", MsgDialogCopyright, "Aceptar", "");
+					}
 			    	// COMANDO: /Ayuda Otros
 				  	else if (strcmp("/Ayuda Otros", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Dormir - /Nacer - /Nacer Amigo - /Cartera - /Sexo - /Estado - /Admins", "Otros: ");
+						////////////////////////////////////////////////////////
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Otros:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dormir - /Nacer - /Nacer Amigo - /Cartera - /Sexo - /Estado - /Admins\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Comandos Otros", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda DeathMatch
 				  	else if (strcmp("/Ayuda DeathMatch", cmdtext, true, 17) == 0 && strlen(cmdtext) == 17)
@@ -6842,72 +6871,91 @@ public OnPlayerCommandText(playerid, cmdtext[])
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Carreras - /Salir Carrera", "Carreras: ");
 				    }
-			    	// COMANDO: /Ayuda Animaciones 1
+			    	// COMANDO: /Ayuda Animaciones 1 [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Animaciones 1", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Anim [Opción] [Número] {1=Loop}", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Sentarse - /Acostarse - /Borracho - /Fuck - /Miedo - /Apuntar - /Rendirse - /Mear", "Animaciones Básicas: ");
-					    SendInfoMessage(playerid, 1, "/Anim [ATTRACTORS - 2, BAR - 11, BAT - 10, FIRE - 12, PLAYA - 4, GYM - 6, BFINJECT - 3, BICID - 18]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [BICIH - 17, BICIL - 8, BICIS - 19, BICIV - 17, BICI - 3, GOLPE - 11, BMX - 17, BOMBER - 5]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [BOX - 9, BALL - 40, BUDDY - 4, BUS - 8, CAM - 13, CAR - 10, CARRY - 6, CARCHAT - 20, CASINO - 24]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [CHAINSAW - 10, CHOPA - 17, CLOTHES - 12, COACH - 5, COLT - 6, COP - 11, COPD - 3, CRACK - 9]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [CRIB - 4, DAM - 4, DANCE - 12, DEALER - 6, DILDO - 8, DODGE - 3, DOZER - 9, DRIVE - 7, FAT - 17]", "Animaciones: ");
+						////////////////////////////////////////////////////////
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Anmaciones 1:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [Opción] [Número]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Sentarse - /Acostarse - /Borracho - /Fuck - /Miedo - /Apuntar - /Rendirse - /Mear\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [ATTRACTORS - 2, BAR - 11, BAT - 10, FIRE - 12, PLAYA - 4, GYM - 6, BFINJECT - 3, BICID - 18]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [BICIH - 17, BICIL - 8, BICIS - 19, BICIV - 17, BICI - 3, GOLPE - 11, BMX - 17, BOMBER - 5]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [BOX - 9, BALL - 40, BUDDY - 4, BUS - 8, CAM - 13, CAR - 10, CARRY - 6, CARCHAT - 20, CASINO - 24]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [CHAINSAW - 10, CHOPA - 17, CLOTHES - 12, COACH - 5, COLT - 6, COP - 11, COPD - 3, CRACK - 9]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [CRIB - 4, DAM - 4, DANCE - 12, DEALER - 6, DILDO - 8, DODGE - 3, DOZER - 9, DRIVE - 7, FAT - 17]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Anmaciones 1", MsgDialogCopyright, "Aceptar", "");
 					}
-			    	// COMANDO: /Ayuda Animaciones 2
+			    	// COMANDO: /Ayuda Animaciones 2 [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Animaciones 2", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Anim [Opción] [Número] {1=Loop}", "Animaciones: ");
-						SendInfoMessage(playerid, 1, "/Anim [FIGHTB - 9, FIGHTC - 11, FIGHTD - 9, FIGHTE - 3, FINALE - 15, FINALE2 - 7, FLAME - 0, FLOWERS - 2]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [FOOD - 32, GYMA - 8, GANGS - 32, GHANDS - 19, GHETTO - 6, GOGGLES - 0, GRAFFITI - 1, GRAVE - 2]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [GRENADE - 2, GYMB - 23, HAIR - 12, HEIST - 9, HOUSE - 9, OFFICE - 9, INTSHOP - 7, BUISNESS - 3]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [KART - 3, KISSING - 14, KNIFE - 15, LAPDAN - 1, LOWRIDER - 38, CHASE - 24, END - 7, MEDIC - 0]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [MISC - 40, MTB - 17, LOOKERS - 28, OTB - 10, PARA - 21, PARK - 2]", "Animaciones: "); // MUSCULAR - 16
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Anmaciones 2:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [Opción] [Número]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [FIGHTB - 9, FIGHTC - 11, FIGHTD - 9, FIGHTE - 3, FINALE - 15, FINALE2 - 7, FLAME - 0, FLOWERS - 2]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [FOOD - 32, GYMA - 8, GANGS - 32, GHANDS - 19, GHETTO - 6, GOGGLES - 0, GRAFFITI - 1, GRAVE - 2]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [GRENADE - 2, GYMB - 23, HAIR - 12, HEIST - 9, HOUSE - 9, OFFICE - 9, INTSHOP - 7, BUISNESS - 3]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [KART - 3, KISSING - 14, KNIFE - 15, LAPDAN - 1, LOWRIDER - 38, CHASE - 24, END - 7, MEDIC - 0]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [CHAINSAW - 10, CHOPA - 17, CLOTHES - 12, COACH - 5, COLT - 6, COP - 11, COPD - 3, CRACK - 9]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [MISC - 40, MTB - 17, LOOKERS - 28, OTB - 10, PARA - 21, PARK - 2]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Anmaciones 2", MsgDialogCopyright, "Aceptar", "");
 			    	}
-			    	// COMANDO: /Ayuda Animaciones 3
+			    	// COMANDO: /Ayuda Animaciones 3 [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Animaciones 3", cmdtext, true, 20) == 0 && strlen(cmdtext) == 20)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Anim [Opción] [Número] {1=Loop}", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [PAUL - 11, PLAYER - 3, PLAYID - 4, POLICE - 9, POOL - 20, POOR - 1, PYTHON - 4, QUAD - 16, QUADD - 3]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [RAP - 7, RIFLE - 4, RIOT - 6, ROB - 4, ROCKET - 4, RUSTLER - 4, RYDER - 15, SCRAT - 11, SHAMAL - 4]", "Animaciones: ");
-					    SendInfoMessage(playerid, 1, "/Anim [SHOP - 24, SHOTGUN - 2, SILENCED - 3, SMOK - 7, SNIPER - 0, SPRAY - 1, STRIP - 19, SUNBA - 17]", "Animaciones: "); // SKATE - 2
-					    SendInfoMessage(playerid, 1, "/Anim [SWAT - 22, SWEET - 6, SWIM - 6, SWORD - 9, TANK - 5, TATTOO - 56, TEC - 3, TRAIN - 3, TRUCK - 16]", "Animaciones: ");
-						SendInfoMessage(playerid, 1, "/Anim [UZI - 4, VAN - 7, VENDING - 5, VORTEX - 3, WAYFA - 17, ARMA - 16, WUZI - 11]", "Animaciones: ");
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Anmaciones 3:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [Opción] [Número]\\nn");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [PAUL - 11, PLAYER - 3, PLAYID - 4, POLICE - 9, POOL - 20, POOR - 1, PYTHON - 4, QUAD - 16, QUADD - 3]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [RAP - 7, RIFLE - 4, RIOT - 6, ROB - 4, ROCKET - 4, RUSTLER - 4, RYDER - 15, SCRAT - 11, SHAMAL - 4]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [SHOP - 24, SHOTGUN - 2, SILENCED - 3, SMOK - 7, SNIPER - 0, SPRAY - 1, STRIP - 19, SUNBA - 17]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [SWAT - 22, SWEET - 6, SWIM - 6, SWORD - 9, TANK - 5, TATTOO - 56, TEC - 3, TRAIN - 3, TRUCK - 16]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Anim [UZI - 4, VAN - 7, VENDING - 5, VORTEX - 3, WAYFA - 17, ARMA - 16, WUZI - 11]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Anmaciones 3", MsgDialogCopyright, "Aceptar", "");
 			    	}
-			    	// COMANDO: /Ayuda Móvil
+			    	// COMANDO: /Ayuda Móvil [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Móvil", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 ||
 					         strcmp("/Ayuda Movil", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Móvil - /Agenda - /N [Normal] - /Tirar Móvil - /Dar Móvil [ID] - /Llamar [Número] - /C (Colgar) - /D (Descolgar)", "Móvil: ");
-					    SendInfoMessage(playerid, 1, "/Estado Móvil - /Ver Saldo - /Tirar Agenda - /Dar Agenda [ID] - /SMS [Número] - /Altavoz", "Móvil: ");
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Móvil:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Móvil - /Agenda - /N [Normal] - /Tirar Móvil - /Dar Móvil [ID] - /Llamar [Número] - /C (Colgar) - /D (Descolgar)\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Estado Móvil - /Ver Saldo - /Tirar Agenda - /Dar Agenda [ID] - /SMS [Número] - /Altavoz\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Móvil", MsgDialogCopyright, "Aceptar", "");
 			    	}
-			    	// COMANDO: /Ayuda Habilidades
+			    	// COMANDO: /Ayuda Habilidades [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Habilidades", cmdtext, true, 18) == 0 && strlen(cmdtext) == 18)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "1 - Normal", "Habilidades: ");
-					    SendInfoMessage(playerid, 1, "2 - Boxeo", "Habilidades: ");
-					    SendInfoMessage(playerid, 1, "3 - Kneehead", "Habilidades: ");
-					    SendInfoMessage(playerid, 1, "4 - Kungfu", "Habilidades: ");
-					    SendInfoMessage(playerid, 1, "5 - Elbow", "Habilidades: ");
-					    SendInfoMessage(playerid, 1, "6 - Grabkick", "Habilidades: ");
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Habilidades:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}1 - Normal\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}2 - Boxeo\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}3 - Kneehead\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}4 - Kungfu\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}5 - Elbow\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}6 - Grabkick\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Habilidades", MsgDialogCopyright, "Aceptar", "");
 			    	}
-			    	// COMANDO: /Ayuda Idiomas
+			    	// COMANDO: /Ayuda Idiomas [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Idiomas", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Al [Alemán] - /Fr [Francés] - /Po [Portugés] - /It [Italiano] - /In [Inglés] - /Ja [Japonés]", "Idiomas: ");
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Idiomas:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}- /Al [Alemán] \n\n- /Fr [Francés] \n\n- /Po [Portugés] \n\n- /It [Italiano] \n\n- /In [Inglés] \n\n- /Ja [Japonés]\n\n");
+   						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Idiomas", MsgDialogCopyright, "Aceptar", "");
 			    	}
-		    	// COMANDO: /Ayuda Llaves
+		    	// COMANDO: /Ayuda Llaves [[[[[[[[[[[Nuevo Formato]]]]]]]]]]]]]]]]]
 				  	else if (strcmp("/Ayuda Llaves", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13)
 			    	{
 						SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Llaves Coche - /Llaves Puerta - /Llaves PuertaEx - /Llaves Facción - /Llaves Refrigerador - /Llaves Casa", "Llaves: ");
 					    SendInfoMessage(playerid, 1, "/Llaves Armario - /Llaves Garage - /Llaves GarageEx - /Llaves Amigos - /Llaves Maletero", "Llaves: ");
-
 			    	}
 			    	// COMANDO: /Ayuda Estados
 				  	else if (strcmp("/Ayuda Estados", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
@@ -6926,11 +6974,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	// COMANDO: /Ayuda Dar
 				  	else if (strcmp("/Ayuda Dar", cmdtext, true, 10) == 0 && strlen(cmdtext) == 10)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Dar Arma [ID] - /Dar ArmaEx [ID] [Munición] - /Dar Chaleco [ID] - /Dar Drogas [ID] [Cantidad]", "Dar: ");
-					    SendInfoMessage(playerid, 1, "/Dar Ganzúas [ID] [Cantidad] - /Dar Materiales [ID] [Cantidad] - /Dar Bombas [ID] [Cantidad] - /Dar Llaves [ID]", "Dar: ");
-					    SendInfoMessage(playerid, 1, "/Dar Extorsión [ID] - /Dar Dados [ID] - /Dar Patines [ID] - /Dar Móvil [ID] - /Dar Agenda [ID] - /Dar Bolsa [ID]", "Dar: ");
-					    SendInfoMessage(playerid, 1, "/Dar Artículo [ID] [ID_Bolsa] - /Dar Cartera [ID] [ID_Cartera] - /Dar Coins [ID] [Cantidad]", "Dar: ");
+		    	    	new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Dar:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Arma [ID] - /Dar ArmaEx [ID] [Munición] - /Dar Chaleco [ID] - /Dar Drogas [ID] [Cantidad]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Ganzúas [ID] [Cantidad] - /Dar Materiales [ID] [Cantidad] - /Dar Bombas [ID] [Cantidad] - /Dar Llaves [ID]\n\n");
+						strcat(MsgDialogCopyright, "/Dar Extorsión [ID] - /Dar Dados [ID] - /Dar Patines [ID] - /Dar Móvil [ID] - /Dar Agenda [ID] - /Dar Bolsa [ID]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Artículo [ID] [ID_Bolsa] - /Dar Cartera [ID] [ID_Cartera] - /Dar Coins [ID] [Cantidad]\n\n");
+   						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Dar", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Radio
 				  	else if (strcmp("/Ayuda Radio", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
@@ -6943,14 +6994,22 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	{
 			    	    if ( PlayersData[playerid][Job] != NINGUNO )
 			    	    {
-						    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 			    	        if ( PlayersData[playerid][Job] == PESCA )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "/Pescar - /Vender Peces", "Pesca: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Pesca:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Pescar - /Vender Peces\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pescador", MsgDialogCopyright, "Aceptar", "");
+
 			    	        }
 			    	        else if ( PlayersData[playerid][Job] == VENDEDOR_MOVIL )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "/Vender Móvil [ID] [Precio] [Número]", "Vendedor de Móviles: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Móvil:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Vender Móvil [ID] [Precio] [Número]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Vendedor", MsgDialogCopyright, "Aceptar", "");
 							}
 			    	        else if ( PlayersData[playerid][Job] == MENSAJERO )
 			    	        {
@@ -6958,15 +7017,27 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							}
 			    	        else if ( PlayersData[playerid][Job] == COSECHADOR )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "{6EF83C}/Recolectar", "Recolector De Basura: {F81414}Sube a un camión y usa: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Recolector:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}Sube a un camión y usa {6EF83C}/Recolectar\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Recolector", MsgDialogCopyright, "Aceptar", "");
 							}
 			    	        else if ( PlayersData[playerid][Job] == TRANSPORTERO )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "/Transportar", "Transportista:{F81414} Sube a un camión y usa: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Transportista:\n\n");
+								strcat(MsgDialogCopyright, "Sube a un camión y usa {6EF83C}/Transportar\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Recolector", MsgDialogCopyright, "Aceptar", "");
 							}
 			    	        else if ( PlayersData[playerid][Job] == PIZZERO )
 			    	        {
-						    	SendInfoMessage(playerid, 1, "{6EF83C}/Repartir", "Repartidor De Pizza: {F81414}Sube a una Moto y usa: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Pizzero:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}Sube a una moto de pizzas y usa {6EF83C}/Repartir\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pizzero", MsgDialogCopyright, "Aceptar", "");
 							}
 			    	    }
 			    	    else
@@ -6993,19 +7064,27 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						    // GOBIERNO
 							if ( PlayersData[playerid][Faccion] == GOBIERNO )
 							{
-							    SendInfoMessage(playerid, 1, "/Gob [Texto] - /Ver Deposito - /Cambiar Ciudad [ID] - /Casar [ID] [ID]- /Divorciar [ID] [ID]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Dar Pasaporte [ID] ", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Gobierno Los Santos:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Gob [Texto] - /Ver Deposito - /Cambiar Ciudad [ID] - /Casar [ID] [ID]- /Divorciar [ID] [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Dar Pasaporte [ID] - /Obtener Equipo\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Gobierno", MsgDialogCopyright, "Aceptar", "");
 							}
 						    // LICENCIEROS
 							else if ( PlayersData[playerid][Faccion] == LICENCIEROS )
 							{
-							    SendInfoMessage(playerid, 1, "/Dar Idioma Alemán [ID] - /Dar Idioma Francés [ID] - /Dar Idioma Portugués [ID] - /Dar Idioma Italiano [ID]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Dar Idioma Inglés [ID] - /Dar Idioma Japonés [ID] - /Dar LicenciaArmas [ID] - /Dar Licencia Coche [ID]", "Facción: ");
-           						SendInfoMessage(playerid, 1, "/Dar Licencia Camión [ID] - /Dar Licencia Moto [ID] - /Dar Licencia Vuelo [ID] - /Dar Licencia Bote [ID]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Dar Licencia Pesca [ID] - /Dar Licencia Tren [ID] - /Dar Habilidad [ID] [ID_Habilidad] - /Renovar Licencia Armas [ID]", "Facción: ");
-                                SendInfoMessage(playerid, 1, "/Renovar Licencia Coche [ID] - /Renovar Licencia Camión [ID] - /Renovar Licencia Moto [ID] - /Renovar Licencia Vuelo [ID]", "Facción: ");
-                                SendInfoMessage(playerid, 1, "/Renovar Licencia Bote [ID] - /Renovar Licencia Pesca [ID] - /Renovar Licencia Tren [ID] - /Prueba [ID]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Ayuda Habilidades", "Facción: ");
+		    	    			new MsgDialogCopyright[1000];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Secretaría Maestros y Licencieros:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Dar Idioma Alemán [ID] - /Dar Idioma Francés [ID] - /Dar Idioma Portugués [ID] - /Dar Idioma Italiano [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Dar Idioma Inglés [ID] - /Dar Idioma Japonés [ID] - /Dar LicenciaArmas [ID] - /Dar Licencia Coche [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Dar Licencia Camión [ID] - /Dar Licencia Moto [ID] - /Dar Licencia Vuelo [ID] - /Dar Licencia Bote [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Dar Licencia Pesca [ID] - /Dar Licencia Tren [ID] - /Dar Habilidad [ID] [ID_Habilidad] - /Renovar Licencia Armas [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Renovar Licencia Coche [ID] - /Renovar Licencia Camión [ID] - /Renovar Licencia Moto [ID] - /Renovar Licencia Vuelo [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Renovar Licencia Bote [ID] - /Renovar Licencia Pesca [ID] - /Renovar Licencia Tren [ID] - /Prueba [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Habilidades\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Licencieros", MsgDialogCopyright, "Aceptar", "");
 							}
 						    // TRAFICANTES
 							else if ( PlayersData[playerid][Faccion] == TRAFICANTES )
@@ -7013,40 +7092,70 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							    SendInfoMessage(playerid, 1, "/Retirar Almacén [Cantidad] - /Almacén - /Vender Drogas [ID] [Cantidad] [Precio] - /Obtener Drogas", "Facción: ");
 							    SendInfoMessage(playerid, 1, "/Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad] - /Retirar Almacén [Cantidad]", "Facción: ");
 							    SendInfoMessage(playerid, 1, "/pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
-							    
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Traficantes:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Retirar Almacén [Cantidad] - /Almacén - /Vender Drogas [ID] [Cantidad] [Precio] - /Obtener Drogas\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad] - /Retirar Almacén [Cantidad]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Traficantes", MsgDialogCopyright, "Aceptar", "");
 							}
 						    // LCN
 							else if ( PlayersData[playerid][Faccion] == LCN )
 							{
-							    SendInfoMessage(playerid, 1, "/Crear Arma - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Retirar Almacén [Cantidad] - /Atar [ID] - /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}La Cosa Nostra:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Crear Arma - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}Retirar Almacén [Cantidad] - /Atar [ID] - /pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Retirar Almacén [Cantidad] - /Almacén - /Vender Drogas [ID] [Cantidad] [Precio] - /Obtener Drogas\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad] - /Retirar Almacén [Cantidad]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "LCN", MsgDialogCopyright, "Aceptar", "");
 							}
 							// YKZ
 							else if ( PlayersData[playerid][Faccion] == YKZ )
 							{
-							    SendInfoMessage(playerid, 1, "/Crear Arma - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Retirar Almacén [Cantidad] - /Atar [ID] - /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Yakuzas:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Crear Arma - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Retirar Almacén [Cantidad] - /Atar [ID] - /pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "YKZ", MsgDialogCopyright, "Aceptar", "");
 							}
 							// MOONBEAN
 							else if ( PlayersData[playerid][Faccion] == MOONBEAN )
 							{
-							    SendInfoMessage(playerid, 1, "/Llamadas - /Estado Trabajo - /Estado Taxí - /Tren [Anuncio] - /Informar [Informe]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Taxistas:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llamadas - /Estado Trabajo - /Estado Taxí - /Tren [Anuncio] - /Informar [Informe]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Taxis", MsgDialogCopyright, "Aceptar", "");
 							}
 							// LSPD
 							else if ( PlayersData[playerid][Faccion] == LSPD )
 							{
-							    SendInfoMessage(playerid, 1, "/Datos [ID] - /Localizar Persona [ID] - /Localizar Coche [Matrícula] ", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Llamadas - /Quitar Licencia Armas [ID] - /Quitar Licencia Coche [ID] - /Quitar Licencia Camión [ID]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Quitar Licencia Vuelo [ID] - /Quitar Licencia Bote [ID] - /Quitar Licencia Pesca [ID] - /Quitar Licencia Moto [ID]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Quitar Licencia Tren [ID] - /Multar [ID] [Precio] [Razón] - /Esposar [ID] - /Recoger - /Poner Uniforme - /Sirena", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Poner Equipo [1, 2, 3, 4 ó 5] - /Chequear [ID] - /Arrestar [ID] [Tiempo] - /Poner Candado [Razón] - /Meg [Texto]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Decomisar [ID] - /Meter [ID] - /Autorizar [ID] - /Desactivar Bomba - /Alarmas - /Rg [Radio General] - /Estado Rg", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Poner Cono - /Poner Valla - /Poner Pincho", "Facción: ");
+		    	    			new MsgDialogCopyright[800];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Los Santos Police Department:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Datos [ID] - /Localizar Persona [ID] - /Localizar Coche [Matrícula]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llamadas - /Quitar Licencia [Tipo Licencia] [ID] - /Poner Cono - /Poner Valla - /Poner Pincho\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Quitar Licencia Tren [ID] - /Multar [ID] [Precio] [Razón] - /Esposar [ID] - /Recoger - /Poner Uniforme - /Sirena\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Obtener Armas - /Chequear [ID] - /Arrestar [ID] [Tiempo] - /Poner Candado [Razón] - /Meg [Texto]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Decomisar [ID] - /Meter [ID] - /Autorizar [ID] - /Desactivar Bomba - /Alarmas - /Rg [Radio General] - /Estado Rg\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Swat - /Refuerzos - /Ref\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "LSPD", MsgDialogCopyright, "Aceptar", "");
 							}
 							// NFS
 							else if ( PlayersData[playerid][Faccion] == NFS )
 							{
-							    SendInfoMessage(playerid, 1, "/Vender Coche [ID] - /Precio Coche - /Aparcar NFS - /Dropear - /Renovar Coche [ID]", "Facción: ");
+			  	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Need For Speed:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Vender Coche [ID] - /Precio Coche - /Aparcar NFS - /Dropear - /Renovar Coche [ID]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Vender CocheC [ID] (Vender coche en Coins).\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "NFS", MsgDialogCopyright, "Aceptar", "");
 							}
 							// SFMD
 							else if ( PlayersData[playerid][Faccion] == SFMD )
@@ -7058,8 +7167,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							// CNN
 							else if ( PlayersData[playerid][Faccion] == CNN )
 							{
-							    SendInfoMessage(playerid, 1, "/Na [Narrar] - /Tr [Transmitir] - /Entrevistar [ID] - /Sacar [ID] - /Finalizar Entrevista - /Obtener Cámara", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Conectar [Número] - /Desconectar - /En [Texto] - /Poner canción [URL]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Central Nacional de Noticias:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Na [Narrar] - /Tr [Transmitir] - /Entrevistar [ID] - /Sacar [ID] - /Finalizar Entrevista - /Obtener Cámara\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Conectar [Número] - /Desconectar - /En [Texto] - /Poner canción [URL]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Na [Narrar] - /Tr [Transmitir] - /Entrevistar [ID] - /Sacar [ID] - /Finalizar Entrevista - /Obtener Cámara\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "CNN", MsgDialogCopyright, "Aceptar", "");
 							}
 							// ADP
 							else if ( PlayersData[playerid][Faccion] == ADP )
@@ -7069,9 +7183,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							// CAMIONEROS
 							else if ( PlayersData[playerid][Faccion] == CAMIONEROS )
 							{
-							    SendInfoMessage(playerid, 1, "/Obtener Mercancía - /Depositar Mercancía - /Abastecer Gasolinera - /Abastecer Negocio - /Abastecer Tienda - /Ver Precio", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Abastecer Almacén - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Retirar Almacén [Cantidad] - /Poner Cono - /Recoger - /Ver Deposito", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Camioneros:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Obtener Mercancía - /Depositar Mercancía - /Abastecer Gasolinera - /Abastecer Negocio - /Abastecer Tienda - /Ver Precio\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Abastecer Almacén - /Almacén - /Llaves Almacén - /Consultar Almacén - /Depositar Almacén [Cantidad]\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Retirar Almacén [Cantidad] - /Poner Cono - /Recoger - /Ver Deposito\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Camioneros", MsgDialogCopyright, "Aceptar", "");
 							}
 							// TALLER_SF
 							else if ( PlayersData[playerid][Faccion] == TALLER_SF)
@@ -7099,57 +7217,74 @@ public OnPlayerCommandText(playerid, cmdtext[])
 							// SICARIOS
 							else if ( PlayersData[playerid][Faccion] == SICARIOS )
 							{
-							    SendInfoMessage(playerid, 1, "/Atar [ID] - /Crear Arma - /Bombas - /Desactivar Bomba - /Ver Bomba - /Poner Bomba [Tipo] - /Detonar Todas", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+		    	    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Sicarios:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Atar [ID] - /Crear Arma - /Bombas - /Desactivar Bomba - /Ver Bomba - /Poner Bomba [Tipo] - /Detonar Todas\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Sicarios", MsgDialogCopyright, "Aceptar", "");
 							}
 							// TALLER_LS
 							else if ( PlayersData[playerid][Faccion] == TALLER_LS)
 							{
-							    SendInfoMessage(playerid, 1, "/Llamadas - /Taller - /Reparar [ID] [Precio] - /Factura [ID] [Precio] [Razón] - /Echar Aceíte", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Pistas - /Reparar [ID] [Precio] - /Vender Ganzúas [ID] [Precio] - /Aceíte [ID] [Precio]", "Facción: ");
+				    			new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Taller Los Santos:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llamadas - /Taller - /Reparar [ID] [Precio] - /Factura [ID] [Precio] [Razón] - /Echar Aceíte\n\n");
+								strcat(MsgDialogCopyright, "/Pistas - /Reparar [ID] [Precio] - /Vender Ganzúas [ID] [Precio] - /Aceíte [ID] [Precio]\n\n");
+								strcat(MsgDialogCopyright, "/Obtener Piezas - /Neones\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Taller LS", MsgDialogCopyright, "Aceptar", "");
 							}
 							// VATOS
 							else if ( PlayersData[playerid][Faccion] == VATOS )
 							{
-							    if ( PlayersData[playerid][Rango] == 0 )
-							    {
-								    SendInfoMessage(playerid, 1, "/Robar Local", "Facción: ");
-							    }
-							    SendInfoMessage(playerid, 1, "/Obtener Arma - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+			    				new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Pandilla:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Robar Local\n\n");
+								strcat(MsgDialogCopyright, "/Obtener Cuchillo - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pandilla", MsgDialogCopyright, "Aceptar", "");
 							}
 							// AK
 							else if ( PlayersData[playerid][Faccion] == AK)
 							{
-							    if ( PlayersData[playerid][Rango] == 0 )
-							    {
-								    SendInfoMessage(playerid, 1, "/Robar Local", "Facción: ");
-							    }
-							    SendInfoMessage(playerid, 1, "/Obtener Arma - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+			    				new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Pandilla:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Robar Local\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Obtener Cuchillo - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pandilla", MsgDialogCopyright, "Aceptar", "");
 							}
 							// VELTRAN
 							else if ( PlayersData[playerid][Faccion] == VELTRAN)
 							{
-							    if ( PlayersData[playerid][Rango] == 0 )
-							    {
-								    SendInfoMessage(playerid, 1, "/Robar Local", "Facción: ");
-							    }
-							    SendInfoMessage(playerid, 1, "/Obtener Arma - /Atar [ID] - /Terminar Robo- /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+			    				new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Pandilla:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Robar Local\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Obtener Cuchillo - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pandilla", MsgDialogCopyright, "Aceptar", "");
 							}
 							// HEORS
 							else if ( PlayersData[playerid][Faccion] == HEORS)
 							{
-							    if ( PlayersData[playerid][Rango] == 0 )
-							    {
-								    SendInfoMessage(playerid, 1, "/Robar Local", "Facción: ");
-							    }
-							    SendInfoMessage(playerid, 1, "/Obtener Arma - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]", "Facción: ");
+			    				new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Pandilla:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Robar Local\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Obtener Cuchillo - /Atar [ID] - /Terminar Robo - /pFalso [Nombre Apellido] - /PasaporteF [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Pandilla", MsgDialogCopyright, "Aceptar", "");
 							}
 							// LSMD
 							else if ( PlayersData[playerid][Faccion] == LSMD )
 							{
-							    SendInfoMessage(playerid, 1, "/Llamadas - /Llamadas Bomberos - /Curar [ID] - /Estado Trabajo - /Obtener Extintor - /Debilitar Incendio", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Curar Enfermedad [ID] - /Poner Cono - /Poner Valla - /Recoger - /Rg [Radio General] - /Estado Rg", "Facción: ");
-							    SendInfoMessage(playerid, 1, "/Examinar Enfermedad [ID]", "Facción: ");
+			    				new MsgDialogCopyright[500];
+		    	    			format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+								"{0049FF}Los Santos Medical Department:\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Llamadas - /Llamadas Bomberos - /Curar [ID] - /Estado Trabajo - /Obtener Extintor - /Debilitar Incendio\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Curar Enfermedad [ID] - /Poner Cono - /Poner Valla - /Recoger - /Rg [Radio General] - /Estado Rg\n\n");
+								strcat(MsgDialogCopyright, "{CCCCFF}/Examinar Enfermedad [ID]\n\n");
+								ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "LSMD", MsgDialogCopyright, "Aceptar", "");
 							}
 						}
 						else
@@ -7160,75 +7295,105 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			    	// COMANDO: /Ayuda Luces
 				  	else if (strcmp("/Ayuda Luces", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Luces - /Izquierda - /Derecha - /Estacionamiento", "Luces: ");
+	    				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Luces:\n\n");
+						strcat(MsgDialogCopyright, "/Luces - /Izquierda - /Derecha - /Estacionamiento\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Luces", MsgDialogCopyright, "Aceptar\n\n", "");
 			    	}
 			    	// COMANDO: /Ayuda Coche
 				  	else if (strcmp("/Ayuda Coche", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Llaves Coche - /Aparcar - /Vender Mi Coche - /Dar Llaves [ID] - /Maletero - /Matrícula - /Papeles [ID] - /Llenar Bidon", "Coche: ");
-					    SendInfoMessage(playerid, 1, "/Echar Bidon - /Tiempo Coche - /Llenar Tanque [Cantidad]- /Apagar - /Apagar Alarma - /Encender - /Encender Alarma - /Puente", "Coche: ");
-					    SendInfoMessage(playerid, 1, "/Estado Alarma - /Llaves Maletero - /Estado Capó - /Robar Gas - /Ayuda Coger - /Ayuda Dejar - /Estéreo - /Guantera", "Coche: ");
-					    SendInfoMessage(playerid, 1, "/Llaves Guantera -  /Cinturón", "Coche: ");
+	    				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Luces:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Llaves Coche - /Aparcar - /Vender Mi Coche - /Dar Llaves [ID] - /Maletero - /Matrícula - /Papeles [ID] - /Llenar Bidon\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Echar Bidon - /Tiempo Coche - /Llenar Tanque [Cantidad]- /Apagar - /Apagar Alarma - /Encender - /Encender Alarma - /Puente\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Estado Alarma - /Llaves Maletero - /Estado Capó - /Robar Gas - /Ayuda Coger - /Ayuda Dejar - /Estéreo - /Guantera\n\n");
+						strcat(MsgDialogCopyright, "/Llaves Guantera -  /Cinturón\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Luces", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Casa
 				  	else if (strcmp("/Ayuda Casa", cmdtext, true, 11) == 0 && strlen(cmdtext) == 11)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Llaves Casa - /Llaves Armario - /Llaves Garage - /Comprar Casa - /Vender Casa - /Cambiar Precio Alquiler [Precio]", "Casa: ");
-					    SendInfoMessage(playerid, 1, "/Desalojar Todos - /Desalojar [ID] - /Alquilar - /Consultar Casa - /Retirar Casa - /Timbre - /Info Casa - /Armario", "Casa: ");
-					    SendInfoMessage(playerid, 1, "/Dar Llaves Amigo [ID] - /Llaves Amigos - /Llaves Refrigerador - /Refrigerador - /Cocinar [ID_Refrigerador]", "Casa: ");
-					    SendInfoMessage(playerid, 1, "/Ayuda Coger - /Ayuda Dejar - /Gaveta - /Llaves Gaveta", "Casa: ");
+	    				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Casa:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Llaves Casa - /Llaves Armario - /Llaves Garage - /Comprar Casa - /Vender Casa - /Cambiar Precio Alquiler [Precio]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Desalojar Todos - /Desalojar [ID] - /Alquilar - /Consultar Casa - /Retirar Casa - /Timbre - /Info Casa - /Armario\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dar Llaves Amigo [ID] - /Llaves Amigos - /Llaves Refrigerador - /Refrigerador - /Cocinar [ID_Refrigerador]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Ayuda Coger - /Ayuda Dejar - /Gaveta - /Llaves Gaveta\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Casa", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Banco
 				  	else if (strcmp("/Ayuda Banco", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Banco - /Consultar Cajero - /Depositar Cajero [Cantidad] - /RetirarCajero [Cantidad] - /Crear Cheque Efectivo [ID] [Cantidad]", "Banco: ");
-					    SendInfoMessage(playerid, 1, "/Crear Cheque Personal [ID] [Cantidad]", "Banco: ");
+	    				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Banco:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Banco - /Consultar Cajero - /Depositar Cajero [Cantidad] - /RetirarCajero [Cantidad] - /Crear Cheque Efectivo [ID] [Cantidad]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Crear Cheque Personal [ID] [Cantidad\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Banco", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Aceptar
 				  	else if (strcmp("/Ayuda Aceptar", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Aceptar Invite - /Aceptar Coche - /Aceptar Contrato - /Aceptar Factura - /Aceptar Reparación", "Aceptar: ");
-					    SendInfoMessage(playerid, 1, "/Aceptar Protección - /Aceptar Drogas - /Aceptar Multa - /Aceptar Ganzúas - /Aceptar Aceíte", "Aceptar: ");
-					    SendInfoMessage(playerid, 1, "/Aceptar Servicios - /Aceptar Sexo - /Aceptar Móvil - /Aceptar Coins - /Aceptar Renovación", "Aceptar: ");
+	    				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Aceptar:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Aceptar Invite - /Aceptar Coche - /Aceptar Contrato - /Aceptar Factura - /Aceptar Reparación\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Aceptar Protección - /Aceptar Drogas - /Aceptar Multa - /Aceptar Ganzúas - /Aceptar Aceíte\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Aceptar Servicios - /Aceptar Sexo - /Aceptar Móvil - /Aceptar Coins - /Aceptar Renovación\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Aceptar", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Coger
 				  	else if (strcmp("/Ayuda Coger", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Coger Arma - /Coger ArmaEx [ID_SLOT] - /Coger Chaleco - /Coger Drogas [Cantidad] - /Dar Ganzúas [Cantidad]", "Coger: ");
-					    SendInfoMessage(playerid, 1, "/Coger Materiales [Cantidad] - /Coger Bombas [Cantidad] - /Coger Artículo [ID_Refrigerador] - /Coger Objeto", "Coger: ");
-					    SendInfoMessage(playerid, 1, "/Coger ObjetoEx [ID_SLOT]", "Coger: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Coger:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Coger Arma - /Coger ArmaEx [ID_SLOT] - /Coger Chaleco - /Coger Drogas [Cantidad] - /Dar Ganzúas [Cantidad]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Coger Materiales [Cantidad] - /Coger Bombas [Cantidad] - /Coger Artículo [ID_Refrigerador] - /Coger Objeto\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Coger ObjetoEx [ID_SLOT]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Coger", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Usar
 				  	else if (strcmp("/Ayuda Usar", cmdtext, true, 11) == 0 && strlen(cmdtext) == 11)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Usar Bolsa [ID_Bolsa] - /Usar Refrigerador [ID_Refrigerador]", "Usar: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Usar:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Usar Bolsa [ID_Bolsa] - /Usar Refrigerador [ID_Refrigerador]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Usar", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Quitar
 				  	else if (strcmp("/Ayuda Quitar", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Quitar Extorsión [ID] - /Quitar Arma [ID] - /Quitar Casa - /Quitar Coche", "Quitar: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Quitar:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Quitar Extorsión [ID] - /Quitar Arma [ID] - /Quitar Casa - /Quitar Coche\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Quitar", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Dejar
 				  	else if (strcmp("/Ayuda Dejar", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Dejar Arma - /Dejar ArmaEx [ID_SLOT] - /Dejar Chaleco - /Dejar Drogas [Cantidad] - /Dejar Ganzúas [Cantidad]", "Dejar: ");
-					    SendInfoMessage(playerid, 1, "/Dejar Materiales [Cantidad] - /Dejar Bombas [Cantidad] - /Dejar Artículo [ID_Bolsa]", "Dejar: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Dejar:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dejar Arma - /Dejar ArmaEx [ID_SLOT] - /Dejar Chaleco - /Dejar Drogas [Cantidad] - /Dejar Ganzúas [Cantidad]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Dejar Materiales [Cantidad] - /Dejar Bombas [Cantidad] - /Dejar Artículo [ID_Bolsa]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Dejar", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Canales
 				  	else if (strcmp("/Ayuda Canales", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/O [OOC General] - /B [OOC Local] - /W [ID] [Duda] - /N [Fuera de Móvil]", "Canales: ");
-					    SendInfoMessage(playerid, 1, "/F [Family] - /R [Radio] - /Cambiar Frecuencia", "Canales: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Dejar:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/O [OOC General] - /B [OOC Local] - /W [ID] [Duda] - /N [Fuera de Móvil]\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/F [Family] - /R [Radio] - /Cambiar Frecuencia\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Dejar", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Rangos
 				  	else if (strcmp("/Ayuda Rangos", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13)
@@ -7247,20 +7412,29 @@ public OnPlayerCommandText(playerid, cmdtext[])
 						{
 							SendInfoMessage(playerid, 0, "182", "Tu facción no tiene rangos");
 						}
-        			}
+			    	}
+
 			    	// COMANDO: /Ayuda Crear
 				  	else if (strcmp("/Ayuda Crear", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12)
 			    	{
 					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 					    SendInfoMessage(playerid, 1, "/Crear Arma - /Crear Cheque Efectivo [ID] [Cantidad] - /Crear Cheque Personal [ID] [Cantidad]", "Crear: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Crear:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Crear Arma - /Crear Cheque Efectivo [ID] [Cantidad] - /Crear Cheque Personal [ID] [Cantidad]\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Crear", MsgDialogCopyright, "Aceptar", "");
 			    	}
 			    	// COMANDO: /Ayuda Rangos
 				  	else if (strcmp("/Ayuda Negocio", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14)
 			    	{
-					    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-					    SendInfoMessage(playerid, 1, "/Comprar Negocio - /Vender Negocio - /Consultar Negocio - /Retirar Negocio [Cantidad] - /Depositar Negocio [Cantidad]", "Negocios: ");
-					    SendInfoMessage(playerid, 1, "/Cambiar Nombre [Nuevo Nombre] - /Cambiar Precio Entrada [Nuevo Precio] - /Cambiar Precio Materiales [Nuevo Precio]", "Negocios: ");
-					    SendInfoMessage(playerid, 1, "/Dar Extorsión [ID] - /Quitar Extorsión [ID] - /Retirar Extorsión - /Consultar Extorsión - /Llaves Negocio - /Info Negocio", "Negocios: ");
+		   				new MsgDialogCopyright[500];
+ 	    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Crear:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Comprar Negocio - /Vender Negocio - /Consultar Negocio - /Retirar Negocio [Cantidad] - /Depositar Negocio [Cantidad\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}/Cambiar Nombre [Nuevo Nombre] - /Cambiar Precio Entrada [Nuevo Precio] - /Cambiar Precio Materiales [Nuevo Precio]\n\n");
+                        strcat(MsgDialogCopyright, "{CCCCFF}/Dar Extorsión [ID] - /Quitar Extorsión [ID] - /Retirar Extorsión - /Consultar Extorsión - /Llaves Negocio - /Info Negocio\n\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Crear", MsgDialogCopyright, "Aceptar", "");
 			    	}
 					// COMANDO: /Ayuda Admin
 				  	else if (strcmp("/Ayuda Cucaseca", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 ||
@@ -7334,17 +7508,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				// COMANDO: /Reglas
 			  	else if (strcmp("/Reglas", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7)
 		    	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, " - No se permite nada de lo siguiente:", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/DM - DeathMatch", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/CK - CarKill", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/DB - DriverBy", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/MG - MetaGaming", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/PG - PowerGaming", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/Flood - Flood", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "Faltas de respeto entre usuarios", "Reglas: ");
-				    SendInfoMessage(playerid, 1, "/CJ - /RK - /HQ", "Otras: ");
-				    SendInfoMessage(playerid, 1, " - LA LISTA NO TERMINA ACÁ CONSULTE EL FORO PARA INFORMACIÓN MÁS EXTENSA -", " ");
+	   				new MsgDialogCopyright[500];
+    				format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Crear:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}- No se permite nada de lo siguiente:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/DM - DeathMatch\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/CK - CarKill\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/DB - DriverBy\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/MG - MetaGaming\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/PG - PowerGaming\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/Flood - Flood\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}/CJ - /RK - /HQ\n\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}LA LISTA NO TERMINA ACÁ CONSULTE EL FORO\n");
+    				strcat(MsgDialogCopyright, "{CCCCFF}EL FORO PARA INFORMACIÓN MÁS EXTENSA.\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Crear", MsgDialogCopyright, "Aceptar", "");
 		    	}
 			  	else if (strcmp("/HQ", cmdtext, true, 3) == 0 && strlen(cmdtext) == 3)
 		    	{
@@ -7392,126 +7569,123 @@ public OnPlayerCommandText(playerid, cmdtext[])
 				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
 				    SendInfoMessage(playerid, 1, "Repetir consecutivamente el mismo texto u similar en 3 o más líneas", "Flood: ");
 			  	}
-				// COMANDOº: /Ayuntamiento 1481.0282,-1772.2765,18.7958 /Ayuntamiento - /Mecanicos - /Cajeros - /Bancos - /Concesionarias - /LSPD - /LSMD - /Camioneros - /CNN
-			  	else if ( strcmp("/Ayuntamiento", cmdtext, true, 13) == 0 && strlen(cmdtext) == 13 )
+			  	else if ( strcmp("/Codigos", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8 )
 			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Pasaportes, bodas, divorcios, cambio de nacionalidad", "Ayuntamiento: ");
-     			    SetPlayerCheckpoint(playerid, 1481.0282,-1772.2765,18.7958, 1.0);
+					if ( PlayersData[playerid][Faccion] == LSPD )
+			     	{
+	    	    	    new MsgDialogCopyright[500];
+		    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+						"{0049FF}Códigos cifrados LSPD:\n\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}p10: {F5FF00}Agresión Verbal y/o Fisica a oficial.\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}p11: {F5FF00}Peleas y/o Disturbios.\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}p12: {F5FF00}Homicidio.\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}p13: {F5FF00}Civil armado ilegalmente.\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}p14: {F5FF00}Robo a Persona/Local, etc...\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}p15: {F5FF00}Persecución a Pie.\n");
+						strcat(MsgDialogCopyright, "{CCCCFF}{F81414}v20: {F5FF00}Persecución en Vehículo.\n");
+						ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Los Santos Police Department", MsgDialogCopyright, "Aceptar", "");
+					}
+					else
+					{
+					SendInfoMessage(playerid, 0, "1539", "Usted no es LSPD!");
+					}
+				}
+			  	else if ( strcmp("/Conce1", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7 )
+			  	{
+   	    			new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Concesionario:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Concesionaria Unity\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Glendale: $5000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Perennial: $4000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Clover: $6000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Regina: $3500.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Majestic: $6500.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Admiral: $7000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Greenwood: $7500.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Se te ha marcado un punto en el mapa.\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Concesionario", MsgDialogCopyright, "Aceptar", "");
+
+     			    SetPlayerCheckpoint(playerid, 1760.4530,-1805.3033,13.5488, 1.0);
 					PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-     			    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
 			  	}
-			  	// COMANDOº: /Licencieros 1779.0271,-1662.9169,14.4380
-			  	else if ( strcmp("/Licencieros", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 )
+			  	else if ( strcmp("/Conce2", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7 )
 			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Licencias, Habilidades, Idiomas", "S.M.L: ");
-				    SetPlayerCheckpoint(playerid, 1779.0271,-1662.9169,14.4380, 1.0);
+   	    			new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Concesionario:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Sultan: $65000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Jester: $63000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Stratum: $45000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Flash: $70000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Elegy: $65000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Slamvan: $60000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Feltzer: $45000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Williard: $28000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Mesa: $48000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Rancher: $60000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Premier: $35000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Stallion: $28000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Se te ha marcado un punto en el mapa.\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Concesionario", MsgDialogCopyright, "Aceptar", "");
+
+     			    SetPlayerCheckpoint(playerid, 557.2045,-1255.2223,17.0859, 1.0);
 					PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
 			  	}
-			  	// COMANDOº: /Cajeros AddPlayerClass(208,1477.3723,-1771.6193,18.7958,179.3605,0,0,0,0,0,0); //
-			  	else if ( strcmp("/Cajeros", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8 )
+			  	else if ( strcmp("/Conce3", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7 )
 			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "/Retirar Cajero [Cantidad] - /Depositar Cajero [Cantidad] - /Consultar Cajero", "Cajero: ");
-				    SetPlayerCheckpoint(playerid, 1477.3723,-1771.6193,18.7958, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
+   	    			new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Concesionario:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Concesionaria Cout (Motos)\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}NRG-500: $120000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}FCR-900: $80000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}BF-400: $45000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}PCJ-600: $60000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Quad: $45000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Wayfarer: $50000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Freeway: $38000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Sanchez: $45000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Faggio: $100000.\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Se te ha marcado un punto en el mapa.\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Concesionario", MsgDialogCopyright, "Aceptar", "");
+
+     			    SetPlayerCheckpoint(playerid, 2127.2803,-1121.8861,25.3663, 1.0);
+					PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
 			  	}
-			  	// COMANDOº: /Bancos AddPlayerClass(26,1310.1853,-1366.8065,13.5069,4.8770,0,0,0,0,0,0); //
-			  	else if ( strcmp("/Bancos", cmdtext, true, 7) == 0 && strlen(cmdtext) == 7 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Banco Central Los Santos, Retiros, Depositos, Transferencias, Cobro de Cheques", "Banco: ");
-				    SetPlayerCheckpoint(playerid, 1310.1853,-1366.8065,13.5069, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Mecanicos 1483.2263,-1584.8630,13.5469
-			  	else if ( strcmp("/Talleres", cmdtext, true, 9) == 0 && strlen(cmdtext) == 9 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Reparaciones, Tuning, Acéite, Servicio Grúa", "Taller Los Santos: ");
-				    SetPlayerCheckpoint(playerid, 1483.2263,-1584.8630,13.5469, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Mecanicos 1483.2263,-1584.8630,13.5469
-			  	else if ( strcmp("/Supermercados", cmdtext, true, 14) == 0 && strlen(cmdtext) == 14 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Artículos para llenar tu bolsa", "Super Mercado Los Santos: ");
-				    SetPlayerCheckpoint(playerid, 1422.5170,-967.6074,37.4489, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-				// COMANDOº: /LSPD 1555.4973,-1675.6937,16.1953
-			  	else if ( strcmp("/Lspd", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Seguridad, Localizaciones de autos, Denuncias", "Departament de Policías: ");
-				    SetPlayerCheckpoint(playerid, 1555.4973,-1675.6937,16.1953, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /LSMD 1172.0964,-1323.3151,15.4029
-			  	else if ( strcmp("/Lsmd", cmdtext, true, 5) == 0 && strlen(cmdtext) == 5 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Atención Médica, Cura de enfermedades, Bomberos", "Departamento de Médicos: ");
-				    SetPlayerCheckpoint(playerid, 1172.0964,-1323.3151,15.4029, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Camioneros -491.2331,-564.1962,25.0280
-			  	else if ( strcmp("/Camioneros", cmdtext, true, 11) == 0 && strlen(cmdtext) == 11 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Abastecimiento de tiendas y Gasolineras, Compra y venta de Materiales", "Camioneros: ");
-				    SetPlayerCheckpoint(playerid, -491.2331,-564.1962,25.0280, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Cnn 777.6288,-1386.3982,13.6827
-			  	else if ( strcmp("/Cnn", cmdtext, true, 4) == 0 && strlen(cmdtext) == 4 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Publicidad, Carteles, Anuncios", "Central De Noticias: ");
-				    SetPlayerCheckpoint(playerid, 777.6288,-1386.3982,13.6827, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Cnn AddPlayerClass(26,557.4913,-1255.4297,17.0908,209.9956,0,0,0,0,0,0); //
-			  	else if ( strcmp("/Concesionarias", cmdtext, true, 15) == 0 && strlen(cmdtext) == 15 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Compra, venta, renovaciones, y dropeo de Vehículos y motos", "Concesionaria Grotti: ");
-				    SetPlayerCheckpoint(playerid, 557.4913,-1255.4297,17.0908, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Cnn AddPlayerClass(26,557.4913,-1255.4297,17.0908,209.9956,0,0,0,0,0,0); //
-			  	else if ( strcmp("/Hoteles", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "Duerme y carga tus energías. Usa /Dormir.", "Concesionaria Grotti: ");
-				    SetPlayerCheckpoint(playerid, 1797.4293,-1578.8639,14.0846, 1.0);
-				    PlayerPlaySound(playerid, 1056, 0.0, 0.0, 0.0);
-				    SendInfoMessage(playerid, 2, "0", "Se te ha marcado un punto en el mapa.");
-			  	}
-			  	// COMANDOº: /Cnn 777.6288,-1386.3982,13.6827
-			  	else if ( strcmp("/Ubicaciones", cmdtext, true, 12) == 0 && strlen(cmdtext) == 12 )
-			  	{
-				    SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-				    SendInfoMessage(playerid, 1, "/Ayuntamiento - /Talleres - /Bancos - /SuperMercados - /Concesionarias - /Hoteles - /LSPD - /LSMD - /Camioneros - /CNN", "Ubicaciones: ");
-			  	}
-			    	// COMANDO: /Ayuda Bolsa
+			  	// COMANDOº: /Niveles
+			  	else if ( strcmp("/Niveles", cmdtext, true, 8) == 0 && strlen(cmdtext) == 8 )
+		    	{
+		    	    //
+		    	    new MsgDialogCopyright[500];
+		    	    format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{F5FF00}Horas Jugadas: {00A5FF}%i{F5FF00}\n\n{F5FF00}Nivel: {00A5FF}%i{F5FF00}\n\n{F5FF00}Siguiente Nivel: [{00A5FF}%i/%i{F5FF00}]\n",
+					PlayersData[playerid][HoursPlaying], GetPlayerScoreEx(playerid), GetPlayerScoreMin(playerid), GetPlayerScoreMax(playerid));
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Niveles & Horas.", MsgDialogCopyright, "Aceptar", "");
+				}
 			  	else if (strcmp("/Bolsa", cmdtext, true, 6) == 0 && strlen(cmdtext) == 6)
    				{
-			    	SendClientMessage(playerid, COLOR_TITULO_DE_AYUDA, TITULO_AYUDA);
-       				SendInfoMessage(playerid, 1, "Para Ponerse el objeto use /Varios - Para quitarselo /qVarios", "Bolsa: ");
-			    	SendInfoMessage(playerid, 1, "/Bolsa [ID] - /Usar Bolsa [ID_Bolsa] - /Dar Articulo [ID] [ID_Bolsa]", "Bolsa: ");
+   	    			new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Bolsa:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}/Bolsa [ID] - /Usar Bolsa [ID_Bolsa] - /Dar Articulo [ID] [ID_Bolsa]\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Para Ponerse el objeto use /Varios\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Si quieres llenar tu bolsa debes ir a un Supermercado y comprar artículos\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Para ver la ubicación de algún supermercado usa /SuperMercados \n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Bolsa", MsgDialogCopyright, "Aceptar", "");
+			    }
+			  	else if (strcmp("/Coche", cmdtext, true, 6) == 0 && strlen(cmdtext) == 6)
+   				{
+   	    			new MsgDialogCopyright[500];
+	    	    	format(MsgDialogCopyright, sizeof(MsgDialogCopyright),
+					"{0049FF}Vehículo:\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Para {FF0000}Apagar{CCCCFF} tu coche usa {FF0000}/Apagar\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Manten tu coche {FF0000}Cerrado{CCCCFF}, evita Robos. Usa: {66FF00}/Llaves Coche\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Si tu coche {FF0000}Explota{CCCCFF} aparecerá donde hayas puesto el comando {66FF00}/Aparcar\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Recuerda {66FF00}Renovar{CCCCFF} los papeles de tu coche cada 7 días.\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Para ver tus papeles usa {66FF00}/Papeles [ID]\n\n");
+					strcat(MsgDialogCopyright, "{CCCCFF}Para mas información usa {66FF00}/Ayuda Coche\n\n");
+					ShowPlayerDialogEx(playerid, 999, DIALOG_STYLE_MSGBOX, "Coche", MsgDialogCopyright, "Aceptar", "");
 			    }
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				// Comando: /Verfaccuines
@@ -37563,7 +37737,7 @@ public Comandos_Admin(Comando, playerid, playeridAC, LV, Cantidad_o_Tipo, String
         {
 
 			new StringFormat[120];
-			format(StringFormat, sizeof(StringFormat), "%s %s: %s",LOGO_STAFF, PlayersDataOnline[playerid][NameOnline], String);
+			format(StringFormat, sizeof(StringFormat), "{66FFFF}%s %s %s: %s",LOGO_STAFF, AdminsRangosNames[PlayersData[playerid][Admin] -1], PlayersDataOnline[playerid][NameOnline], String);
 
 			for (new i = 0; i < MAX_PLAYERS; i++)
 			{
